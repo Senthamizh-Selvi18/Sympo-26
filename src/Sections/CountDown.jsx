@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import 'animate.css';
+import "animate.css";
 
 const CountdownTimer = () => {
   const calculateTimeLeft = () => {
@@ -7,12 +7,7 @@ const CountdownTimer = () => {
     const currentTime = new Date().getTime();
     const difference = eventDate - currentTime;
 
-    let timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
+    let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -22,13 +17,12 @@ const CountdownTimer = () => {
       };
     }
 
-    const formattedTimeLeft = {
+    return {
       days: timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days,
       hours: timeLeft.hours < 10 ? `0${timeLeft.hours}` : timeLeft.hours,
       minutes: timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes,
       seconds: timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds,
     };
-    return formattedTimeLeft;
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -43,34 +37,53 @@ const CountdownTimer = () => {
   return (
     <div className="flex flex-col justify-center items-center text-white animate__animated animate__fadeInUp duration-500">
       <br />
-      {/* <h1>FEB 15, 2025</h1> */}
-      <h1 className="text-xl sm:text-1xl md:text-1xl lg:text-1xl xl:text-2xl font-otherfont font-extrabold py-6 sm:py-3 lg:py-1 animate-pulse text-center">
-      THE WAIT IS ALMOST OVER...<br /><br /><sup className="text-3xl">Oct 10, 2025</sup>
+      <h1 className="font-heading-royal gold-solid text-lg sm:text-xl md:text-xl lg:text-xl xl:text-2xl font-bold py-4 sm:py-2 lg:py-1 text-center">
+        THE WAIT IS ALMOST OVER
       </h1>
-      <div className="grid grid-cols-4 gap-4 text-center m-3">
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
+
+      <div className="royal-divider">
+        <span className="diamond"></span>
+      </div>
+
+      <p className="font-date-royal gold-solid text-xl mb-4">
+        Oct 10, 2025
+      </p>
+
+      <div className="grid grid-cols-4 gap-4 sm:gap-5 text-center m-3">
+        <div className="royal-tile transform hover:scale-105">
+          <p className="font-display-royal gold-solid text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold countdown">
             {timeLeft.days}
           </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Days</p>
+          <p className="font-label-royal gold-solid mt-2 text-xs uppercase">
+            Days
+          </p>
         </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
+
+        <div className="royal-tile transform hover:scale-105">
+          <p className="font-display-royal gold-solid text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold countdown">
             {timeLeft.hours}
           </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Hours</p>
+          <p className="font-label-royal gold-solid mt-2 text-xs uppercase">
+            Hours
+          </p>
         </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
+
+        <div className="royal-tile transform hover:scale-105">
+          <p className="font-display-royal gold-solid text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold countdown">
             {timeLeft.minutes}
           </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Minutes</p>
+          <p className="font-label-royal gold-solid mt-2 text-xs uppercase">
+            Minutes
+          </p>
         </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
+
+        <div className="royal-tile transform hover:scale-105">
+          <p className="font-display-royal gold-solid text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl font-bold countdown">
             {timeLeft.seconds}
           </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Seconds</p>
+          <p className="font-label-royal gold-solid mt-2 text-xs uppercase">
+            Seconds
+          </p>
         </div>
       </div>
     </div>

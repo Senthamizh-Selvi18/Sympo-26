@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./styles/animation.css";
+import "../text.css";
 import VanillaTilt from "vanilla-tilt";
 import Image from "../assets/symposium/Logo/spidy logo.png";
 import CollegeNormal from "../assets/symposium/Logo/nocol.png";
@@ -19,7 +20,7 @@ const CrossfadeImage = ({ plain, colorful, height = 600 }) => {
         });
       },
       {
-        threshold: 0.5, // At least half in viewport to trigger
+        threshold: 0.5,
       }
     );
     if (containerRef.current) {
@@ -73,14 +74,14 @@ const NewAbout = (props) => {
     <div className="flex flex-col items-center py-10">
       {/* Glassmorphic Technovanza */}
       <div className="glassmorphic-container p-6 md:p-10 w-full max-w-5xl mb-16">
-        <h1 className="text-5xl md:text-5xl text-lg mb-5 leading-relaxed text-left">
+        <h1 className="font-heading-royal gold-solid text-5xl md:text-5xl text-lg mb-5 leading-relaxed text-left">
           About
         </h1>
-        <h2 className="text-3xl md:text-5xl font-aboutfont tracking-widest text-left">
-          TECHNOVANZA <span> 2025- '26</span>
+        <h2 className="font-display-royal gold-solid text-3xl md:text-5xl tracking-widest text-left">
+          TECHNOVANZA <span>2026- '27</span>
         </h2>
         <div className="flex flex-col md:flex-row items-center w-full">
-          <div className="md:w-[60%] w-full text-lg leading-relaxed text-justify px-4">
+          <div className="md:w-[60%] w-full font-body-royal text-lg leading-relaxed text-justify px-4">
             <p>
               Technovanza is the epitome of innovation and collaboration,
               designed to foster creativity, ignite ideas, and push the
@@ -106,48 +107,79 @@ const NewAbout = (props) => {
           </div>
         </div>
       </div>
-    <br />
-    <br />
+      <br />
+      <br />
       {/* College Section 1 */}
-     {!props.style && <><div className="w-full max-w-7xl p-6 md:p-10 flex flex-col md:flex-row items-center">
-        {/* Image Left */}
-        <div className="md:w-[65%] w-full mb-6 md:mb-0 md:mr-8">
-          <CrossfadeImage
-            plain={CollegeNormal}
-            colorful={CollegeColorful}
-            height={600} />
-        </div>
-        {/* Text Right */}
-        <div className="md:w-[35%] w-full text-lg leading-relaxed text-justify px-4 flex flex-col justify-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left">
-            About Our College
-          </h2>
-          <p className="mb-4">
-            Jerusalem College of Engineering, Chennai, established in 1995, is a premier autonomous institution affiliated with Anna University and approved by AICTE. Located in Pallikaranai, Chennai, the college offers a wide range of undergraduate, postgraduate, and doctoral programs in engineering, technology, computer applications, and management. Accredited by NAAC and NBA, it provides quality education grounded in ethical values.          </p>
-          <p className="mb-4">
-            The college fosters research, entrepreneurship, and industry collaboration, supported by experienced faculty and modern infrastructure. With specialized courses in fields like Artificial Intelligence, Data Science, and Cyber Security, Jerusalem College of Engineering prepares students for successful careers and meaningful societal contributions.          </p>
-
-        </div>
-      </div><div className="w-full max-w-7xl p-6 md:p-10 flex flex-col md:flex-row items-center">
-
-          <div className="md:w-[65%] w-full mb-6 md:mb-0 md:mr-8">
-            <CrossfadeImage
-              plain={S1Normal}
-              colorful={S1Colorful}
-              height={600} />
+      {!props.style && (
+        <>
+          <div className="w-full max-w-7xl p-6 md:p-10 flex flex-col md:flex-row items-center">
+            <div className="md:w-[65%] w-full mb-6 md:mb-0 md:mr-8">
+              <CrossfadeImage
+                plain={CollegeNormal}
+                colorful={CollegeColorful}
+                height={600}
+              />
+            </div>
+            <div className="md:w-[35%] w-full font-body-royal text-lg leading-relaxed text-justify px-4 flex flex-col justify-center">
+              <h2 className="font-heading-royal gold-solid text-3xl md:text-4xl mb-6 text-left">
+                About Our College
+              </h2>
+              <p className="mb-4">
+                Jerusalem College of Engineering, Chennai, established in
+                1995, is a premier autonomous institution affiliated with
+                Anna University and approved by AICTE. Located in
+                Pallikaranai, Chennai, the college offers a wide range of
+                undergraduate, postgraduate, and doctoral programs in
+                engineering, technology, computer applications, and
+                management. Accredited by NAAC and NBA, it provides quality
+                education grounded in ethical values.
+              </p>
+              <p className="mb-4">
+                The college fosters research, entrepreneurship, and industry
+                collaboration, supported by experienced faculty and modern
+                infrastructure. With specialized courses in fields like
+                Artificial Intelligence, Data Science, and Cyber Security,
+                Jerusalem College of Engineering prepares students for
+                successful careers and meaningful societal contributions.
+              </p>
+            </div>
           </div>
-          {/* Text Right */}
-          <div className="md:w-[35%] w-full text-lg leading-relaxed text-justify px-4 flex flex-col justify-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-left">
-              Campus Life
-            </h2>
-            <p className="mb-4">
-              Jerusalem College of Engineering offers a vibrant campus life with a strong emphasis on holistic student development. The college provides excellent infrastructure including smart classrooms, well-equipped laboratories, a spacious library, hostels, sports complexes, and a cafeteria. Students actively participate in various cultural, technical, and sports events, as well as clubs and societies like the National Service Scheme (NSS), Rotaract Club, and Tamil Mandram.          </p>
-            <p>
-              The college promotes physical fitness through sports such as volleyball, basketball, cricket, and football, fostering team spirit and healthy competition. Regular symposiums, workshops, and cultural fests enrich the campus experience, encouraging creativity and leadership. Supported by a dedicated faculty and modern facilities, student life at Jerusalem College of Engineering is dynamic, inclusive, and nurturing for future professionals.          </p>
+          <div className="w-full max-w-7xl p-6 md:p-10 flex flex-col md:flex-row items-center">
+            <div className="md:w-[65%] w-full mb-6 md:mb-0 md:mr-8">
+              <CrossfadeImage
+                plain={S1Normal}
+                colorful={S1Colorful}
+                height={600}
+              />
+            </div>
+            <div className="md:w-[35%] w-full font-body-royal text-lg leading-relaxed text-justify px-4 flex flex-col justify-center">
+              <h2 className="font-heading-royal gold-solid text-3xl md:text-4xl mb-6 text-left">
+                Campus Life
+              </h2>
+              <p className="mb-4">
+                Jerusalem College of Engineering offers a vibrant campus life
+                with a strong emphasis on holistic student development. The
+                college provides excellent infrastructure including smart
+                classrooms, well-equipped laboratories, a spacious library,
+                hostels, sports complexes, and a cafeteria. Students actively
+                participate in various cultural, technical, and sports
+                events, as well as clubs and societies like the National
+                Service Scheme (NSS), Rotaract Club, and Tamil Mandram.
+              </p>
+              <p>
+                The college promotes physical fitness through sports such as
+                volleyball, basketball, cricket, and football, fostering team
+                spirit and healthy competition. Regular symposiums, workshops,
+                and cultural fests enrich the campus experience, encouraging
+                creativity and leadership. Supported by a dedicated faculty
+                and modern facilities, student life at Jerusalem College of
+                Engineering is dynamic, inclusive, and nurturing for future
+                professionals.
+              </p>
+            </div>
           </div>
-        </div></>
-}
+        </>
+      )}
     </div>
   );
 };

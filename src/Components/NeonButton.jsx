@@ -18,7 +18,7 @@ const NeonButton = ({ label, onClick, tooltip }) => {
         <span></span>
         {label}
       </button>
-      {isHovered && <Tooltip>{tooltip}</Tooltip>}
+      {isHovered && tooltip && <Tooltip>{tooltip}</Tooltip>}
     </StyledWrapper>
   );
 };
@@ -34,15 +34,15 @@ const StyledWrapper = styled.div`
     height: 60px; /* Fixed height */
     text-decoration: none;
     border: none;
-    color: #fff;
-    font-size: 1.2em;
+    color: #eaf6ff;
+    font-size: 1.1em;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: sans-serif;
-    letter-spacing: 4px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    letter-spacing: 3px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(18, 53, 107, 0.35);
+    box-shadow: 0 5px 5px rgba(2, 8, 20, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +54,7 @@ const StyledWrapper = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(79, 214, 255, 0.08);
   }
   .button::after {
     content: "";
@@ -66,7 +66,7 @@ const StyledWrapper = styled.div`
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.4),
+      rgba(79, 214, 255, 0.45),
       transparent
     );
     transition: 0.5s;
@@ -85,7 +85,8 @@ const StyledWrapper = styled.div`
     left: 0;
     width: 0;
     height: 1px;
-    background: #fff;
+    background: #4fd6ff;
+    box-shadow: 0 0 6px #4fd6ff;
   }
   .button:hover span:nth-child(1) {
     width: 100%;
@@ -96,7 +97,8 @@ const StyledWrapper = styled.div`
     left: 0;
     width: 1px;
     height: 0;
-    background: #fff;
+    background: #4fd6ff;
+    box-shadow: 0 0 6px #4fd6ff;
   }
   .button:hover span:nth-child(2) {
     height: 100%;
@@ -107,7 +109,8 @@ const StyledWrapper = styled.div`
     right: 0;
     width: 0;
     height: 1px;
-    background: #fff;
+    background: #4fd6ff;
+    box-shadow: 0 0 6px #4fd6ff;
   }
   .button:hover span:nth-child(3) {
     width: 100%;
@@ -118,11 +121,15 @@ const StyledWrapper = styled.div`
     right: 0;
     width: 1px;
     height: 0;
-    background: #fff;
+    background: #4fd6ff;
+    box-shadow: 0 0 6px #4fd6ff;
   }
   .button:hover span:nth-child(4) {
     height: 100%;
     transform: translateY(-100%);
+  }
+  .button:hover {
+    color: #8ff2ff;
   }
 `;
 
@@ -131,14 +138,15 @@ const Tooltip = styled.div`
   bottom: 120%; /* Adjust this to position the tooltip above the button */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px; /* Slightly rounded corners */
+  background: rgba(10, 26, 53, 0.85);
+  border-radius: 8px;
   padding: 10px 15px;
-  color: #fff;
+  color: #eaf6ff;
   font-size: 0.9em;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px); /* Glass-like effect */
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(2, 8, 20, 0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(79, 214, 255, 0.3);
+  white-space: nowrap;
 
   &::after {
     content: '';
@@ -150,8 +158,8 @@ const Tooltip = styled.div`
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 8px solid rgba(255, 255, 255, 0.1); /* Match the tooltip background */
-    z-index: 1; /* Ensure it appears above other elements */
+    border-top: 8px solid rgba(10, 26, 53, 0.85);
+    z-index: 1;
   }
 `;
 

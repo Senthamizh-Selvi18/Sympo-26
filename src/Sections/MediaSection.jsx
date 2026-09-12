@@ -1,5 +1,6 @@
 import React from "react";
 import "./MediaSection.css";
+import "../text.css";
 
 const MediaSection = () => {
   const redirectTo = (url) => {
@@ -8,18 +9,14 @@ const MediaSection = () => {
 
   return (
     <div className="container flex justify-center">
-      <div className="flex flex-col  justify-center">
-        <h1 className="text-xl md:text-2xl text-center text-[#ff00cc] 
-                       bg-gradient-to-br from-[#e8bcb9] to-[#ae445a] 
-                       bg-clip-text text-transparent font-sans font-semibold 
-                       py-4 px-4">
+      <div className="flex flex-col justify-center">
+        <h1 className="font-heading-royal gold-solid text-xl md:text-2xl text-center font-semibold py-4 px-4">
           Connect with us online.
         </h1>
 
         <div className="media-container flex gap-4">
-          {/* Instagram Button */}
           <button
-            className="media"
+            className="royal-icon-btn media"
             aria-label="Instagram"
             onClick={() =>
               redirectTo(
@@ -33,7 +30,6 @@ const MediaSection = () => {
               height="24"
               width="24"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-gray-800 dark:text-white"
             >
               <path
                 clipRule="evenodd"
@@ -43,9 +39,8 @@ const MediaSection = () => {
             </svg>
           </button>
 
-          {/* LinkedIn Button */}
           <button
-            className="media"
+            className="royal-icon-btn media"
             aria-label="LinkedIn"
             onClick={() =>
               redirectTo(

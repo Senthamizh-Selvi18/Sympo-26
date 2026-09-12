@@ -47,11 +47,11 @@ const EventCardDesign = ({ label, onClick, gradient }) => {
 };
 
 const StyledWrapper = styled.div`
-  /* From Uiverse.io by MikeAndrewDesigner */
+  /* From Uiverse.io by MikeAndrewDesigner, re-themed to Technovanza blue */
   .e-card {
     margin: 100px auto;
     background: transparent;
-    box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 8px 28px -9px rgba(2, 8, 20, 0.6);
     position: relative;
     width: 100%;
     max-width: 240px;
@@ -72,7 +72,7 @@ const StyledWrapper = styled.div`
     margin-left: -50%;
     margin-top: -70%;
     background: ${({ gradient }) =>
-      gradient || "linear-gradient(744deg,#af40ff,#5b42f3 60%,#00ddeb)"};
+      gradient || "linear-gradient(744deg, #0a1a35, #12356b 55%, #4fd6ff)"};
     border-radius: 40%;
     animation: wave 55s infinite linear;
   }
@@ -102,6 +102,8 @@ const StyledWrapper = styled.div`
     width: 3em;
     margin-top: -1em;
     padding-bottom: 1em;
+    color: #8ff2ff;
+    filter: drop-shadow(0 0 6px rgba(79, 214, 255, 0.6));
   }
 
   .infotop {
@@ -111,8 +113,9 @@ const StyledWrapper = styled.div`
     top: 5.6em;
     left: 0;
     right: 0;
-    color: rgb(255, 255, 255);
+    color: #eaf6ff;
     font-weight: 600;
+    text-shadow: 0 0 8px rgba(79, 214, 255, 0.4);
   }
 
   .name {
@@ -121,6 +124,7 @@ const StyledWrapper = styled.div`
     position: relative;
     top: 1em;
     text-transform: lowercase;
+    color: #cfe8ff;
   }
 
   @keyframes wave {

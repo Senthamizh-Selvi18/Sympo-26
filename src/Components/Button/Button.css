@@ -1,45 +1,213 @@
+/* ============================================================
+   Iris Shutter Button — styles for NewButton.jsx
+   (housing / blades / rivets / dial-ring / sparks / label-text)
+   Blue / navy engineering theme.
+   ============================================================ */
+
 .btn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .wreck-btn {
-  background-color: #ff00c3;
-  color: black;
-  font-size: 28px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 24px;
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 62px;
+  padding: 0 30px;
+  border: none;
+  border-radius: 31px;
+  background: transparent;
   cursor: pointer;
-  font-family: "Playpen Sans Hebrew", cursive;
-  letter-spacing: 2px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  background-image: radial-gradient(rgb(63, 48, 48) 0.8px, transparent 0.8px);
-  background-size: 6px 6px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease;
+  overflow: visible;
 }
 
-.wreck-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 14px rgba(47, 255, 0, 0.3);
+.wreck-btn:active {
+  transform: scale(0.97);
 }
 
+.wreck-btn:focus-visible .housing {
+  outline: 2px solid #8ff2ff;
+  outline-offset: 3px;
+}
 
+/* metal housing shell */
+.housing {
+  position: absolute;
+  inset: 0;
+  border-radius: 31px;
+  background: linear-gradient(180deg, #16305c 0%, #0c1f42 55%, #081733 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -6px 14px rgba(0, 0, 0, 0.55),
+    0 8px 22px rgba(2, 8, 20, 0.6);
+  overflow: hidden;
+  z-index: 0;
+}
 
-/* Department caption (neat & smaller) */
+/* corner rivets */
+.rivet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #7fb8e6, #1a3f70 70%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+.rivet.tl { top: 8px; left: 14px; }
+.rivet.tr { top: 8px; right: 14px; }
+.rivet.bl { bottom: 8px; left: 14px; }
+.rivet.br { bottom: 8px; right: 14px; }
+
+/* dashed lens ring around the edge */
+.dial-ring {
+  position: absolute;
+  inset: 3px;
+  border-radius: 28px;
+  border: 1px dashed rgba(79, 214, 255, 0.25);
+  pointer-events: none;
+}
+
+.blade-field {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 214, 255, 0.9), rgba(79, 214, 255, 0.25) 40%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  filter: blur(2px);
+}
+
+/* the six shutter blades, closed by default */
+.blade {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: 50%;
+  top: 50%;
+  transform-origin: 8% 50%;
+  background: linear-gradient(100deg, #1c4477, #0d2648 70%);
+  clip-path: polygon(0% 42%, 100% 0%, 100% 100%, 0% 58%);
+  box-shadow: 0 0 0 1px rgba(79, 214, 255, 0.15) inset;
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.2), background 0.4s ease;
+}
+.blade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent, rgba(79, 214, 255, 0.35), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.blade:nth-child(2) { transform: translate(-8%, -50%) rotate(0deg) scaleX(0.46); }
+.blade:nth-child(3) { transform: translate(-8%, -50%) rotate(60deg) scaleX(0.46); }
+.blade:nth-child(4) { transform: translate(-8%, -50%) rotate(120deg) scaleX(0.46); }
+.blade:nth-child(5) { transform: translate(-8%, -50%) rotate(180deg) scaleX(0.46); }
+.blade:nth-child(6) { transform: translate(-8%, -50%) rotate(240deg) scaleX(0.46); }
+.blade:nth-child(7) { transform: translate(-8%, -50%) rotate(300deg) scaleX(0.46); }
+
+/* hover: blades swing open, core glows, dial lights */
+.wreck-btn:hover .blade:nth-child(2),
+.wreck-btn:focus-visible .blade:nth-child(2) { transform: translate(-8%, -50%) rotate(-18deg) scaleX(0.9); }
+.wreck-btn:hover .blade:nth-child(3),
+.wreck-btn:focus-visible .blade:nth-child(3) { transform: translate(-8%, -50%) rotate(42deg) scaleX(0.9); }
+.wreck-btn:hover .blade:nth-child(4),
+.wreck-btn:focus-visible .blade:nth-child(4) { transform: translate(-8%, -50%) rotate(102deg) scaleX(0.9); }
+.wreck-btn:hover .blade:nth-child(5),
+.wreck-btn:focus-visible .blade:nth-child(5) { transform: translate(-8%, -50%) rotate(162deg) scaleX(0.9); }
+.wreck-btn:hover .blade:nth-child(6),
+.wreck-btn:focus-visible .blade:nth-child(6) { transform: translate(-8%, -50%) rotate(222deg) scaleX(0.9); }
+.wreck-btn:hover .blade:nth-child(7),
+.wreck-btn:focus-visible .blade:nth-child(7) { transform: translate(-8%, -50%) rotate(282deg) scaleX(0.9); }
+
+.wreck-btn:hover .blade::after,
+.wreck-btn:focus-visible .blade::after { opacity: 1; }
+.wreck-btn:hover .core-glow,
+.wreck-btn:focus-visible .core-glow { opacity: 1; }
+
+/* click: blades snap fully open */
+.wreck-btn.clicked .blade:nth-child(2) { transform: translate(-8%, -50%) rotate(-32deg) scaleX(1.05); }
+.wreck-btn.clicked .blade:nth-child(3) { transform: translate(-8%, -50%) rotate(28deg) scaleX(1.05); }
+.wreck-btn.clicked .blade:nth-child(4) { transform: translate(-8%, -50%) rotate(88deg) scaleX(1.05); }
+.wreck-btn.clicked .blade:nth-child(5) { transform: translate(-8%, -50%) rotate(148deg) scaleX(1.05); }
+.wreck-btn.clicked .blade:nth-child(6) { transform: translate(-8%, -50%) rotate(208deg) scaleX(1.05); }
+.wreck-btn.clicked .blade:nth-child(7) { transform: translate(-8%, -50%) rotate(268deg) scaleX(1.05); }
+
+.label-text {
+  position: relative;
+  z-index: 3;
+  color: #eaf6ff;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(79, 214, 255, 0.5);
+  transition: letter-spacing 0.4s ease, color 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.wreck-btn:hover .label-text,
+.wreck-btn:focus-visible .label-text {
+  letter-spacing: 2.5px;
+  color: #8ff2ff;
+}
+
+/* spark burst on click */
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #8ff2ff;
+  box-shadow: 0 0 6px #8ff2ff;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.wreck-btn.clicked .spark {
+  animation: iris-burst 0.6s ease-out forwards;
+}
+.spark:nth-child(3) { --dx: 90px; --dy: -30px; }
+.spark:nth-child(4) { --dx: 100px; --dy: 14px; }
+.spark:nth-child(5) { --dx: 80px; --dy: 40px; }
+.spark:nth-child(6) { --dx: -80px; --dy: -32px; }
+.spark:nth-child(7) { --dx: -95px; --dy: 10px; }
+.spark:nth-child(8) { --dx: -75px; --dy: 36px; }
+
+@keyframes iris-burst {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* Department caption below the button */
 .dept-caption {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #333;
-  background: #fff;
-  padding: 4px 8px;
+  color: #cfe8ff;
+  background: #0a1a35;
+  padding: 4px 10px;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(21, 255, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(79, 214, 255, 0.2);
   font-family: "DM Mono", monospace;
   max-width: 250px;
+  margin: 0;
 }

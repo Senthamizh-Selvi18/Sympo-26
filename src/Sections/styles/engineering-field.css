@@ -1,0 +1,272 @@
+.engineering-field {
+  position: relative;
+  background: #030719;
+  isolation: isolate;
+}
+
+.engineering-field::after {
+  content: '';
+  position: absolute;
+  z-index: 9;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(1, 4, 18, 0.42) 100%
+  );
+}
+
+.engineering-field__svg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.scene-atmosphere {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.scene-atmosphere--left {
+  animation: scene-atmosphere-left 9s ease-in-out infinite;
+}
+
+.scene-atmosphere--right {
+  animation: scene-atmosphere-right 9s ease-in-out infinite;
+}
+
+.scene-depth-plane {
+  transform-box: view-box;
+  transform-origin: 800px 500px;
+  animation: scene-depth-drift 10s ease-in-out infinite;
+}
+
+.scene-precision-grid {
+  transform-box: view-box;
+  transform-origin: 800px 500px;
+  animation: scene-grid-parallax 9s ease-in-out infinite;
+}
+
+.scene-contours {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.scene-contours--upper {
+  animation: scene-contour-upper 9s ease-in-out infinite;
+}
+
+.scene-contours--lower {
+  animation: scene-contour-lower 9s ease-in-out infinite;
+}
+
+.scene-module {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.scene-module--left {
+  animation: scene-module-left 9s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(62, 153, 242, 0.28));
+}
+
+.scene-module--right {
+  animation: scene-module-right 9s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(126, 116, 224, 0.28));
+}
+
+.scene-rings {
+  transform-box: view-box;
+  transform-origin: 800px 500px;
+}
+
+.scene-rings--left {
+  animation: scene-ring-left 8.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(62, 164, 246, 0.3));
+}
+
+.scene-rings--right {
+  animation: scene-ring-right 8.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(133, 116, 226, 0.3));
+}
+
+.scene-route-light {
+  animation: scene-route-flow 8.5s linear infinite;
+  animation-delay: var(--route-delay);
+}
+
+.scene-particle-cluster {
+  animation: scene-cluster-pulse 8.5s ease-in-out infinite;
+}
+
+.scene-particle-cluster:nth-child(even) {
+  animation-delay: -2.2s;
+}
+
+.scene-particle-cluster:nth-child(3n) {
+  animation-delay: -4.4s;
+}
+
+.scene-routes g:nth-child(even) .scene-route-light {
+  animation-direction: reverse;
+}
+
+.scene-routes g:nth-child(3) .scene-route-light {
+  animation-delay: -4.3s;
+}
+
+.scene-routes g:nth-child(5) .scene-route-light {
+  animation-delay: -6.1s;
+}
+
+.scene-route-nodes rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: scene-node-pulse 8.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(99, 226, 246, 0.46));
+}
+
+.scene-route-nodes rect:nth-child(even) {
+  animation-delay: -2.2s;
+}
+
+.scene-route-nodes rect:nth-child(3n) {
+  animation-delay: -4.6s;
+}
+
+.scene-motion-particle {
+  animation: scene-particle-breathe 8.5s ease-in-out infinite;
+}
+
+.scene-motion-particle:nth-child(even) {
+  animation-delay: -2s;
+}
+
+.scene-motion-particle:nth-child(3n) {
+  animation-delay: -4s;
+}
+
+.scene-depth-braces {
+  transform-box: view-box;
+  transform-origin: 800px 500px;
+  animation: scene-brace-breathe 9s ease-in-out infinite;
+}
+
+.scene-center-safe {
+  pointer-events: none;
+}
+
+.scene-center-horizon {
+  animation: scene-horizon 9s ease-in-out infinite;
+}
+
+@keyframes scene-atmosphere-left {
+  0%, 100% { transform: translate3d(-1%, 0, 0) scale(0.99); opacity: 0.72; }
+  50% { transform: translate3d(2%, -0.6%, 0) scale(1.03); opacity: 0.96; }
+}
+
+@keyframes scene-atmosphere-right {
+  0%, 100% { transform: translate3d(1%, 0, 0) scale(0.99); opacity: 0.68; }
+  50% { transform: translate3d(-2%, 0.6%, 0) scale(1.03); opacity: 0.92; }
+}
+
+@keyframes scene-depth-drift {
+  0%, 100% { transform: translate3d(-0.3%, 0.1%, 0); opacity: 0.56; }
+  50% { transform: translate3d(0.3%, -0.1%, 0); opacity: 0.86; }
+}
+
+@keyframes scene-grid-parallax {
+  0%, 100% { transform: translate3d(-0.35%, 0, 0); opacity: 0.62; }
+  50% { transform: translate3d(0.35%, 0.2%, 0); opacity: 0.96; }
+}
+
+@keyframes scene-contour-upper {
+  0%, 100% { transform: translate3d(-0.7%, -0.4%, 0); opacity: 0.62; }
+  50% { transform: translate3d(1%, 0.7%, 0); opacity: 1; }
+}
+
+@keyframes scene-contour-lower {
+  0%, 100% { transform: translate3d(0.7%, 0.4%, 0); opacity: 0.62; }
+  50% { transform: translate3d(-1%, -0.7%, 0); opacity: 1; }
+}
+
+@keyframes scene-module-left {
+  0%, 100% { transform: translate3d(-0.8%, 0, 0) scale(0.995); opacity: 0.7; }
+  50% { transform: translate3d(1.1%, -0.4%, 0) scale(1.015); opacity: 1; }
+}
+
+@keyframes scene-module-right {
+  0%, 100% { transform: translate3d(0.8%, 0, 0) scale(0.995); opacity: 0.7; }
+  50% { transform: translate3d(-1.1%, 0.4%, 0) scale(1.015); opacity: 1; }
+}
+
+@keyframes scene-ring-left {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scene-ring-right {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes scene-route-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes scene-cluster-pulse {
+  0%, 100% { opacity: 0.64; }
+  42%, 58% { opacity: 1; }
+}
+
+@keyframes scene-node-pulse {
+  0%, 100% { transform: scale(0.82); opacity: 0.42; }
+  50% { transform: scale(1.22); opacity: 1; }
+}
+
+@keyframes scene-particle-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes scene-brace-breathe {
+  0%, 100% { opacity: 0.48; }
+  50% { opacity: 0.88; }
+}
+
+@keyframes scene-horizon {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.32; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-atmosphere--left,
+  .scene-atmosphere--right,
+  .scene-depth-plane,
+  .scene-precision-grid,
+  .scene-contours--upper,
+  .scene-contours--lower,
+  .scene-module--left,
+  .scene-module--right,
+  .scene-rings--left,
+  .scene-rings--right,
+  .scene-route-light,
+  .scene-route-nodes rect,
+  .scene-motion-particle,
+  .scene-particle-cluster,
+  .scene-depth-braces,
+  .scene-center-horizon {
+    animation: none;
+  }
+
+  .scene-motion-particle,
+  .scene-particle-cluster {
+    display: none;
+  }
+}

@@ -1,28 +1,45 @@
-import React from 'react';
-import '../text.css'; // Make sure to import your font CSS file
-import 'animate.css';
+import React from "react";
+import "../text.css";
+import "animate.css";
 
 const CollegeName = () => {
   return (
     <div className="text-center p-4 sm:p-6 md:p-8 lg:p-6 xl:p-6">
-      <p className=" clg-font  bg-blue-200 text-3xl sm:text-2xl md:text-3xl lg:text-5xl   font-extrabold mb-0 bg-white bg-clip-text text-transparent font-otherfont animate__animated animate__fadeInUp duration-500">
-        JERUSALEM COLLEGE OF ENGINEERING
-        <span className="clg-font  bg-blue-200  text-sm font-extrabold bg-white bg-clip-text text-transparent font-otherfont animate__animated animate__fadeInUp duration-500 block">( AN AUTONOMOUS INSTITUTION )</span>
-        <span className="clg-font  bg-blue-200  text-sm sm:text-sm md:text-base lg:text-lg font-extrabold bg-white bg-clip-text text-transparent font-otherfont animate__animated animate__fadeInUp duration-500 block">Chennai, Tamil Nadu - 600100</span>
-        <span className="clg-font mt-2 bg-blue-200  text-sm sm:text-1xl md:text-2xl lg:text-2xl font-extrabold bg-white bg-clip-text text-transparent font-otherfont animate__animated animate__fadeInUp duration-500 block">PRESENTS</span>
-        <span className=" clg-font mt-6  bg-blue-200 text-xl sm:text-1xl md:text-2xl lg:text-3xl   font-extrabold mb-0 bg-white bg-clip-text text-transparent font-otherfont animate__animated animate__fadeInUp duration-500 block">AN INTER COLLEGIATE NATIONAL LEVEL TECHNICAL SYMPOSIUM</span><br />
-        
+      <p className="text-center">
+        <span className="font-display-royal gold-solid text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate__animated animate__fadeInUp duration-500 block">
+          JERUSALEM COLLEGE OF ENGINEERING
+        </span>
+
+        <span className="font-subtitle-royal gold-solid text-sm animate__animated animate__fadeInUp duration-500 block mt-2">
+          ( An Autonomous Institution )
+        </span>
+
+        <span className="font-label-royal gold-solid text-xs sm:text-xs md:text-sm lg:text-sm animate__animated animate__fadeInUp duration-500 block mt-1">
+          CHENNAI, TAMIL NADU - 600100
+        </span>
+
+        <span className="font-heading-royal gold-solid mt-4 text-sm sm:text-lg md:text-xl lg:text-xl font-bold tracking-widest animate__animated animate__fadeInUp duration-500 block">
+          PRESENTS
+        </span>
+
+        <div className="royal-divider">
+          <span className="diamond"></span>
+        </div>
+
+        <span className="font-heading-royal gold-solid mt-2 text-lg sm:text-lg md:text-xl lg:text-2xl font-bold animate__animated animate__fadeInUp duration-500 block">
+          AN INTER COLLEGIATE NATIONAL LEVEL TECHNICAL SYMPOSIUM
+        </span>
       </p>
-      
-      {/* style={{ textShadow: '0 0 8px white' }} */}
-      <h1 className="sympo-text text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold bg-white bg-clip-text text-transparent font-aboutfont animate__animated animate__fadeInUp duration-500" style={{}}>
-      Technovanza <br /><span className="sympo-text text-3xl sm:text-2xl md:text-3xl lg:text-5xl font-extrabold bg-white bg-clip-text text-transparent font-aboutfont animate__animated animate__fadeInUp duration-500" style={{}}>2025 - '26</span>
-       
-      {/* <span className="lightning"></span> */}
-      <br /> {/* <p className='className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold bg-white bg-clip-text text-transparent font-otherfont'>2024-'25</p> */}
+
+      <h1 className="font-display-royal gold-solid text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold animate__animated animate__fadeInUp duration-500 mt-4">
+        TECHNOVANZA
+        <br />
+        <span className="font-date-royal gold-solid text-2xl sm:text-3xl md:text-4xl lg:text-5xl animate__animated animate__fadeInUp duration-500 block mt-2">
+          2026 - '27
+        </span>
       </h1>
     </div>
   );
-}
+};
 
 export default CollegeName;
