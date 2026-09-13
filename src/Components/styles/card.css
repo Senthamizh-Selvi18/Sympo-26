@@ -24,18 +24,11 @@
   box-sizing: border-box;
 }
 
-/* Only apply lift-hover on standalone cards, not inside a flip-card-scene */
-:not(.flip-card-front) > .card:hover,
-.card:not(.flip-card-front):hover {
+.card:hover {
   transform: translateY(-15px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Neutralise any hover transform on the front face inside a flip scene */
-.flip-card-front.card:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
 
 
 /* .card:hover {

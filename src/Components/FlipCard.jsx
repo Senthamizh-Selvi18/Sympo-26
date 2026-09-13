@@ -1,16 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles/card.css";
 import "./styles/flipcard.css";
 
 /**
- * FlipCard — wraps the existing Card poster in a 3D flip shell.
+ * FlipCard — 3D Y-axis flip on hover (desktop) / tap (mobile).
  *
- * Front  → existing poster image (same visual as before)
- * Back   → event details with ZenoFest2K26 glassmorphism dark theme
- *
- * Hover  (desktop) → flip
- * Tap    (touch)   → first tap flips, second tap / tap outside → flips back
+ * Front  → event poster image with the same animated conic-gradient border
+ *          as the original Card component
+ * Back   → event details panel with ZenoFest2K26 glassmorphism dark theme
  */
 const FlipCard = ({
   imageSrc,
@@ -27,7 +24,7 @@ const FlipCard = ({
   const cardRef = useRef(null);
   const navigate = useNavigate();
 
-  // Touch: tap outside to flip back
+  /* ── Touch: tap outside collapses the card ──────────────────────────── */
   useEffect(() => {
     if (!flipped) return;
     const handleOutside = (e) => {
@@ -39,17 +36,14 @@ const FlipCard = ({
     return () => document.removeEventListener("touchstart", handleOutside);
   }, [flipped]);
 
-  // Desktop hover handlers
   const handleMouseEnter = () => setFlipped(true);
   const handleMouseLeave = () => setFlipped(false);
 
-  // Touch tap handler
   const handleTap = (e) => {
     e.preventDefault();
     setFlipped((prev) => !prev);
   };
 
-  // "Know More" click navigates
   const handleKnowMore = (e) => {
     e.stopPropagation();
     navigate(path);
@@ -58,59 +52,56 @@ const FlipCard = ({
   return (
     <div
       ref={cardRef}
-      className="flip-card-scene"
+      className={`fc-scene${flipped ? " fc-flipped" : ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTap}
       aria-label={`${title || altText} event card`}
     >
-      <div className={`flip-card-inner${flipped ? " is-flipped" : ""}`}>
-        {/* FRONT: original poster */}
-        <div className="flip-card-front card">
-          <a>
-            <div className="wrapper">
-              <img
-                src={imageSrc}
-                alt={altText}
-                className="cover-image w-full h-auto block"
-                draggable={false}
-              />
-            </div>
-          </a>
+      {/* ── Animated conic-gradient border (same as original .card) ─────── */}
+      <div className="fc-border-ring" />
+      <div className="fc-border-ring fc-border-ring--blur" />
+
+      <div className="fc-inner">
+        {/* ── FRONT: poster image ───────────────────────────────────────── */}
+        <div className="fc-face fc-front">
+          <img
+            src={imageSrc}
+            alt={altText}
+            className="fc-poster-img"
+            draggable={false}
+          />
         </div>
 
-        {/* BACK: event details */}
-        <div className="flip-card-back">
-          <div className="flip-back-glow" />
+        {/* ── BACK: event details ───────────────────────────────────────── */}
+        <div className="fc-face fc-back">
+          {/* ambient glow */}
+          <div className="fc-glow" />
 
-          {category && (
-            <span className="flip-back-badge">{category}</span>
-          )}
+          {category && <span className="fc-badge">{category}</span>}
 
-          <h3 className="flip-back-title">{title || altText}</h3>
+          <h3 className="fc-title">{title || altText}</h3>
 
-          <div className="flip-back-divider" />
+          <div className="fc-divider" />
 
-          {description && (
-            <p className="flip-back-desc">{description}</p>
-          )}
+          {description && <p className="fc-desc">{description}</p>}
 
-          <ul className="flip-back-meta">
+          <ul className="fc-meta">
             {date && (
               <li>
-                <span className="flip-meta-icon">📅</span>
+                <span className="fc-icon">📅</span>
                 {date}
               </li>
             )}
             {team && (
               <li>
-                <span className="flip-meta-icon">👥</span>
+                <span className="fc-icon">👥</span>
                 {team}
               </li>
             )}
             {prize && (
               <li>
-                <span className="flip-meta-icon">🏆</span>
+                <span className="fc-icon">🏆</span>
                 {prize}
               </li>
             )}
@@ -118,9 +109,12 @@ const FlipCard = ({
 
           {path && (
             <button
-              className="flip-back-btn"
+              className="fc-btn"
               onClick={handleKnowMore}
-              onTouchEnd={(e) => { e.stopPropagation(); navigate(path); }}
+              onTouchEnd={(e) => {
+                e.stopPropagation();
+                navigate(path);
+              }}
               aria-label={`Know more about ${title || altText}`}
             >
               Know More →

@@ -1,219 +1,281 @@
-/* ═══════════════════════════════════════════════════════════════
-   FlipCard  —  3D card flip interaction for ZenoFest2K26
-   Uses CSS 3D transforms; does NOT change layout or card sizing.
-   ═══════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════
+   FlipCard (fc-*) — ZenoFest2K26
+   Self-contained 3D flip; no dependency on .card or its ::before/::after.
+   ════════════════════════════════════════════════════════════════ */
 
-/* ── Scene wrapper: same footprint as .card ─────────────────────────────── */
-.flip-card-scene {
-  /* Match .card dimensions exactly so surrounding layout is unchanged */
-  position: relative;
-  height: 22.6rem;
-  width: 16rem;
-  perspective: 1000px;
-  cursor: pointer;
+/* ── CSS custom property for the conic-gradient rotation ─────────────────── */
+@property --fc-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
 }
 
-/* ── Inner: the element that actually rotates ────────────────────────────── */
-.flip-card-inner {
+/* ── Scene: the outer fixed-size container ───────────────────────────────── */
+.fc-scene {
   position: relative;
+  height: 22.6rem;   /* same as original .card */
+  width: 16rem;      /* same as original .card */
+  perspective: 1100px;
+  cursor: pointer;
+  /* keep layout identical to before */
+  flex-shrink: 0;
+}
+
+/* ── Animated conic-gradient border rings (replicates .card::before/after) ─ */
+.fc-border-ring {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -0.5rem;
+  background: conic-gradient(
+    from var(--fc-angle),
+    #1f2937,
+    #6420aa,
+    #ff3ea5,
+    #ff7ed4,
+    #ff3ea5,
+    #6420aa,
+    #1f2937
+  );
+  border-radius: inherit;
+  animation: fc-rotate 2.5s linear infinite;
+  pointer-events: none;
+}
+
+.fc-border-ring--blur {
+  filter: blur(3rem);
+}
+
+@keyframes fc-rotate {
+  0%   { --fc-angle: 0deg; }
+  100% { --fc-angle: 360deg; }
+}
+
+/* ── Glow enhancement on hover/flip ─────────────────────────────────────── */
+.fc-scene.fc-flipped .fc-border-ring {
+  filter: none;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.fc-scene.fc-flipped .fc-border-ring--blur {
+  filter: blur(3rem) brightness(1.4);
+}
+
+/* ── Inner: rotates in 3D ─────────────────────────────────────────────────  */
+.fc-inner {
+  position: relative;
+  z-index: 1;          /* sits above the border rings */
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
-              filter 0.7s ease;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
   will-change: transform;
 }
 
-.flip-card-inner.is-flipped {
+.fc-scene.fc-flipped .fc-inner {
   transform: rotateY(180deg);
-  /* Subtle glow on the scene during flip */
-  filter: drop-shadow(0 0 18px rgba(138, 43, 226, 0.7))
-          drop-shadow(0 0 36px rgba(100, 32, 170, 0.4));
 }
 
-/* ── Shared face styles ──────────────────────────────────────────────────── */
-.flip-card-front,
-.flip-card-back {
+/* ── Shared face rules ────────────────────────────────────────────────────── */
+.fc-face {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 0; /* inherits from .card */
   overflow: hidden;
+  border-radius: 2px;
 }
 
-/* ── FRONT: just the existing .card shell, already styled ───────────────── */
-.flip-card-front {
+/* ── FRONT face ──────────────────────────────────────────────────────────── */
+.fc-front {
   transform: rotateY(0deg);
+  background: #1f2937;
 }
 
-/* Override .card's translateY hover — we handle hover on the scene */
-.flip-card-front.card:hover {
-  transform: rotateY(0deg) !important;
-  box-shadow: none !important;
+.fc-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* ── BACK: glassmorphism dark futuristic panel ───────────────────────────── */
-.flip-card-back {
+/* ── BACK face ───────────────────────────────────────────────────────────── */
+.fc-back {
   transform: rotateY(180deg);
-  background: rgba(10, 8, 28, 0.88);
-  backdrop-filter: blur(16px) saturate(1.8);
-  -webkit-backdrop-filter: blur(16px) saturate(1.8);
-  border: 1px solid rgba(138, 43, 226, 0.35);
+  background: rgba(8, 6, 24, 0.95);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border: 1px solid rgba(138, 43, 226, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 1rem;
-  gap: 0.55rem;
+  padding: 1.2rem 1rem;
+  gap: 0.6rem;
   text-align: center;
   font-family: 'Inter', 'Outfit', 'Segoe UI', sans-serif;
-  /* Outer animated border inherits from .card::before/::after — the glow
-     gradient rings will show behind the back face too since z-index is -1 */
+  box-sizing: border-box;
 }
 
-/* Ambient glow blob behind content */
-.flip-back-glow {
+/* Ambient radial glow */
+.fc-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(138, 43, 226, 0.25) 0%, transparent 70%),
-              radial-gradient(ellipse at 50% 100%, rgba(0, 221, 235, 0.12) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse at 50% 10%,  rgba(138, 43, 226, 0.3) 0%, transparent 65%),
+    radial-gradient(ellipse at 50% 90%,  rgba(0, 221, 235, 0.15) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Ensure all back content sits above the glow */
-.flip-card-back > *:not(.flip-back-glow) {
+/* All back content above the glow */
+.fc-back > *:not(.fc-glow) {
   position: relative;
   z-index: 1;
 }
 
 /* Category badge */
-.flip-back-badge {
+.fc-badge {
   display: inline-block;
   padding: 0.18rem 0.65rem;
   border-radius: 999px;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: #00ddeb;
-  border: 1px solid rgba(0, 221, 235, 0.45);
+  border: 1px solid rgba(0, 221, 235, 0.5);
   background: rgba(0, 221, 235, 0.08);
+  white-space: nowrap;
 }
 
 /* Event title */
-.flip-back-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+.fc-title {
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #ffffff;
-  text-shadow: 0 0 12px rgba(138, 43, 226, 0.9),
-               0 0 24px rgba(138, 43, 226, 0.5);
+  text-shadow:
+    0 0 10px rgba(138, 43, 226, 1),
+    0 0 22px rgba(138, 43, 226, 0.6);
   letter-spacing: 0.04em;
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0;
+  word-break: break-word;
 }
 
-/* Neon divider */
-.flip-back-divider {
-  width: 70%;
+/* Neon divider line */
+.fc-divider {
+  width: 72%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.8), rgba(0, 221, 235, 0.6), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(138, 43, 226, 0.9),
+    rgba(0, 221, 235, 0.7),
+    transparent
+  );
   flex-shrink: 0;
 }
 
-/* Description text */
-.flip-back-desc {
-  font-size: 0.72rem;
-  color: rgba(210, 200, 240, 0.88);
-  line-height: 1.5;
-  max-height: 6.5rem;
-  overflow: hidden;
+/* Description */
+.fc-desc {
+  font-size: 0.7rem;
+  color: rgba(210, 200, 245, 0.9);
+  line-height: 1.55;
   margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  display: -webkit-box;
 }
 
-/* Meta list: date, team, prize */
-.flip-back-meta {
+/* Meta list */
+.fc-meta {
   list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.28rem;
 }
 
-.flip-back-meta li {
+.fc-meta li {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.68rem;
-  color: rgba(200, 190, 230, 0.9);
   justify-content: center;
+  gap: 0.38rem;
+  font-size: 0.67rem;
+  color: rgba(200, 188, 235, 0.95);
+  font-weight: 500;
 }
 
-.flip-meta-icon {
-  font-size: 0.75rem;
-  flex-shrink: 0;
-}
-
-/* "Know More" button */
-.flip-back-btn {
-  margin-top: 0.3rem;
-  padding: 0.42rem 1.1rem;
-  border-radius: 6px;
-  border: 1px solid rgba(138, 43, 226, 0.7);
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(91, 66, 243, 0.3));
-  color: #e8d5ff;
+.fc-icon {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
-  text-transform: uppercase;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.flip-back-btn:hover,
-.flip-back-btn:focus-visible {
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.65), rgba(91, 66, 243, 0.65));
-  box-shadow: 0 0 14px rgba(138, 43, 226, 0.7), 0 0 28px rgba(138, 43, 226, 0.35);
+/* Know More button */
+.fc-btn {
+  margin-top: 0.2rem;
+  padding: 0.44rem 1.15rem;
+  border-radius: 6px;
+  border: 1px solid rgba(138, 43, 226, 0.75);
+  background: linear-gradient(
+    135deg,
+    rgba(138, 43, 226, 0.28),
+    rgba(91, 66, 243, 0.28)
+  );
+  color: #e8d5ff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.22s ease, box-shadow 0.22s ease, transform 0.14s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.fc-btn:hover,
+.fc-btn:focus-visible {
+  background: linear-gradient(
+    135deg,
+    rgba(138, 43, 226, 0.65),
+    rgba(91, 66, 243, 0.65)
+  );
+  box-shadow: 0 0 14px rgba(138, 43, 226, 0.75), 0 0 28px rgba(138, 43, 226, 0.38);
   transform: translateY(-1px);
   outline: none;
 }
 
-.flip-back-btn:active {
+.fc-btn:active {
   transform: translateY(0);
 }
 
-/* ── Reduced-motion: fade instead of 3D flip ─────────────────────────────── */
+/* ── Reduced-motion: crossfade instead of 3D rotation ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .flip-card-inner {
-    transition: opacity 0.3s ease;
+  .fc-inner {
     transform: none !important;
-    filter: none !important;
+    transition: none;
   }
-
-  .flip-card-front {
+  .fc-front {
     transition: opacity 0.3s ease;
     opacity: 1;
-    position: absolute;
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
     transform: none;
   }
-
-  .flip-card-inner.is-flipped .flip-card-front {
+  .fc-scene.fc-flipped .fc-front {
     opacity: 0;
     pointer-events: none;
   }
-
-  .flip-card-back {
+  .fc-back {
     transition: opacity 0.3s ease;
     opacity: 0;
     backface-visibility: visible;
@@ -221,8 +283,7 @@
     transform: none;
     pointer-events: none;
   }
-
-  .flip-card-inner.is-flipped .flip-card-back {
+  .fc-scene.fc-flipped .fc-back {
     opacity: 1;
     pointer-events: auto;
   }
