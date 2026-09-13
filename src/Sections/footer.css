@@ -1,38 +1,126 @@
-.reach-text{
-    color:#e8bcb9;
-}
-/* footer.css */
+/* ================= Footer — quiet editorial layout ================= */
 
-/* ===== Footer Wrapper ===== */
 footer {
-  background: linear-gradient(135deg, #1d1a39, #f4d3bf2d); /* dark gradient */
-  /* background: linear-gradient(to right,#ead1bc84 0%,#4519528f 50%, #f7cecb77 100%); */
-
+  background: linear-gradient(135deg, #0a1a3c, #081633);
   color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ===== Contact Us Section ===== */
-
-
-.location-text {
-  color: #f0f0f0; /* light gray */
-  font-size: 1rem;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  width: 100%;
 }
 
-.email-text {
-  color: #e8bcb9;
-  font-size: 1rem;
-  text-decoration: none;
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
 }
 
-.email-text:hover {
-  text-decoration: underline;
+.footer-col {
+  position: relative;
+  width: 100%;
 }
 
-/* ===== Media Section Heading ===== */
-.media-heading {
-  color: #e8bcb9;
+.footer-heading {
+  position: relative;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  text-align: center;
-  font-family: sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #eaf3ff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.65rem;
+}
+
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 26px;
+  background: #4fc8ff;
+  border-radius: 2px;
+}
+
+/* ---- One shared hover language, used everywhere below ---- */
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: #d5deef;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 0.3rem 0;
+  transition: color 0.35s ease, letter-spacing 0.35s ease;
+  cursor: pointer;
+}
+
+.footer-link svg {
+  flex-shrink: 0;
+  color: #4fc8ff;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.footer-link:hover {
+  color: #8ff2ff;
+  letter-spacing: 0.03em;
+}
+
+.footer-link:hover svg {
+  color: #8ff2ff;
+  transform: translateY(-1px);
+}
+
+/* address needs to sit as plain text, same rule applied via same class */
+.contact-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: #d5deef;
+  letter-spacing: 0.01em;
+  padding: 0.3rem 0;
+  display: block;
+  transition: color 0.35s ease, letter-spacing 0.35s ease;
+}
+
+.contact-text:hover {
+  color: #8ff2ff;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Map: minimal, quiet reveal ---- */
+.map-reveal {
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.4rem;
+}
+
+.map-reveal iframe {
+  display: block;
+  width: 100%;
+  height: 170px;
+  filter: grayscale(0.65) brightness(0.8);
+  transition: filter 0.6s ease;
+}
+
+.map-reveal:hover iframe {
+  filter: grayscale(0) brightness(1);
+}
+
+@media (max-width: 767px) {
+  .map-reveal iframe {
+    height: 200px;
+  }
 }

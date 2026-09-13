@@ -1,28 +1,271 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import CollegeName from "../Sections/CollegeName";
 import Faq from "../Sections/Faq";
 import NewAbout from "./About";
 import CountdownTimer from "../Sections/CountDown";
 import Footer from "../Sections/Footer";
 import Teams from "../Sections/Teams";
-import VoltageButton from "../Components/VoltageButton";
+import Button from "../Components/Button";
+import ScrollReveal from "../Components/ScrollReveal";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
+
+const DEADLINE = new Date("2026-10-10T17:00:00");
+
+const getDaysRemaining = () => {
+  const diff = DEADLINE.getTime() - Date.now();
+  if (diff <= 0) return 0;
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+};
+
+const NOTCH = (cut) =>
+  `polygon(${cut}px 0, 100% 0, 100% calc(100% - ${cut}px), calc(100% - ${cut}px) 100%, 0 100%, 0 ${cut}px)`;
+
+const CARD_BG = "#0B0F1C";
+
+const SectionDivider = () => (
+  <div className="flex items-center justify-center w-3/4 mx-auto mt-4 mb-10 gap-3">
+    <span
+      className="flex-1 h-px"
+      style={{
+        background:
+          "linear-gradient(90deg, transparent, rgba(79,200,255,0.35))",
+      }}
+    />
+    <span
+      className="w-1.5 h-1.5 rotate-45 flex-shrink-0"
+      style={{
+        background: "#4fc8ff",
+        boxShadow: "0 0 8px rgba(79,200,255,0.7)",
+      }}
+    />
+    <span
+      className="flex-1 h-px"
+      style={{
+        background:
+          "linear-gradient(270deg, transparent, rgba(79,200,255,0.35))",
+      }}
+    />
+  </div>
+);
+
+const HexRadarIcon = () => (
+  <div className="relative w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-5">
+    <motion.svg
+      viewBox="0 0 100 100"
+      className="w-full h-full"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    >
+      <polygon
+        points="50,6 88,28 88,72 50,94 12,72 12,28"
+        fill="none"
+        stroke="#3DA9FC"
+        strokeWidth="2"
+        strokeOpacity="0.7"
+      />
+      <circle cx="50" cy="28" r="3" fill="#3DA9FC" />
+      <circle cx="88" cy="50" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+      <circle cx="50" cy="72" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+      <circle cx="12" cy="50" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+    </motion.svg>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-2.5 h-2.5 rounded-full bg-[#3DA9FC] shadow-[0_0_10px_2px_rgba(61,169,252,0.7)]" />
+    </div>
+  </div>
+);
+
+const TracedBorder = () => (
+  <motion.svg
+    className="absolute inset-0 w-full h-full pointer-events-none"
+    viewBox="0 0 400 420"
+    preserveAspectRatio="none"
+    fill="none"
+    animate={{
+      filter: [
+        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
+        "drop-shadow(0 0 9px rgba(61,169,252,0.95))",
+        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
+      ],
+    }}
+    transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+  >
+    <motion.rect
+      x="1.5"
+      y="1.5"
+      width="397"
+      height="417"
+      rx="6"
+      stroke="#3DA9FC"
+      strokeWidth="2.5"
+      strokeOpacity="1"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.1, delay: 0.15, ease: "easeInOut" }}
+    />
+    <motion.rect
+      x="6"
+      y="6"
+      width="388"
+      height="408"
+      rx="3"
+      stroke="#B7E1FF"
+      strokeWidth="1"
+      strokeOpacity="0.55"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.1, delay: 0.3, ease: "easeInOut" }}
+    />
+    {[
+      [1, 1, 16, 1, 1, 16],
+      [399, 1, 383, 1, 399, 16],
+      [1, 419, 16, 419, 1, 404],
+      [399, 419, 383, 419, 399, 404],
+    ].map((p, i) => (
+      <motion.path
+        key={i}
+        d={`M${p[2]} ${p[3]} L${p[0]} ${p[1]} L${p[4]} ${p[5]}`}
+        stroke="#3DA9FC"
+        strokeWidth="2.5"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 0.35, delay: 1.1 + i * 0.05 }}
+      />
+    ))}
+  </motion.svg>
+);
+
+const CountdownBox = ({ days }) => (
+  <div className="relative inline-block">
+    <motion.svg
+      className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
+      viewBox="0 0 100 40"
+      preserveAspectRatio="none"
+      fill="none"
+      animate={{
+        filter: [
+          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
+          "drop-shadow(0 0 7px rgba(61,169,252,0.95))",
+          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
+        ],
+      }}
+      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <motion.path
+        d="M 8 0.5 L 99.5 0.5 L 99.5 32 L 92 39.5 L 0.5 39.5 L 0.5 8 Z"
+        stroke="#3DA9FC"
+        strokeWidth="1.4"
+        vectorEffect="non-scaling-stroke"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      />
+    </motion.svg>
+
+    {[
+      ["top-[-3px]", "right-[-3px]"],
+      ["bottom-[-3px]", "left-[-3px]"],
+    ].map(([v, h], i) => (
+      <span
+        key={i}
+        className={`absolute ${v} ${h} w-[6px] h-[6px] rounded-full bg-[#6FC1FF] shadow-[0_0_6px_2px_rgba(111,193,255,0.8)] z-20`}
+      />
+    ))}
+
+    <div
+      className="relative overflow-hidden px-8 py-4"
+      style={{
+        clipPath: NOTCH(16),
+        background: "linear-gradient(135deg, #101B33 0%, #0B1428 100%)",
+      }}
+    >
+      <motion.div
+        className="absolute inset-x-0 h-6 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent 0%, rgba(111,193,255,0.16) 50%, transparent 100%)",
+        }}
+        animate={{ top: ["-20%", "110%"] }}
+        transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
+      />
+
+      <div className="relative text-left">
+        <p className="font-mono text-[9px] text-[#6FC1FF] tracking-[0.22em] mb-1.5">
+          REGISTRATION CLOSES IN
+        </p>
+        <div className="overflow-hidden h-9 flex items-center">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={days}
+              initial={{ opacity: 0, filter: "blur(6px)", x: 6 }}
+              animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+              exit={{ opacity: 0, filter: "blur(6px)", x: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="font-mono text-2xl sm:text-3xl text-white font-bold tracking-wide whitespace-nowrap"
+            >
+              {String(days).padStart(2, "0")}{" "}
+              <span className="text-[#6FC1FF]">DAYS</span>
+            </motion.p>
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const SheardButton = ({ children, onClick, primary }) => (
+  <button onClick={onClick} className="w-full sm:w-auto group">
+    <motion.div
+      className={`relative py-2.5 px-5 min-w-[190px] flex items-center justify-center gap-1.5 overflow-hidden transition-all duration-250 ${
+        primary
+          ? "bg-[#101B33] border-2 border-[#3DA9FC] group-hover:bg-[#16234E] group-hover:border-[#8ED0FF] group-hover:shadow-[0_0_26px_rgba(61,169,252,0.55)]"
+          : "bg-[#0C1220] border-2 border-[#4B5563] group-hover:bg-[#121A2C] group-hover:border-[#3DA9FC]"
+      }`}
+      style={{ clipPath: NOTCH(12) }}
+      animate={
+        primary
+          ? {
+              boxShadow: [
+                "0 0 8px rgba(61,169,252,0.2)",
+                "0 0 18px rgba(61,169,252,0.45)",
+                "0 0 8px rgba(61,169,252,0.2)",
+              ],
+            }
+          : undefined
+      }
+      transition={{ duration: 2.4, repeat: primary ? Infinity : 0, ease: "easeInOut" }}
+    >
+      <span
+        className={`relative z-10 font-mono text-xs tracking-[0.15em] font-bold transition-colors duration-200 ${
+          primary
+            ? "text-white"
+            : "text-gray-400 group-hover:text-[#BFE3FF]"
+        }`}
+      >
+        {children}
+      </span>
+      <span
+        className={`relative z-10 font-mono text-xs transition-all duration-200 -translate-x-1.5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ${
+          primary ? "text-[#8ED0FF]" : "text-[#3DA9FC]"
+        }`}
+      >
+        ›
+      </span>
+    </motion.div>
+  </button>
+);
 
 const Body = () => {
   const navigate = useNavigate();
 
-  // 🧩 Popup control
   const [showPopup, setShowPopup] = useState(true);
+  const [days, setDays] = useState(getDaysRemaining());
 
   useEffect(() => {
-    const handleClick = () => setShowPopup(false);
-
-    if (showPopup) {
-      document.addEventListener("click", handleClick);
-    }
-
-    return () => document.removeEventListener("click", handleClick);
+    if (!showPopup) return;
+    const id = setInterval(() => setDays(getDaysRemaining()), 1000);
+    return () => clearInterval(id);
   }, [showPopup]);
 
   const handleUnleashClick = () => {
@@ -31,70 +274,114 @@ const Body = () => {
 
   return (
     <div className="relative">
-      {/* 🌟 Event Deadline Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 animate__animated animate__fadeIn">
-          <div className="relative bg-gradient-to-br from-purple-700 via-pink-600 to-orange-500 p-[2px] rounded-3xl shadow-[0_0_25px_rgba(255,100,200,0.5)]">
-            <div className="bg-gray-900 rounded-3xl px-8 py-6 text-center w-[90%] sm:w-[400px] animate__animated animate__pulse animate__infinite">
-              <h2 className="text-2xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-300 drop-shadow-lg">
-                ⚡ Registration Closing Soon!
-              </h2>
-              <p className="text-gray-300 text-base mb-1">
-                Hurry up! Event registration ends on
-              </p>
-              <p className="text-2xl font-bold text-yellow-400 mb-2">
-                October 8, 5:00 PM ⏰
-              </p>
-              <p className="text-sm text-gray-400">Click anywhere to continue.</p>
-            </div>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/90 backdrop-blur-sm px-4 pb-5 sm:pb-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setShowPopup(false)}
+          >
+            <motion.div
+              className="relative w-full max-w-[300px] sm:max-w-[320px]"
+              initial={{ y: 30, opacity: 0, scale: 0.97 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                boxShadow:
+                  "0 0 0 1.5px rgba(61,169,252,0.4), 0 25px 60px rgba(0,0,0,0.65), 0 0 70px rgba(61,169,252,0.2)",
+                borderRadius: "6px",
+              }}
+            >
+              <TracedBorder />
 
-      {/* 🧠 Main Page */}
+              <div
+                className="relative px-5 py-7 sm:px-6 sm:py-8 text-center rounded-[6px]"
+                style={{
+                  background: `linear-gradient(180deg, #0D1224 0%, ${CARD_BG} 100%)`,
+                }}
+              >
+                <HexRadarIcon />
+
+                <h2 className="text-white font-heading-royal text-base sm:text-xl font-bold leading-snug mb-2">
+                  Technovanza awaits your reply.
+                </h2>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
+                  Registrations for 2026–'27 close October 10, 5:00 PM.
+                  Claim your seat before the seal shuts.
+                </p>
+
+                <div className="flex justify-center mb-6">
+                  <CountdownBox days={days} />
+                </div>
+
+                <div className="flex flex-col items-center gap-3">
+                  <SheardButton
+                    primary
+                    onClick={() => {
+                      setShowPopup(false);
+                      navigate("/events");
+                    }}
+                  >
+                    RESERVE MY SEAT
+                  </SheardButton>
+                  <SheardButton onClick={() => setShowPopup(false)}>
+                    NOT NOW
+                  </SheardButton>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <section className="relative w-screen h-100% flex items-center justify-center overflow-hidden">
-        {/* Background video (optional)
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src="bg.mp4"
-          autoPlay
-          loop
-          muted
-        /> */}
-
         <div className="absolute top-0 left-0 w-full h-screen"></div>
 
         <div className="mt-small">
           <CollegeName />
-          <div className="flex flex-wrap justify-center gap-5 my-1 animate__animated animate__fadeInUp duration-500">
-            <VoltageButton
-              label={
-                <span
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontWeight: "bold",
-                    letterSpacing: "0.07em",
-                    fontSize: "25px",
-                  }}
-                >
-                  DIVE IN
-                </span>
-              }
-              onClick={handleUnleashClick}
-            />
+          <div className="flex flex-wrap justify-center gap-5 mt-10 mb-1 animate__animated animate__fadeInUp duration-500">
+            <Button onClick={handleUnleashClick}>
+              <span
+                style={{
+                  fontFamily: "collegefont",
+                  fontWeight: "bold",
+                  letterSpacing: "0.07em",
+                  fontSize: "17px",
+                }}
+              >
+                Dive In
+              </span>
+            </Button>
           </div>
 
           <CountdownTimer />
         </div>
       </section>
 
-      <hr className="border-t-2 border-gray-400 w-3/4 mx-auto my-10" />
-      <NewAbout style="true" />
-      <hr className="border-t-2 border-gray-400 w-3/4 mx-auto my-10" />
+      <SectionDivider />
 
-      <Faq />
-      <Footer />
-      <Teams />
+      <ScrollReveal animation="fadeInUp">
+        <NewAbout style="true" />
+      </ScrollReveal>
+
+      <SectionDivider />
+
+      <ScrollReveal animation="fadeInUp" delay={100}>
+        <Faq />
+      </ScrollReveal>
+
+      <ScrollReveal animation="fadeInUp" delay={100}>
+        <Footer />
+      </ScrollReveal>
+
+      <ScrollReveal animation="fadeInUp" delay={100}>
+        <Teams />
+      </ScrollReveal>
     </div>
   );
 };

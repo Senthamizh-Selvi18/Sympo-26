@@ -9,21 +9,21 @@ import './styles/eventStyles.css';
 import backgroundMusic from './assets/backgroundMusic.mp3'
 import metallicSound from './assets/clicksound.mp3'
 import useSound from "use-sound";
+import EngineeringFieldBackground from "./Components/EngineeringFieldBackground";
+import "./Sections/styles/engineering-field.css";
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(true); // splash first
+  const [showSplash, setShowSplash] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const [play, { stop }] = useSound(backgroundMusic, { volume: 0.1, loop: true, interrupt: true});
+  const [play, { stop }] = useSound(backgroundMusic, { volume: 0.1, loop: true, interrupt: true });
 
-/* audio added */
   useEffect(() => {
-      play();
-      return () => {
-        stop();
-      };
-    }, [play, stop]);
-    
+    play();
+    return () => {
+      stop();
+    };
+  }, [play, stop]);
 
   useEffect(() => {
     const playSound = () => {
@@ -39,10 +39,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // Hide splash after 2s
     const splashTimer = setTimeout(() => setShowSplash(false), 5000);
-
-    // Hide loader after 3s (adjust as needed)
     const loaderTimer = setTimeout(() => setLoading(false), 5000);
 
     return () => {
@@ -61,11 +58,11 @@ const App = () => {
 
   return (
     <div className="text-2xl text-white">
+      <EngineeringFieldBackground position="fixed" />
       <Header />
       <div className="">
         <Outlet />
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };

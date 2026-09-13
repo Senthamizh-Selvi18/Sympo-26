@@ -1,29 +1,121 @@
+/* ============================================================
+   Circuit Trace Button — CSS-only, no markup changes needed.
+   Works on any <button className="wreck-btn">Label</button>.
+   Blue / navy engineering theme to match the loading page.
+   ============================================================ */
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
 .wreck-btn {
-    background-color: #f9a825; /* fallback color */
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    position: relative;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    letter-spacing: 2px;
-  
-    /* Dotted effect */
-    background-image: radial-gradient(black 1px, transparent 1px);
-    background-size: 6px 6px; /* controls spacing of dots */
-  }
-  
-  /* Black shadow background */
-  .wreck-btn::after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    left: -8px;
-    width: 100%;
-    height: 100%;
-    background: black;
-    z-index: -1;
-  }
-  
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+
+  background-color: #0a1a35;
+  color: #eaf6ff;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: "Segoe UI", Arial, sans-serif;
+  letter-spacing: 1.5px;
+
+  border: none;
+  border-radius: 10px;
+  padding: 14px 30px;
+  cursor: pointer;
+
+  text-shadow: 0 0 8px rgba(79, 214, 255, 0.45);
+  transition: transform 0.2s ease, letter-spacing 0.3s ease, color 0.3s ease;
+
+  /* fine circuit-grid texture inside the button */
+  background-image:
+    linear-gradient(rgba(79, 214, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 214, 255, 0.08) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* spinning gradient ring, sitting just outside the button edge */
+.wreck-btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -2;
+  border-radius: 12px;
+  background: conic-gradient(
+    from 0deg,
+    #4fd6ff,
+    #12356b 30%,
+    #0a1a35 50%,
+    #12356b 70%,
+    #4fd6ff
+  );
+  animation: circuit-spin 3.5s linear infinite;
+  animation-play-state: paused;
+}
+
+/* solid navy layer that masks the ring down to a thin 2px border */
+.wreck-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 10px;
+  background: #0a1a35;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 0 rgba(79, 214, 255, 0);
+  transition: box-shadow 0.4s ease;
+}
+
+@keyframes circuit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.wreck-btn {
+  box-shadow:
+    0 0 0 1px rgba(79, 214, 255, 0.25),
+    0 6px 18px rgba(2, 8, 20, 0.55);
+}
+
+.wreck-btn:hover {
+  transform: translateY(-3px);
+  letter-spacing: 2.5px;
+  color: #8ff2ff;
+}
+
+.wreck-btn:hover::before {
+  animation-play-state: running;
+}
+
+.wreck-btn:hover::after {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 22px 4px rgba(79, 214, 255, 0.35);
+}
+
+.wreck-btn:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+.wreck-btn:focus-visible {
+  outline: 2px solid #8ff2ff;
+  outline-offset: 3px;
+}
+
+/* Department caption (neat & smaller) — restyled to match the blue theme */
+.dept-caption {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #cfe8ff;
+  background: #0a1a35;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(79, 214, 255, 0.2);
+  font-family: "DM Mono", monospace;
+  max-width: 250px;
+}

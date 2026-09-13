@@ -1,77 +1,109 @@
 import React, { useState, useEffect } from "react";
-import 'animate.css';
+import "../text.css";
+
+const EVENT_DATE = new Date("2026-10-10T00:00:00");
+
+const calculateTimeLeft = () => {
+  const diff = EVENT_DATE.getTime() - new Date().getTime();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  return {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff / 3600000) % 24),
+    minutes: Math.floor((diff / 60000) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+};
+
+const pad = (n) => String(n).padStart(2, "0");
+
+const WHITISH_CYAN = "#dffaff";
+
+const Star = () => (
+  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+    <path
+      d="M12 1 L14.5 9.5 L23 12 L14.5 14.5 L12 23 L9.5 14.5 L1 12 L9.5 9.5 Z"
+      fill={WHITISH_CYAN}
+    />
+  </svg>
+);
 
 const CountdownTimer = () => {
-  const calculateTimeLeft = () => {
-    const eventDate = new Date("2025-10-10T00:00:00").getTime();
-    const currentTime = new Date().getTime();
-    const difference = eventDate - currentTime;
-
-    let timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    const formattedTimeLeft = {
-      days: timeLeft.days < 10 ? `0${timeLeft.days}` : timeLeft.days,
-      hours: timeLeft.hours < 10 ? `0${timeLeft.hours}` : timeLeft.hours,
-      minutes: timeLeft.minutes < 10 ? `0${timeLeft.minutes}` : timeLeft.minutes,
-      seconds: timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds,
-    };
-    return formattedTimeLeft;
-  };
-
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, []);
 
+  const tiles = [
+    { value: timeLeft.days, label: "Days" },
+    { value: timeLeft.hours, label: "Hours" },
+    { value: timeLeft.minutes, label: "Minutes" },
+    { value: timeLeft.seconds, label: "Seconds" },
+  ];
+
   return (
-    <div className="flex flex-col justify-center items-center text-white animate__animated animate__fadeInUp duration-500">
-      <br />
-      {/* <h1>FEB 15, 2025</h1> */}
-      <h1 className="text-xl sm:text-1xl md:text-1xl lg:text-1xl xl:text-2xl font-otherfont font-extrabold py-6 sm:py-3 lg:py-1 animate-pulse text-center">
-      THE WAIT IS ALMOST OVER...<br /><br /><sup className="text-3xl">Oct 10, 2025</sup>
-      </h1>
-      <div className="grid grid-cols-4 gap-4 text-center m-3">
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
-            {timeLeft.days}
-          </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Days</p>
+    <div className="event-banner" style={{ borderBottom: "none", boxShadow: "none" }}>
+      <div className="flex items-center justify-center gap-3 mb-8" style={{ color: WHITISH_CYAN }}>
+        <Star />
+        <span
+          style={{
+            width: "70px",
+            height: "1px",
+            background: WHITISH_CYAN,
+            flexShrink: 0,
+          }}
+        />
+        <h3
+          className="font-heading-royal text-lg sm:text-xl font-bold tracking-widest text-center"
+          style={{ color: WHITISH_CYAN, margin: 0, whiteSpace: "nowrap" }}
+        >
+          THE WAIT IS ALMOST OVER
+        </h3>
+        <span
+          style={{
+            width: "70px",
+            height: "1px",
+            background: WHITISH_CYAN,
+            flexShrink: 0,
+          }}
+        />
+        <Star />
+      </div>
+
+      <div className="flex items-center justify-between gap-6 flex-wrap max-w-5xl mx-auto">
+        <svg className="event-chevron hidden sm:block" width="14" height="32" viewBox="0 0 16 34" fill="none">
+          <path d="M14 2 L4 17 L14 32" strokeWidth="2" />
+          <path d="M9 2 L-1 17 L9 32" strokeWidth="2" opacity="0.45" />
+        </svg>
+
+        <div>
+          <div className="event-label">Event begins on</div>
+          <div
+            style={{
+              width: "36px",
+              height: "2px",
+              margin: "6px 0",
+              background: WHITISH_CYAN,
+              borderRadius: "2px",
+            }}
+          />
+          <div className="event-date">Oct 10, 2026</div>
         </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
-            {timeLeft.hours}
-          </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Hours</p>
+
+        <div className="flex gap-2 sm:gap-3">
+          {tiles.map((t) => (
+            <div key={t.label} className="event-tile">
+              <div className="event-num">{pad(t.value)}</div>
+              <span className="event-lbl">{t.label}</span>
+            </div>
+          ))}
         </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
-            {timeLeft.minutes}
-          </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Minutes</p>
-        </div>
-        <div className="bg-transparent rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500 ease-out">
-          <p className="text-3xl sm:text-3xl md:text-5xl lg:text-5xl xl:text-5xl px-4 pt-2 font-semibold countdown font-mono animate-pulse font-timerfont">
-            {timeLeft.seconds}
-          </p>
-          <p className="mt-2 text-xs px-4 pb-2 uppercase font-timerfont">Seconds</p>
-        </div>
+
+        <svg className="event-chevron hidden sm:block" width="14" height="32" viewBox="0 0 16 34" fill="none">
+          <path d="M2 2 L12 17 L2 32" strokeWidth="2" />
+          <path d="M7 2 L17 17 L7 32" strokeWidth="2" opacity="0.45" />
+        </svg>
       </div>
     </div>
   );

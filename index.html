@@ -3,59 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/src/assets/symposium/SymLogo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technovanza Symposium</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        position: relative;
-      }
-      
-      body {
-        background-color: #020B24;
-        background-image: 
-          /* HUD Circles Top Left */
-          radial-gradient(circle at 10% 20%, transparent 100px, rgba(0, 150, 255, 0.4) 101px, rgba(0, 150, 255, 0.4) 103px, transparent 104px),
-          radial-gradient(circle at 10% 20%, transparent 140px, rgba(0, 150, 255, 0.2) 141px, rgba(0, 150, 255, 0.2) 142px, transparent 143px),
-          /* HUD Circles Top Right */
-          radial-gradient(circle at 90% 20%, transparent 100px, rgba(0, 150, 255, 0.4) 101px, rgba(0, 150, 255, 0.4) 103px, transparent 104px),
-          radial-gradient(circle at 90% 20%, transparent 140px, rgba(0, 150, 255, 0.2) 141px, rgba(0, 150, 255, 0.2) 142px, transparent 143px),
-          /* HUD Circles Bottom Left */
-          radial-gradient(circle at 10% 80%, transparent 120px, rgba(0, 150, 255, 0.2) 121px, rgba(0, 150, 255, 0.2) 122px, transparent 123px),
-          /* HUD Circles Bottom Right */
-          radial-gradient(circle at 90% 80%, transparent 120px, rgba(0, 150, 255, 0.2) 121px, rgba(0, 150, 255, 0.2) 122px, transparent 123px),
-          /* Tech Grid */
-          linear-gradient(rgba(0, 150, 255, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 150, 255, 0.05) 1px, transparent 1px),
-          /* Large Grid Blocks */
-          linear-gradient(rgba(0, 150, 255, 0.03) 2px, transparent 2px),
-          linear-gradient(90deg, rgba(0, 150, 255, 0.03) 2px, transparent 2px),
-          /* Main Background Gradient with Dark Center */
-          radial-gradient(ellipse at center, rgba(6, 21, 54, 0.8) 0%, rgba(2, 11, 36, 1) 100%);
-        background-size: 
-          100vw 100vh, 100vw 100vh, 
-          100vw 100vh, 100vw 100vh,
-          100vw 100vh, 100vw 100vh,
-          30px 30px, 30px 30px, 
-          120px 120px, 120px 120px, 
-          100vw 100vh;
-        background-position: center center;
-        background-attachment: fixed;
-        background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
-        position: relative;
-        z-index: 1; /* Ensures body content is above the background */
-      }
-
-
-
-    </style>
+    
   </head>
   <body>
-
-    <!-- <div id="particles-js"></div> -->
+  
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
