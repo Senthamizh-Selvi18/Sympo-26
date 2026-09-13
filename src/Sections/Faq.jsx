@@ -1,35 +1,73 @@
-import React from "react";
+import { motion } from "framer-motion";
 import { questions } from "../utils/faq";
 import "./styles/faq.css";
 import "../text.css";
 
 const Faq = () => {
   return (
-    <div className="max-w-2xl mx-auto p-5 text-white">
-      <h1 className="font-display-royal gold-solid text-4xl font-bold mb-6 text-center">
-        FAQs
-      </h1>
+    <div className="max-w-6xl mx-auto px-5 py-10 text-white">
+      <div className="grid md:grid-cols-[1fr_auto_1.3fr] gap-8 md:gap-10 items-start">
+        {/* Left column */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="md:sticky md:top-28"
+        >
+          <span className="faq-eyebrow">Quick Answers</span>
+          <h1 className="faq-title">FAQs</h1>
+          <p className="faq-desc">
+            Find answers to your{" "}
+            <span className="faq-desc-accent">most common questions</span>{" "}
+            about Technovanza 2026-&apos;27.
+          </p>
 
-      {questions.map((question) => (
-        <div key={question.id}>
-          <details className="glassmorphic-container-faq bg-transparent rounded p-4 mb-4 transition duration-300 ease-in-out">
-            <summary className="font-heading-royal cursor-pointer text-lg text-white flex items-center justify-between hover:gold-solid focus:gold-solid transition-all duration-200">
-              <span>{question.question}</span>
-              <span className="text-xl gold-solid">&#x2699;</span>
-            </summary>
-            <p className="font-body-royal p-2 text-lg transition-all duration-300 ease-in-out">
-              {question.answer}{" "}
-              {question.clgLink && (
-                <span>
-                  <a href={question.clgLink} className="gold-link">
-                    Click here!
-                  </a>
-                </span>
-              )}
-            </p>
-          </details>
+          <div className="faq-stat-row">
+            
+          </div>
+        </motion.div>
+
+        {/* Center decorative connector */}
+        <div className="faq-connector" aria-hidden="true">
+          <span className="faq-connector-line" />
+          <span className="faq-connector-pulse" />
+          <span className="faq-connector-node" />
         </div>
-      ))}
+
+        {/* Right column — accordion */}
+        <div className="flex flex-col gap-4">
+          {questions.map((question, i) => (
+            <motion.div
+              key={question.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: i * 0.06, ease: "easeOut" }}
+            >
+              <details className="faq-item group">
+                <summary className="faq-summary">
+                  <span className="faq-accent-bar" aria-hidden="true" />
+                  <span className="faq-index">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="faq-question">{question.question}</span>
+                  <span className="faq-icon" aria-hidden="true">
+                    <span className="faq-icon-bar faq-icon-bar-h" />
+                    <span className="faq-icon-bar faq-icon-bar-v" />
+                  </span>
+                </summary>
+                <p className="faq-answer">
+                  {question.answer}{" "}
+                  {question.clgLink && (
+                    <a href={question.clgLink} className="faq-link">
+                      Click here!
+                    </a>
+                  )}
+                </p>
+              </details>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -11,39 +11,260 @@ import ScrollReveal from "../Components/ScrollReveal";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
 
-const DEADLINE = new Date("2026-10-08T17:00:00");
+const DEADLINE = new Date("2026-10-10T17:00:00");
 
-const getRemaining = () => {
+const getDaysRemaining = () => {
   const diff = DEADLINE.getTime() - Date.now();
-  if (diff <= 0) return { days: 0, hours: 0 };
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  return { days, hours };
+  if (diff <= 0) return 0;
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
 };
 
-const DiamondStat = ({ value, label }) => (
-  <div className="flex flex-col items-center">
-    <div className="w-14 h-14 border border-[#C9A227] rotate-45 flex items-center justify-center bg-[#080B1C]">
-      <span className="-rotate-45 font-heading-royal text-lg text-[#E2C158] font-bold">
-        {String(value).padStart(2, "0")}
-      </span>
-    </div>
-    <span className="text-[10px] text-gray-500 mt-2 tracking-wide">
-      {label}
-    </span>
+const NOTCH = (cut) =>
+  `polygon(${cut}px 0, 100% 0, 100% calc(100% - ${cut}px), calc(100% - ${cut}px) 100%, 0 100%, 0 ${cut}px)`;
+
+const CARD_BG = "#0B0F1C";
+
+const SectionDivider = () => (
+  <div className="flex items-center justify-center w-3/4 mx-auto mt-4 mb-10 gap-3">
+    <span
+      className="flex-1 h-px"
+      style={{
+        background:
+          "linear-gradient(90deg, transparent, rgba(79,200,255,0.35))",
+      }}
+    />
+    <span
+      className="w-1.5 h-1.5 rotate-45 flex-shrink-0"
+      style={{
+        background: "#4fc8ff",
+        boxShadow: "0 0 8px rgba(79,200,255,0.7)",
+      }}
+    />
+    <span
+      className="flex-1 h-px"
+      style={{
+        background:
+          "linear-gradient(270deg, transparent, rgba(79,200,255,0.35))",
+      }}
+    />
   </div>
+);
+
+const HexRadarIcon = () => (
+  <div className="relative w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-5">
+    <motion.svg
+      viewBox="0 0 100 100"
+      className="w-full h-full"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    >
+      <polygon
+        points="50,6 88,28 88,72 50,94 12,72 12,28"
+        fill="none"
+        stroke="#3DA9FC"
+        strokeWidth="2"
+        strokeOpacity="0.7"
+      />
+      <circle cx="50" cy="28" r="3" fill="#3DA9FC" />
+      <circle cx="88" cy="50" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+      <circle cx="50" cy="72" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+      <circle cx="12" cy="50" r="2" fill="#3DA9FC" fillOpacity="0.5" />
+    </motion.svg>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-2.5 h-2.5 rounded-full bg-[#3DA9FC] shadow-[0_0_10px_2px_rgba(61,169,252,0.7)]" />
+    </div>
+  </div>
+);
+
+const TracedBorder = () => (
+  <motion.svg
+    className="absolute inset-0 w-full h-full pointer-events-none"
+    viewBox="0 0 400 420"
+    preserveAspectRatio="none"
+    fill="none"
+    animate={{
+      filter: [
+        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
+        "drop-shadow(0 0 9px rgba(61,169,252,0.95))",
+        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
+      ],
+    }}
+    transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+  >
+    <motion.rect
+      x="1.5"
+      y="1.5"
+      width="397"
+      height="417"
+      rx="6"
+      stroke="#3DA9FC"
+      strokeWidth="2.5"
+      strokeOpacity="1"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.1, delay: 0.15, ease: "easeInOut" }}
+    />
+    <motion.rect
+      x="6"
+      y="6"
+      width="388"
+      height="408"
+      rx="3"
+      stroke="#B7E1FF"
+      strokeWidth="1"
+      strokeOpacity="0.55"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1.1, delay: 0.3, ease: "easeInOut" }}
+    />
+    {[
+      [1, 1, 16, 1, 1, 16],
+      [399, 1, 383, 1, 399, 16],
+      [1, 419, 16, 419, 1, 404],
+      [399, 419, 383, 419, 399, 404],
+    ].map((p, i) => (
+      <motion.path
+        key={i}
+        d={`M${p[2]} ${p[3]} L${p[0]} ${p[1]} L${p[4]} ${p[5]}`}
+        stroke="#3DA9FC"
+        strokeWidth="2.5"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 0.35, delay: 1.1 + i * 0.05 }}
+      />
+    ))}
+  </motion.svg>
+);
+
+const CountdownBox = ({ days }) => (
+  <div className="relative inline-block">
+    <motion.svg
+      className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
+      viewBox="0 0 100 40"
+      preserveAspectRatio="none"
+      fill="none"
+      animate={{
+        filter: [
+          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
+          "drop-shadow(0 0 7px rgba(61,169,252,0.95))",
+          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
+        ],
+      }}
+      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <motion.path
+        d="M 8 0.5 L 99.5 0.5 L 99.5 32 L 92 39.5 L 0.5 39.5 L 0.5 8 Z"
+        stroke="#3DA9FC"
+        strokeWidth="1.4"
+        vectorEffect="non-scaling-stroke"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      />
+    </motion.svg>
+
+    {[
+      ["top-[-3px]", "right-[-3px]"],
+      ["bottom-[-3px]", "left-[-3px]"],
+    ].map(([v, h], i) => (
+      <span
+        key={i}
+        className={`absolute ${v} ${h} w-[6px] h-[6px] rounded-full bg-[#6FC1FF] shadow-[0_0_6px_2px_rgba(111,193,255,0.8)] z-20`}
+      />
+    ))}
+
+    <div
+      className="relative overflow-hidden px-8 py-4"
+      style={{
+        clipPath: NOTCH(16),
+        background: "linear-gradient(135deg, #101B33 0%, #0B1428 100%)",
+      }}
+    >
+      <motion.div
+        className="absolute inset-x-0 h-6 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent 0%, rgba(111,193,255,0.16) 50%, transparent 100%)",
+        }}
+        animate={{ top: ["-20%", "110%"] }}
+        transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
+      />
+
+      <div className="relative text-left">
+        <p className="font-mono text-[9px] text-[#6FC1FF] tracking-[0.22em] mb-1.5">
+          REGISTRATION CLOSES IN
+        </p>
+        <div className="overflow-hidden h-9 flex items-center">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={days}
+              initial={{ opacity: 0, filter: "blur(6px)", x: 6 }}
+              animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+              exit={{ opacity: 0, filter: "blur(6px)", x: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="font-mono text-2xl sm:text-3xl text-white font-bold tracking-wide whitespace-nowrap"
+            >
+              {String(days).padStart(2, "0")}{" "}
+              <span className="text-[#6FC1FF]">DAYS</span>
+            </motion.p>
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const SheardButton = ({ children, onClick, primary }) => (
+  <button onClick={onClick} className="w-full sm:w-auto group">
+    <motion.div
+      className={`relative py-2.5 px-5 min-w-[190px] flex items-center justify-center gap-1.5 overflow-hidden transition-all duration-250 ${
+        primary
+          ? "bg-[#101B33] border-2 border-[#3DA9FC] group-hover:bg-[#16234E] group-hover:border-[#8ED0FF] group-hover:shadow-[0_0_26px_rgba(61,169,252,0.55)]"
+          : "bg-[#0C1220] border-2 border-[#4B5563] group-hover:bg-[#121A2C] group-hover:border-[#3DA9FC]"
+      }`}
+      style={{ clipPath: NOTCH(12) }}
+      animate={
+        primary
+          ? {
+              boxShadow: [
+                "0 0 8px rgba(61,169,252,0.2)",
+                "0 0 18px rgba(61,169,252,0.45)",
+                "0 0 8px rgba(61,169,252,0.2)",
+              ],
+            }
+          : undefined
+      }
+      transition={{ duration: 2.4, repeat: primary ? Infinity : 0, ease: "easeInOut" }}
+    >
+      <span
+        className={`relative z-10 font-mono text-xs tracking-[0.15em] font-bold transition-colors duration-200 ${
+          primary
+            ? "text-white"
+            : "text-gray-400 group-hover:text-[#BFE3FF]"
+        }`}
+      >
+        {children}
+      </span>
+      <span
+        className={`relative z-10 font-mono text-xs transition-all duration-200 -translate-x-1.5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ${
+          primary ? "text-[#8ED0FF]" : "text-[#3DA9FC]"
+        }`}
+      >
+        ›
+      </span>
+    </motion.div>
+  </button>
 );
 
 const Body = () => {
   const navigate = useNavigate();
 
-  // 🧩 Popup control
   const [showPopup, setShowPopup] = useState(true);
-  const [remaining, setRemaining] = useState(getRemaining());
+  const [days, setDays] = useState(getDaysRemaining());
 
   useEffect(() => {
     if (!showPopup) return;
-    const id = setInterval(() => setRemaining(getRemaining()), 30000);
+    const id = setInterval(() => setDays(getDaysRemaining()), 1000);
     return () => clearInterval(id);
   }, [showPopup]);
 
@@ -53,11 +274,10 @@ const Body = () => {
 
   return (
     <div className="relative">
-      {/* 🌟 Event Deadline Popup — the Seal */}
       <AnimatePresence>
         {showPopup && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#05060f]/85 backdrop-blur-sm px-4"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/90 backdrop-blur-sm px-4 pb-5 sm:pb-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -65,80 +285,53 @@ const Body = () => {
             onClick={() => setShowPopup(false)}
           >
             <motion.div
-              className="relative w-[92vw] sm:w-[400px]"
-              initial={{ scale: 0.6, opacity: 0, rotate: -6 }}
-              animate={{ scale: 1, opacity: 1, rotate: 0 }}
-              exit={{ scale: 0.7, opacity: 0, rotate: 6 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-[300px] sm:max-w-[320px]"
+              initial={{ y: 30, opacity: 0, scale: 0.97 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
+              style={{
+                boxShadow:
+                  "0 0 0 1.5px rgba(61,169,252,0.4), 0 25px 60px rgba(0,0,0,0.65), 0 0 70px rgba(61,169,252,0.2)",
+                borderRadius: "6px",
+              }}
             >
-              {/* slow radar sweep behind the seal */}
-              <motion.div
-                className="absolute -inset-8 rounded-full pointer-events-none"
+              <TracedBorder />
+
+              <div
+                className="relative px-5 py-7 sm:px-6 sm:py-8 text-center rounded-[6px]"
                 style={{
-                  background:
-                    "conic-gradient(from 0deg, transparent 0deg, rgba(201,162,39,0.35) 60deg, transparent 150deg)",
+                  background: `linear-gradient(180deg, #0D1224 0%, ${CARD_BG} 100%)`,
                 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* hexagonal seal outline */}
-              <svg
-                className="absolute -inset-3 w-[calc(100%+24px)] h-[calc(100%+24px)] pointer-events-none"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
               >
-                <polygon
-                  points="20,2 80,2 98,50 80,98 20,98 2,50"
-                  fill="none"
-                  stroke="#C9A227"
-                  strokeOpacity="0.5"
-                  strokeWidth="0.6"
-                />
-              </svg>
+                <HexRadarIcon />
 
-              {/* content panel */}
-              <div className="relative bg-[#0B0F26] border border-[#C9A227]/25 px-8 py-9 text-center">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-[#C9A227]/60"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E2C158]"></span>
-                  </span>
-                  <span className="font-label-royal text-[#C9A227] text-xs tracking-wide">
-                    Royal summons
-                  </span>
-                </div>
-
-                <h2 className="font-heading-royal gold-solid text-xl sm:text-2xl font-bold leading-snug mb-2">
+                <h2 className="text-white font-heading-royal text-base sm:text-xl font-bold leading-snug mb-2">
                   Technovanza awaits your reply.
                 </h2>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-[32ch] mx-auto">
-                  Registrations for the 2026–'27 symposium close October 8 at
-                  5:00 PM. Claim your seat before the seal closes.
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
+                  Registrations for 2026–'27 close October 10, 5:00 PM.
+                  Claim your seat before the seal shuts.
                 </p>
 
-                <div className="flex gap-8 justify-center mb-7">
-                  <DiamondStat value={remaining.days} label="days" />
-                  <DiamondStat value={remaining.hours} label="hours" />
+                <div className="flex justify-center mb-6">
+                  <CountdownBox days={days} />
                 </div>
 
                 <div className="flex flex-col items-center gap-3">
-                  <button
+                  <SheardButton
+                    primary
                     onClick={() => {
                       setShowPopup(false);
                       navigate("/events");
                     }}
-                    className="font-label-royal text-sm px-6 py-2 rounded-full border border-[#C9A227] text-[#E2C158] hover:bg-[#C9A227] hover:text-[#0B0F26] transition-colors duration-200"
                   >
-                    Reserve my seat
-                  </button>
-                  <button
-                    onClick={() => setShowPopup(false)}
-                    className="text-gray-500 text-sm hover:text-gray-300 underline underline-offset-2 transition-colors duration-200"
-                  >
-                    Not now
-                  </button>
+                    RESERVE MY SEAT
+                  </SheardButton>
+                  <SheardButton onClick={() => setShowPopup(false)}>
+                    NOT NOW
+                  </SheardButton>
                 </div>
               </div>
             </motion.div>
@@ -146,13 +339,12 @@ const Body = () => {
         )}
       </AnimatePresence>
 
-      {/* 🧠 Main Page */}
       <section className="relative w-screen h-100% flex items-center justify-center overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-screen"></div>
 
         <div className="mt-small">
           <CollegeName />
-          <div className="flex flex-wrap justify-center gap-5 my-1 animate__animated animate__fadeInUp duration-500">
+          <div className="flex flex-wrap justify-center gap-5 mt-10 mb-1 animate__animated animate__fadeInUp duration-500">
             <Button onClick={handleUnleashClick}>
               <span
                 style={{
@@ -171,13 +363,13 @@ const Body = () => {
         </div>
       </section>
 
-      <hr className="border-t-2 border-gray-400 w-3/4 mx-auto my-10" />
+      <SectionDivider />
 
       <ScrollReveal animation="fadeInUp">
         <NewAbout style="true" />
       </ScrollReveal>
 
-      <hr className="border-t-2 border-gray-400 w-3/4 mx-auto my-10" />
+      <SectionDivider />
 
       <ScrollReveal animation="fadeInUp" delay={100}>
         <Faq />
@@ -190,7 +382,7 @@ const Body = () => {
       <ScrollReveal animation="fadeInUp" delay={100}>
         <Teams />
       </ScrollReveal>
-  </div>
+    </div>
   );
 };
 

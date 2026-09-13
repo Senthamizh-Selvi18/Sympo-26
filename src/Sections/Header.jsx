@@ -1,118 +1,95 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/symposium/Logo/spidy logo.png"; 
-import "animate.css";
+import logo from "../assets/symposium/Logo/spidy logo.png";
+import "../text.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
   const location = useLocation();
   const currentPath = location.pathname;
 
+  const handleToggle = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navItems = [
+    { path: "/", label: "HOME" },
+    { path: "/about", label: "ABOUT" },
+    { path: "/events", label: "EVENTS" },
+    { path: "/contact", label: "CONTACTS" },
+  ];
+
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-gray-700">
-        <div className="flex items-center justify-between w-full px-0 py-0">
-          {/* Logo - Stick to top-left */}
-          {/* <div className="max-w-screen-xl flex items-left"> */}
-          <a href="/" className="h-20 flex items-center ml-4">
-            <img
-              src={logo}
-              alt="Technovanza Logo"
-              className="w-21 h-20   object-contain"
-            />
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#081633]/90 backdrop-blur-md border-b border-[rgba(167,139,250,0.22)]">
+        <div className="flex items-center justify-between w-full px-4 py-0">
+          <a href="/" className="royal-logo h-16 flex items-center">
+            <img src={logo} alt="Technovanza Logo" className="w-16 h-16 object-contain" />
           </a>
-          {/* </div> */}
 
-          {/* Right Side Nav */}
-          <div className="flex items-center">
-            {/* Hamburger Button */}
-            <button
-              onClick={handleToggle}
-              type="button"
-              className="inline-flex items-center p-2 w-10 h-10 bg-transparent justify-center text-sm text-white md:hidden"
-              aria-controls="navbar-default"
-              aria-expanded={isMenuOpen}
-            >
-              {!isMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                  className="w-6 h-6">
-                  <path
-                    fill="#ffffff"
-                    d="M0 96c0-17.7 14.3-32 32-32h384c17.7 
-                       0 32 14.3 32 32s-14.3 32-32 32H32C14.3 
-                       128 0 113.7 0 96zm0 160c0-17.7 
-                       14.3-32 32-32h384c17.7 0 32 14.3 
-                       32 32s-14.3 32-32 32H32c-17.7 
-                       0-32-14.3-32-32zm416 192H32c-17.7 
-                       0-32-14.3-32-32s14.3-32 
-                       32-32h384c17.7 0 32 14.3 
-                       32 32s-14.3 32-32 32z"
-                  />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
-                  className="w-6 h-6">
-                  <path
-                    fill="#ffffff"
-                    d="M342.6 150.6c12.5-12.5 
-                       12.5-32.8 0-45.3s-32.8-12.5-45.3 
-                       0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 
-                       0s-12.5 32.8 0 45.3L146.7 256 41.4 
-                       361.4c-12.5 12.5-12.5 32.8 0 
-                       45.3s32.8 12.5 45.3 0L192 
-                       301.3 297.4 406.6c12.5 12.5 
-                       32.8 12.5 45.3 0s12.5-32.8 
-                       0-45.3L237.3 256 342.6 150.6z"
-                  />
-                </svg>
-              )}
-            </button>
+          <ul className="hidden md:flex md:space-x-10">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={"royal-nav-link" + (currentPath === item.path ? " active" : "")}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-            {/* Navbar Links */}
-            <div
-              className={`${
-                isMenuOpen
-                  ? "block animate__animated animate__fadeInDown duration-500"
-                  : "hidden"
-              } md:block`}
-              id="navbar-default"
-            >
-              <ul className="flex flex-col md:flex-row md:space-x-8 text-2xl md:mt-0 mt-4 p-4 md:p-0">
-                {["/", "/about", "/events", "/contact"].map((path, idx) => {
-                  const labels = ["HOME", "ABOUT", "EVENTS","CONTACTS"];
-                  return (
-                    <li key={path}>
-                      <Link
-                        to={path}
-                        className={`font-collegefont block py-2 px-3 md:p-0 ${
-                          currentPath === path
-                            ? "text-[#E8BCB9] bg-gradient-to-br from-[#E8BCB9] to-[#AE445A] bg-clip-text text-transparent"
-                            : "text-white"
-                        } hover:bg-gradient-to-br hover:from-[#E8BCB9] hover:to-[#AE445A] hover:bg-clip-text hover:text-transparent 
-                        font-bold transition duration-300`}
-                        onClick={closeMenu}
-                      >
-                        {labels[idx]}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
+          <button
+            onClick={handleToggle}
+            type="button"
+            className="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9"
+            aria-controls="mobile-nav"
+            aria-expanded={isMenuOpen}
+          >
+            <span
+              className="block h-[2px] w-6 bg-[#A78BFA] transition-transform duration-300"
+              style={isMenuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}}
+            />
+            <span
+              className="block h-[2px] w-6 bg-[#A78BFA] transition-opacity duration-300"
+              style={isMenuOpen ? { opacity: 0 } : {}}
+            />
+            <span
+              className="block h-[2px] w-6 bg-[#A78BFA] transition-transform duration-300"
+              style={isMenuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}}
+            />
+          </button>
         </div>
       </nav>
 
-      {/* Prevent content overlap */}
+      {/* Slide-in mobile drawer */}
+      <div
+        id="mobile-nav"
+        className={`fixed top-0 right-0 h-screen w-64 z-40 bg-[#081633] border-l border-[rgba(167,139,250,0.25)] shadow-2xl transform transition-transform duration-400 ease-in-out md:hidden ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <ul className="flex flex-col mt-24 gap-8 px-8">
+          {navItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                onClick={closeMenu}
+                className={"royal-nav-link text-lg" + (currentPath === item.path ? " active" : "")}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={closeMenu}
+        />
+      )}
+
       <div className="pt-16"></div>
     </>
   );

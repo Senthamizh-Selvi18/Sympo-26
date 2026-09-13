@@ -59,11 +59,11 @@ const Button = ({ children = "Button", onClick, type = "button", ...rest }) => {
 const StyledWrapper = styled.div`
   --navy-deep: #040d1f;
   --navy: #0a1a35;
-  --blue-mid: #12356b;
-  --blue-steel: #2e6fb0;
-  --cyan: #4fd6ff;
-  --cyan-bright: #8ff2ff;
-  --white: #eaf6ff;
+  --gold-mid: #8a6a2f;
+  --gold-steel: #b08d4e;
+  --gold: #d9b672;
+  --gold-bright: #f3e3bb;
+  --white: #f6f1e4;
 
   display: inline-block;
 

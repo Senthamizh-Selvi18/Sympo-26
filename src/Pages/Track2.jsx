@@ -32,16 +32,10 @@ const Track2 = () => {
           {/* Text Section */}
           <div className="md:w-[60%] w-full text-lg leading-relaxed text-justify px-4">
             <p>
-            Technovanza is the epitome of innovation and collaboration,
-              designed to foster creativity, ignite ideas, and push the
-              boundaries of technology. With a focus on modern advancements, it
-              stands as a beacon for tech enthusiasts, paving the way for a
-              future driven by knowledge and passion.
+            Technovanza is where innovation meets imagination, bringing together aspiring engineers, emerging ideas, and technology enthusiasts in an environment that encourages learning, creativity, and meaningful collaboration. It provides a platform for students to explore new possibilities, exchange knowledge, and showcase their technical abilities.
             </p>
             <p className="mt-4">
-              Join us in this journey where vision meets reality, and together,
-              we shape the technology of tomorrow. Technovanza is not just an
-              event; it's an experience that leaves a lasting impression.
+              More than a symposium, it is a platform for learning, creativity, and excellence, inspiring students to transform their ideas into solutions for tomorrow's challenges.
             </p>
           </div>
 
