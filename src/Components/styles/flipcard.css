@@ -1,0 +1,229 @@
+/* ═══════════════════════════════════════════════════════════════
+   FlipCard  —  3D card flip interaction for ZenoFest2K26
+   Uses CSS 3D transforms; does NOT change layout or card sizing.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Scene wrapper: same footprint as .card ─────────────────────────────── */
+.flip-card-scene {
+  /* Match .card dimensions exactly so surrounding layout is unchanged */
+  position: relative;
+  height: 22.6rem;
+  width: 16rem;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* ── Inner: the element that actually rotates ────────────────────────────── */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
+              filter 0.7s ease;
+  will-change: transform;
+}
+
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+  /* Subtle glow on the scene during flip */
+  filter: drop-shadow(0 0 18px rgba(138, 43, 226, 0.7))
+          drop-shadow(0 0 36px rgba(100, 32, 170, 0.4));
+}
+
+/* ── Shared face styles ──────────────────────────────────────────────────── */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 0; /* inherits from .card */
+  overflow: hidden;
+}
+
+/* ── FRONT: just the existing .card shell, already styled ───────────────── */
+.flip-card-front {
+  transform: rotateY(0deg);
+}
+
+/* Override .card's translateY hover — we handle hover on the scene */
+.flip-card-front.card:hover {
+  transform: rotateY(0deg) !important;
+  box-shadow: none !important;
+}
+
+/* ── BACK: glassmorphism dark futuristic panel ───────────────────────────── */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(10, 8, 28, 0.88);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  gap: 0.55rem;
+  text-align: center;
+  font-family: 'Inter', 'Outfit', 'Segoe UI', sans-serif;
+  /* Outer animated border inherits from .card::before/::after — the glow
+     gradient rings will show behind the back face too since z-index is -1 */
+}
+
+/* Ambient glow blob behind content */
+.flip-back-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(138, 43, 226, 0.25) 0%, transparent 70%),
+              radial-gradient(ellipse at 50% 100%, rgba(0, 221, 235, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure all back content sits above the glow */
+.flip-card-back > *:not(.flip-back-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category badge */
+.flip-back-badge {
+  display: inline-block;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #00ddeb;
+  border: 1px solid rgba(0, 221, 235, 0.45);
+  background: rgba(0, 221, 235, 0.08);
+}
+
+/* Event title */
+.flip-back-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(138, 43, 226, 0.9),
+               0 0 24px rgba(138, 43, 226, 0.5);
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Neon divider */
+.flip-back-divider {
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.8), rgba(0, 221, 235, 0.6), transparent);
+  flex-shrink: 0;
+}
+
+/* Description text */
+.flip-back-desc {
+  font-size: 0.72rem;
+  color: rgba(210, 200, 240, 0.88);
+  line-height: 1.5;
+  max-height: 6.5rem;
+  overflow: hidden;
+  margin: 0;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+/* Meta list: date, team, prize */
+.flip-back-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.flip-back-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  color: rgba(200, 190, 230, 0.9);
+  justify-content: center;
+}
+
+.flip-meta-icon {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* "Know More" button */
+.flip-back-btn {
+  margin-top: 0.3rem;
+  padding: 0.42rem 1.1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(138, 43, 226, 0.7);
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(91, 66, 243, 0.3));
+  color: #e8d5ff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.flip-back-btn:hover,
+.flip-back-btn:focus-visible {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.65), rgba(91, 66, 243, 0.65));
+  box-shadow: 0 0 14px rgba(138, 43, 226, 0.7), 0 0 28px rgba(138, 43, 226, 0.35);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.flip-back-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Reduced-motion: fade instead of 3D flip ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: opacity 0.3s ease;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .flip-card-front {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    position: absolute;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
+  }
+
+  .flip-card-inner.is-flipped .flip-card-front {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .flip-card-back {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
+    pointer-events: none;
+  }
+
+  .flip-card-inner.is-flipped .flip-card-back {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
