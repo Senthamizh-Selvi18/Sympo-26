@@ -71,13 +71,13 @@ const Body = () => {
               label={
                 <span
                   style={{
-                    fontFamily: "collegefont",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontWeight: "bold",
                     letterSpacing: "0.07em",
                     fontSize: "25px",
                   }}
                 >
-                  Dive In
+                  DIVE IN
                 </span>
               }
               onClick={handleUnleashClick}

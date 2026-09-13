@@ -8,14 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technovanza Symposium</title>
     <style>
-      body{
-        background-size: cover; /* Ensures the image covers the entire screen */
-        background-repeat: no-repeat; /* Prevents tiling */
-        background-attachment: fixed; /* Keeps the image fixed during scroll */
-        background-position: center; /* Centers the image */
-        margin: 0; /* Removes default margin for the body */
-        height: 100vh; /* Ensures the body occupies the full viewport height */
-      }
       html, body {
         height: 100%;
         margin: 0;
@@ -23,46 +15,46 @@
       }
       
       body {
-        /* background: linear-gradient(90deg, rgba(84,1,45,1) 2%, rgba(40,7,110,1) 48%, rgba(22,1,66,1) 100%); */
-        /* background-image: url("./src/assets/symposium/peakpx.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
+        background-color: #020B24;
+        background-image: 
+          /* HUD Circles Top Left */
+          radial-gradient(circle at 10% 20%, transparent 100px, rgba(0, 150, 255, 0.4) 101px, rgba(0, 150, 255, 0.4) 103px, transparent 104px),
+          radial-gradient(circle at 10% 20%, transparent 140px, rgba(0, 150, 255, 0.2) 141px, rgba(0, 150, 255, 0.2) 142px, transparent 143px),
+          /* HUD Circles Top Right */
+          radial-gradient(circle at 90% 20%, transparent 100px, rgba(0, 150, 255, 0.4) 101px, rgba(0, 150, 255, 0.4) 103px, transparent 104px),
+          radial-gradient(circle at 90% 20%, transparent 140px, rgba(0, 150, 255, 0.2) 141px, rgba(0, 150, 255, 0.2) 142px, transparent 143px),
+          /* HUD Circles Bottom Left */
+          radial-gradient(circle at 10% 80%, transparent 120px, rgba(0, 150, 255, 0.2) 121px, rgba(0, 150, 255, 0.2) 122px, transparent 123px),
+          /* HUD Circles Bottom Right */
+          radial-gradient(circle at 90% 80%, transparent 120px, rgba(0, 150, 255, 0.2) 121px, rgba(0, 150, 255, 0.2) 122px, transparent 123px),
+          /* Tech Grid */
+          linear-gradient(rgba(0, 150, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 150, 255, 0.05) 1px, transparent 1px),
+          /* Large Grid Blocks */
+          linear-gradient(rgba(0, 150, 255, 0.03) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(0, 150, 255, 0.03) 2px, transparent 2px),
+          /* Main Background Gradient with Dark Center */
+          radial-gradient(ellipse at center, rgba(6, 21, 54, 0.8) 0%, rgba(2, 11, 36, 1) 100%);
+        background-size: 
+          100vw 100vh, 100vw 100vh, 
+          100vw 100vh, 100vw 100vh,
+          100vw 100vh, 100vw 100vh,
+          30px 30px, 30px 30px, 
+          120px 120px, 120px 120px, 
+          100vw 100vh;
+        background-position: center center;
         background-attachment: fixed;
-        background-position: center;
-        margin: 0;
-        height: 100vh; */
-        background: #ffffff;
-        /* background-color: black; */
+        background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
         position: relative;
         z-index: 1; /* Ensures body content is above the background */
       }
 
-      .background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
 
-      canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-      }
 
     </style>
   </head>
   <body>
-    <div class="background">
-      <canvas id="particlesCanvas"></canvas>
-      <script src="./script.js" defer></script>
-    </div>
+
     <!-- <div id="particles-js"></div> -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
