@@ -1,8 +1,14 @@
 .card-container {
-  padding: 60px;
+  padding: 1.5rem 0.5rem;
   background: transparent; /* Ensure transparency */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+  scrollbar-color: rgba(0, 212, 255, 0.4) transparent;
+}
+
+@media (min-width: 640px) {
+  .card-container {
+    padding: 2rem 1.25rem;
+  }
 }
 
 .card-container::-webkit-scrollbar {

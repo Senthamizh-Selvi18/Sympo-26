@@ -21,29 +21,25 @@
   flex-shrink: 0;
 }
 
-/* ── Animated conic-gradient border rings (replicates .card::before/after) ─ */
+/* ── Animated electric cyan/blue border rings ─ */
 .fc-border-ring {
   content: "";
   position: absolute;
   z-index: 0;
-  inset: -0.5rem;
-  background: conic-gradient(
-    from var(--fc-angle),
-    #1f2937,
-    #6420aa,
-    #ff3ea5,
-    #ff7ed4,
-    #ff3ea5,
-    #6420aa,
-    #1f2937
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.85),
+    rgba(0, 102, 204, 0.4),
+    rgba(0, 212, 255, 0.85)
   );
-  border-radius: inherit;
-  animation: fc-rotate 2.5s linear infinite;
+  border-radius: 4px;
   pointer-events: none;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .fc-border-ring--blur {
-  filter: blur(3rem);
+  display: none;
 }
 
 @keyframes fc-rotate {
@@ -52,13 +48,19 @@
 }
 
 /* ── Glow enhancement on hover/flip ─────────────────────────────────────── */
+.fc-scene:hover .fc-border-ring,
 .fc-scene.fc-flipped .fc-border-ring {
-  filter: none;
-  box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.75), 0 0 24px rgba(0, 136, 255, 0.4);
+  background: linear-gradient(
+    135deg,
+    #00f0ff,
+    #0088ff,
+    #00f0ff
+  );
 }
 
 .fc-scene.fc-flipped .fc-border-ring--blur {
-  filter: blur(3rem) brightness(1.4);
+  display: none;
 }
 
 /* ── Inner: rotates in 3D ─────────────────────────────────────────────────  */
@@ -91,7 +93,7 @@
 /* ── FRONT face ──────────────────────────────────────────────────────────── */
 .fc-front {
   transform: rotateY(0deg);
-  background: #1f2937;
+  background: #0d1a33;
 }
 
 .fc-poster-img {
@@ -106,10 +108,10 @@
 /* ── BACK face ───────────────────────────────────────────────────────────── */
 .fc-back {
   transform: rotateY(180deg);
-  background: rgba(8, 6, 24, 0.95);
+  background: rgba(4, 12, 32, 0.95);
   backdrop-filter: blur(18px) saturate(1.6);
   -webkit-backdrop-filter: blur(18px) saturate(1.6);
-  border: 1px solid rgba(138, 43, 226, 0.4);
+  border: 1px solid rgba(0, 212, 255, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,8 +128,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 10%,  rgba(138, 43, 226, 0.3) 0%, transparent 65%),
-    radial-gradient(ellipse at 50% 90%,  rgba(0, 221, 235, 0.15) 0%, transparent 65%);
+    radial-gradient(ellipse at 50% 10%,  rgba(0, 212, 255, 0.2) 0%, transparent 65%),
+    radial-gradient(ellipse at 50% 90%,  rgba(0, 102, 204, 0.15) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
@@ -159,8 +161,8 @@
   font-weight: 800;
   color: #ffffff;
   text-shadow:
-    0 0 10px rgba(138, 43, 226, 1),
-    0 0 22px rgba(138, 43, 226, 0.6);
+    0 0 10px rgba(0, 212, 255, 0.8),
+    0 0 20px rgba(0, 136, 255, 0.4);
   letter-spacing: 0.04em;
   line-height: 1.2;
   margin: 0;
@@ -174,8 +176,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(138, 43, 226, 0.9),
-    rgba(0, 221, 235, 0.7),
+    rgba(0, 212, 255, 0.9),
+    rgba(0, 136, 255, 0.7),
     transparent
   );
   flex-shrink: 0;
@@ -184,7 +186,7 @@
 /* Description */
 .fc-desc {
   font-size: 0.7rem;
-  color: rgba(210, 200, 245, 0.9);
+  color: rgba(210, 230, 255, 0.9);
   line-height: 1.55;
   margin: 0;
   overflow: hidden;
@@ -210,7 +212,7 @@
   justify-content: center;
   gap: 0.38rem;
   font-size: 0.67rem;
-  color: rgba(200, 188, 235, 0.95);
+  color: rgba(200, 225, 255, 0.95);
   font-weight: 500;
 }
 
@@ -225,14 +227,15 @@
   margin-top: 0.2rem;
   padding: 0.44rem 1.15rem;
   border-radius: 6px;
-  border: 1px solid rgba(138, 43, 226, 0.75);
+  border: 1px solid rgba(0, 212, 255, 0.75);
   background: linear-gradient(
     135deg,
-    rgba(138, 43, 226, 0.28),
-    rgba(91, 66, 243, 0.28)
+    rgba(0, 212, 255, 0.25),
+    rgba(0, 102, 204, 0.25)
   );
-  color: #e8d5ff;
+  color: #e0f7ff;
   font-size: 0.7rem;
+  font-family: 'Exo 2', sans-serif;
   font-weight: 700;
   letter-spacing: 0.07em;
   cursor: pointer;
@@ -246,10 +249,10 @@
 .fc-btn:focus-visible {
   background: linear-gradient(
     135deg,
-    rgba(138, 43, 226, 0.65),
-    rgba(91, 66, 243, 0.65)
+    rgba(0, 212, 255, 0.55),
+    rgba(0, 102, 204, 0.55)
   );
-  box-shadow: 0 0 14px rgba(138, 43, 226, 0.75), 0 0 28px rgba(138, 43, 226, 0.38);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.75), 0 0 28px rgba(0, 136, 255, 0.38);
   transform: translateY(-1px);
   outline: none;
 }

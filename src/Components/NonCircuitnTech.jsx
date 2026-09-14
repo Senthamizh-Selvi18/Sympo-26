@@ -1,6 +1,7 @@
 import React from "react";
 import "../text.css";
 import FlipCard from "./FlipCard";
+import HexagonTechFrame from "./HexagonTechFrame";
 
 import cini from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
 import GIGZUP from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
@@ -99,7 +100,7 @@ const NonCircuitnTech = () => {
         Non Technical Events
       </h3>
 
-      <div>
+      <HexagonTechFrame title="NON TECHNICAL EVENTS">
         <main className="card-container gap-10 flex flex-wrap justify-center w-full">
           {circuittechnicalEvents.map((card) => (
             <FlipCard
@@ -116,7 +117,7 @@ const NonCircuitnTech = () => {
             />
           ))}
         </main>
-      </div>
+      </HexagonTechFrame>
     </div>
   );
 };

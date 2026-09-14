@@ -1,0 +1,241 @@
+/* ==========================================================
+   FUTURISTIC HEXAGON TECH FRAME (HUD INTERFACE)
+   ========================================================== */
+
+.hex-frame-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 1.5rem auto 3.5rem auto;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Base dark navy translucent backdrop with chamfered corners */
+.hex-frame-backdrop {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 18, 44, 0.72) 0%,
+    rgba(3, 11, 28, 0.85) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  clip-path: polygon(
+    28px 0%,
+    calc(100% - 28px) 0%,
+    100% 28px,
+    100% calc(100% - 28px),
+    calc(100% - 28px) 100%,
+    28px 100%,
+    0% calc(100% - 28px),
+    0% 28px
+  );
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 30px rgba(0, 212, 255, 0.05);
+  padding: 2.5rem 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hex-frame-backdrop {
+    padding: 3.5rem 2.5rem;
+    clip-path: polygon(
+      38px 0%,
+      calc(100% - 38px) 0%,
+      100% 38px,
+      100% calc(100% - 38px),
+      calc(100% - 38px) 100%,
+      38px 100%,
+      0% calc(100% - 38px),
+      0% 38px
+    );
+  }
+}
+
+/* SVG HUD Overlay Layer */
+.hex-frame-svg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Subtle circuit background grid inside frame */
+.hex-frame-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Frame glow line */
+.hex-frame-border {
+  stroke: #00d2ff;
+  stroke-width: 1.5;
+  stroke-opacity: 0.75;
+  fill: none;
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.45));
+}
+
+.hex-frame-inner-border {
+  stroke: #0088ff;
+  stroke-width: 1;
+  stroke-opacity: 0.35;
+  stroke-dasharray: 8 6;
+  fill: none;
+}
+
+/* Corner HUD Brackets */
+.hex-corner-bracket {
+  stroke: #00f0ff;
+  stroke-width: 2.5;
+  fill: none;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8));
+}
+
+.hex-corner-dot {
+  fill: #00f0ff;
+  filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.9));
+}
+
+/* Side HUD Nodes */
+.hex-side-node {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hex-side-node-left {
+  left: -2px;
+}
+
+.hex-side-node-right {
+  right: -2px;
+}
+
+.hex-node-bar {
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #00d2ff 25%,
+    #ffffff 50%,
+    #00d2ff 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+  border-radius: 2px;
+  position: relative;
+}
+
+.hex-node-notch {
+  width: 10px;
+  height: 28px;
+  border: 1.5px solid #00f0ff;
+  background: rgba(0, 20, 50, 0.9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex-node-notch::after {
+  content: "";
+  width: 4px;
+  height: 12px;
+  background: #00f0ff;
+  box-shadow: 0 0 6px #00f0ff;
+}
+
+/* Top & Bottom Center HUD Badges */
+.hex-hud-top-center,
+.hex-hud-bottom-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hex-hud-top-center {
+  top: 0px;
+}
+
+.hex-hud-bottom-center {
+  bottom: 0px;
+}
+
+.hex-hud-line {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d2ff);
+}
+
+@media (min-width: 640px) {
+  .hex-hud-line {
+    width: 60px;
+  }
+}
+
+.hex-hud-line.reverse {
+  background: linear-gradient(-90deg, transparent, #00d2ff);
+}
+
+.hex-hud-chip {
+  padding: 4px 14px;
+  background: rgba(2, 12, 32, 0.95);
+  border: 1.5px solid #00d2ff;
+  font-family: 'Orbitron', 'Share Tech Mono', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #00f0ff;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  box-shadow: 
+    0 0 14px rgba(0, 212, 255, 0.5),
+    inset 0 0 8px rgba(0, 212, 255, 0.2);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .hex-hud-chip {
+    padding: 6px 20px;
+    font-size: 0.92rem;
+  }
+}
+
+/* Content wrapper inside frame */
+.hex-frame-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}

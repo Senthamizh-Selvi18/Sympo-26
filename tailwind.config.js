@@ -24,7 +24,8 @@ module.exports = {
       fontFamily: {
         'collegefont' : ['collegefont', 'sans-serif'],
         'timerfont' : ['timerfont', 'sans-serif'],
-        'aboutfont': ['aboutfont', 'sans-serif'],
+        'aboutfont': ['Orbitron', 'Space Grotesk', 'sans-serif'],
+        'spacegrotesk': ['Space Grotesk', 'sans-serif'],
         'faqfont' :['faqfont' , 'sans-serif'] ,
         'otherfont' : ['otherfont', 'sans-serif'],
       },

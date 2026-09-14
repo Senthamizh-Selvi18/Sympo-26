@@ -127,6 +127,7 @@
   position: relative;
   z-index: 3;
   color: var(--white);
+  font-family: 'Exo 2', sans-serif;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 1.5px;

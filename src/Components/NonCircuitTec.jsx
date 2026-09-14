@@ -2,6 +2,7 @@ import React from "react";
 import randomColor from "randomcolor";
 import "../text.css";
 import FlipCard from "./FlipCard";
+import HexagonTechFrame from "./HexagonTechFrame";
 
 import EscapeRoom from "../assets/symposium/Sympo'25/Track1/escaperoom.png";
 import FLIPSTER from "../assets/symposium/Sympo'25/Track1/FLIPSTER.jpg";
@@ -105,7 +106,7 @@ const NonCircuitTec = () => {
         Technical Events
       </h3>
 
-      <div>
+      <HexagonTechFrame title="TECHNICAL EVENTS">
         <main className="card-container gap-10 relative flex flex-wrap justify-center w-full">
           {circuittechnicalEvents.map((card) => (
             <FlipCard
@@ -122,7 +123,7 @@ const NonCircuitTec = () => {
             />
           ))}
         </main>
-      </div>
+      </HexagonTechFrame>
     </div>
   );
 };

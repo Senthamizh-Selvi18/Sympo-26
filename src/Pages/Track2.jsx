@@ -23,14 +23,28 @@ const Track2 = () => {
       <div className="glassmorphic-container p-6 md:p-10 w-full max-w-5xl">
 
         {/* Title */}
-        <h2 className="text-3xl md:text-5xl font-aboutfont text-green-blue tracking-widest mb-8 text-left">
+        <h2
+          className="text-3xl md:text-5xl font-black tracking-widest mb-8 text-left text-white uppercase"
+          style={{
+            fontFamily: "'Orbitron', 'Oxanium', 'Space Grotesk', sans-serif",
+            letterSpacing: "0.18em",
+            textShadow: "0 0 25px rgba(102, 252, 241, 0.4)",
+          }}
+        >
           Track 2
         </h2>
 
         {/* Content Section */}
         <div className="flex flex-col md:flex-row items-center w-full">
           {/* Text Section */}
-          <div className="md:w-[60%] w-full text-lg leading-relaxed text-justify px-4">
+          <div
+            className="md:w-[60%] w-full text-base sm:text-lg leading-relaxed text-justify px-4"
+            style={{
+              fontFamily: "'Space Grotesk', 'Poppins', 'Segoe UI', sans-serif",
+              color: "rgba(226, 232, 240, 0.95)",
+              letterSpacing: "0.02em",
+            }}
+          >
             <p>
             Technovanza is where innovation meets imagination, bringing together aspiring engineers, emerging ideas, and technology enthusiasts in an environment that encourages learning, creativity, and meaningful collaboration. It provides a platform for students to explore new possibilities, exchange knowledge, and showcase their technical abilities.
             </p>

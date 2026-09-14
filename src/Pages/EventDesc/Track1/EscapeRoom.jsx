@@ -1,40 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import VanillaTilt from "vanilla-tilt";
-import "../../../styles/eventStyles.css";
+import React from "react";
+import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/escaperoom.png";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: i => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.2 + i * 0.12, duration: 0.8 }
-  })
-};
-
 const EscapeRoom = () => {
-  const tiltRef = useRef(null);
-
-  useEffect(() => {
-    if (tiltRef.current) {
-      VanillaTilt.init(tiltRef.current, {
-        max: 15,
-        speed: 400,
-        scale: 1.06,
-        glare: true,
-        "max-glare": 0.28
-      });
-    }
-  }, []);
-
   const sectionCards = [
     {
       icon: "📜",
       heading: "Event Description",
       content: (
-        <p className="text-base md:text-lg leading-relaxed">
-          Escape Room 2.O is designed to challenge participants’ technical knowledge, decoding skills, logical reasoning, and problem-solving abilities through a two-stage competition. The event is designed to test quick thinking with technical MCQs and analytical ability in an immersive escape room challenge, where participants must decode puzzles, analyze clues, and apply technical knowledge under pressure. This fosters creativity, critical thinking, and decision-making in a fun yet competitive environment.
+        <p className="text-base md:text-lg leading-relaxed text-slate-200">
+          <strong className="text-white">Escape Room 2.0</strong> is designed to challenge participants’ technical knowledge, decoding skills, logical reasoning, and problem-solving abilities through a two-stage competition. The event is designed to test quick thinking with technical MCQs and analytical ability in an immersive escape room challenge, where participants must decode puzzles, analyze clues, and apply technical knowledge under pressure. This fosters creativity, critical thinking, and decision-making in a fun yet competitive environment.
         </p>
       ),
       key: "description"
@@ -43,7 +18,7 @@ const EscapeRoom = () => {
       icon: "🎯",
       heading: "Event Objective",
       content: (
-        <p className="text-base md:text-lg leading-relaxed">
+        <p className="text-base md:text-lg leading-relaxed text-slate-200">
           Test your technical skills and problem-solving power in this two-stage challenge! Start with rapid-fire MCQs, then enter an immersive escape room where logic, clues, and teamwork are your keys to victory. Decode, analyse, and beat the clock — only the sharpest minds will make it out!
         </p>
       ),
@@ -53,26 +28,34 @@ const EscapeRoom = () => {
       icon: "📋",
       heading: "Event Rounds",
       content: (
-        <ul className="list-none space-y-4 text-base md:text-lg">
-          <li className="flex flex-col items-start gap-2 p-4 bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-lg border-l-4 border-blue-400">
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl">
-              <span className="text-blue-400">📚</span> Round 1: Technical MCQ Round
-            </div>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Format: The round will consist of multiple-choice questions on technical topics.</li>
-              <li>Shortlisting: Top participants will be shortlisted based on their scores.</li>
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <h3 className="sympo-subcard-title">📚 Round 1: Technical MCQ Round</h3>
+            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Format: The round will consist of multiple-choice questions on technical topics.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Shortlisting: Top participants will be shortlisted based on their scores.</span>
+              </li>
             </ul>
-          </li>
-          <li className="flex flex-col items-start gap-2 p-4 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-lg border-l-4 border-purple-400">
-            <div className="flex items-center gap-2 font-bold text-lg md:text-xl">
-              <span className="text-purple-400">🔓</span> Round 2: Escape Room Challenge
-            </div>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Objective: Participants will be required to solve puzzles and challenges in the escape room to escape within the given time limit.</li>
-              <li>Winning Criteria: The participant who escapes the room in the shortest time or solves the highest number of puzzles will be considered the winner.</li>
+          </div>
+          <div className="sympo-subcard">
+            <h3 className="sympo-subcard-title">🔓 Round 2: Escape Room Challenge</h3>
+            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Objective: Participants will be required to solve puzzles and challenges in the escape room to escape within the given time limit.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Winning Criteria: The participant who escapes the room in the shortest time or solves the highest number of puzzles will be considered the winner.</span>
+              </li>
             </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       ),
       key: "rounds"
     },
@@ -80,15 +63,22 @@ const EscapeRoom = () => {
       icon: "📜",
       heading: "Rules and Regulations",
       content: (
-        <ul className="list-disc list-inside space-y-2 text-base md:text-lg ml-4">
-          <li><strong>Participation:</strong> Each participant must register individually and participate solo.</li>
-          <li><strong>Conduct:</strong> Participants must be respectful and courteous towards other participants, judges, and event staff.</li>
-          <li><strong>Decision of Judges:</strong> The decision of the judges will be final and binding.</li>
-          <li><strong>No AI:</strong> No use of artificial intelligence or automated tools.</li>
-          <li><strong>No Collaboration:</strong> Participants must work individually and not collaborate with others.</li>
-          <li><strong>No Damage:</strong> Participants must not damage or attempt to damage the escape room or its contents.</li>
-          <li><strong>Disqualification:</strong> Participants found guilty of misconduct will be disqualified.</li>
-          <li><strong>Penalties:</strong> Possible penalties include time penalties or other consequences.</li>
+        <ul className="sympo-tech-list text-base md:text-lg">
+          {[
+            "Participation: Each participant must register individually and participate solo.",
+            "Conduct: Participants must be respectful and courteous towards other participants, judges, and event staff.",
+            "Decision of Judges: The decision of the judges will be final and binding.",
+            "No AI: No use of artificial intelligence or automated tools.",
+            "No Collaboration: Participants must work individually and not collaborate with others.",
+            "No Damage: Participants must not damage or attempt to damage the escape room or its contents.",
+            "Disqualification: Participants found guilty of misconduct will be disqualified.",
+            "Penalties: Possible penalties include time penalties or other consequences."
+          ].map((rule, index) => (
+            <li key={index} className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>{rule}</span>
+            </li>
+          ))}
         </ul>
       ),
       key: "rules"
@@ -97,11 +87,22 @@ const EscapeRoom = () => {
       icon: "⚖️",
       heading: "Judging Criteria",
       content: (
-        <ul className="list-disc list-inside space-y-2 text-base md:text-lg ml-4">
-          <li>Winners will be selected depending upon the number of challenges solved in the shortest period of time.</li>
-          <li>The decision of the judges will be final.</li>
-          <li>If found guilty of any malpractice, the team will be immediately disqualified, and will not be considered for judging.</li>
-        </ul>
+        <div className="sympo-subcard">
+          <ul className="sympo-tech-list text-base md:text-lg">
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>Winners will be selected depending upon the number of challenges solved in the shortest period of time.</span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>The decision of the judges will be final.</span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>If found guilty of any malpractice, the team will be immediately disqualified, and will not be considered for judging.</span>
+            </li>
+          </ul>
+        </div>
       ),
       key: "judging"
     },
@@ -109,87 +110,46 @@ const EscapeRoom = () => {
       icon: "📞",
       heading: "Contact Information",
       content: (
-        <div className="text-base md:text-lg leading-relaxed p-4 bg-gradient-to-r from-indigo-900/30 to-blue-900/30 rounded-lg border border-indigo-500/30">
+        <div className="sympo-subcard">
           <div className="mb-3 font-semibold text-accent">Staff Incharge:</div>
-          <div className="space-y-1 mb-4">
+          <div className="space-y-1 mb-4 text-slate-200">
             <div>Ms. S. Preethi Parameshwari</div>
             <div>Ms. S. Sandhiyaa</div>
           </div>
           <div className="mb-2 font-semibold text-accent">Student Coordinators:</div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-              <span>Mr. Subadevan C - III CS: </span>
-              <a href="tel:+91863760748" className="text-accent hover:underline">863760748</a>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-              <span>Ms. Nivethithaa S - II CS: </span>
-              <a href="tel:+918925651912" className="text-accent hover:underline">8925651912</a>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-              <span>Mr. Rohan S - II CS: </span>
-              <a href="tel:+918220849281" className="text-accent hover:underline">8220849281</a>
-            </div>
-          </div>
+          <ul className="sympo-tech-list">
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>Mr. Subadevan C - III CS: <a href="tel:+91863760748" className="text-accent hover:underline">863760748</a></span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>Ms. Nivethithaa S - II CS: <a href="tel:+918925651912" className="text-accent hover:underline">8925651912</a></span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>Mr. Rohan S - II CS: <a href="tel:+918220849281" className="text-accent hover:underline">8220849281</a></span>
+            </li>
+          </ul>
         </div>
       ),
       key: "contact"
-    },
- 
+    }
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-start justify-between max-w-7xl mx-auto p-6 gap-10 bg-gradient-to-br from-navy-900 via-blue-900 to-indigo-900 rounded-xl shadow-2xl backdrop-blur min-h-screen">
-      <motion.div
-        ref={tiltRef}
-        className="lg:w-1/2 w-full flex justify-center items-center lg:sticky lg:top-10"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="relative">
-          <img
-            src={EventImage}
-            alt="Escape Room 2.0 Event"
-            className="w-5/6 md:w-4/5 lg:w-full object-cover rounded-2xl shadow-2xl border-4 border-gradient"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-2xl"></div>
-        </div>
-      </motion.div>
-
-      <div className="lg:w-4/6 w-full flex flex-col gap-6 overflow-auto custom-scrollbar pb-3" style={{ maxHeight: "calc(100vh - 60px)" }}>
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center lg:text-left"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text drop-shadow-lg mb-2">
-            ✨ Escape Room 2.0
-          </h1>
-          <p className="text-xl md:text-2xl text-accent font-medium">Event Rules and Guidelines 🎉</p>
-        </motion.div>
-
-        {sectionCards.map((card, i) => (
-          <motion.div
-            custom={i}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            key={card.key}
-            className="glass-container px-6 py-5 rounded-xl shadow-glass border border-white/10 bg-black/30 backdrop-blur-md hover:bg-black/40 transition-all duration-300"
-          >
-            <div className="flex items-center mb-4 gap-3">
-              <span className="text-3xl">{card.icon}</span>
-              <h2 className="text-2xl md:text-3xl font-bold gradient-text">{card.heading}</h2>
-            </div>
-            <div className="text-gray-100">{card.content}</div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+    <EventDetailLayout
+      posterSrc={EventImage}
+      posterAlt="Escape Room 2.0 Event Poster"
+      title="ESCAPE ROOM 2.0"
+      subtitle="CRYPTOGRAPHIC PUZZLE CHALLENGE"
+      track="TRACK I"
+      category="Technical"
+      date="October 10, 2025"
+      team="2 - 3 Members"
+      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      sectionCards={sectionCards}
+    />
   );
 };
 

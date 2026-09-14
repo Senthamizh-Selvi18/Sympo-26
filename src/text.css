@@ -1,5 +1,5 @@
-﻿/* ========================================
-   ROYAL / PREMIUM THEME â€” FINAL
+/* ========================================
+   ROYAL / PREMIUM THEME — FINAL
    ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&family=Nerko+One&family=Roboto+Slab:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -14,6 +14,126 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+/* ---- Technovanza Futuristic Typography ---- */
+@font-face {
+  font-family: 'Revamped';
+  src: url('/fonts/Revamped.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.technovanza-title-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+}
+
+.technovanza-main-title {
+  font-family: 'Revamped', 'Orbitron', 'Oxanium', 'Chakra Petch', sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.technovanza-te,
+.technovanza-rest {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 15%,
+    #ebf3fa 32%,
+    #b2ccdf 46%,
+    #ffffff 50%,
+    #d6e4f0 55%,
+    #7b9bb9 80%,
+    #4a6884 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+  filter: 
+    drop-shadow(0 1px 0 #e2ecf5)
+    drop-shadow(0 2px 0 #8fa9c4)
+    drop-shadow(0 4px 0 #4c6882)
+    drop-shadow(0 6px 0 #1f2f3f)
+    drop-shadow(0 8px 10px rgba(0, 5, 15, 0.95));
+}
+
+.technovanza-year-tag {
+  font-family: 'Revamped', 'Orbitron', 'Oxanium', 'Space Grotesk', sans-serif;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #dbeafe 30%,
+    #60a5fa 65%,
+    #1d4ed8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+}
+
+/* ---- Matching Surrounding Text Colors for Technovanza ---- */
+.techno-college-title {
+  color: #f1f5f9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.techno-college-subtitle {
+  color: #94a3b8;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.techno-presents {
+  color: #38bdf8;
+  letter-spacing: 0.22em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.techno-symposium-subtitle {
+  color: #e2e8f0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.techno-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+  margin: 0.75rem auto;
+}
+.techno-divider::before,
+.techno-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7));
+}
+.techno-divider::after {
+  background: linear-gradient(-90deg, transparent, rgba(56, 189, 248, 0.7));
+}
+.techno-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: #38bdf8;
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
 }
 
 /* ---- Legacy font helpers ---- */
@@ -208,7 +328,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-family: 'Jost', sans-serif;
+  font-family: 'Exo 2', 'Jost', sans-serif;
   font-weight: 600;
   letter-spacing: 0.1em;
   color: #7c88ad;
@@ -218,7 +338,7 @@
 
 /* caret that slides in before the label */
 .royal-nav-link::before {
-  content: "â–¹";
+  content: "\25B8";
   display: inline-block;
   width: 0;
   overflow: hidden;
@@ -240,7 +360,7 @@
   transform: translateX(0);
 }
 
-/* liquid fill duplicate â€” a coral copy of the text clipped to 0 width,
+/* liquid fill duplicate — a coral copy of the text clipped to 0 width,
    which expands left-to-right on hover like colour pouring in */
 .royal-nav-link::after {
   content: attr(data-text);
@@ -270,7 +390,7 @@
 /* ---- Nav v2 links ---- */
 .royal-nav-link-v2 {
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Exo 2', 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.04em;
