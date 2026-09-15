@@ -1,9 +1,167 @@
 /* ========================================
    ROYAL / PREMIUM THEME — FINAL
    ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&family=Nerko+One&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Marcellus&family=Jost:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
+/* ---- Legacy custom font ---- */
+@font-face {
+  font-family: 'otherfont';
+  src: url('/fonts/kanit-ExtraBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Technovanza Futuristic Typography ---- */
+@font-face {
+  font-family: 'Revamped';
+  src: url('/fonts/Revamped.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.technovanza-title-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+}
+
+.technovanza-main-title {
+  font-family: 'Revamped', 'Orbitron', 'Oxanium', 'Chakra Petch', sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.technovanza-te,
+.technovanza-rest {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 15%,
+    #ebf3fa 32%,
+    #b2ccdf 46%,
+    #ffffff 50%,
+    #d6e4f0 55%,
+    #7b9bb9 80%,
+    #4a6884 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+  filter: 
+    drop-shadow(0 1px 0 #e2ecf5)
+    drop-shadow(0 2px 0 #8fa9c4)
+    drop-shadow(0 4px 0 #4c6882)
+    drop-shadow(0 6px 0 #1f2f3f)
+    drop-shadow(0 8px 10px rgba(0, 5, 15, 0.95));
+}
+
+.technovanza-year-tag {
+  font-family: 'Revamped', 'Orbitron', 'Oxanium', 'Space Grotesk', sans-serif;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #dbeafe 30%,
+    #60a5fa 65%,
+    #1d4ed8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+}
+
+/* ---- Matching Surrounding Text Colors for Technovanza ---- */
+.techno-college-title {
+  color: #f1f5f9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.techno-college-subtitle {
+  color: #94a3b8;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.techno-presents {
+  color: #38bdf8;
+  letter-spacing: 0.22em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.techno-symposium-subtitle {
+  color: #e2e8f0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.techno-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+  margin: 0.75rem auto;
+}
+.techno-divider::before,
+.techno-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7));
+}
+.techno-divider::after {
+  background: linear-gradient(-90deg, transparent, rgba(56, 189, 248, 0.7));
+}
+.techno-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: #38bdf8;
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
+}
+
+/* ---- Legacy font helpers ---- */
+.font-playfair {
+  font-family: 'Playfair Display', serif !important;
+  text-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+  text-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+}
+
+/* ---- Responsive margin ---- */
+@media (max-width: 640px) {
+  .mt-small {
+    margin-top: 20px;
+  }
+}
+
+/* ---- Legacy sympo text ---- */
+.sympo-text {
+  color: #ffd5b3;
+  text-shadow: 0 0 10px #000, 0 0 15px #000, 0 0 20px #000;
+  animation: flicker 1.5s infinite;
+}
+
+/* ---- CSS Variables ---- */
 :root {
   --accent: #A78BFA;
   --accent-light: #E4D9FF;
@@ -144,37 +302,6 @@
   box-shadow: 0 0 12px rgba(167, 139, 250, 0.35);
 }
 
-/* ---- Nav links ---- */
-.royal-nav-link {
-  position: relative;
-  font-family: 'Jost', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #d9e2f5;
-  transition: color .3s ease;
-}
-.royal-nav-link::before {
-  content: '';
-  position: absolute; left: 50%; bottom: -6px;
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent);
-  transform: translateX(-50%) scale(0);
-  transition: transform .3s ease;
-}
-.royal-nav-link::after {
-  content: '';
-  position: absolute; left: 50%; bottom: -4px;
-  width: 0; height: 1px;
-  background: var(--accent);
-  transition: width .35s ease, left .35s ease;
-}
-.royal-nav-link:hover { color: var(--accent-light); }
-.royal-nav-link:hover::after,
-.royal-nav-link.active::after { width: 100%; left: 0; }
-.royal-nav-link:hover::before,
-.royal-nav-link.active::before { transform: translateX(-50%) scale(1); }
-.royal-nav-link.active { color: var(--accent); }
-
 /* ---- Logo hover ---- */
 .royal-logo {
   position: relative;
@@ -185,7 +312,7 @@
   filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.55));
 }
 
-/* ---- Nav v2 ---- */
+/* ---- Nav bar ---- */
 .royal-nav-bar {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -196,9 +323,74 @@
   border-bottom: 1px solid rgba(167, 139, 250, 0.2);
 }
 
+/* ---- Nav links: liquid text-fill wipe with sliding caret ---- */
+.royal-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Exo 2', 'Jost', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #7c88ad;
+  padding-left: 0;
+  transition: color 0.4s ease, padding-left 0.35s ease;
+}
+
+/* caret that slides in before the label */
+.royal-nav-link::before {
+  content: "\25B8";
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  color: #FF8B6B;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: width 0.35s ease, opacity 0.3s ease, transform 0.35s ease;
+}
+
+.royal-nav-link:hover,
+.royal-nav-link.active {
+  padding-left: 14px;
+}
+
+.royal-nav-link:hover::before,
+.royal-nav-link.active::before {
+  width: 12px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* liquid fill duplicate — a coral copy of the text clipped to 0 width,
+   which expands left-to-right on hover like colour pouring in */
+.royal-nav-link::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 14px;
+  top: 0;
+  white-space: nowrap;
+  color: #FF8B6B;
+  text-shadow: 0 0 12px rgba(255, 139, 107, 0.55);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+
+.royal-nav-link:hover::after {
+  clip-path: inset(0 0 0 0);
+}
+
+.royal-nav-link.active {
+  color: #7c88ad;
+}
+
+.royal-nav-link.active::after {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---- Nav v2 links ---- */
 .royal-nav-link-v2 {
   position: relative;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Exo 2', 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
   letter-spacing: 0.04em;
@@ -290,6 +482,7 @@
   opacity: 0.85;
 }
 
+/* ---- About section ---- */
 .about-label {
   color: #f1ecff;
   letter-spacing: 0.32em;
@@ -304,79 +497,4 @@
 }
 .about-body {
   color: #d7e6f5;
-}
-
-/* ---- Nav links: liquid text-fill wipe with sliding caret ---- */
-.royal-nav-link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  font-family: 'Jost', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #7c88ad;
-  padding-left: 0;
-  transition: color 0.4s ease, padding-left 0.35s ease;
-}
-
-/* caret that slides in before the label */
-.royal-nav-link::before {
-  content: "▹";
-  display: inline-block;
-  width: 0;
-  overflow: hidden;
-  color: #FF8B6B;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: width 0.35s ease, opacity 0.3s ease, transform 0.35s ease;
-}
-
-.royal-nav-link:hover,
-.royal-nav-link.active {
-  padding-left: 14px;
-}
-
-.royal-nav-link:hover::before,
-.royal-nav-link.active::before {
-  width: 12px;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* liquid fill duplicate — a coral copy of the text clipped to 0 width,
-   which expands left-to-right on hover like colour pouring in */
-.royal-nav-link::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 14px;
-  top: 0;
-  white-space: nowrap;
-  color: #FF8B6B;
-  text-shadow: 0 0 12px rgba(255, 139, 107, 0.55);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-  pointer-events: none;
-}
-
-.royal-nav-link:hover::after {
-  clip-path: inset(0 0 0 0);
-}
-
-.royal-nav-link.active {
-  color: #7c88ad;
-}
-
-.royal-nav-link.active::after {
-  clip-path: inset(0 0 0 0);
-}
-.gradient-heading {
-  color: #ffffff;
-}
-@supports (background-clip: text) or (-webkit-background-clip: text) {
-  .gradient-heading {
-    background-image: linear-gradient(100deg, #ffffff 0%, #4fc8ff 50%, #A78BFA 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }

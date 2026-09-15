@@ -3,6 +3,7 @@ import randomColor from "randomcolor";
 import "../text.css";
 import Logo from "../utils/Img/TechLogo.jpg";
 import Card from "../Components/Card";
+import HexagonTechFrame from "../Components/HexagonTechFrame";
 
 
 
@@ -66,7 +67,7 @@ const CircuitnTech = () => {
         Non Technical Events
       </h3>
 
-      <div>
+      <HexagonTechFrame title="NON TECHNICAL EVENTS">
         <main className="card-container gap-10 relative flex flex-wrap justify-center w-full">
           {/* Loop through each event and render a Card */}
           {circuittechnicalEvents.map((card) => (
@@ -79,7 +80,7 @@ const CircuitnTech = () => {
             />
           ))}
         </main>
-      </div>
+      </HexagonTechFrame>
     </div>
   );
 };
