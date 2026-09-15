@@ -1,40 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import VanillaTilt from "vanilla-tilt";
-import "../../../styles/eventStyles.css";
+import React from "react";
+import EventDetailLayout from "../../../Components/EventDetailLayout";
 import NexusImg from "../../../assets/symposium/Sympo'25/Track2/Nexus.jpeg";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: i => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.2 + i * 0.12, duration: 0.8 }
-  })
-};
-
 const Nexus = () => {
-  const tiltRef = useRef(null);
-
-  useEffect(() => {
-    if (tiltRef.current) {
-      VanillaTilt.init(tiltRef.current, {
-        max: 15,
-        speed: 400,
-        scale: 1.06,
-        glare: true,
-        "max-glare": 0.28
-      });
-    }
-  }, []);
-
   const sectionCards = [
     {
       icon: "📖",
       heading: "Event Description",
       content: (
-        <p className="text-base md:text-lg leading-relaxed">
-          A paper presentation is a platform where students or researchers present their ideas, research findings, or innovative concepts in front of an audience. It helps in enhancing knowledge sharing, improving communication skills, and encouraging critical thinking. Through a well-structured presentation, participants can highlight the importance of their chosen topic, explain its practical applications, and discuss future developments.
+        <p className="text-base md:text-lg leading-relaxed text-slate-200">
+          <strong className="text-white">NEXUS</strong> is a premier paper presentation platform where students and researchers present their ideas, research findings, and innovative concepts in front of an expert panel. It enhances knowledge sharing, improves technical communication, and encourages critical thinking in circuit, electronics, and biomedical disciplines.
         </p>
       ),
       key: "desc"
@@ -43,12 +18,19 @@ const Nexus = () => {
       icon: "🎯",
       heading: "Objective",
       content: (
-        <ul className="list-disc ml-6 space-y-1 text-base md:text-lg">
-          <li>To provide a clear and concise understanding of the chosen topic.</li>
-          <li>To share innovative ideas, research outcomes, or problem-solving approaches.</li>
-          <li>To develop presentation and communication skills.</li>
-          <li>To encourage interaction, discussion, and knowledge exchange among peers.</li>
-          <li>To inspire future research and practical implementation in the relevant field.</li>
+        <ul className="sympo-tech-list text-base md:text-lg">
+          {[
+            "To provide a clear and concise understanding of the chosen topic.",
+            "To share innovative ideas, research outcomes, or problem-solving approaches.",
+            "To develop presentation and communication skills.",
+            "To encourage interaction, discussion, and knowledge exchange among peers.",
+            "To inspire future research and practical implementation in the relevant field."
+          ].map((obj, i) => (
+            <li key={i} className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">▶</span>
+              <span>{obj}</span>
+            </li>
+          ))}
         </ul>
       ),
       key: "objective"
@@ -57,10 +39,16 @@ const Nexus = () => {
       icon: "📜",
       heading: "Rules & Regulations",
       content: (
-        <ul className="list-none space-y-2 text-base md:text-lg">
-          <li>• Maximum 2 Member in Team</li>
-          <li>• Total 10 minutes for each team</li>
-        </ul>
+        <div className="sympo-subcard-grid">
+          <div className="sympo-subcard">
+            <div className="sympo-subcard-title"><span>👥</span> Team Size</div>
+            <div className="sympo-subcard-desc">Maximum 2-3 members per team</div>
+          </div>
+          <div className="sympo-subcard">
+            <div className="sympo-subcard-title"><span>⏰</span> Time Allotment</div>
+            <div className="sympo-subcard-desc">Total 10 minutes for each team (presentation + Q&A)</div>
+          </div>
+        </div>
       ),
       key: "rules"
     },
@@ -68,115 +56,84 @@ const Nexus = () => {
       icon: "🏆",
       heading: "Judging Criteria",
       content: (
-        <table className="w-full text-left text-base md:text-lg text-gray-100 border-collapse border border-gray-700">
-          <thead>
-            <tr className="border-b border-gray-700">
-              <th className="px-3 py-2">Criteria</th>
-              <th className="px-3 py-2">Mark</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-gray-700">
-              <td className="px-3 py-2">Technical Content</td>
-              <td className="px-3 py-2">30</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="px-3 py-2">Uniqueness/Innovativeness</td>
-              <td className="px-3 py-2">30</td>
-            </tr>
-            <tr className="border-b border-gray-700">
-              <td className="px-3 py-2">Presentation Content/Skill</td>
-              <td className="px-3 py-2">30</td>
-            </tr>
-            <tr>
-              <td className="px-3 py-2">Question and Answer</td>
-              <td className="px-3 py-2">10</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm md:text-base text-slate-200 border-collapse border border-cyan-500/20 rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-cyan-950/40 border-b border-cyan-500/30 text-cyan-300 uppercase font-semibold">
+                <th className="px-4 py-2.5">Criteria</th>
+                <th className="px-4 py-2.5">Marks</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-cyan-500/10">
+              <tr className="hover:bg-cyan-950/20">
+                <td className="px-4 py-2.5 font-medium">Technical Content</td>
+                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
+              </tr>
+              <tr className="hover:bg-cyan-950/20">
+                <td className="px-4 py-2.5 font-medium">Uniqueness / Innovativeness</td>
+                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
+              </tr>
+              <tr className="hover:bg-cyan-950/20">
+                <td className="px-4 py-2.5 font-medium">Presentation Content / Skill</td>
+                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
+              </tr>
+              <tr className="hover:bg-cyan-950/20">
+                <td className="px-4 py-2.5 font-medium">Question and Answer</td>
+                <td className="px-4 py-2.5 text-cyan-400 font-bold">10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       ),
       key: "judging"
     },
     {
       icon: "📞",
-      heading: "Contact Detail",
+      heading: "Contact Details",
       content: (
-        <div className="text-base md:text-lg leading-relaxed space-y-2 p-4 bg-gradient-to-r from-indigo-900/30 to-blue-900/30 rounded-lg border border-indigo-500/30">
+        <div className="sympo-subcard space-y-4">
           <div>
-            <strong>STAFF CO-ORDINATORS</strong><br />
-            Ms. S. SIVAJOTHI KAVITHA - AP/EEE<br />
-            Ms. S. PURNIMA -AP/BME<br />
-            Ms. S. RUDHRA - AP/EEE<br />
-            Ms. D. PRISCILLA SHARLET ASHA -AP/BME<br />
-            Dr. G. MERLIN SHEEBA PROF. /ECE<br />
-            Ms. S. BHAVANISANKARI - ASSO. PROF/ECE<br />
+            <div className="font-bold text-accent mb-2 uppercase tracking-wide text-xs">Staff Coordinators:</div>
+            <div className="text-sm md:text-base text-slate-200 leading-relaxed">
+              Ms. S. Sivajothi Kavitha (AP/EEE) • Ms. S. Purnima (AP/BME) • Ms. S. Rudhra (AP/EEE) • Ms. D. Priscilla Sharlet Asha (AP/BME) • Dr. G. Merlin Sheeba (Prof./ECE) • Ms. S. Bhavanisankari (Asso. Prof/ECE)
+            </div>
           </div>
           <div>
-            <strong>STUDENT CO-ORDINATORS</strong><br />
-            HARINI S - IV EEE (8148837923)<br />
-            PRAVIN M - III EEE<br />
-            MANOJ A - III EEE<br />
-            VISHWA DILIP M R - IV BME (8778022625)<br />
-            HARINI R – IV BME<br />
-            DIVYA R - IV ECE (9360017650)<br />
-            KAVITHA K - IV ECE
+            <div className="font-bold text-accent mb-2 uppercase tracking-wide text-xs">Student Coordinators:</div>
+            <ul className="sympo-tech-list text-sm md:text-base">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>HARINI S (IV EEE) - <a href="tel:+918148837923" className="text-accent hover:underline">8148837923</a></span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>VISHWA DILIP M R (IV BME) - <a href="tel:+918778022625" className="text-accent hover:underline">8778022625</a></span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>DIVYA R (IV ECE) - <a href="tel:+919360017650" className="text-accent hover:underline">9360017650</a></span>
+              </li>
+            </ul>
           </div>
         </div>
       ),
       key: "contact"
-    },
-
+    }
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-start justify-between max-w-7xl mx-auto p-6 gap-10 bg-gradient-to-br from-navy-900 via-blue-900 to-indigo-900 rounded-xl shadow-2xl backdrop-blur min-h-screen">
-      <motion.div
-        ref={tiltRef}
-        className="lg:w-1/2 w-full flex justify-center items-center lg:sticky lg:top-10"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="relative">
-          <img
-            src={NexusImg}
-            alt="Paper Presentation Event"
-            className="w-5/6 md:w-4/5 lg:w-full object-cover rounded-2xl shadow-2xl border-4 border-gradient"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-2xl"></div>
-        </div>
-      </motion.div>
-
-      <div className="lg:w-4/6 w-full flex flex-col gap-6 overflow-auto custom-scrollbar pb-3" style={{ maxHeight: "calc(100vh - 60px)" }}>
-        <motion.div
-          initial={{ opacity: 0, y: -30 }} 
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center lg:text-left"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text drop-shadow-lg mb-2">
-            Paper Presentation
-          </h1>
-        </motion.div>
-
-        {sectionCards.map((card, i) => (
-          <motion.div
-            custom={i}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            key={card.key}
-            className="glass-container px-6 py-5 rounded-xl shadow-glass border border-white/10 bg-black/30 backdrop-blur-md hover:bg-black/40 transition-all duration-300"
-          >
-            <div className="flex items-center mb-4 gap-3">
-              <span className="text-3xl">{card.icon}</span>
-              <h2 className="text-2xl md:text-3xl font-bold gradient-text">{card.heading}</h2>
-            </div>
-            <div className="text-gray-100">{card.content}</div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+    <EventDetailLayout
+      posterSrc={NexusImg}
+      posterAlt="Nexus Circuit Paper Presentation Event"
+      title="NEXUS"
+      subtitle="CIRCUIT PAPER PRESENTATION"
+      track="TRACK II"
+      category="Technical"
+      date="October 10, 2025"
+      team="Max 3 Members"
+      registrationUrl="https://forms.gle/dZ8AyUzLBfmS5EyF7"
+      sectionCards={sectionCards}
+    />
   );
 };
 

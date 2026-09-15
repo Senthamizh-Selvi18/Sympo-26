@@ -1,0 +1,293 @@
+/* ════════════════════════════════════════════════════════════════
+   FlipCard (fc-*) — ZenoFest2K26
+   Self-contained 3D flip; no dependency on .card or its ::before/::after.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── CSS custom property for the conic-gradient rotation ─────────────────── */
+@property --fc-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
+
+/* ── Scene: the outer fixed-size container ───────────────────────────────── */
+.fc-scene {
+  position: relative;
+  height: 22.6rem;   /* same as original .card */
+  width: 16rem;      /* same as original .card */
+  perspective: 1100px;
+  cursor: pointer;
+  /* keep layout identical to before */
+  flex-shrink: 0;
+}
+
+/* ── Animated electric cyan/blue border rings ─ */
+.fc-border-ring {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.85),
+    rgba(0, 102, 204, 0.4),
+    rgba(0, 212, 255, 0.85)
+  );
+  border-radius: 4px;
+  pointer-events: none;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.fc-border-ring--blur {
+  display: none;
+}
+
+@keyframes fc-rotate {
+  0%   { --fc-angle: 0deg; }
+  100% { --fc-angle: 360deg; }
+}
+
+/* ── Glow enhancement on hover/flip ─────────────────────────────────────── */
+.fc-scene:hover .fc-border-ring,
+.fc-scene.fc-flipped .fc-border-ring {
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.75), 0 0 24px rgba(0, 136, 255, 0.4);
+  background: linear-gradient(
+    135deg,
+    #00f0ff,
+    #0088ff,
+    #00f0ff
+  );
+}
+
+.fc-scene.fc-flipped .fc-border-ring--blur {
+  display: none;
+}
+
+/* ── Inner: rotates in 3D ─────────────────────────────────────────────────  */
+.fc-inner {
+  position: relative;
+  z-index: 1;          /* sits above the border rings */
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  will-change: transform;
+}
+
+.fc-scene.fc-flipped .fc-inner {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared face rules ────────────────────────────────────────────────────── */
+.fc-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* ── FRONT face ──────────────────────────────────────────────────────────── */
+.fc-front {
+  transform: rotateY(0deg);
+  background: #0d1a33;
+}
+
+.fc-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── BACK face ───────────────────────────────────────────────────────────── */
+.fc-back {
+  transform: rotateY(180deg);
+  background: rgba(4, 12, 32, 0.95);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1rem;
+  gap: 0.6rem;
+  text-align: center;
+  font-family: 'Inter', 'Outfit', 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Ambient radial glow */
+.fc-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 10%,  rgba(0, 212, 255, 0.2) 0%, transparent 65%),
+    radial-gradient(ellipse at 50% 90%,  rgba(0, 102, 204, 0.15) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* All back content above the glow */
+.fc-back > *:not(.fc-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Category badge */
+.fc-badge {
+  display: inline-block;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #00ddeb;
+  border: 1px solid rgba(0, 221, 235, 0.5);
+  background: rgba(0, 221, 235, 0.08);
+  white-space: nowrap;
+}
+
+/* Event title */
+.fc-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(0, 212, 255, 0.8),
+    0 0 20px rgba(0, 136, 255, 0.4);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Neon divider line */
+.fc-divider {
+  width: 72%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.9),
+    rgba(0, 136, 255, 0.7),
+    transparent
+  );
+  flex-shrink: 0;
+}
+
+/* Description */
+.fc-desc {
+  font-size: 0.7rem;
+  color: rgba(210, 230, 255, 0.9);
+  line-height: 1.55;
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+/* Meta list */
+.fc-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.fc-meta li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  font-size: 0.67rem;
+  color: rgba(200, 225, 255, 0.95);
+  font-weight: 500;
+}
+
+.fc-icon {
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Know More button */
+.fc-btn {
+  margin-top: 0.2rem;
+  padding: 0.44rem 1.15rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 212, 255, 0.75);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.25),
+    rgba(0, 102, 204, 0.25)
+  );
+  color: #e0f7ff;
+  font-size: 0.7rem;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.22s ease, box-shadow 0.22s ease, transform 0.14s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.fc-btn:hover,
+.fc-btn:focus-visible {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.55),
+    rgba(0, 102, 204, 0.55)
+  );
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.75), 0 0 28px rgba(0, 136, 255, 0.38);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.fc-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Reduced-motion: crossfade instead of 3D rotation ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fc-inner {
+    transform: none !important;
+    transition: none;
+  }
+  .fc-front {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
+  }
+  .fc-scene.fc-flipped .fc-front {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fc-back {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
+    pointer-events: none;
+  }
+  .fc-scene.fc-flipped .fc-back {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
