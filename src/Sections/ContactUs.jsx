@@ -23,11 +23,11 @@ const ContactUs = () => {
         </span>
       </div>
 
-      <a href="mailto:symposium2025@jerusalemengg.ac.in" className="hud-contact-row">
+      <a href="mailto:technovanza2026@jerusalemengg.ac.in" className="hud-contact-row">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="hud-contact-icon">
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.894 5.308c.63.424 1.648.424 2.278 0L21 8M5 19h14c1.657 0 3-1.343 3-3V7c0-1.657-1.343-3-3-3H5C3.343 4 2 5.343 2 7v9c0 1.657 1.343 3 3 3z" />
         </svg>
-        <span className="hud-contact-text">symposium2026@jerusalemengg.ac.in</span>
+        <span className="hud-contact-text">technovanza2026@jerusalemengg.ac.in</span>
       </a>
     </div>
   );

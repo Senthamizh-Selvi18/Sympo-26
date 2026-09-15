@@ -25,7 +25,7 @@ const EventContainer = () => {
   };
 
   return (
-    <div className="px-5 min-h-screen flex flex-col justify-start items-center">
+    <div className="relative z-10 px-5 min-h-screen flex flex-col justify-start items-center">
       <div className="flex justify-center mt-11 mb-10">
         <div
           ref={posterRef}

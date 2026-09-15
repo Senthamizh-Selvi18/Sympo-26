@@ -323,7 +323,7 @@
   border-bottom: 1px solid rgba(167, 139, 250, 0.2);
 }
 
-/* ---- Nav links: liquid text-fill wipe with sliding caret ---- */
+/* ---- Nav links: radar-ping hover (echoes the HexRadarIcon motif) ---- */
 .royal-nav-link {
   position: relative;
   display: inline-flex;
@@ -332,59 +332,71 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   color: #7c88ad;
-  padding-left: 0;
-  transition: color 0.4s ease, padding-left 0.35s ease;
+  padding: 7px 10px 7px 20px;
+  transition: color 0.3s ease;
 }
 
-/* caret that slides in before the label */
+/* solid ping dot, fades/scales in on hover */
 .royal-nav-link::before {
-  content: "\25B8";
-  display: inline-block;
-  width: 0;
-  overflow: hidden;
-  color: #FF8B6B;
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(167, 139, 250, 0.85);
+  transform: translateY(-50%) scale(0);
   opacity: 0;
-  transform: translateX(-6px);
-  transition: width 0.35s ease, opacity 0.3s ease, transform 0.35s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* expanding ring, only animates while hovered */
+.royal-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  transform: translateY(-50%) scale(1);
+  opacity: 0;
 }
 
 .royal-nav-link:hover,
 .royal-nav-link.active {
-  padding-left: 14px;
+  color: #f1ecff;
 }
 
 .royal-nav-link:hover::before,
 .royal-nav-link.active::before {
-  width: 12px;
+  transform: translateY(-50%) scale(1);
   opacity: 1;
-  transform: translateX(0);
 }
 
-/* liquid fill duplicate — a coral copy of the text clipped to 0 width,
-   which expands left-to-right on hover like colour pouring in */
-.royal-nav-link::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 14px;
-  top: 0;
-  white-space: nowrap;
-  color: #FF8B6B;
-  text-shadow: 0 0 12px rgba(255, 139, 107, 0.55);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-  pointer-events: none;
+.royal-nav-link:hover::after,
+.royal-nav-link.active::after {
+  opacity: 0.7;
+  animation: royal-nav-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.royal-nav-link:hover::after {
-  clip-path: inset(0 0 0 0);
+@keyframes royal-nav-ping {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.6;
+  }
+  75%,
+  100% {
+    transform: translateY(-50%) scale(3.2);
+    opacity: 0;
+  }
 }
 
 .royal-nav-link.active {
-  color: #7c88ad;
-}
-
-.royal-nav-link.active::after {
-  clip-path: inset(0 0 0 0);
+  color: var(--accent-light);
 }
 
 /* ---- Nav v2 links ---- */
