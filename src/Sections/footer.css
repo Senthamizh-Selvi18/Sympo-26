@@ -1,126 +1,293 @@
-/* ================= Footer — quiet editorial layout ================= */
+/* ================= Footer — HUD panel layout ================= */
 
 footer {
-  background: linear-gradient(135deg, #0a1a3c, #081633);
+  background: linear-gradient(135deg, #060e24, #030a1c);
   color: white;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(79, 200, 255, 0.15);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.5rem;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 1.25rem;
   }
 }
 
-.footer-col {
+/* ---- HUD panel shell with notched corners ---- */
+.hud-panel {
   position: relative;
-  width: 100%;
+  background: linear-gradient(160deg, #0c1a3ecc, #081226cc);
+  border: 1px solid rgba(79, 200, 255, 0.28);
+  border-radius: 10px;
+  padding: 1.4rem 1.3rem 1.3rem;
+  clip-path: polygon(
+    16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%,
+    0 100%, 0 16px
+  );
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.footer-heading {
-  position: relative;
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #eaf3ff;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.65rem;
+.hud-panel:hover {
+  border-color: rgba(79, 200, 255, 0.6);
+  box-shadow: 0 0 24px rgba(79, 200, 255, 0.16);
 }
 
-.footer-heading::after {
+/* corner ticks, echoing the notch cut */
+.hud-panel::before,
+.hud-panel::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 26px;
-  background: #4fc8ff;
-  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  opacity: 0.9;
 }
 
-/* ---- One shared hover language, used everywhere below ---- */
-.footer-link {
+.hud-panel::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #4fc8ff;
+  border-left: 2px solid #4fc8ff;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.hud-panel::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid #4fc8ff;
+  border-right: 2px solid #4fc8ff;
+  clip-path: polygon(100% 100%, 100% 0, 0 100%);
+}
+
+/* ---- Panel header ---- */
+.hud-header {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.08rem;
-  font-weight: 500;
-  line-height: 1.65;
-  color: #d5deef;
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  padding: 0.3rem 0;
-  transition: color 0.35s ease, letter-spacing 0.35s ease;
-  cursor: pointer;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
 }
 
-.footer-link svg {
+.hud-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
   color: #4fc8ff;
-  transition: color 0.35s ease, transform 0.35s ease;
 }
 
-.footer-link:hover {
-  color: #8ff2ff;
-  letter-spacing: 0.03em;
+.hud-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: #eaf6ff;
+  white-space: nowrap;
 }
 
-.footer-link:hover svg {
-  color: #8ff2ff;
-  transform: translateY(-1px);
+.hud-header-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(79, 200, 255, 0.5), transparent);
+  margin-left: 0.3rem;
 }
 
-/* address needs to sit as plain text, same rule applied via same class */
-.contact-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.08rem;
-  font-weight: 500;
-  line-height: 1.65;
-  color: #d5deef;
-  letter-spacing: 0.01em;
-  padding: 0.3rem 0;
-  display: block;
-  transition: color 0.35s ease, letter-spacing 0.35s ease;
-}
-
-.contact-text:hover {
-  color: #8ff2ff;
-  letter-spacing: 0.03em;
-}
-
-/* ---- Map: minimal, quiet reveal ---- */
-.map-reveal {
-  border-radius: 3px;
+/* ---- Map ---- */
+.hud-map {
+  position: relative;
+  border-radius: 6px;
   overflow: hidden;
-  margin-top: 0.4rem;
+  margin-bottom: 1rem;
 }
 
-.map-reveal iframe {
+.hud-map iframe {
   display: block;
   width: 100%;
-  height: 170px;
-  filter: grayscale(0.65) brightness(0.8);
-  transition: filter 0.6s ease;
+  height: 130px;
+  filter: saturate(0.85) brightness(0.95);
+  transition: filter 0.5s ease;
 }
 
-.map-reveal:hover iframe {
-  filter: grayscale(0) brightness(1);
+.hud-panel:hover .hud-map iframe {
+  filter: saturate(1) brightness(1);
 }
 
-@media (max-width: 767px) {
-  .map-reveal iframe {
-    height: 200px;
-  }
+.hud-college-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.hud-college-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #4fc8ff;
+  margin-top: 2px;
+}
+
+.hud-college-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #b7c4e0;
+}
+
+.hud-college-text strong {
+  display: block;
+  color: #e4ecfb;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---- Connect panel: pill social links ---- */
+.hud-social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(79, 200, 255, 0.22);
+  border-radius: 999px;
+  margin-bottom: 0.7rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s ease;
+}
+
+.hud-social:hover {
+  border-color: rgba(79, 200, 255, 0.65);
+  background: rgba(79, 200, 255, 0.06);
+  transform: translateX(3px);
+}
+
+.hud-social-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hud-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hud-social-icon.instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+  color: #fff;
+}
+
+.hud-social-icon.linkedin {
+  background: #0a66c2;
+  color: #fff;
+}
+
+.hud-social-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #d5deef;
+}
+
+.hud-social-arrow {
+  color: #4fc8ff;
+  transition: transform 0.3s ease;
+}
+
+.hud-social:hover .hud-social-arrow {
+  transform: translateX(3px);
+}
+
+.hud-stay-connected {
+  margin-top: 1.2rem;
+}
+
+.hud-stay-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #7f92b8;
+  margin-bottom: 0.2rem;
+}
+
+.hud-stay-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  background: linear-gradient(90deg, #4fc8ff, #A78BFA);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hud-stay-underline {
+  margin-top: 0.5rem;
+  width: 46px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #4fc8ff, #A78BFA, transparent);
+}
+
+/* ---- Reach out panel ---- */
+.hud-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+}
+
+.hud-contact-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #4fc8ff;
+  margin-top: 2px;
+  transition: color 0.3s ease;
+}
+
+.hud-contact-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #c3ceec;
+  transition: color 0.3s ease;
+}
+
+.hud-contact-row:hover .hud-contact-text {
+  color: #eaf3ff;
+}
+
+.hud-contact-row:hover .hud-contact-icon {
+  color: #8ff2ff;
+}
+
+/* decorative dots, bottom-right of panel */
+.hud-dots {
+  position: absolute;
+  bottom: 10px;
+  right: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+.hud-dots span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(79, 200, 255, 0.5);
 }

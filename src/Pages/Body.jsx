@@ -365,9 +365,7 @@ const Body = () => {
 
       <SectionDivider />
 
-      <ScrollReveal animation="fadeInUp">
-        <NewAbout style="true" />
-      </ScrollReveal>
+      <NewAbout compact />
 
       <SectionDivider />
 

@@ -54,11 +54,18 @@
   transition: color 0.3s ease-in-out;
 } */
 
+/* ============================================================
+   FIX: added `color` here so any text anywhere in the app that
+   doesn't set its own explicit color no longer silently falls
+   back to the browser default (black on this dark navy bg —
+   effectively invisible).
+   ============================================================ */
 body {
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
   background-color: var(--bg-background);
+  color: #e4ecfb;
 }
 
 
@@ -113,7 +120,7 @@ body {
 .new-about-container {
   display: flex;
   align-items: center;
-  border: 2px solid white; /* Aligns items vertically centered */ /* Places text on the left and cubes on the right */ /* Adds space between the text content and the cubes */
+  border: 2px solid white;
 }
 
 .typing-cursor::after {
@@ -140,7 +147,7 @@ body {
   width: calc(100% - 2rem);
   max-width: 1200px;
   cursor: pointer;
-  overflow: hidden; /* pseudo-element bound ah veikka */
+  overflow: hidden;
 }
 
 .glassmorphic-container::before {
@@ -159,23 +166,29 @@ body {
 
 .glassmorphic-container > * {
   position: relative;
-  z-index: 1; /* content visible ah veikka */
+  z-index: 1;
 }
 
+/* ============================================================
+   FIX: this rule was setting `color: black` on hover, which every
+   child text node without its own stronger override inherited —
+   black text on a dark navy page reads as "text disappeared."
+   That's the bug that was reported throughout this thread. The
+   line has been removed; the hover transition itself is kept.
+   ============================================================ */
 .glassmorphic-container:hover {
-  color: black;
   transition: all 1s ease;
 }
 
 .cubes {
-  position: relative; /* Changed from absolute to relative for proper alignment */
+  position: relative;
   display: flex;
-  justify-content: center; /* Centers the cubes horizontally */
-  align-items: center; /* Centers the cubes vertically */
+  justify-content: center;
+  align-items: center;
   transform-style: preserve-3d;
-  width: 200px; /* Adjust based on your layout needs */
-  height: 200px; /* Adjust based on your layout needs */
-  perspective: 1000px; /* Adds a perspective for 3D effect */
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
 }
 
 .loop {
@@ -302,10 +315,3 @@ body {
 .item:nth-child(6):after {
   color: #E180FF;
 }
-
-
-
-
-
-
-

@@ -4,6 +4,17 @@ import React, { useEffect, useRef, useState } from "react";
  * Wraps children and adds an animate.css class when the element
  * scrolls into view. Animation plays once by default.
  *
+ * FIX: threshold changed from 0.15 to 0, and rootMargin added.
+ * Previously, threshold:0.15 required 15% of the WRAPPED ELEMENT'S
+ * TOTAL HEIGHT to be visible in the viewport at once. For short
+ * elements that's fine, but for tall wrapped sections (taller than
+ * ~6-7x the viewport height), that 15% ratio can mathematically
+ * never be reached on some screen sizes — so `visible` never
+ * flips to true and the content stays invisible forever.
+ * threshold:0 fires the instant ANY part of the element enters the
+ * viewport, regardless of the element's total height, so this bug
+ * class is eliminated entirely.
+ *
  * Usage:
  * <ScrollReveal animation="fadeInUp"><Faq /></ScrollReveal>
  */
@@ -12,7 +23,7 @@ const ScrollReveal = ({
   animation = "fadeInUp",
   delay = 0,
   duration = 800,
-  threshold = 0.15,
+  threshold = 0,
   once = true,
   className = "",
 }) => {
@@ -32,7 +43,7 @@ const ScrollReveal = ({
           setVisible(false);
         }
       },
-      { threshold }
+      { threshold, rootMargin: "0px 0px -10% 0px" }
     );
 
     observer.observe(node);

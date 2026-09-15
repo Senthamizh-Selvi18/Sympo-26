@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#081633]/90 backdrop-blur-md border-b border-[rgba(167,139,250,0.22)]">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#081633]/90 backdrop-blur-md border-b border-[rgba(255,139,107,0.2)]">
         <div className="flex items-center justify-between w-full px-4 py-0">
           <a href="/" className="royal-logo h-16 flex items-center">
             <img src={logo} alt="Technovanza Logo" className="w-16 h-16 object-contain" />
@@ -31,6 +31,7 @@ const Header = () => {
               <li key={item.path}>
                 <Link
                   to={item.path}
+                  data-text={item.label}
                   className={"royal-nav-link" + (currentPath === item.path ? " active" : "")}
                 >
                   {item.label}
@@ -47,15 +48,15 @@ const Header = () => {
             aria-expanded={isMenuOpen}
           >
             <span
-              className="block h-[2px] w-6 bg-[#A78BFA] transition-transform duration-300"
+              className="block h-[2px] w-6 bg-[#FF8B6B] transition-transform duration-300"
               style={isMenuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}}
             />
             <span
-              className="block h-[2px] w-6 bg-[#A78BFA] transition-opacity duration-300"
+              className="block h-[2px] w-6 bg-[#FF8B6B] transition-opacity duration-300"
               style={isMenuOpen ? { opacity: 0 } : {}}
             />
             <span
-              className="block h-[2px] w-6 bg-[#A78BFA] transition-transform duration-300"
+              className="block h-[2px] w-6 bg-[#FF8B6B] transition-transform duration-300"
               style={isMenuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}}
             />
           </button>
@@ -65,7 +66,7 @@ const Header = () => {
       {/* Slide-in mobile drawer */}
       <div
         id="mobile-nav"
-        className={`fixed top-0 right-0 h-screen w-64 z-40 bg-[#081633] border-l border-[rgba(167,139,250,0.25)] shadow-2xl transform transition-transform duration-400 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-screen w-64 z-40 bg-[#081633] border-l border-[rgba(255,139,107,0.25)] shadow-2xl transform transition-transform duration-400 ease-in-out md:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -74,6 +75,7 @@ const Header = () => {
             <li key={item.path}>
               <Link
                 to={item.path}
+                data-text={item.label}
                 onClick={closeMenu}
                 className={"royal-nav-link text-lg" + (currentPath === item.path ? " active" : "")}
               >

@@ -305,3 +305,78 @@
 .about-body {
   color: #d7e6f5;
 }
+
+/* ---- Nav links: liquid text-fill wipe with sliding caret ---- */
+.royal-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #7c88ad;
+  padding-left: 0;
+  transition: color 0.4s ease, padding-left 0.35s ease;
+}
+
+/* caret that slides in before the label */
+.royal-nav-link::before {
+  content: "▹";
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  color: #FF8B6B;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: width 0.35s ease, opacity 0.3s ease, transform 0.35s ease;
+}
+
+.royal-nav-link:hover,
+.royal-nav-link.active {
+  padding-left: 14px;
+}
+
+.royal-nav-link:hover::before,
+.royal-nav-link.active::before {
+  width: 12px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* liquid fill duplicate — a coral copy of the text clipped to 0 width,
+   which expands left-to-right on hover like colour pouring in */
+.royal-nav-link::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 14px;
+  top: 0;
+  white-space: nowrap;
+  color: #FF8B6B;
+  text-shadow: 0 0 12px rgba(255, 139, 107, 0.55);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+
+.royal-nav-link:hover::after {
+  clip-path: inset(0 0 0 0);
+}
+
+.royal-nav-link.active {
+  color: #7c88ad;
+}
+
+.royal-nav-link.active::after {
+  clip-path: inset(0 0 0 0);
+}
+.gradient-heading {
+  color: #ffffff;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .gradient-heading {
+    background-image: linear-gradient(100deg, #ffffff 0%, #4fc8ff 50%, #A78BFA 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

@@ -1,229 +1,259 @@
-/* General Styles */
+/* ================= Contact — coordinator HUD cards (single row) ================= */
+
 .contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
 }
 
-.tracks-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-}
-
-.track-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  max-width: 400px; /* Consistent column width */
+.contact-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  background: linear-gradient(100deg, #4fc8ff 0%, #A78BFA 65%, #C9B8FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .coordinators-row {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1.75rem);
 }
 
-/* Universe Card Design */
-.anim-container {
-  width: 300px;
-  height: 190px;
-  background: transparent;
+/* ---- Outer wrapper carries the gradient octagon "border" ---- */
+.coord-card-outer {
   position: relative;
-  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.438);
-  overflow: hidden;
-  border-radius: 10px;
+  padding: 1.5px;
+  clip-path: polygon(
+    18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%,
+    0 100%, 0 18px
+  );
+  background: linear-gradient(135deg, #4fc8ff 0%, #6f8fff 35%, #A78BFA 70%, #4fc8ff 100%);
+  transition: filter 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
 }
 
-.anim-card {
-  cursor: default;
-  width: 100%;
+.coord-card-outer:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 10px 34px rgba(167, 139, 250, 0.28);
+}
+
+/* ---- Inner card: dark fill, same octagon cut, slightly inset ---- */
+.coord-card {
+  position: relative;
   height: 100%;
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.6rem, 2vw, 1.5rem) clamp(1rem, 2.5vw, 1.75rem);
+  text-align: center;
+  background: linear-gradient(160deg, #0a1530 0%, #060d20 100%);
+  clip-path: polygon(
+    17px 0, 100% 0, 100% calc(100% - 17px), calc(100% - 17px) 100%,
+    0 100%, 0 17px
+  );
+}
+
+/* ---- Corner tabs sticking outward, like the reference ---- */
+.coord-tab {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.coord-tab-tl {
+  top: -3px;
+  left: -3px;
+  border-top: 2px solid #4fc8ff;
+  border-left: 2px solid #4fc8ff;
+  clip-path: polygon(0 0, 60% 0, 0 60%);
+}
+
+.coord-tab-tr {
+  top: -3px;
+  right: -3px;
+  border-top: 2px solid #A78BFA;
+  border-right: 2px solid #A78BFA;
+  clip-path: polygon(40% 0, 100% 0, 100% 60%);
+}
+
+.coord-tab-bl {
+  bottom: -3px;
+  left: -3px;
+  border-bottom: 2px solid #A78BFA;
+  border-left: 2px solid #A78BFA;
+  clip-path: polygon(0 40%, 0 100%, 60% 100%);
+}
+
+.coord-tab-br {
+  bottom: -3px;
+  right: -3px;
+  border-bottom: 2px solid #4fc8ff;
+  border-right: 2px solid #4fc8ff;
+  clip-path: polygon(40% 100%, 100% 100%, 100% 40%);
+}
+
+/* ---- Avatar ---- */
+.coord-avatar-wrap {
   position: relative;
-  z-index: 2;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-bottom: clamp(0.75rem, 2vw, 1.4rem);
+}
+
+.coord-avatar-ring {
+  position: relative;
+  width: clamp(44px, 9vw, 64px);
+  height: clamp(44px, 9vw, 64px);
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #212121;
-  background: linear-gradient(280deg,#F39F5A,#e8bce8);
-  border: 1px solid rgba(235, 169, 15, 0.827);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 16px rgba(247, 23, 23, 0.023); /* Enhanced shadow effect */
-  border-radius: 10px;
-  transition: all ease 0.3s;
+  overflow: hidden;
+  background: #060e24;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#060e24, #060e24),
+    linear-gradient(135deg, #4fc8ff, #A78BFA);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.35);
+  transition: box-shadow 0.4s ease;
 }
 
-.anim-container::after,
-.anim-container::before {
-  width: 100px;
-  height: 100px;
-  content: "";
+.coord-card-outer:hover .coord-avatar-ring {
+  box-shadow: 0 0 24px rgba(167, 139, 250, 0.6);
+}
+
+.coord-avatar-icon {
+  width: 46%;
+  height: 46%;
+  color: #cdd9f5;
+}
+
+/* single diagonal sheen sweep — same mechanic as ShineLogo on the About page */
+.coord-sheen {
   position: absolute;
-  border-radius: 50%;
-  transition: 0.5s linear;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  transform: translateX(0%);
 }
 
-  /* .anim-container::after {
-      top: -10px;
-      left: -10px;
-      background-color: rgb(130, 6, 255);
-      animation: animFirst 5s linear infinite;
-  }
- 
-  .anim-container::before {
-      background-color: rgb(175, 7, 181);
-      top: 70%;
-      left: 70%;
-      animation: animSecond 5s linear infinite;
-      animation-delay: 3s;
-  } */
-
-.anim-container:hover {
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.432); /* Deeper shadow on hover */
+.coord-card-outer:hover .coord-sheen {
+  transform: translateX(280%);
+  transition: transform 0.9s ease;
 }
 
-.anim-container:hover::after {
-  left: 190px;
-  transform: scale(1.2);
+/* short connector line beside the avatar, like the reference */
+.coord-avatar-connector {
+  position: absolute;
+  top: 30%;
+  left: calc(50% + clamp(24px, 5vw, 34px));
+  width: clamp(24px, 5vw, 40px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(79, 200, 255, 0.7), transparent);
+  display: none;
 }
 
-.anim-container:hover::before {
-  left: -10px;
-  transform: scale(1.2);
-}
-
-/* Gradient Background for Highlight */
-.grad {
-  color: linear-gradient(280deg, #AE445A, #d86608);
-}
-
-/* Text Adjustments Inside Card */
-.anim-card h3 {
-  background: linear-gradient(280deg, #662449, #445194);
-  -webkit-text-fill-color: transparent; /* Makes the text fill transparent */
-  -webkit-background-clip: text; /* Ensures the background is clipped to text */
-  background-clip: text; /* Ensures the background is clipped to text */
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.anim-card p {
-  color: #AE445A;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .tracks-container {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .track-column {
-    max-width: 100%;
+@media (min-width: 640px) {
+  .coord-avatar-connector {
+    display: block;
   }
 }
 
-/* Glass Button Style */
-.glass-button {
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-  color:#451952; /* Text color */
-  font-weight: 600; /* Adds the blur effect behind the button */
-  box-shadow: 0 4px 6px #AE445A; /* Soft shadow for depth */
-  transition: background 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
- 
+/* ---- Name / role ---- */
+.coord-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.68rem, 1.9vw, 0.98rem);
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+  transition: color 0.35s ease;
 }
 
-.glass-button:hover {
-  background:#f1b07a ; /* Darker semi-transparent background on hover */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+.coord-card-outer:hover .coord-name {
+  color: #eaf3ff;
 }
 
-.glass-button:focus {
-  outline: none;
+.coord-role {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.5rem, 1.3vw, 0.68rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6fc8ff;
+  margin-bottom: clamp(0.85rem, 2.5vw, 1.4rem);
 }
 
-/* Comic Sans style for everything inside the contact card */
-.comicCard {
-font-family: "Comic Sans MS", "Comic Sans", cursive;
+/* ---- Contact pill button ---- */
+.coord-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.25rem, 1vw, 0.5rem);
+  padding: clamp(0.35rem, 1.4vw, 0.55rem) clamp(0.6rem, 2.4vw, 1.2rem);
+  border-radius: 999px;
+  border: 1px solid rgba(167, 139, 250, 0.55);
+  background: rgba(167, 139, 250, 0.05);
+  color: #e4e9f7;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.62rem, 1.7vw, 0.85rem);
+  cursor: pointer;
+  transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Optional: tweak sizes individually if needed */
-.comicCard h3 {
-font-size: 1.2rem; /* bigger for names */
-font-weight: bold;
-letter-spacing: 1px;
+.coord-contact-icon {
+  width: clamp(11px, 2.6vw, 15px);
+  height: clamp(11px, 2.6vw, 15px);
+  color: #4fc8ff;
+  transition: color 0.3s ease;
 }
 
-.comicCard p {
-font-size: 0.95rem;
+.coord-contact-arrow {
+  width: clamp(10px, 2.2vw, 13px);
+  height: clamp(10px, 2.2vw, 13px);
+  color: #A78BFA;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.comicCard button {
-font-family: "Comic Sans MS", "Comic Sans", cursive;
-font-weight: bolder;}
-
-/* Contact Card Glassmorphic Hover Effect */
-.anim-card {
-position:relative;
-overflow: hidden;
-z-index: 1;
-border-radius: 10px;
-background: transparent; /* no background directly */
-transition: all 0.8s ease;
+.coord-contact-btn:hover {
+  border-color: rgba(167, 139, 250, 0.9);
+  background: rgba(167, 139, 250, 0.16);
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.3);
 }
 
-/* Default background */
-
-
-/* Hover background */
-.anim-card:hover::before {
-background: linear-gradient(135deg, #e8bcb9, #933c4d);
-}
-.anim-card::before {
-content: "";
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-border-radius: 10px;
-background: transparent;
-z-index: 0;
-transition: background 0.8s ease;
+.coord-contact-btn:hover .coord-contact-icon {
+  color: #8ff2ff;
 }
 
-
-/* Text & button always above */
-.anim-card > * {
-position: relative;
-z-index: 1;
-transition: color 0.8s ease;
+.coord-contact-btn:hover .coord-contact-arrow {
+  color: #E4D9FF;
+  transform: translateX(3px);
 }
 
-/* Default text color */
-.anim-card h3,
-.anim-card button {
-color: #F39F5A; /* dark text */
+/* ---- Diagonal hazard-stripe ticks, bottom-left ---- */
+.coord-ticks {
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  display: flex;
+  gap: 2px;
+  z-index: 3;
 }
 
-
-/* Hover text color */
-.anim-card:hover .sname
-.anim-card:hover h3,
-.anim-card:hover p,
-.anim-card:hover button {
-color: #fff; /* white text */
+.coord-ticks span {
+  width: 2px;
+  height: clamp(6px, 1.6vw, 10px);
+  background: linear-gradient(180deg, #4fc8ff, #A78BFA);
+  transform: skewX(-20deg);
+  opacity: 0.75;
 }
