@@ -86,14 +86,14 @@ const StaticGlowLogo = ({ src, alt }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className="relative w-full flex flex-col items-center"
+      className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto flex flex-col items-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <img
         src={src}
         alt={alt}
-        className="max-w-full md:max-w-[80%] rounded-lg"
+        className="w-full h-auto rounded-lg mx-auto block"
         style={{
           filter: hovered
             ? "drop-shadow(0 0 16px rgba(167,139,250,0.5)) brightness(1.06)"
@@ -405,8 +405,11 @@ const NewAbout = ({ compact = false }) => {
           <span style={safeText("#4fc8ff")}>2026-&apos;27</span>
         </h2>
 
-        <div className="flex flex-col md:flex-row items-start w-full">
-          <div className="md:w-[60%] w-full font-body-royal text-base md:text-lg leading-relaxed text-justify md:pr-6" style={safeText("#c3ceec")}>
+        {/* items-start -> items-center so the logo on the right sits
+            vertically centered against the text block on the left,
+            instead of pinned to the top of the row. */}
+        <div className="grid grid-cols-1 md:grid-cols-[60%_40%] items-center w-full gap-6 md:gap-0">
+          <div className="w-full font-body-royal text-base md:text-lg leading-relaxed text-justify md:pr-6" style={safeText("#c3ceec")}>
             <p>
               Technovanza is where innovation meets imagination, bringing
               together aspiring engineers, emerging ideas, and technology
@@ -425,7 +428,7 @@ const NewAbout = ({ compact = false }) => {
             </div>
           </div>
 
-          <div className="md:w-[40%] w-full mt-6 md:mt-0 flex justify-center">
+          <div className="w-full h-full grid place-items-center">
             <StaticGlowLogo src={Image} alt="Technovanza Logo" />
           </div>
         </div>

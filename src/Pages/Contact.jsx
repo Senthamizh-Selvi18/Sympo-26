@@ -1,7 +1,11 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import "./styles/Contact.css";
 import Footer from "../Sections/Footer";
 import "../text.css";
+
+// Flip this to true whenever you're ready to make the contact page live.
+const SHOW_CONTACT_PAGE = false;
 
 const Contact = () => {
   // Real coordinators are filled in. Entries below marked with a comment
@@ -106,6 +110,10 @@ const Contact = () => {
     </div>
   );
 
+  if (!SHOW_CONTACT_PAGE) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <>
       <div className="contact-container bg-transparent text-white">
@@ -114,7 +122,7 @@ const Contact = () => {
         {tracks.map((track) => (
           <div key={track.trackName} className="track-section">
             <div className="track-heading-row">
-              <span className="track-badge">{track.coordinators.length} COORDINATORS</span>
+              
               <h2 className="track-title">{track.trackName}</h2>
               <span className="track-rule" />
             </div>

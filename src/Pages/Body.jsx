@@ -216,9 +216,10 @@ const CountdownBox = ({ days }) => (
 
 /* ===================================================================
    TemptingCTAButton — "wax seal" beacon button.
-   Ties directly into the popup copy ("before the seal shuts"):
-   a small seal glyph that cracks open on hover, pulse rings
-   radiating outward, compact single-piece shape (no stub/barcode).
+   Same footprint as the original (py-3.5 px-7); label uses a
+   bolder weight, wider tracking, a soft white-to-cyan gradient
+   fill, and a subtle glow so it reads as more "alive" and slightly
+   larger without the button itself growing.
 =================================================================== */
 const TemptingCTAButton = ({ children, onClick }) => {
   const [hovered, setHovered] = useState(false);
@@ -278,7 +279,16 @@ const TemptingCTAButton = ({ children, onClick }) => {
             <span className="w-2 h-[2.5px] bg-[#0B1428] rounded-full" />
           </motion.span>
 
-          <span className="relative z-10 font-mono text-sm font-bold tracking-[0.06em] text-white whitespace-nowrap">
+          <span
+            className="relative z-10 font-mono text-base sm:text-lg font-black tracking-[0.1em] whitespace-nowrap uppercase"
+            style={{
+              background: "linear-gradient(180deg, #ffffff 0%, #cfeaff 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textShadow: "0 0 12px rgba(79,200,255,0.55)",
+            }}
+          >
             {children}
           </span>
 
