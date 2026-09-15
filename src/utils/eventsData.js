@@ -1,10 +1,9 @@
-import OratioImg from "../assets/symposium/Sympo'25/Track1/Oratio.png";
-import Site2SyncImg from "../assets/symposium/Sympo'25/Track1/Site2sync.jpg";
-import SynaptiQImg from "../assets/symposium/Sympo'25/Track1/SynaptiQ.png";
+import PromptRushImg from "../assets/symposium/Sympo'25/Track1/PromptRush.png";
+import VintavizImg from "../assets/symposium/Sympo'25/Track1/Vintaviz.jpg";
 import FlipsterImg from "../assets/symposium/Sympo'25/Track1/FLIPSTER.jpg";
-import EscapeRoomImg from "../assets/symposium/Sympo'25/Track1/escaperoom.png";
-import TriSparkImg from "../assets/symposium/Sympo'25/Track1/TriSpark.png";
-import VizYourWayImg from "../assets/symposium/Sympo'25/Track1/VIZYOURWAY.png";
+import CyberverseImg from "../assets/symposium/Sympo'25/Track1/Cyberverse.jpg";
+import CyphoraImg from "../assets/symposium/Sympo'25/Track1/Cyphora.jpg";
+import WhoLockedYouImg from "../assets/symposium/Sympo'25/Track1/WhoLockedYou.jpg";
 
 import CinephiliaImg from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
 import PotpurriImg from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
@@ -22,94 +21,83 @@ import TrackOTronImg from "../assets/symposium/Sympo'25/Track2/TRACK TRON.jpeg";
 export const track1TechnicalEvents = [
   {
     id: 0,
-    title: "Oratio",
-    label: "Oratio",
+    title: "Prompt Rush",
+    label: "Prompt Rush",
     category: "Technical • Track I",
     description:
-      "A national-level paper presentation platform to showcase research, creativity, and technological innovation with clarity and impact.",
-    date: "Oct 10, 2025",
-    team: "Max 2 Members",
-    path: "/oratio",
-    imageSrc: OratioImg,
-    altText: "Oratio",
+      "An innovative AI and prompt engineering arena where participants write creative prompts, solve tech challenges, and push AI productivity to bigger possibilities.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members",
+    path: "/promptRush",
+    imageSrc: PromptRushImg,
+    altText: "Prompt Rush",
   },
   {
     id: 1,
-    title: "Site2Sync",
-    label: "Site2Sync",
+    title: "VINTAVIZ",
+    label: "VINTAVIZ",
     category: "Technical • Track I",
     description:
-      "A fast-paced web development sprint where participants debug, design, and build a fully responsive mini website under time constraints.",
-    date: "Oct 10, 2025",
-    team: "2 - 3 Members",
-    path: "/site2Sync",
-    imageSrc: Site2SyncImg,
-    altText: "Site2Sync",
+      "A carnival of ideas, innovation & inspiration! Observe patterns, analyze insights, visualize findings, and outsmart the data in this premier analytics showcase.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members",
+    path: "/vintaviz",
+    imageSrc: VintavizImg,
+    altText: "VINTAVIZ",
   },
   {
     id: 2,
-    title: "SynaptiQ",
-    label: "SynaptiQ",
-    category: "Technical • Track I",
-    description:
-      "A multi-round technical gauntlet testing logical thinking, algorithmic debugging, programming, and generative AI prompt engineering.",
-    date: "Oct 10, 2025",
-    team: "1 - 2 Members",
-    path: "/synaptiq",
-    imageSrc: SynaptiQImg,
-    altText: "SynaptiQ",
-  },
-  {
-    id: 3,
-    title: "FLIPSTER",
+    title: "FLIPSTER 2.0",
     label: "FLIPSTER",
     category: "Technical • Track I",
     description:
-      "The ultimate quiz twist challenge testing your intuition, quick decisions, logos, taglines, and domain expertise under the clock.",
-    date: "Oct 10, 2025",
+      "The ultimate tech hustle! Put your intuition, brand awareness, tech acumen, and fast decision-making to the test to think, solve, and win exciting prizes.",
+    date: "Oct 10, 2026",
     team: "2 Members",
+    prize: "Exciting Prizes",
     path: "/flipster",
     imageSrc: FlipsterImg,
-    altText: "FLIPSTER",
+    altText: "FLIPSTER 2.0",
+  },
+  {
+    id: 3,
+    title: "CYBERVERSE",
+    label: "CYBERVERSE",
+    category: "Technical • Track I",
+    description:
+      "An intense Capture The Flag (CTF) showdown! Decrypt the unknown across web exploitation, cryptography, digital forensics, reverse engineering/PWN, and misc puzzles.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members",
+    path: "/cyberverse",
+    imageSrc: CyberverseImg,
+    altText: "CYBERVERSE",
   },
   {
     id: 4,
-    title: "Escape Room 2.0",
-    label: "EscapeRoom",
+    title: "CYPHORA",
+    label: "CYPHORA",
     category: "Technical • Track I",
     description:
-      "Challenge your technical acuity, cryptographic decoding skills, and logical deductions through a gripping two-stage escape race.",
-    date: "Oct 10, 2025",
-    team: "2 - 3 Members",
-    path: "/escaperoom",
-    imageSrc: EscapeRoomImg,
-    altText: "EscapeRoom",
+      "A cutting-edge machine learning and intelligent systems showdown challenging participants to regenerate data patterns, evolve AI models, and reverse-engineer blackbox algorithms.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members",
+    path: "/cyphora",
+    imageSrc: CyphoraImg,
+    altText: "CYPHORA",
   },
   {
     id: 5,
-    title: "TriSpark",
-    label: "TriSpark",
+    title: "WHO LOCKED YOU?",
+    label: "WHO LOCKED YOU?",
     category: "Technical • Track I",
     description:
-      "An intercollegiate coding battle focusing on algorithmic prowess, rapid debugging, and progressive code-based problem solving.",
-    date: "Oct 10, 2025",
+      "An intense cybersecurity and technical investigation challenge! Decrypt hidden locks, solve forensic clues, bypass digital barriers, and unmask the rogue entity.",
+    date: "Oct 10, 2026",
     team: "1 - 2 Members",
-    path: "/triSpark",
-    imageSrc: TriSparkImg,
-    altText: "TriSpark",
-  },
-  {
-    id: 6,
-    title: "Viz Your Way",
-    label: "vizyourway",
-    category: "Technical • Track I",
-    description:
-      "Two-round data visualization competition featuring a rapid-fire quiz quest followed by creative data interpretation and dashboarding.",
-    date: "Oct 10, 2025",
-    team: "2 Members",
-    path: "/vizyourway",
-    imageSrc: VizYourWayImg,
-    altText: "vizyourway",
+    prize: "Enter to Win",
+    path: "/whoLockedYou",
+    imageSrc: WhoLockedYouImg,
+    altText: "WHO LOCKED YOU?",
   },
 ];
 

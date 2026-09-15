@@ -1,85 +1,86 @@
 import React from "react";
+import { FaBrain, FaBolt, FaLayerGroup, FaGavel, FaTrophy, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/FLIPSTER.jpg";
 
 const Flipster = () => {
   const sectionCards = [
     {
-      icon: "🧠",
+      icon: <FaBrain size={24} />,
       heading: "Event Description",
       content: (
         <div className="space-y-3 text-slate-200">
-          <p className="text-base md:text-lg leading-relaxed font-semibold text-cyan-300">
-            "Flip the Quiz, Twist Your Mind!" 🎉
+          <p className="text-base md:text-lg leading-relaxed font-semibold text-rose-400">
+            "THINK • SOLVE • WIN — The Tech Hustle!" ⚡
           </p>
           <p className="text-base md:text-lg leading-relaxed">
-            <strong className="text-white">FLIPSTER: The Ultimate Quiz Twist Challenge</strong> is an engaging and fast-paced event designed to test your <span className="highlight px-2 py-0.5 rounded">knowledge</span>, <span className="highlight px-2 py-0.5 rounded">intuition</span>, and <span className="highlight px-2 py-0.5 rounded">strategic thinking</span>. Dive into a world of logos, taglines, domains, and rapid-fire rounds where <span className="text-primary font-semibold">wit, teamwork, and speed</span> will decide the leaderboard.
+            Presented by the Department of <strong className="text-white">Computer Science & Business Systems (CS & BS)</strong>, <strong className="text-white">FLIPSTER 2.0</strong> is a high-octane technical quiz and strategic problem-solving gauntlet. Test your reflexes, brand awareness, tech acumen, and logical thinking under pressure. Quick decisions, sharp intuition, and collaborative synergy are your keys to climbing the leaderboard and winning exciting prizes!
           </p>
         </div>
       ),
       key: "desc"
     },
     {
-      icon: "🎯",
-      heading: "Event Objectives",
+      icon: <FaBolt size={24} />,
+      heading: "Event Highlights",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
           {[
-            "Encourage quick thinking and teamwork through a fun quiz format",
-            "Test participants' ability to identify logos, taglines, and domains",
-            "Promote accuracy, speed, and strategic answering under pressure",
-            "Provide an engaging and competitive quiz experience"
-          ].map((objective, index) => (
+            "Fast-paced quiz dynamics blending tech foundations with modern business intelligence",
+            "Engaging multi-format challenges: Logos, Taglines, Techlines, and Quick Deductions",
+            "Strategic rapid-fire rounds designed to reward lightning-fast reflexes",
+            "Win exciting cash prizes, certificates, and symposium accolades"
+          ].map((item, index) => (
             <li key={index} className="sympo-tech-list-item">
               <span className="sympo-tech-list-bullet">▶</span>
-              <span><strong className="text-primary">{objective.split(' ')[0]}</strong> {objective.slice(objective.indexOf(' ') + 1)}</span>
+              <span><strong className="text-rose-400">{item.split(" ")[0]}</strong> {item.slice(item.indexOf(" ") + 1)}</span>
             </li>
           ))}
         </ul>
       ),
-      key: "objectives"
+      key: "highlights"
     },
     {
-      icon: "🛠",
+      icon: <FaLayerGroup size={24} />,
       heading: "Event Rounds",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🎨 Round 1: Taglines to Techlines – Your Knowledge, Your Power</h3>
+            <h3 className="sympo-subcard-title">🔍 Round 1: Techline & Logo Recon (Think Fast)</h3>
             <ul className="sympo-tech-list text-sm md:text-base mt-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Identify taglines and technical terms from logos and pictures</span>
+                <span>Identify emerging tech frameworks, company taglines, developer tooling, and iconic hardware/software logos</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Speed and accuracy are the key factors</span>
+                <span>Speed and precision determine which teams qualify for the next bracket</span>
               </li>
             </ul>
           </div>
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">⚡ Round 2: Decode the Clues, Defend Your Domain</h3>
+            <h3 className="sympo-subcard-title">🧩 Round 2: The Logic Hustle (Solve & Decode)</h3>
             <ul className="sympo-tech-list text-sm md:text-base mt-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Theme: Technical Rapid Fire Round</span>
+                <span>Rapid pseudo-code debugging, technical riddle cracking, and business domain scenarios</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Participants must answer quickly and strategically</span>
+                <span>Timed buzzers with penalties for incorrect guesses to test calculated risk-taking</span>
               </li>
             </ul>
           </div>
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🔄 Tie-Breaker (Optional)</h3>
+            <h3 className="sympo-subcard-title">🏆 Round 3: The Flipster Twist (Win It All)</h3>
             <ul className="sympo-tech-list text-sm md:text-base mt-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Answer with the opposite or incorrect meaning under time pressure</span>
+                <span>Unpredictable twist rounds where inverse logic, rapid associations, and clutch decisions decide the champions</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Only the fastest team wins!</span>
+                <span>Top qualifying teams battle face-to-face for the ultimate trophy</span>
               </li>
             </ul>
           </div>
@@ -88,16 +89,16 @@ const Flipster = () => {
       key: "rounds"
     },
     {
-      icon: "📜",
-      heading: "Rules & Regulations",
+      icon: <FaGavel size={24} />,
+      heading: "Rules & Guidelines",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
           {[
-            "Each team consists of 2 participants working together",
-            "Mobiles, internet, and lifelines are prohibited. Only your brain does the heavy lifting",
-            "Judges' decisions are final and binding",
-            "Points reward accuracy; tie-breakers reward speed",
-            "Conduct and fairness are equally important as winning"
+            "Each team consists strictly of 2 members",
+            "Mobiles, smartwatches, and external electronic aids are strictly prohibited during the rounds",
+            "Points are awarded for correct answers; negative marking may apply during designated buzzer segments",
+            "Maintain sportsmanlike conduct and decorum at all times",
+            "The quizmaster and judging panel's decision is absolute and final"
           ].map((rule, index) => (
             <li key={index} className="sympo-tech-list-item">
               <span className="sympo-tech-list-bullet">✦</span>
@@ -109,68 +110,78 @@ const Flipster = () => {
       key: "rules"
     },
     {
-      icon: "🏆",
+      icon: <FaTrophy size={24} />,
       heading: "Judging Criteria",
       content: (
         <div className="sympo-subcard-grid">
           <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥇</span> Round 1</div>
-            <div className="sympo-subcard-desc">Accuracy in identifying logos and taglines</div>
+            <div className="sympo-subcard-title"><span>🎯</span> Accuracy</div>
+            <div className="sympo-subcard-desc">Correctness in identifying tech domains, logos, and algorithmic answers</div>
           </div>
           <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥈</span> Round 2</div>
-            <div className="sympo-subcard-desc">Speed and correctness in rapid-fire answers</div>
+            <div className="sympo-subcard-title"><span>⚡</span> Response Velocity</div>
+            <div className="sympo-subcard-desc">Split-second answering speed during rapid-fire and buzzer rounds</div>
           </div>
           <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥉</span> Tie-Breaker</div>
-            <div className="sympo-subcard-desc">Fastest correct response with twist logic</div>
+            <div className="sympo-subcard-title"><span>🧠</span> Twist Mastery</div>
+            <div className="sympo-subcard-desc">Tactical reasoning under reverse logic constraints</div>
           </div>
         </div>
       ),
       key: "judging"
     },
     {
-      icon: "🎪",
-      heading: "About FLIPSTER",
+      icon: <FaUserTie size={24} />,
+      heading: "Coordinators & Contact",
       content: (
-        <p className="text-base md:text-lg leading-relaxed text-slate-200">
-          <strong className="text-white">FLIPSTER</strong> is an exciting quiz competition where you identify taglines and logos, answer tech questions, and make quick choices. Each round brings participants closer to victory while testing their <span className="text-primary font-semibold">knowledge, wit, and teamwork</span>.
-        </p>
-      ),
-      key: "about"
-    },
-    {
-      icon: "📞",
-      heading: "For More Information",
-      content: (
-        <div className="sympo-subcard">
-          <div className="mb-2 font-semibold text-accent">Student Coordinators:</div>
-          <ul className="sympo-tech-list">
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span><strong>Ms. Archana A P (IV CS & BS):</strong> <a href="tel:+918778108490" className="text-accent hover:underline">+91 87781 08490</a></span>
-            </li>
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span><strong>Mr. Hari Haran A (IV CS & BS):</strong> <a href="tel:+918939209005" className="text-accent hover:underline">+91 89392 09005</a></span>
-            </li>
-          </ul>
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <div className="mb-2 font-semibold text-accent">Student Coordinators (CS & BS):</div>
+            <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Michael Jerin A</strong> – IV CS & BS</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Benolin David</strong> – IV CS & BS</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Vijayakumar V</strong> – III CS & BS</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Nehashree A</strong> – II CS & BS</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="sympo-subcard">
+            <div className="mb-2 font-semibold text-rose-300">Faculty & Department Leadership:</div>
+            <div className="text-sm md:text-base text-slate-300 space-y-1">
+              <p><strong>Faculty Coordinator:</strong> Mrs. B. Lakshmi Roopa (AP, CS & BS)</p>
+              <p><strong>NBTA Coordinator:</strong> Ms. G. Preethi Wilson (AP, CS & BS)</p>
+              <p><strong>HOD - CS & BS:</strong> Dr. Maya Eapen</p>
+            </div>
+          </div>
         </div>
       ),
-      key: "contact"
+      key: "contacts"
     }
   ];
 
   return (
     <EventDetailLayout
       posterSrc={EventImage}
-      posterAlt="FLIPSTER Quiz Twist Challenge"
-      title="FLIPSTER"
-      subtitle="QUIZ TWIST CHALLENGE"
+      posterAlt="FLIPSTER 2.0 - The Tech Hustle Event Poster"
+      title="FLIPSTER 2.0"
+      subtitle="THE TECH HUSTLE"
       track="TRACK I"
       category="Technical"
-      date="October 10, 2025"
+      date="Oct 10, 2026"
       team="2 Members"
+      prize="Win Exciting Prizes"
       registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
       sectionCards={sectionCards}
     />
