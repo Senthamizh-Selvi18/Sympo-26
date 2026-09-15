@@ -1,0 +1,297 @@
+/* ============================================================
+   TECHNOVANZA NAVBAR — Futuristic Sci-Fi HUD
+   ============================================================ */
+
+/* ---- Base nav bar ---- */
+.tnav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+
+  /* Dark near-black with navy tint */
+  background: linear-gradient(
+    180deg,
+    rgba(4, 9, 22, 0.97) 0%,
+    rgba(6, 13, 32, 0.95) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* Bottom border: thin cyan glow line */
+  border-bottom: 1px solid rgba(0, 224, 255, 0.22);
+  box-shadow:
+    0 1px 0 0 rgba(0, 224, 255, 0.08),
+    0 4px 24px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* Animated top scan-line accent */
+.tnav-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 224, 255, 0.0) 10%,
+    rgba(0, 224, 255, 0.55) 35%,
+    rgba(100, 180, 255, 0.8) 50%,
+    rgba(0, 224, 255, 0.55) 65%,
+    rgba(0, 224, 255, 0.0) 90%,
+    transparent 100%
+  );
+  animation: tnav-scanline 6s ease-in-out infinite;
+}
+
+@keyframes tnav-scanline {
+  0%, 100% { opacity: 0.4; transform: scaleX(0.7); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* ---- Inner layout wrapper ---- */
+.tnav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+  height: 72px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ---- Logo container ---- */
+.tnav-logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.tnav-logo-link:hover {
+  filter: drop-shadow(0 0 12px rgba(0, 200, 255, 0.65));
+  transform: scale(1.04);
+}
+
+.tnav-logo-img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---- Desktop nav list ---- */
+.tnav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Individual nav link ---- */
+.tnav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Jost', 'Space Grotesk', 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(160, 185, 220, 0.82);
+  text-decoration: none;
+  padding: 6px 0 8px;
+  transition: color 0.28s ease;
+}
+
+/* Underline bar */
+.tnav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(0, 224, 255, 0), #00e0ff, rgba(0, 224, 255, 0));
+  transform: translateX(-50%);
+  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 6px rgba(0, 224, 255, 0.6);
+}
+
+/* Hover state */
+.tnav-link:hover {
+  color: #00e0ff;
+  text-shadow: 0 0 10px rgba(0, 224, 255, 0.45);
+}
+
+.tnav-link:hover::after {
+  width: 100%;
+}
+
+/* ---- ACTIVE state (HOME) ---- */
+.tnav-link.tnav-active {
+  color: #00e8ff;
+  text-shadow: 0 0 14px rgba(0, 232, 255, 0.55);
+}
+
+/* Active underline always visible */
+.tnav-link.tnav-active::after {
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 224, 255, 0), #00e8ff, rgba(0, 224, 255, 0));
+  box-shadow: 0 0 8px rgba(0, 232, 255, 0.8);
+  animation: tnav-glow-pulse 2.4s ease-in-out infinite;
+}
+
+/* Angular bracket corners around active link */
+.tnav-link.tnav-active::before {
+  content: '';
+  position: absolute;
+  inset: -2px -8px;
+  pointer-events: none;
+  border: 1px solid transparent;
+  border-image: none;
+  /* Clip: only top-left + bottom-right corners */
+  background:
+    linear-gradient(rgba(0, 232, 255, 0.55), rgba(0, 232, 255, 0.55)) top left / 8px 1px no-repeat,
+    linear-gradient(rgba(0, 232, 255, 0.55), rgba(0, 232, 255, 0.55)) top left / 1px 8px no-repeat,
+    linear-gradient(rgba(0, 232, 255, 0.55), rgba(0, 232, 255, 0.55)) bottom right / 8px 1px no-repeat,
+    linear-gradient(rgba(0, 232, 255, 0.55), rgba(0, 232, 255, 0.55)) bottom right / 1px 8px no-repeat;
+}
+
+@keyframes tnav-glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 232, 255, 0.8); }
+  50% { box-shadow: 0 0 16px rgba(0, 232, 255, 1), 0 0 24px rgba(0, 200, 255, 0.45); }
+}
+
+/* ---- Hamburger button (mobile) ---- */
+.tnav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.tnav-hamburger span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(0, 224, 255, 0.85);
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.tnav-hamburger span:nth-child(1) { width: 24px; }
+.tnav-hamburger span:nth-child(2) { width: 18px; }
+.tnav-hamburger span:nth-child(3) { width: 24px; }
+
+.tnav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  width: 24px;
+}
+.tnav-hamburger.open span:nth-child(2) { opacity: 0; }
+.tnav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 24px;
+}
+
+/* ---- Mobile drawer ---- */
+.tnav-mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 260px;
+  z-index: 40;
+  background: linear-gradient(160deg, rgba(5, 12, 28, 0.98) 0%, rgba(6, 18, 44, 0.98) 100%);
+  border-left: 1px solid rgba(0, 224, 255, 0.18);
+  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tnav-mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.tnav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2.4rem 2rem;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+}
+
+.tnav-mobile-link {
+  font-family: 'Jost', 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(160, 185, 220, 0.82);
+  text-decoration: none;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 224, 255, 0.1);
+  transition: color 0.28s ease, border-color 0.28s ease;
+}
+
+.tnav-mobile-link:hover,
+.tnav-mobile-link.tnav-active {
+  color: #00e8ff;
+  text-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+  border-bottom-color: rgba(0, 224, 255, 0.45);
+}
+
+/* Backdrop overlay */
+.tnav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 30;
+  display: none;
+}
+.tnav-backdrop.open { display: block; }
+
+/* ---- Responsive breakpoints ---- */
+@media (max-width: 767px) {
+  .tnav-links {
+    display: none;
+  }
+  .tnav-hamburger {
+    display: flex;
+  }
+  .tnav-inner {
+    padding: 0 1.25rem;
+    height: 64px;
+  }
+  .tnav-logo-img {
+    height: 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tnav-links {
+    gap: 1.6rem;
+  }
+  .tnav-inner {
+    padding: 0 1.5rem;
+  }
+  .tnav-logo-img {
+    height: 56px;
+  }
+}

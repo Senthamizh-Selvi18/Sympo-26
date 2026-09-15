@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/symposium/Logo/spidy logo.png";
-import "../text.css";
+import "./navbar.css";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,19 +20,29 @@ const Header = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#081633]/90 backdrop-blur-md border-b border-[rgba(255,139,107,0.2)]">
-        <div className="flex items-center justify-between w-full px-4 py-0">
-          <a href="/" className="royal-logo h-16 flex items-center">
-            <img src={logo} alt="Technovanza Logo" className="w-16 h-16 object-contain" />
+      {/* ── Main navbar ── */}
+      <nav className="tnav-bar">
+        <div className="tnav-inner">
+
+          {/* Logo — left side */}
+          <a href="/" className="tnav-logo-link" aria-label="Technovanza Home">
+            <img
+              src={logo}
+              alt="Technovanza Logo"
+              className="tnav-logo-img"
+            />
           </a>
 
-          <ul className="hidden md:flex md:space-x-10">
+          {/* Desktop nav links — right side */}
+          <ul className="tnav-links">
             {navItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  data-text={item.label}
-                  className={"royal-nav-link" + (currentPath === item.path ? " active" : "")}
+                  className={
+                    "tnav-link" +
+                    (currentPath === item.path ? " tnav-active" : "")
+                  }
                 >
                   {item.label}
                 </Link>
@@ -40,44 +50,38 @@ const Header = () => {
             ))}
           </ul>
 
+          {/* Hamburger — mobile only */}
           <button
             onClick={handleToggle}
             type="button"
-            className="md:hidden flex flex-col justify-center gap-[5px] w-9 h-9"
-            aria-controls="mobile-nav"
+            className={`tnav-hamburger${isMenuOpen ? " open" : ""}`}
+            aria-controls="tnav-mobile-drawer"
             aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation"
           >
-            <span
-              className="block h-[2px] w-6 bg-[#FF8B6B] transition-transform duration-300"
-              style={isMenuOpen ? { transform: "translateY(7px) rotate(45deg)" } : {}}
-            />
-            <span
-              className="block h-[2px] w-6 bg-[#FF8B6B] transition-opacity duration-300"
-              style={isMenuOpen ? { opacity: 0 } : {}}
-            />
-            <span
-              className="block h-[2px] w-6 bg-[#FF8B6B] transition-transform duration-300"
-              style={isMenuOpen ? { transform: "translateY(-7px) rotate(-45deg)" } : {}}
-            />
+            <span />
+            <span />
+            <span />
           </button>
         </div>
       </nav>
 
-      {/* Slide-in mobile drawer */}
+      {/* ── Mobile slide-in drawer ── */}
       <div
-        id="mobile-nav"
-        className={`fixed top-0 right-0 h-screen w-64 z-40 bg-[#081633] border-l border-[rgba(255,139,107,0.25)] shadow-2xl transform transition-transform duration-400 ease-in-out md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        id="tnav-mobile-drawer"
+        className={`tnav-mobile-drawer${isMenuOpen ? " open" : ""}`}
+        aria-hidden={!isMenuOpen}
       >
-        <ul className="flex flex-col mt-24 gap-8 px-8">
+        <ul className="tnav-mobile-links">
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}
-                data-text={item.label}
                 onClick={closeMenu}
-                className={"royal-nav-link text-lg" + (currentPath === item.path ? " active" : "")}
+                className={
+                  "tnav-mobile-link" +
+                  (currentPath === item.path ? " tnav-active" : "")
+                }
               >
                 {item.label}
               </Link>
@@ -85,14 +89,16 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
-          onClick={closeMenu}
-        />
-      )}
 
-      <div className="pt-16"></div>
+      {/* Backdrop overlay for mobile drawer */}
+      <div
+        className={`tnav-backdrop${isMenuOpen ? " open" : ""}`}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      {/* Spacer so page content starts below the fixed navbar */}
+      <div style={{ paddingTop: "72px" }} />
     </>
   );
 };
