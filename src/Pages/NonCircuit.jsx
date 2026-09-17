@@ -20,7 +20,7 @@ const NonCircuit = () => {
             Don’t miss the opportunity to engage with tech enthusiasts and experts." />
       <div className="event-buttons-container flex flex-col sm:flex-row justify-center items-center gap-8 mt-5">
         <a
-        href="https://forms.gle/YRbsnJiPvX2qFED79" // Replace with your actual Google Form URL
+        href="https://forms.gle/EdRu152LpsBAt5t56"
         target="_blank"
         rel="noopener noreferrer"
         >

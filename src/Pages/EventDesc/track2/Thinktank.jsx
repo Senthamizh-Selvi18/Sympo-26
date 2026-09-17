@@ -130,7 +130,7 @@ const Thinktank = () => {
       date="October 10, 2025"
       team="2 Members"
       prize="Cash Prize & Certificates"
-      registrationUrl="https://forms.gle/dZ8AyUzLBfmS5EyF7"
+      registrationUrl="https://forms.gle/Fj7K7v8yB2G7Adp57"
       sectionCards={sectionCards}
     />
   );

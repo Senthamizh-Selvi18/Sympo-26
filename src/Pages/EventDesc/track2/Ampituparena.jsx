@@ -154,7 +154,7 @@ const AmpItUpArena = () => {
       date="October 10, 2025"
       team="Team of 2"
       prize="Prizes for Top Teams"
-      registrationUrl="https://forms.gle/dZ8AyUzLBfmS5EyF7"
+      registrationUrl="https://forms.gle/Fj7K7v8yB2G7Adp57"
       sectionCards={sectionCards}
     />
   );

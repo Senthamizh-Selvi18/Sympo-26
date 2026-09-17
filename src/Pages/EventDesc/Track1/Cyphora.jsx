@@ -184,7 +184,7 @@ const Cyphora = () => {
       category="Technical"
       date="Oct 10, 2026"
       team="1 - 2 Members"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

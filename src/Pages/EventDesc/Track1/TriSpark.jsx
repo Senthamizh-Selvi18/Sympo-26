@@ -157,7 +157,7 @@ const TriSpark = () => {
       category="Technical"
       date="October 10, 2025"
       team="1 - 2 Members"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

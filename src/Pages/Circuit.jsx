@@ -20,7 +20,7 @@ const Circuit = () => {
       />
       <div className="event-buttons-container flex flex-col sm:flex-row justify-center items-center gap-8 mt-5">
         <a
-        href="https://forms.gle/dZ8AyUzLBfmS5EyF7" // Replace with your actual Google Form URL
+        href="https://forms.gle/Fj7K7v8yB2G7Adp57"
         target="_blank"
         rel="noopener noreferrer"
         >

@@ -182,7 +182,7 @@ const Flipster = () => {
       date="Oct 10, 2026"
       team="2 Members"
       prize="Win Exciting Prizes"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

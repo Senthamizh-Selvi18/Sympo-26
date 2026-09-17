@@ -148,7 +148,7 @@ const Cinephilia = () => {
       date="October 10, 2025"
       team="2 Members"
       prize="Exciting Cash Prize"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );
