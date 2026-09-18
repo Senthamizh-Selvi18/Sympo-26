@@ -21,6 +21,7 @@ import Contact from "./Pages/Contact.jsx";
 
 import Cinephilia from "./Pages/EventDesc/Track1/Cinephilia.jsx";
 import CueBattle from "./Pages/EventDesc/Track1/CueBattle.jsx";
+import Cluminati from "./Pages/EventDesc/Track1/Cluminati.jsx";
 import EscapeRoom from "./Pages/EventDesc/Track1/EscapeRoom.jsx";
 import Flipster from "./Pages/EventDesc/Track1/Flipster.jsx";
 import Gigzup from "./Pages/EventDesc/Track1/Gigzup.jsx";
@@ -32,6 +33,7 @@ import Vintaviz from "./Pages/EventDesc/Track1/Vintaviz.jsx";
 import Cyberverse from "./Pages/EventDesc/Track1/Cyberverse.jsx";
 import Cyphora from "./Pages/EventDesc/Track1/Cyphora.jsx";
 import WhoLockedYou from "./Pages/EventDesc/Track1/WhoLockedYou.jsx";
+import Mindspark from "./Pages/EventDesc/Track1/Mindspark.jsx";
 
 import AmpItUpArena from "./Pages/EventDesc/track2/Ampituparena.jsx";
 import BioMystic from "./Pages/EventDesc/track2/BioMystic.jsx";
@@ -86,6 +88,22 @@ const appRouter = createBrowserRouter([
 
       // Track 1 Technical Events
       {
+        path: "/mindspark",
+        element: <Mindspark />,
+      },
+      {
+        path: "/mindSpark",
+        element: <Mindspark />,
+      },
+      {
+        path: "/paperPresentation",
+        element: <Mindspark />,
+      },
+      {
+        path: "/paperpresentation",
+        element: <Mindspark />,
+      },
+      {
         path: "/promptRush",
         element: <PromptRush />,
       },
@@ -128,8 +146,12 @@ const appRouter = createBrowserRouter([
         element: <Gigzup />,
       },
       {
+        path: "/cluminati",
+        element: <Cluminati />,
+      },
+      {
         path: "/cuebattle",
-        element: <CueBattle />,
+        element: <Cluminati />,
       },
       {
         path: "/obstackle",
@@ -146,7 +168,19 @@ const appRouter = createBrowserRouter([
         element: <AmpItUpArena />,
       },
       {
+        path: "/voltrush",
+        element: <AmpItUpArena />,
+      },
+      {
         path: "/bioMystic",
+        element: <BioMystic />,
+      },
+      {
+        path: "/bionexa",
+        element: <BioMystic />,
+      },
+      {
+        path: "/bionexaauctionhunt",
         element: <BioMystic />,
       },
       {
@@ -154,7 +188,15 @@ const appRouter = createBrowserRouter([
         element: <Thinktank />,
       },
       {
+        path: "/thinkonomics",
+        element: <Thinktank />,
+      },
+      {
         path: "/tracktron",
+        element: <Tracktron />,
+      },
+      {
+        path: "/gatebounty",
         element: <Tracktron />,
       },
       {
@@ -162,7 +204,15 @@ const appRouter = createBrowserRouter([
         element: <Potpurri />,
       },
       {
+        path: "/tietheknots",
+        element: <Potpurri />,
+      },
+      {
         path: "/deadlydeeds",
+        element: <Deadlydeeds />,
+      },
+      {
+        path: "/chronoverse",
         element: <Deadlydeeds />,
       },
 

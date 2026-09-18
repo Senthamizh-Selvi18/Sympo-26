@@ -1,179 +1,180 @@
 import React from "react";
-import { FaLock, FaKey, FaTerminal, FaGavel, FaTrophy, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/WhoLockedYou.jpg";
 
 const WhoLockedYou = () => {
   const sectionCards = [
     {
-      icon: <FaLock size={24} />,
+      icon: "🕵️",
       heading: "Event Description",
       content: (
-        <div className="space-y-3 text-slate-200">
-          <p className="text-base md:text-lg leading-relaxed font-semibold text-red-400">
-            "SYSTEM LOCKED. ACCESS DENIED. WHO IS BEHIND THE BREACH?" 🚨
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p className="font-semibold text-accent text-lg">
+            SYSTEM LOCKED. ACCESS DENIED. WHO IS BEHIND THE BREACH? 🔍
           </p>
-          <p className="text-base md:text-lg leading-relaxed">
-            Presented by the Department of <strong className="text-white">Information Technology (IT)</strong> as part of <strong className="text-white">TECHNOVANZA 2026 - '27</strong>, <strong className="text-white">WHO LOCKED YOU?</strong> is an exhilarating technical mystery and cyber-lock challenge. A rogue entity has locked down your workstation, encrypted vital assets, and vanished into the digital shadows. Your mission: decrypt the locks, piece together forensic clues, solve intricate algorithmic puzzles, and unmask the culprit before time runs out!
+          <p>
+            <strong className="text-white">Who Locked You?</strong> is a detective-based event where participants compete in teams of two to solve a series of challenging tasks involving observation, logical reasoning, technical thinking, and investigation.
+          </p>
+          <p>
+            Each stage presents a unique challenge that requires participants to analyse information, identify clues, solve problems, and make the right decisions within the given time.
           </p>
         </div>
       ),
-      key: "desc"
+      key: "desc",
     },
     {
-      icon: <FaKey size={24} />,
-      heading: "Core Challenge Domains",
+      icon: "🎯",
+      heading: "Event Objective",
       content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🔓 Cryptographic Decryption</div>
-            <div className="sympo-subcard-desc">Crack multi-layered ciphers, hashes, steganographic secrets, and encoded payloads to unlock system gates.</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">💻 System Log & Breach Analysis</div>
-            <div className="sympo-subcard-desc">Inspect terminal logs, system footprints, and corrupted file headers to trace the intruder's steps.</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🧠 Algorithmic Riddles & Debugging</div>
-            <div className="sympo-subcard-desc">Solve rapid logic puzzles, fix buggy access scripts, and solve computational enigmas under pressure.</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🕵️ Culprit Attribution</div>
-            <div className="sympo-subcard-desc">Synthesize evidence, connect hidden clues, and conclusively prove who locked the system to claim victory.</div>
-          </div>
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p>
+            The event is designed to challenge participants' observation skills, logical reasoning, analytical thinking, problem-solving ability, technical awareness, teamwork, and decision-making skills.
+          </p>
+          <p>
+            Participants must carefully analyse the information provided, identify relevant clues, overcome challenges, and make effective decisions under time constraints. The event encourages critical thinking, attention to detail, teamwork, and quick decision-making in a fun and competitive detective environment.
+          </p>
         </div>
       ),
-      key: "domains"
+      key: "objectives",
     },
     {
-      icon: <FaTerminal size={24} />,
+      icon: "⚡",
       heading: "Event Rounds & Structure",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">⚡ Round 1: The Lockdown (Qualifier Round)</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+            <h3 className="sympo-subcard-title">🧩 3-Round Detective Gauntlet</h3>
+            <p className="text-sm md:text-base text-slate-200 mt-2">
+              The event consists of <strong>3 progressive rounds</strong>, with each round designed to test different skills and abilities:
+            </p>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Rapid-fire technical MCQs, cryptic terminal commands, and quick-debugging puzzles.</span>
+                <span>Participants must successfully complete each round to qualify for the next stage.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Top teams scoring highest on speed and accuracy will qualify for the final showdown.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🔥 Round 2: Who Locked You? (The Ultimate Escape & Attribution)</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>An immersive, timed challenge where teams decrypt locked files layer by layer.</span>
+                <span><strong>Elimination</strong> will take place after each round, and only the qualifying teams will proceed further.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Analyze hidden clues, reconstruct the rogue perpetrator's profile, and submit the winning unlock key.</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>Fastest teams to unlock and correctly attribute the culprit win cash prizes and certificates!</span>
+                <span>The difficulty and nature of the challenges vary between rounds, requiring participants to adapt their investigative approach and work effectively as a team.</span>
               </li>
             </ul>
           </div>
         </div>
       ),
-      key: "rounds"
+      key: "rounds",
     },
     {
-      icon: <FaGavel size={24} />,
+      icon: "📜",
       heading: "Rules & Regulations",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
           {[
-            "Teams can consist of 1 to 2 members.",
-            "All participants must adhere to ethical problem-solving and fair competition rules.",
-            "Use of unauthorized external AI bots or malicious interference with other teams is strictly prohibited.",
-            "Tie-breakers will be determined by the precision timestamps of final key submissions.",
-            "The decision of the IT Department faculty jury and event coordinators will be final and binding."
-          ].map((rule, index) => (
-            <li key={index} className="sympo-tech-list-item">
+            { label: "Team Size", text: "Each team must consist of 1 or 2 members." },
+            { label: "Three Rounds", text: "The game consists of 3 rounds, with elimination after each round." },
+            { label: "Conduct", text: "Participants must follow all instructions given by the organizers during each round." },
+            { label: "Time Limit", text: "Each round has a fixed time limit. All answers and submissions must be completed before the time expires." },
+            { label: "Outside Assistance", text: "Internet searching, AI tools, and outside assistance are not allowed unless explicitly permitted by the organizers." },
+            { label: "Mobile Phones", text: "Mobile phones and other personal devices may be collected or required to be kept away during the event." },
+            { label: "Team Work", text: "Teams must work only on their own assigned challenge and must not share answers, clues, or solutions with other teams." },
+            { label: "Interference", text: "Participants must not interfere with another team's challenge, computer, clues, or materials." },
+            { label: "Disqualification", text: "Any form of cheating, answer sharing, unauthorized assistance, tampering, or interference may result in disqualification." },
+            { label: "Tie-Breaker", text: "In case of a tie, faster valid completion/submission time will be considered as the tie-breaker, subject to the scoring rules of the respective round." },
+            { label: "Discipline", text: "Participants must maintain discipline, fair play, and proper conduct throughout the event." },
+            { label: "Final Decision", text: "The organizers' and judges' decisions will be final regarding scoring, qualification, elimination, and disputes." },
+          ].map((rule, i) => (
+            <li key={i} className="sympo-tech-list-item">
               <span className="sympo-tech-list-bullet">✦</span>
-              <span>{rule}</span>
+              <span>
+                <strong>{rule.label}:</strong> {rule.text}
+              </span>
             </li>
           ))}
         </ul>
       ),
-      key: "rules"
+      key: "rules",
     },
     {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⏱️</span> Speed & Time Efficiency</div>
-            <div className="sympo-subcard-desc">Fastest decryption and escape times across challenge stages.</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🎯</span> Clue Accuracy</div>
-            <div className="sympo-subcard-desc">Correctness in solving logical puzzles, ciphers, and debug challenges.</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🏆</span> Final Attribution</div>
-            <div className="sympo-subcard-desc">Accurate identification and proof of the locking entity.</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
-      icon: <FaUserTie size={24} />,
-      heading: "Coordinators & Contact",
+      icon: "📞",
+      heading: "Contact Information",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-accent">Student Coordinators (Information Technology):</div>
-            <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="font-semibold text-accent mb-2">Staff Incharge:</div>
+            <ul className="sympo-tech-list space-y-1">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>Deepak Rithik S</strong> – III IT A</span>
+                <span>
+                  Mrs. K. Pushpavalli:{" "}
+                  <a href="tel:+919176693337" className="text-accent hover:underline">
+                    91766 93337
+                  </a>
+                </span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>Ryan Stanislaus G</strong> – III IT B</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>Arun P</strong> – II IT A</span>
+                <span>
+                  Mr. K. Arun Prasad:{" "}
+                  <a href="tel:+919894284665" className="text-accent hover:underline">
+                    +91 98942 84665
+                  </a>
+                </span>
               </li>
             </ul>
           </div>
 
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-red-400">Faculty & Department Leadership:</div>
-            <div className="text-sm md:text-base text-slate-300 space-y-1">
-              <p><strong>Faculty Coordinators:</strong> Mrs. K. Pushpavalli (AP/IT), Mr. K. Arun Prasad (AP/IT)</p>
-              <p><strong>AIT Coordinator:</strong> Mrs. K. Shanmugapriya (AP/IT)</p>
-              <p><strong>HOD - IT:</strong> Dr. K. Sundaramoorthy</p>
-            </div>
+            <div className="font-semibold text-accent mb-2">Student Coordinators (IT):</div>
+            <ul className="sympo-tech-list space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Deepak Rithik S:{" "}
+                  <a href="tel:+919345744763" className="text-accent hover:underline">
+                    93457 44763
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Ryan Stanislaus G:{" "}
+                  <a href="tel:+919840922934" className="text-accent hover:underline">
+                    98409 22934
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Arun P:{" "}
+                  <a href="tel:+918870614917" className="text-accent hover:underline">
+                    88706 14917
+                  </a>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       ),
-      key: "contacts"
-    }
+      key: "contacts",
+    },
   ];
 
   return (
     <EventDetailLayout
       posterSrc={EventImage}
-      posterAlt="WHO LOCKED YOU? - Information Technology Technical Event Poster"
+      posterAlt="WHO LOCKED YOU? - Detective Investigation Technical Event Poster"
       title="WHO LOCKED YOU?"
-      subtitle="SYSTEM LOCKED • ACCESS DENIED • UNRAVEL THE MYSTERY"
+      subtitle="DETECTIVE INVESTIGATION & TECHNICAL REASONING"
       track="TRACK I"
       category="Technical"
       date="Oct 10, 2026"
       team="1 - 2 Members"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      prize="Enter to Win"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

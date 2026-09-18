@@ -1,105 +1,148 @@
 import React from "react";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
-import NevermoreBanner from "../../../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
+import ChronoverseBanner from "../../../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 
 const Deadlydeeds = () => {
   const sectionCards = [
     {
-      icon: "🕵️",
-      heading: "The Nevermore Mystery",
+      icon: "⏳",
+      heading: "Event Description",
       content: (
-        <div className="text-base md:text-lg leading-relaxed text-slate-200 space-y-3">
-          <p>
-            On the night of October 10th, the shadows will gather at JCE College, where a tale of deceit, secrets, and dark puzzles awaits. A crime has been committed—one so twisted, even the walls whisper in silence.
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p className="font-semibold text-accent text-lg">
+            TIME TRAVEL – EVERY ERA HAS A CHALLENGE 🌌
           </p>
           <p>
-            The suspects? Lurking among you. The clues? Buried in riddles, sealed within games, waiting for the brave to uncover them.
+            <strong className="text-white">Chronoverse 2026</strong> is a Time Travel-themed event that takes participants on an exciting journey through the past, present, and future. The event features fun games, creative challenges, and entertaining activities that test participants' creativity, teamwork, and quick thinking.
           </p>
           <p>
-            The clock will strike, and you shall have only 10 minutes to solve all mysteries, expose the culprit, and escape the clutches of Nevermore.
+            With different eras brought to life through engaging challenges, participants can enjoy a unique and memorable experience. Step into the time portal, take on every era’s challenges, and make your own moment in history!
           </p>
         </div>
       ),
-      key: "description"
+      key: "desc",
     },
     {
-      icon: "🎲",
-      heading: "Event Flow – The Wednesday Way",
+      icon: "🎯",
+      heading: "Event Objective",
       content: (
-        <div className="space-y-3">
-          {[
-            { step: "01", title: "Opening Ritual", desc: "A gloomy briefing welcomes detectives to the halls of Nevermore." },
-            { step: "02", title: "The Hunt Begins", desc: "Teams dive into 10 mini-investigations (Find the Path, Jumbled Words, Odd One Out), peeling back the mystery." },
-            { step: "03", title: "Gathering Evidence", desc: "Solved puzzles yield sinister tokens: fingerprints, notes, and weapons." },
-            { step: "04", title: "Interrogation & Theories", desc: "Detectives wield their evidence to question suspects and deduce motives." },
-            { step: "05", title: "The Last Shadows", desc: "Twists surface, revealing the killer's darkest fingerprints." },
-            { step: "06", title: "Accusation & Verdict", desc: "Teams deliver their final verdict: the killer, the weapon, and the motive." },
-            { step: "07", title: "The Grand Unveiling", desc: "The host unmasks the true culprit, exposing how all clues were woven together." }
-          ].map((item, i) => (
-            <div key={i} className="sympo-subcard">
-              <div className="sympo-subcard-title">
-                <span className="text-accent font-mono">[{item.step}]</span>
-                <span>{item.title}</span>
-              </div>
-              <div className="sympo-subcard-desc">{item.desc}</div>
-            </div>
-          ))}
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p>
+            To create an exciting Time Travel-themed experience that encourages students to showcase their creativity, teamwork, quick thinking, and talents through fun and engaging events inspired by the past, present, and future.
+          </p>
         </div>
       ),
-      key: "flow"
+      key: "objectives",
+    },
+    {
+      icon: "⚡",
+      heading: "Event Structure & Rounds",
+      content: (
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <h3 className="sympo-subcard-title">🎮 10-Game Time Warp Gauntlet</h3>
+            <p className="text-sm md:text-base text-slate-200 mt-2">
+              The event consists of <strong>10 quick and challenging games</strong> across eras. Winners will be announced based on the highest total score and successful game completions.
+            </p>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Time-Travel Progression:</strong> Each completed game advances your team deeper into the time stream (moving to the past or future).</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Scoring:</strong> Points are awarded only for successfully completed games within the total allotted time limit.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ),
+      key: "rounds",
     },
     {
       icon: "📜",
-      heading: "Rules & Regulations",
+      heading: "Rules and Regulations",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Duration of Doom:</strong> The entire mystery must be solved within 10 minutes.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Stay in Character:</strong> Participants must remain in detective mode at all times.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>No Escaping the Maze:</strong> Skipping puzzle stations is strictly forbidden.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Team Size:</strong> 2–4 detectives per team.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>The Final Word:</strong> The coordinators' decisions are absolute and binding.</span>
-          </li>
+          {[
+            { label: "Team Size", text: "Each team must consist of exactly 4 members." },
+            { label: "Game Format", text: "The event consists of a series of quick and challenging games that participants must complete within the given time." },
+            { label: "Time Limit", text: "The time limit for the entire games will be announced by the event coordinators before the game begins. Teams must complete as many games as possible within the allotted time." },
+            { label: "Scoring Criteria", text: "A team will receive points only for successfully completed games according to the scoring criteria given by the event coordinators." },
+            { label: "Era Progress", text: "The number of games successfully completed will determine the team's time-travel progress, such as moving to the past or future." },
+            { label: "Winning Condition", text: "The team that successfully completes the highest number of games and achieves the highest score will be declared as the winner." },
+          ].map((rule, i) => (
+            <li key={i} className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>{rule.label}:</strong> {rule.text}
+              </span>
+            </li>
+          ))}
         </ul>
       ),
-      key: "rules"
+      key: "rules",
     },
     {
-      icon: "🕯️",
-      heading: "Closing Note",
+      icon: "📞",
+      heading: "Contact Information",
       content: (
-        <div className="sympo-subcard text-slate-200 italic">
-          "The shadows will not wait, and neither will the truth. Ten minutes is all you have… solve the Nevermore Mystery, or become part of it."
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <div className="font-semibold text-accent mb-2">Staff Coordinators (ECE):</div>
+            <ul className="sympo-tech-list space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Ms. R. Malathy (AP / ECE)</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>Ms. K. Rajasaranya (AP / ECE)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="sympo-subcard">
+            <div className="font-semibold text-accent mb-2">Student Coordinators (ECE):</div>
+            <ul className="sympo-tech-list space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Koueishik N:{" "}
+                  <a href="tel:+919840554441" className="text-accent hover:underline">
+                    9840554441
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Maham Dharshini A:{" "}
+                  <a href="tel:+916369634649" className="text-accent hover:underline">
+                    6369634649
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       ),
-      key: "closing"
-    }
+      key: "contacts",
+    },
   ];
 
   return (
     <EventDetailLayout
-      posterSrc={NevermoreBanner}
-      posterAlt="Deadly Deeds Nevermore Mystery Poster"
-      title="DEADLY DEEDS"
-      subtitle="THE NEVERMORE MYSTERY"
+      posterSrc={ChronoverseBanner}
+      posterAlt="CHRONOVERSE 2026 Time Travel Event Poster"
+      title="CHRONOVERSE 2026"
+      subtitle="TIME TRAVEL – EVERY ERA HAS A CHALLENGE"
       track="TRACK II"
       category="Non-Technical"
-      date="October 10, 2025"
-      team="2 - 3 Members"
-      registrationUrl="https://forms.gle/dZ8AyUzLBfmS5EyF7"
+      date="Oct 10, 2026"
+      team="Team of 4"
+      prize="Win Exciting Prizes"
+      registrationUrl="https://forms.gle/Fj7K7v8yB2G7Adp57"
       sectionCards={sectionCards}
     />
   );

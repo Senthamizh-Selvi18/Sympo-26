@@ -4,11 +4,11 @@ import "../text.css";
 import FlipCard from "../Components/FlipCard";
 import HexagonTechFrame from "../Components/HexagonTechFrame";
 
-import AmpItUpArena from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
-import BioMystic from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
 import Nexus from "../assets/symposium/Sympo'25/Track2/Nexus.jpeg";
-import THINKTANK from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
-import TRACKTRON from "../assets/symposium/Sympo'25/Track2/TRACK TRON.jpeg";
+import Voltrush from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
+import Bionexa from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
+import Thinkonomics from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
+import GateBounty from "../assets/symposium/Sympo'25/Track2/TRACK TRON.jpeg";
 
 const CircuitTec = () => {
   const color = randomColor();
@@ -22,58 +22,60 @@ const CircuitTec = () => {
       category: "Technical • Track II",
       description:
         "Premier circuit paper presentation event to showcase novel innovations in electronics, IoT, biomedical engineering, and intelligent systems.",
-      date: "Oct 10, 2025",
+      date: "Oct 10, 2026",
       team: "Max 3 Members",
+      prize: "Win Exciting Prizes",
       path: "/nexus",
     },
     {
       id: 2,
-      imageSrc: AmpItUpArena,
-      altText: "Amp-It-Up-Arena",
-      title: "Amp-it-up-Arena",
+      imageSrc: Voltrush,
+      altText: "VOLTRUSH",
+      title: "Voltrush",
       category: "Technical • Track II",
       description:
-        "A high-voltage 3-round quiz challenging circuit theory, component identification, speed, and electronic problem-solving.",
-      date: "Oct 10, 2025",
+        "High-voltage electrical showdown! Challenge circuit theory, component identification, electrical logic, and power problem-solving.",
+      date: "Oct 10, 2026",
       team: "Team of 2",
-      prize: "Prizes for Top Teams",
+      prize: "Win Exciting Prizes",
       path: "/ampItUpArena",
     },
     {
       id: 3,
-      imageSrc: BioMystic,
-      altText: "BioMystic",
-      title: "BioMystic",
+      imageSrc: Bionexa,
+      altText: "Bionexa Auction Hunt",
+      title: "Bionexa Auction Hunt",
       category: "Technical • Track II",
       description:
-        "Decode jumbled biomedical terminology, conquer tricky clinical riddles, and race the clock in an adrenaline-filled bio challenge.",
-      date: "Oct 10, 2025",
-      team: "Team of 2",
+        "Bid Smart • Think Fast • Win Big! A high-stakes 2-round competition combining departmental knowledge bidding and mystery challenges.",
+      date: "Oct 10, 2026",
+      team: "2 - 3 Members",
       path: "/bioMystic",
     },
     {
       id: 4,
-      imageSrc: THINKTANK,
-      altText: "THINKTANK",
-      title: "Thinktank",
+      imageSrc: Thinkonomics,
+      altText: "THINKONOMICS",
+      title: "Thinkonomics",
       category: "Technical • Track II",
       description:
-        "A strategic business quiz testing market intelligence, corporate acumen, branding, and managerial crisis resolution under pressure.",
-      date: "Oct 10, 2025",
-      team: "2 Members",
+        "Business Quiz! Step into the world of business, brands, and brilliant minds across Prelims (30 MCQs), Crack the Code (Logos & Sounds), and L-Lookup.",
+      date: "Oct 10, 2026",
+      team: "Team of 2",
       prize: "Cash Prize & Certificates",
       path: "/thinktank",
     },
     {
       id: 5,
-      imageSrc: TRACKTRON,
-      altText: "TRACKTRON",
-      title: "Track-O-Tron",
+      imageSrc: GateBounty,
+      altText: "GATE BOUNTY",
+      title: "Gate Bounty",
       category: "Technical • Track II",
       description:
-        "The galactic robotics battle arena where autonomous line-followers and custom bots conquer dynamic obstacles to claim cosmic glory.",
-      date: "Oct 10, 2025",
-      team: "2 - 4 Members",
+        "Hands-on digital electronics challenge! Implement logic gates using NAND/NOR gates, simplify Boolean expressions, and demonstrate working hardware circuits.",
+      date: "Oct 10, 2026",
+      team: "Max 2 Members",
+      prize: "30 Marks • 40 Mins",
       path: "/tracktron",
     },
   ];

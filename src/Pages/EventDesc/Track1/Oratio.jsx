@@ -151,7 +151,7 @@ const Oratio = () => {
       category="Technical"
       date="October 10, 2025"
       team="Max 2 Members"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       domains={oratioDomains}
       sectionCards={sectionCards}
     />
