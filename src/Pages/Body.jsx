@@ -214,43 +214,104 @@ const CountdownBox = ({ days }) => (
   </div>
 );
 
-const SheardButton = ({ children, onClick, primary }) => (
-  <button onClick={onClick} className="w-full sm:w-auto group">
+/* ===================================================================
+   TemptingCTAButton — "wax seal" beacon button.
+   Same footprint as the original (py-3.5 px-7); label uses a
+   bolder weight, wider tracking, a soft white-to-cyan gradient
+   fill, and a subtle glow so it reads as more "alive" and slightly
+   larger without the button itself growing.
+=================================================================== */
+const TemptingCTAButton = ({ children, onClick }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="relative flex flex-col items-center">
+      {/* Radiating pulse rings */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {[0, 1].map((i) => (
+          <motion.span
+            key={i}
+            className="absolute rounded-full border"
+            style={{ borderColor: "rgba(79,200,255,0.45)" }}
+            initial={{ width: 30, height: 30, opacity: 0.7 }}
+            animate={{ width: 120, height: 120, opacity: 0 }}
+            transition={{ duration: 2.4, repeat: Infinity, delay: i * 1.1, ease: "easeOut" }}
+          />
+        ))}
+      </div>
+
+      <button
+        onClick={onClick}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="relative w-full sm:w-auto"
+      >
+        <motion.div
+          className="relative flex items-center gap-2.5 py-3.5 px-7 overflow-hidden"
+          style={{
+            clipPath: NOTCH(10),
+            background: "linear-gradient(135deg, #1D2B5C 0%, #0E1530 100%)",
+            border: "1px solid rgba(79,200,255,0.4)",
+          }}
+          animate={{
+            scale: hovered ? 1.04 : 1,
+            boxShadow: hovered
+              ? "0 0 26px rgba(79,200,255,0.6)"
+              : "0 0 10px rgba(79,200,255,0.3)",
+          }}
+          transition={{ duration: 0.25 }}
+        >
+          {/* shimmer sweep */}
+          <motion.div
+            className="absolute inset-y-0 w-8 pointer-events-none"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(143,242,255,0.25), transparent)" }}
+            animate={{ left: ["-20%", "120%"] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+          />
+
+          {/* seal glyph — cracks open on hover */}
+          <motion.span
+            className="relative flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
+            style={{ background: "#3DA9FC", boxShadow: "0 0 8px rgba(61,169,252,0.8)" }}
+            animate={{ rotate: hovered ? 45 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="w-2 h-[2.5px] bg-[#0B1428] rounded-full" />
+          </motion.span>
+
+          <span
+            className="relative z-10 font-mono text-base sm:text-lg font-black tracking-[0.1em] whitespace-nowrap uppercase"
+            style={{
+              background: "linear-gradient(180deg, #ffffff 0%, #cfeaff 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textShadow: "0 0 12px rgba(79,200,255,0.55)",
+            }}
+          >
+            {children}
+          </span>
+
+          <motion.span
+            className="relative z-10 text-[#8ff2ff] text-sm"
+            animate={{ x: hovered ? 3 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            ›
+          </motion.span>
+        </motion.div>
+      </button>
+    </div>
+  );
+};
+
+const SheardButton = ({ children, onClick }) => (
+  <button onClick={onClick} className="group">
     <motion.div
-      className={`relative py-2.5 px-5 min-w-[190px] flex items-center justify-center gap-1.5 overflow-hidden transition-all duration-250 ${
-        primary
-          ? "bg-[#101B33] border-2 border-[#3DA9FC] group-hover:bg-[#16234E] group-hover:border-[#8ED0FF] group-hover:shadow-[0_0_26px_rgba(61,169,252,0.55)]"
-          : "bg-[#0C1220] border-2 border-[#4B5563] group-hover:bg-[#121A2C] group-hover:border-[#3DA9FC]"
-      }`}
-      style={{ clipPath: NOTCH(12) }}
-      animate={
-        primary
-          ? {
-              boxShadow: [
-                "0 0 8px rgba(61,169,252,0.2)",
-                "0 0 18px rgba(61,169,252,0.45)",
-                "0 0 8px rgba(61,169,252,0.2)",
-              ],
-            }
-          : undefined
-      }
-      transition={{ duration: 2.4, repeat: primary ? Infinity : 0, ease: "easeInOut" }}
+      className="relative py-1 px-3 flex items-center justify-center gap-1 overflow-hidden transition-all duration-250 bg-[#0C1220] border border-[#4B5563] group-hover:bg-[#121A2C] group-hover:border-[#3DA9FC]"
     >
-      <span
-        className={`relative z-10 font-mono text-xs tracking-[0.15em] font-bold transition-colors duration-200 ${
-          primary
-            ? "text-white"
-            : "text-gray-400 group-hover:text-[#BFE3FF]"
-        }`}
-      >
+      <span className="relative z-10 font-mono text-[0.65rem] tracking-[0.1em] font-semibold transition-colors duration-200 text-gray-500 group-hover:text-[#BFE3FF]">
         {children}
-      </span>
-      <span
-        className={`relative z-10 font-mono text-xs transition-all duration-200 -translate-x-1.5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ${
-          primary ? "text-[#8ED0FF]" : "text-[#3DA9FC]"
-        }`}
-      >
-        ›
       </span>
     </motion.div>
   </button>
@@ -319,16 +380,15 @@ const Body = () => {
                   <CountdownBox days={days} />
                 </div>
 
-                <div className="flex flex-col items-center gap-3">
-                  <SheardButton
-                    primary
+                <div className="flex flex-col items-center gap-4">
+                  <TemptingCTAButton
                     onClick={() => {
                       setShowPopup(false);
                       navigate("/events");
                     }}
                   >
                     RESERVE MY SEAT
-                  </SheardButton>
+                  </TemptingCTAButton>
                   <SheardButton onClick={() => setShowPopup(false)}>
                     NOT NOW
                   </SheardButton>

@@ -3,6 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/symposium/Logo/spidy logo.png";
 import "./navbar.css";
 
+// Keep this in sync with SHOW_CONTACT_PAGE in Pages/Contact.jsx.
+// Flip to true once the contact page is ready to go live.
+const SHOW_CONTACTS_NAV = false;
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -15,7 +19,7 @@ const Header = () => {
     { path: "/", label: "HOME" },
     { path: "/about", label: "ABOUT" },
     { path: "/events", label: "EVENTS" },
-    { path: "/contact", label: "CONTACTS" },
+    ...(SHOW_CONTACTS_NAV ? [{ path: "/contact", label: "CONTACTS" }] : []),
   ];
 
   return (
@@ -97,8 +101,10 @@ const Header = () => {
         aria-hidden="true"
       />
 
-      {/* Spacer so page content starts below the fixed navbar */}
-      <div style={{ paddingTop: "72px" }} />
+      {/* Spacer so page content starts below the fixed navbar.
+          Navbar is 92px tall on desktop/tablet, 78px on mobile — this
+          uses the larger value plus a touch of buffer. */}
+      <div style={{ paddingTop: "100px" }} />
     </>
   );
 };

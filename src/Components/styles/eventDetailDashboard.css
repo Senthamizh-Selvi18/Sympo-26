@@ -197,18 +197,6 @@
   border-radius: 50%;
   background-color: #38ef7d;
   box-shadow: 0 0 8px #38ef7d;
-  animation: sympo-pulse 2s infinite ease-in-out;
-}
-
-@keyframes sympo-pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
 }
 
 /* Poster Image Container */
@@ -225,6 +213,28 @@
   justify-content: center;
 }
 
+/* Static scanline texture overlay, fades in while hovering the poster (no motion) */
+.sympo-poster-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(126, 231, 252, 0.08) 0px,
+    rgba(126, 231, 252, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.sympo-poster-frame:hover .sympo-poster-img-wrap::after {
+  opacity: 1;
+}
+
 .sympo-poster-img {
   width: 100%;
   height: auto;
@@ -234,7 +244,11 @@
   border-radius: 9px;
   /* Preserve original colors completely */
   filter: none;
-  transition: transform 0.4s ease;
+  transition: filter 0.5s ease;
+}
+
+.sympo-poster-frame:hover .sympo-poster-img {
+  filter: brightness(1.03) saturate(1.04);
 }
 
 @media (min-width: 1024px) {
