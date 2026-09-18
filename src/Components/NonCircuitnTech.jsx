@@ -2,94 +2,98 @@ import React from "react";
 import "../text.css";
 import FlipCard from "./FlipCard";
 import HexagonTechFrame from "./HexagonTechFrame";
+import randomColor from "randomcolor";
 
 import cini from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
-import GIGZUP from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
 import CUEBATTLE from "../assets/symposium/Sympo'25/Track1/CUEBATTLE.png";
-import dEADLYDEEDS from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
-import randomColor from "randomcolor";
-import POTPURRI from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
+import TieTheKnots from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
+import Chronoverse from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 import OBSSTACKLE from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
+import GIGZUP from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
+
+export const commonNonTechnicalEvents = [
+  {
+    id: 1,
+    imageSrc: cini,
+    altText: "Cinephilia",
+    title: "Cinephilia",
+    category: "Non-Technical",
+    description:
+      "A Celebration of Cinema! Test your movie knowledge through BGM Master, Mute-A-Logue, and Concept Pudi Prize Adi challenges.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
+    prize: "Exciting Cash Prize",
+    path: "/cinephilia",
+  },
+  {
+    id: 2,
+    imageSrc: CUEBATTLE,
+    altText: "CLUMINATI",
+    title: "CLUMINATI",
+    category: "Non-Technical",
+    description:
+      "Nothing Is Random. Everything Connects! An exciting mystery-solving event where investigators connect cases, analyze suspects, and examine the crime scene.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members (Solo Allowed)",
+    prize: "Exciting Cash Prize",
+    path: "/cluminati",
+  },
+  {
+    id: 3,
+    imageSrc: TieTheKnots,
+    altText: "TIE THE KNOTS",
+    title: "Tie The Knots",
+    category: "Non-Technical",
+    description:
+      "Connections! Test quick thinking and teamwork through Decode (10s puzzles), Objectune (cinema tune guessing), and Memory Challenge.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
+    prize: "Win Exciting Prizes",
+    path: "/potpurri",
+  },
+  {
+    id: 4,
+    imageSrc: Chronoverse,
+    altText: "CHRONOVERSE 2026",
+    title: "CHRONOVERSE 2026",
+    category: "Non-Technical",
+    description:
+      "Time Travel – Every Era Has A Challenge! A thrilling journey through past, present, and future across 10 quick, creative, and entertaining games.",
+    date: "Oct 10, 2026",
+    team: "Team of 4",
+    prize: "Win Exciting Prizes",
+    path: "/deadlydeeds",
+  },
+  {
+    id: 5,
+    imageSrc: OBSSTACKLE,
+    altText: "OBS-TACKLE RACE",
+    title: "Obs-Tackle Race",
+    category: "Non-Technical",
+    description:
+      "Live Stumble Guys knockout tournament! Race, jump, and dodge obstacles to outlast competitors and claim the champion's crown.",
+    date: "Oct 10, 2026",
+    team: "Individual (Solo Player)",
+    prize: "Cash Prize for Winners",
+    path: "/obstackle",
+  },
+  {
+    id: 6,
+    imageSrc: GIGZUP,
+    altText: "GIGZUP 2.0",
+    title: "GIGZUP 2.0",
+    category: "Non-Technical • Online",
+    description:
+      "Virtual Vibe Fest (Online Event)! An exciting online entertainment quiz competing in real time across ConnectX and Verse Decode.",
+    date: "Oct 07, 2026",
+    team: "Solo / Individual",
+    prize: "Cash Prize for Winners",
+    path: "/gigzup",
+  },
+];
 
 const NonCircuitnTech = () => {
   const color = randomColor();
-
-  const circuittechnicalEvents = [
-    {
-      id: 1,
-      imageSrc: cini,
-      altText: "Cinephilia",
-      title: "Cinephilia",
-      category: "Non-Technical",
-      description:
-        "Dive into cinema beyond the screen! Test your passion through BGM mastery, dialogue identification, scene connection, and film trivia.",
-      date: "Oct 10, 2025",
-      team: "2 - 3 Members",
-      prize: "Exciting Cash Prize",
-      path: "/cinephilia",
-    },
-    {
-      id: 2,
-      imageSrc: POTPURRI,
-      altText: "POTPURRI",
-      title: "Potpurri",
-      category: "Non-Technical",
-      description:
-        "Step into a world of laughter and energy! Test quick thinking, miming, wordplay, and team synergy through lively interactive games.",
-      date: "Oct 10, 2025",
-      team: "2 - 4 Members",
-      path: "/potpurri",
-    },
-    {
-      id: 3,
-      imageSrc: CUEBATTLE,
-      altText: "CUEBATTLE",
-      title: "Cue Battle",
-      category: "Non-Technical",
-      description:
-        "A high-octane battle of wits, cues, and instant deduction where sharp observation and split-second recall determine the victor.",
-      date: "Oct 10, 2025",
-      team: "2 Members",
-      path: "/cuebattle",
-    },
-    {
-      id: 4,
-      imageSrc: dEADLYDEEDS,
-      altText: "Deadly Deeds",
-      title: "Deadly Deeds",
-      category: "Non-Technical",
-      description:
-        "The Nevermore Mystery: A dark tale of deceit and hidden clues where teams interrogate suspects, crack codes, and unmask the culprit.",
-      date: "Oct 10, 2025",
-      team: "2 - 3 Members",
-      path: "/deadlydeeds",
-    },
-    {
-      id: 5,
-      imageSrc: OBSSTACKLE,
-      altText: "OBSSTACKLE",
-      title: "Obs-Tackle Race",
-      category: "Non-Technical",
-      description:
-        "Live Stumble Guys knockout tournament where contestants dash, leap, and evade obstacles to outlast competitors and claim the crown.",
-      date: "Oct 10, 2025",
-      team: "Solo Player",
-      prize: "Cash Prize for Winners",
-      path: "/obstackle",
-    },
-    {
-      id: 6,
-      imageSrc: GIGZUP,
-      altText: "GIGZUP",
-      title: "GigzUp",
-      category: "Non-Technical",
-      description:
-        "An AI & tech-themed meme showdown blending humor with insight! Translate complex tech topics into hilarious, viral content.",
-      date: "Oct 10, 2025",
-      team: "1 - 2 Members",
-      path: "/gigzup",
-    },
-  ];
 
   return (
     <div className="max-w-7xl mx-auto p-6">
@@ -102,7 +106,7 @@ const NonCircuitnTech = () => {
 
       <HexagonTechFrame title="NON TECHNICAL EVENTS">
         <main className="card-container gap-10 flex flex-wrap justify-center w-full">
-          {circuittechnicalEvents.map((card) => (
+          {commonNonTechnicalEvents.map((card) => (
             <FlipCard
               key={card.id}
               imageSrc={card.imageSrc}

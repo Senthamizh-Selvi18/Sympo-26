@@ -1,97 +1,118 @@
+// eventsData.js - Master event configuration with correct event names, dates, and posters
+
 import PromptRushImg from "../assets/symposium/Sympo'25/Track1/PromptRush.png";
 import VintavizImg from "../assets/symposium/Sympo'25/Track1/Vintaviz.jpg";
 import FlipsterImg from "../assets/symposium/Sympo'25/Track1/FLIPSTER.jpg";
 import CyberverseImg from "../assets/symposium/Sympo'25/Track1/Cyberverse.jpg";
 import CyphoraImg from "../assets/symposium/Sympo'25/Track1/Cyphora.jpg";
 import WhoLockedYouImg from "../assets/symposium/Sympo'25/Track1/WhoLockedYou.jpg";
+import MindsparkImg from "../assets/symposium/Sympo'25/Track1/Mindspark.png";
 
 import CinephiliaImg from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
-import PotpurriImg from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
 import CueBattleImg from "../assets/symposium/Sympo'25/Track1/CUEBATTLE.png";
-import DeadlyDeedsImg from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 import ObstackleImg from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
 import GigzUpImg from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
 
 import NexusImg from "../assets/symposium/Sympo'25/Track2/Nexus.jpeg";
-import AmpItUpArenaImg from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
-import BioMysticImg from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
-import ThinktankImg from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
-import TrackOTronImg from "../assets/symposium/Sympo'25/Track2/TRACK TRON.jpeg";
+import VoltrushImg from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
+import BionexaImg from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
+import ThinkonomicsImg from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
+import GateBountyImg from "../assets/symposium/Sympo'25/Track2/TRACK TRON.jpeg";
+import TieTheKnotsImg from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
+import ChronoverseImg from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 
 export const track1TechnicalEvents = [
   {
     id: 0,
+    title: "MINDSPARK",
+    label: "MINDSPARK",
+    category: "Technical • Track I",
+    description:
+      "Paper Presentation! Ignite Ideas. Inspire Future. Showcase groundbreaking research and innovative technological solutions in a 10-minute presentation challenge.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
+    prize: "Win Exciting Prizes",
+    path: "/mindspark",
+    imageSrc: MindsparkImg,
+    altText: "MINDSPARK - Paper Presentation",
+  },
+  {
+    id: 1,
     title: "Prompt Rush",
     label: "Prompt Rush",
     category: "Technical • Track I",
     description:
-      "An innovative AI and prompt engineering arena where participants write creative prompts, solve tech challenges, and push AI productivity to bigger possibilities.",
+      "Prompt • Think • Create! An elite generative AI and prompt engineering challenge to craft prompts, synthesize code, and solve tech problems.",
     date: "Oct 10, 2026",
     team: "1 - 2 Members",
+    prize: "Win Exciting Prizes",
     path: "/promptRush",
     imageSrc: PromptRushImg,
     altText: "Prompt Rush",
   },
   {
-    id: 1,
+    id: 2,
     title: "VINTAVIZ",
     label: "VINTAVIZ",
     category: "Technical • Track I",
     description:
-      "A carnival of ideas, innovation & inspiration! Observe patterns, analyze insights, visualize findings, and outsmart the data in this premier analytics showcase.",
+      "Visual Intelligence! Take on a 60-second visualization memory challenge, followed by transforming datasets into meaningful visual insights.",
     date: "Oct 10, 2026",
-    team: "1 - 2 Members",
+    team: "Max 2 Members",
+    prize: "Cash Prize for Winners",
     path: "/vintaviz",
     imageSrc: VintavizImg,
     altText: "VINTAVIZ",
   },
   {
-    id: 2,
+    id: 3,
     title: "FLIPSTER 2.0",
-    label: "FLIPSTER",
+    label: "FLIPSTER 2.0",
     category: "Technical • Track I",
     description:
-      "The ultimate tech hustle! Put your intuition, brand awareness, tech acumen, and fast decision-making to the test to think, solve, and win exciting prizes.",
+      "The Tech Hustle! A technical quiz followed by buzzer terms identification and phishing email threat detection.",
     date: "Oct 10, 2026",
-    team: "2 Members",
-    prize: "Exciting Prizes",
+    team: "Team of 2",
+    prize: "Win Exciting Prizes",
     path: "/flipster",
     imageSrc: FlipsterImg,
     altText: "FLIPSTER 2.0",
   },
   {
-    id: 3,
+    id: 4,
     title: "CYBERVERSE",
     label: "CYBERVERSE",
     category: "Technical • Track I",
     description:
-      "An intense Capture The Flag (CTF) showdown! Decrypt the unknown across web exploitation, cryptography, digital forensics, reverse engineering/PWN, and misc puzzles.",
+      "Capture The Flag (CTF)! Solve technical challenges spanning web exploitation, cryptography, reverse engineering, and forensics.",
     date: "Oct 10, 2026",
     team: "1 - 2 Members",
+    prize: "Win Exciting Prizes",
     path: "/cyberverse",
     imageSrc: CyberverseImg,
     altText: "CYBERVERSE",
   },
   {
-    id: 4,
+    id: 5,
     title: "CYPHORA",
     label: "CYPHORA",
     category: "Technical • Track I",
     description:
-      "A cutting-edge machine learning and intelligent systems showdown challenging participants to regenerate data patterns, evolve AI models, and reverse-engineer blackbox algorithms.",
+      "OS Navigator, AI Image Regeneration & Scratch Quest! Challenge OS clue exploration, AI prompt visual recreation, and Scratch gaming problem-solving.",
     date: "Oct 10, 2026",
-    team: "1 - 2 Members",
+    team: "Team of 2",
+    prize: "Win Exciting Prizes",
     path: "/cyphora",
     imageSrc: CyphoraImg,
     altText: "CYPHORA",
   },
   {
-    id: 5,
+    id: 6,
     title: "WHO LOCKED YOU?",
     label: "WHO LOCKED YOU?",
     category: "Technical • Track I",
     description:
-      "An intense cybersecurity and technical investigation challenge! Decrypt hidden locks, solve forensic clues, bypass digital barriers, and unmask the rogue entity.",
+      "Detective-based investigation! Solve challenging tasks across 3 rounds involving observation, logical reasoning, and clue analysis to unmask the culprit.",
     date: "Oct 10, 2026",
     team: "1 - 2 Members",
     prize: "Enter to Win",
@@ -101,16 +122,16 @@ export const track1TechnicalEvents = [
   },
 ];
 
-export const nonTechnicalEvents = [
+export const commonNonTechnicalEvents = [
   {
     id: 1,
     title: "Cinephilia",
     label: "Cinephilia",
     category: "Non-Technical",
     description:
-      "Dive into cinema beyond the screen! Test your passion through BGM mastery, dialogue identification, scene connection, and film trivia.",
-    date: "Oct 10, 2025",
-    team: "2 - 3 Members",
+      "A Celebration of Cinema! Test your movie knowledge through BGM Master, Mute-A-Logue, and Concept Pudi Prize Adi challenges.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
     prize: "Exciting Cash Prize",
     path: "/cinephilia",
     imageSrc: CinephiliaImg,
@@ -118,42 +139,45 @@ export const nonTechnicalEvents = [
   },
   {
     id: 2,
-    title: "Potpurri",
-    label: "POTPURRI",
+    title: "CLUMINATI",
+    label: "CLUMINATI",
     category: "Non-Technical",
     description:
-      "Step into a world of laughter and energy! Test quick thinking, miming, wordplay, and team synergy through lively interactive games.",
-    date: "Oct 10, 2025",
-    team: "2 - 4 Members",
-    path: "/potpurri",
-    imageSrc: PotpurriImg,
-    altText: "POTPURRI",
+      "Nothing Is Random. Everything Connects! An exciting mystery-solving event where investigators connect cases, analyze suspects, and examine the crime scene.",
+    date: "Oct 10, 2026",
+    team: "1 - 2 Members (Solo Allowed)",
+    prize: "Exciting Cash Prize",
+    path: "/cluminati",
+    imageSrc: CueBattleImg,
+    altText: "CLUMINATI",
   },
   {
     id: 3,
-    title: "Cue Battle",
-    label: "CUEBATTLE",
+    title: "Tie The Knots",
+    label: "TIE THE KNOTS",
     category: "Non-Technical",
     description:
-      "A high-octane battle of wits, cues, and instant deduction where sharp observation and split-second recall determine the victor.",
-    date: "Oct 10, 2025",
-    team: "2 Members",
-    path: "/cuebattle",
-    imageSrc: CueBattleImg,
-    altText: "CUEBATTLE",
+      "Connections! Test quick thinking and teamwork through Decode (10s puzzles), Objectune (cinema tune guessing), and Memory Challenge.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
+    prize: "Win Exciting Prizes",
+    path: "/potpurri",
+    imageSrc: TieTheKnotsImg,
+    altText: "TIE THE KNOTS",
   },
   {
     id: 4,
-    title: "Deadly Deeds",
-    label: "Deadly Deeds",
+    title: "CHRONOVERSE 2026",
+    label: "CHRONOVERSE",
     category: "Non-Technical",
     description:
-      "The Nevermore Mystery: A dark tale of deceit and hidden clues where teams interrogate suspects, crack codes, and unmask the culprit.",
-    date: "Oct 10, 2025",
-    team: "2 - 3 Members",
+      "Time Travel – Every Era Has A Challenge! A thrilling journey through past, present, and future across 10 quick, creative, and entertaining games.",
+    date: "Oct 10, 2026",
+    team: "Team of 4",
+    prize: "Win Exciting Prizes",
     path: "/deadlydeeds",
-    imageSrc: DeadlyDeedsImg,
-    altText: "Deadly Deeds",
+    imageSrc: ChronoverseImg,
+    altText: "CHRONOVERSE 2026",
   },
   {
     id: 5,
@@ -161,9 +185,9 @@ export const nonTechnicalEvents = [
     label: "OBSSTACKLE",
     category: "Non-Technical",
     description:
-      "Live Stumble Guys knockout tournament where contestants dash, leap, and evade obstacles to outlast competitors and claim the crown.",
-    date: "Oct 10, 2025",
-    team: "Solo Player",
+      "Live Stumble Guys knockout tournament! Race, jump, and dodge obstacles to outlast competitors and claim the champion's crown.",
+    date: "Oct 10, 2026",
+    team: "Individual (Solo Player)",
     prize: "Cash Prize for Winners",
     path: "/obstackle",
     imageSrc: ObstackleImg,
@@ -171,18 +195,22 @@ export const nonTechnicalEvents = [
   },
   {
     id: 6,
-    title: "GigzUp",
+    title: "GIGZUP 2.0",
     label: "GIGZUP",
-    category: "Non-Technical",
+    category: "Non-Technical • Online",
     description:
-      "An AI & tech-themed meme showdown blending humor with insight! Translate complex tech topics into hilarious, viral content.",
-    date: "Oct 10, 2025",
-    team: "1 - 2 Members",
+      "Virtual Vibe Fest (Online Event)! An exciting online entertainment quiz competing in real time across ConnectX and Verse Decode.",
+    date: "Oct 07, 2026",
+    team: "Solo / Individual",
+    prize: "Cash Prize for Winners",
     path: "/gigzup",
     imageSrc: GigzUpImg,
-    altText: "GIGZUP",
+    altText: "GIGZUP 2.0",
   },
 ];
+
+export const track1NonTechnicalEvents = commonNonTechnicalEvents;
+export const track2NonTechnicalEvents = commonNonTechnicalEvents;
 
 export const track2TechnicalEvents = [
   {
@@ -192,64 +220,66 @@ export const track2TechnicalEvents = [
     category: "Technical • Track II",
     description:
       "Premier circuit paper presentation event to showcase novel innovations in electronics, IoT, biomedical engineering, and intelligent systems.",
-    date: "Oct 10, 2025",
+    date: "Oct 10, 2026",
     team: "Max 3 Members",
+    prize: "Win Exciting Prizes",
     path: "/nexus",
     imageSrc: NexusImg,
     altText: "Nexus",
   },
   {
     id: 2,
-    title: "Amp-it-up-Arena",
-    label: "Amp-It-Up-Arena",
+    title: "Voltrush",
+    label: "VOLTRUSH",
     category: "Technical • Track II",
     description:
-      "A high-voltage 3-round quiz challenging circuit theory, component identification, speed, and electronic problem-solving.",
-    date: "Oct 10, 2025",
+      "High-voltage electrical showdown! Challenge circuit theory, component identification, electrical logic, and power problem-solving.",
+    date: "Oct 10, 2026",
     team: "Team of 2",
-    prize: "Prizes for Top Teams",
+    prize: "Win Exciting Prizes",
     path: "/ampItUpArena",
-    imageSrc: AmpItUpArenaImg,
-    altText: "Amp-It-Up-Arena",
+    imageSrc: VoltrushImg,
+    altText: "VOLTRUSH",
   },
   {
     id: 3,
-    title: "BioMystic",
-    label: "BioMystic",
+    title: "Bionexa Auction Hunt",
+    label: "Bionexa Auction Hunt",
     category: "Technical • Track II",
     description:
-      "Decode jumbled biomedical terminology, conquer tricky clinical riddles, and race the clock in an adrenaline-filled bio challenge.",
-    date: "Oct 10, 2025",
-    team: "Team of 2",
+      "Bid Smart • Think Fast • Win Big! A high-stakes 2-round competition combining departmental knowledge bidding and mystery challenges.",
+    date: "Oct 10, 2026",
+    team: "2 - 3 Members",
     path: "/bioMystic",
-    imageSrc: BioMysticImg,
-    altText: "BioMystic",
+    imageSrc: BionexaImg,
+    altText: "Bionexa Auction Hunt",
   },
   {
     id: 4,
-    title: "Thinktank",
-    label: "THINKTANK",
+    title: "Thinkonomics",
+    label: "THINKONOMICS",
     category: "Technical • Track II",
     description:
-      "A strategic business quiz testing market intelligence, corporate acumen, branding, and managerial crisis resolution under pressure.",
-    date: "Oct 10, 2025",
-    team: "2 Members",
+      "Business Quiz! Step into the world of business, brands, and brilliant minds across Prelims (30 MCQs), Crack the Code (Logos & Sounds), and L-Lookup.",
+    date: "Oct 10, 2026",
+    team: "Team of 2",
     prize: "Cash Prize & Certificates",
     path: "/thinktank",
-    imageSrc: ThinktankImg,
-    altText: "THINKTANK",
+    imageSrc: ThinkonomicsImg,
+    altText: "THINKONOMICS",
   },
   {
     id: 5,
-    title: "Track-O-Tron",
-    label: "TRACKTRON",
+    title: "Gate Bounty",
+    label: "GATE BOUNTY",
     category: "Technical • Track II",
     description:
-      "The galactic robotics battle arena where autonomous line-followers and custom bots conquer dynamic obstacles to claim cosmic glory.",
-    date: "Oct 10, 2025",
-    team: "2 - 4 Members",
+      "Hands-on digital electronics challenge! Implement logic gates using NAND/NOR gates, simplify Boolean expressions, and demonstrate working hardware circuits.",
+    date: "Oct 10, 2026",
+    team: "Max 2 Members",
+    prize: "30 Marks • 40 Mins",
     path: "/tracktron",
-    imageSrc: TrackOTronImg,
-    altText: "TRACKTRON",
+    imageSrc: GateBountyImg,
+    altText: "GATE BOUNTY",
   },
 ];

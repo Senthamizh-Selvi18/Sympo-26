@@ -1,6 +1,6 @@
 import React from "react";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
-import PotpurriBanner from "../../../assets/symposium/Sympo'25/Track2/POTPURRI.png";
+import TieTheKnotsBanner from "../../../assets/symposium/Sympo'25/Track2/POTPURRI.png";
 
 const Potpurri = () => {
   const sectionCards = [
@@ -8,60 +8,126 @@ const Potpurri = () => {
       icon: "🎉",
       heading: "Event Description",
       content: (
-        <p className="text-base md:text-lg leading-relaxed text-slate-200">
-          Step into a world of laughter, energy, and excitement! <strong className="text-white">POTPURRI</strong> tests your creativity, quick thinking, and teamwork through a series of engaging and lively games, including connection deduction and dumb charades.
-        </p>
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p className="font-semibold text-accent text-lg">
+            STEP INTO A WORLD OF LAUGHTER, ENERGY, AND EXCITEMENT! 🔗
+          </p>
+          <p>
+            <strong className="text-white">Tie the knots (Connections)</strong> is an exciting non-technical event designed to test your creativity, quick thinking, and teamwork through a series of super fun and engaging games.
+          </p>
+        </div>
       ),
-      key: "desc"
+      key: "desc",
     },
     {
       icon: "🎯",
-      heading: "Objectives",
+      heading: "Event Objectives",
       content: (
-        <ul className="sympo-tech-list text-base md:text-lg">
-          {[
-            "Encourage Teamwork & Collaboration – Build stronger bonds through group participation and team challenges.",
-            "Enhance Creativity & Imagination – Motivate participants to think outside the box.",
-            "Develop Quick Thinking & Problem-Solving Skills – Sharpen analytical and deduction abilities.",
-            "Promote Healthy Competition – Foster a spirit of sportsmanship in a fun and engaging environment.",
-            "Relieve Stress & Boost Energy – Provide students with a refreshing, energizing break filled with fun.",
-            "Improve Communication Skills – Strengthen verbal and non-verbal expression."
-          ].map((obj, i) => (
-            <li key={i} className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>{obj}</span>
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <ul className="sympo-tech-list space-y-2">
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Encourage Teamwork & Collaboration:</strong> Build stronger bonds among students through group participation and team-based challenges.
+              </span>
             </li>
-          ))}
-        </ul>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Enhance Creativity & Imagination:</strong> Motivate students to think outside the box while expressing ideas in unique and fun ways.
+              </span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Develop Quick Thinking & Problem-Solving:</strong> Sharpen analytical and decision-making abilities through fast-paced games.
+              </span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Promote Healthy Competition:</strong> Foster a spirit of sportsmanship and fair play in a fun and engaging environment.
+              </span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Relieve Stress & Boost Energy:</strong> Provide students with a refreshing break from academics while energizing them with laughter and fun.
+              </span>
+            </li>
+            <li className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>Improve Communication Skills:</strong> Strengthen verbal and non-verbal communication through interactive games.
+              </span>
+            </li>
+          </ul>
+        </div>
       ),
-      key: "objectives"
+      key: "objectives",
     },
     {
-      icon: "🛠",
-      heading: "Event Rounds",
+      icon: "⚡",
+      heading: "Event Rounds & Structure",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🧩 Round 1 – Connections</h3>
-            <p className="text-sm md:text-base text-slate-200 mt-1">
-              Identify the link between pictures, words, symbols, or clues displayed on the screen. Tests observation, lateral thinking, and presence of mind.
+            <h3 className="sympo-subcard-title">🧩 Round 1 – Decode</h3>
+            <p className="text-sm md:text-base text-slate-200 mt-2">
+              A fun and brain-teasing event where participants have to identify the link between pictures, words, symbols, or clues displayed on the screen within <strong>10 seconds</strong>.
             </p>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Themes:</strong> Movie titles, celebrities, cinema dialogues, movies & cinema songs, famous personalities, proverbs, objects, or trending concepts.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Skills Tested:</strong> Creativity, observation, general knowledge, presence of mind, and spotting the clever link that ties everything together.</span>
+              </li>
+            </ul>
           </div>
+
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🎭 Round 2 – Dumb Charades</h3>
-            <p className="text-sm md:text-base text-slate-200 mt-1">
-              Act out a movie or phrase without uttering a single word while teammates decipher the message against the clock.
+            <h3 className="sympo-subcard-title">🎵 Round 2 – Objectune</h3>
+            <p className="text-sm md:text-base text-slate-200 mt-2">
+              A fun cinematic musical challenge where participants identify a cinema song using only its tune.
             </p>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Flow:</strong> One participant is secretly given an object and sings the tune by repeatedly replacing all lyrics with that object's name.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Guessing:</strong> The partner listens carefully and must guess the cinema song within <strong>1 minute</strong>.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Skills Tested:</strong> Active listening, memory retention, concentration, creativity, quick thinking, and coordination.</span>
+              </li>
+            </ul>
           </div>
+
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">⚡ Round 3 – Surprise Round</h3>
-            <p className="text-sm md:text-base text-slate-200 mt-1">
-              An adrenaline-packed mystery challenge revealed on the spot for qualifying finalist teams!
+            <h3 className="sympo-subcard-title">🎬 Round 3 – Memory Challenge</h3>
+            <p className="text-sm md:text-base text-slate-200 mt-2">
+              Participants watch a video containing <strong>10 famous actors, actresses, and famous personalities</strong> for <strong>30 seconds</strong>.
             </p>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Screen Hides:</strong> The screen is hidden, and participants are asked rapid questions based on what they observed.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Skills Tested:</strong> Memory recall, concentration, observation, critical thinking, and attention to detail under pressure.</span>
+              </li>
+            </ul>
           </div>
         </div>
       ),
-      key: "rounds"
+      key: "rounds",
     },
     {
       icon: "📜",
@@ -69,53 +135,59 @@ const Potpurri = () => {
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
           {[
-            "It is a team event which consists of 2 members.",
-            "3 progressive rounds will be held.",
-            "Participants are requested to assemble 30 minutes prior to event commencement.",
-            "Any fraudulent or disorderly conduct will result in immediate disqualification.",
-            "The judges' decision is final and binding."
+            { label: "Team Size", text: "It is a team event which consists of 2 members." },
+            { label: "Rounds", text: "3 rounds will be held." },
+            { label: "Assembly Time", text: "Participants are requested to assemble 30 minutes prior to the commencement of the event." },
+            { label: "Conduct", text: "Any fraudulent or misbehaving activities will result in immediate disqualification of the team." },
+            { label: "Judges' Decision", text: "The judge’s decision will be final and binding." },
           ].map((rule, i) => (
             <li key={i} className="sympo-tech-list-item">
               <span className="sympo-tech-list-bullet">✦</span>
-              <span>{rule}</span>
+              <span>
+                <strong>{rule.label}:</strong> {rule.text}
+              </span>
             </li>
           ))}
         </ul>
       ),
-      key: "rules"
+      key: "rules",
     },
     {
       icon: "📞",
       heading: "Contact Details",
       content: (
-        <div className="sympo-subcard">
-          <div className="font-semibold text-accent mb-2">Student Coordinators:</div>
-          <ul className="sympo-tech-list">
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>BHAVANA N (II MBA): <a href="tel:+918428317950" className="text-accent hover:underline">8428317950</a></span>
-            </li>
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>JOEL (II MBA): <a href="tel:+918610733081" className="text-accent hover:underline">8610733081</a></span>
-            </li>
-          </ul>
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <div className="font-semibold text-accent mb-2">Student Coordinator:</div>
+            <ul className="sympo-tech-list">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  POOJA SRI N:{" "}
+                  <a href="tel:+917358393785" className="text-accent hover:underline">
+                    7358393785
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       ),
-      key: "contact"
-    }
+      key: "contacts",
+    },
   ];
 
   return (
     <EventDetailLayout
-      posterSrc={PotpurriBanner}
-      posterAlt="Potpurri Fun Games Event Poster"
-      title="POTPURRI"
-      subtitle="FUN GAMES, CONNECTIONS & CHARADES"
+      posterSrc={TieTheKnotsBanner}
+      posterAlt="TIE THE KNOTS Connections Event Poster"
+      title="TIE THE KNOTS"
+      subtitle="CONNECTIONS"
       track="TRACK II"
       category="Non-Technical"
-      date="October 10, 2025"
-      team="2 - 4 Members"
+      date="Oct 10, 2026"
+      team="Team of 2"
+      prize="Exciting Cash Prize"
       registrationUrl="https://forms.gle/Fj7K7v8yB2G7Adp57"
       sectionCards={sectionCards}
     />

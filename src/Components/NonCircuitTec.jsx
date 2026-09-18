@@ -10,78 +10,92 @@ import FLIPSTER from "../assets/symposium/Sympo'25/Track1/FLIPSTER.jpg";
 import Cyberverse from "../assets/symposium/Sympo'25/Track1/Cyberverse.jpg";
 import Cyphora from "../assets/symposium/Sympo'25/Track1/Cyphora.jpg";
 import WhoLockedYou from "../assets/symposium/Sympo'25/Track1/WhoLockedYou.jpg";
+import Mindspark from "../assets/symposium/Sympo'25/Track1/Mindspark.png";
 
 const NonCircuitTec = () => {
   const circuittechnicalEvents = [
     {
       id: 0,
+      imageSrc: Mindspark,
+      altText: "MINDSPARK - Paper Presentation",
+      title: "MINDSPARK",
+      category: "Technical • Track I",
+      description:
+        "Paper Presentation! Ignite Ideas. Inspire Future. Showcase groundbreaking research and innovative technological solutions in a 10-minute presentation challenge.",
+      date: "Oct 10, 2026",
+      team: "Team of 2",
+      path: "/mindspark",
+    },
+    {
+      id: 1,
       imageSrc: PromptRush,
       altText: "Prompt Rush",
       title: "Prompt Rush",
       category: "Technical • Track I",
       description:
-        "An innovative AI and prompt engineering arena where participants write creative prompts, solve tech challenges, and push AI productivity to bigger possibilities.",
+        "Prompt • Think • Create! An elite generative AI and prompt engineering challenge to craft prompts, synthesize code, and solve tech problems.",
       date: "Oct 10, 2026",
       team: "1 - 2 Members",
       path: "/promptRush",
     },
     {
-      id: 1,
+      id: 2,
       imageSrc: Vintaviz,
       altText: "VINTAVIZ",
       title: "VINTAVIZ",
       category: "Technical • Track I",
       description:
-        "A carnival of ideas, innovation & inspiration! Observe patterns, analyze insights, visualize findings, and outsmart the data in this premier analytics showcase.",
+        "Visual Intelligence! Take on a 60-second visualization memory challenge, followed by transforming datasets into meaningful visual insights.",
       date: "Oct 10, 2026",
-      team: "1 - 2 Members",
+      team: "Max 2 Members",
       path: "/vintaviz",
     },
     {
-      id: 2,
+      id: 3,
       imageSrc: FLIPSTER,
       altText: "FLIPSTER 2.0",
       title: "FLIPSTER 2.0",
       category: "Technical • Track I",
       description:
-        "The ultimate tech hustle! Put your intuition, brand awareness, tech acumen, and fast decision-making to the test to think, solve, and win exciting prizes.",
+        "The Tech Hustle! A technical quiz followed by buzzer terms identification and phishing email threat detection.",
       date: "Oct 10, 2026",
-      team: "2 Members",
-      prize: "Exciting Prizes",
+      team: "Team of 2",
+      prize: "Win Exciting Prizes",
       path: "/flipster",
     },
     {
-      id: 3,
+      id: 4,
       imageSrc: Cyberverse,
       altText: "CYBERVERSE",
       title: "CYBERVERSE",
       category: "Technical • Track I",
       description:
-        "An intense Capture The Flag (CTF) showdown! Decrypt the unknown across web exploitation, cryptography, digital forensics, reverse engineering/PWN, and misc puzzles.",
+        "Capture The Flag (CTF)! Solve technical challenges spanning web exploitation, cryptography, reverse engineering, and forensics.",
       date: "Oct 10, 2026",
       team: "1 - 2 Members",
       path: "/cyberverse",
     },
     {
-      id: 4,
+      id: 5,
       imageSrc: Cyphora,
       altText: "CYPHORA",
       title: "CYPHORA",
       category: "Technical • Track I",
       description:
-        "A cutting-edge machine learning and intelligent systems showdown challenging participants to regenerate data patterns, evolve AI models, and reverse-engineer blackbox algorithms.",
+        "OS Navigator, AI Image Regeneration & Scratch Quest! Challenge OS clue exploration, AI prompt visual recreation, and Scratch gaming problem-solving.",
       date: "Oct 10, 2026",
-      team: "1 - 2 Members",
+      team: "Team of 2",
+      prize: "Win Exciting Prizes",
       path: "/cyphora",
     },
     {
-      id: 5,
+      id: 6,
       imageSrc: WhoLockedYou,
       altText: "WHO LOCKED YOU?",
       title: "WHO LOCKED YOU?",
       category: "Technical • Track I",
       description:
-        "An intense cybersecurity and technical investigation challenge! Decrypt hidden locks, solve forensic clues, bypass digital barriers, and unmask the rogue entity.",
+        "Detective-based investigation! Solve challenging tasks across 3 rounds involving observation, logical reasoning, and clue analysis to unmask the culprit.",
       date: "Oct 10, 2026",
       team: "1 - 2 Members",
       prize: "Enter to Win",

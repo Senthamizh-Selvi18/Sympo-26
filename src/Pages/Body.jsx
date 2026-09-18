@@ -414,7 +414,7 @@ const Body = () => {
                   fontSize: "17px",
                 }}
               >
-                Dive In
+                Let's Start
               </span>
             </Button>
           </div>
