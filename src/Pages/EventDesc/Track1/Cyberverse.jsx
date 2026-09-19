@@ -1,174 +1,167 @@
 import React from "react";
-import { FaShieldAlt, FaTerminal, FaKey, FaGavel, FaTrophy, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/Cyberverse.jpg";
 
 const Cyberverse = () => {
   const sectionCards = [
     {
-      icon: <FaShieldAlt size={24} />,
+      icon: "🚩",
       heading: "Event Description",
       content: (
-        <div className="space-y-3 text-slate-200">
-          <p className="text-base md:text-lg leading-relaxed font-semibold text-sky-400">
-            "Decrypt The Unknown. Capture The Flag." 🚩
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p className="font-semibold text-accent text-lg">
+            Decrypt The Unknown • Capture The Flag
           </p>
-          <p className="text-base md:text-lg leading-relaxed">
-            Presented by the Department of <strong className="text-white">Cyber Security (CS)</strong>, <strong className="text-white">CYBERVERSE</strong> is an intense, battlefield-style Capture The Flag (CTF) tournament. Cyber warriors will test their offensive and defensive security capabilities across web exploitation, cryptography, digital forensics, reverse engineering, binary exploitation (pwn), and forensic investigations. Hunt for hidden vulnerabilities, break cryptographic ciphers, and capture flags to dominate the cyber leaderboard!
+          <p>
+            <strong className="text-white">Capture The Flag (CTF)</strong> is a cybersecurity competition where participants compete individually or in teams of up to two to solve a series of technical challenges spanning web exploitation, cryptography, reverse engineering, and forensics. Participants must apply their technical knowledge to uncover hidden flags and submit them for points within the given time frame.
           </p>
         </div>
       ),
-      key: "desc"
+      key: "desc",
     },
     {
-      icon: <FaKey size={24} />,
-      heading: "Challenge Domains",
+      icon: "🎯",
+      heading: "Event Objective",
       content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🌐 Web Exploitation</div>
-            <div className="sympo-subcard-desc">SQL injection, XSS, CSRF, IDOR, authentication bypass, and API vulnerabilities</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🔐 Cryptography</div>
-            <div className="sympo-subcard-desc">Classic ciphers, modern RSA/AES attacks, hashing collisions, and mathematical crypto</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🔍 Digital Forensics</div>
-            <div className="sympo-subcard-desc">Memory dumps, PCAP network traffic inspection, file metadata, and hidden data analysis</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">⚙️ RE & PWN</div>
-            <div className="sympo-subcard-desc">Binary disassembly, decompilation, buffer overflows, and format string exploits</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title">🧩 Miscellaneous</div>
-            <div className="sympo-subcard-desc">Steganography, OSINT, scripting challenges, and unconventional logic puzzles</div>
-          </div>
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p>
+            The event is designed to challenge participants' technical knowledge, problem-solving abilities, and analytical thinking across a range of cybersecurity domains.
+          </p>
+          <p>
+            Participants must exploit vulnerabilities, decode challenges, and apply their technical skills to capture flags within the given time frame. This event fosters creativity, critical thinking, and collaborative decision-making in a fun yet competitive environment.
+          </p>
         </div>
       ),
-      key: "domains"
+      key: "objectives",
     },
     {
-      icon: <FaTerminal size={24} />,
-      heading: "CTF Structure & Rules of Engagement",
+      icon: "⚡",
+      heading: "Event Rounds & Winning Criteria",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🎯 Flag Format & Scoring</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+            <h3 className="sympo-subcard-title">🛡️ Round 1: CTF Challenge</h3>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>All flags follow the standard format: <code className="bg-slate-800 text-sky-300 px-2 py-0.5 rounded font-mono">FLAG&#123;sample_text_here&#125;</code></span>
+                <span><strong>Objective:</strong> Participants will be required to solve a series of technical challenges spanning web exploitation, cryptography, reverse engineering, and forensics to capture flags.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Dynamic scoring system: Challenge points adjust dynamically based on the number of solvers</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>In case of point ties, rankings are decided based on the timestamp of the earlier submission</span>
-              </li>
-            </ul>
-          </div>
-          <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">📍 Venue & Platform Details</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>Venue:</strong> Labs ML403, ML410</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>Team Size:</strong> 1 - 2 Members per team</span>
+                <span><strong>Winning Criteria:</strong> The team that captures the highest number of flags within the given time limit will be considered the winner. In case of a tie, the timestamp of the last valid flag submission will determine the winner.</span>
               </li>
             </ul>
           </div>
         </div>
       ),
-      key: "structure"
+      key: "rounds",
     },
     {
-      icon: <FaGavel size={24} />,
-      heading: "Code of Conduct & Rules",
+      icon: "📜",
+      heading: "Rules & Regulations",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
           {[
-            "Do NOT perform Denial of Service (DoS/DDoS) attacks against the CTF infrastructure or campus networks",
-            "Do NOT share flags, solutions, or write-ups between teams during the active competition",
-            "Attacking other teams' machines or infrastructure is strictly prohibited and results in instant disqualification",
-            "Automated brute-forcing tools against the web platform dashboard are strictly forbidden",
-            "The decision of the CTF Admin and Faculty Coordinators is final and binding"
+            { label: "Team Size", text: "Maximum of 2 members per team (solo participation allowed). No member can belong to more than one team." },
+            { label: "Conduct", text: "Participants must be respectful and courteous towards other participants, judges, and event staff." },
+            { label: "Decision of Judges", text: "The decision of the judges will be final and binding." },
+            { label: "Target Boundaries", text: "Attack only explicitly assigned challenge targets, ports, and instances." },
+            { label: "No Infrastructure Attacks", text: "Do not target the scoring engine, hosting platform, web portals, or competitors' machines." },
+            { label: "No Denial of Service (DoS)", text: "DoS/DDoS attacks, intentional resource exhaustion, or unthrottled brute-forcing are strictly banned." },
+            { label: "No Flag or Hint Sharing", text: "Sharing flags, solutions, write-ups, or hints between different teams results in instant disqualification." },
+            { label: "No Outside Assistance", text: "Solicit help only from your registered teammate — no external forums, discord servers, or outside mentors." },
+            { label: "Flag Format", text: "Submit flags exactly in the specified format (e.g., JCE{flag_text}), respecting case sensitivity." },
+            { label: "Tiebreakers", text: "Resolved strictly by the timestamp of the last valid flag submission." },
+            { label: "Disqualification", text: "Participants or teams found guilty of misconduct will be disqualified." },
+            { label: "Penalties", text: "Possible penalties include point deductions, time penalties, or other consequences." },
+            { label: "Organizers' Rights", text: "The event organizers reserve the right to modify or cancel the event at any time." },
+            { label: "Participation Agreement", text: "By participating in the event, participants agree to abide by all the rules and guidelines specified above." },
           ].map((rule, index) => (
             <li key={index} className="sympo-tech-list-item">
               <span className="sympo-tech-list-bullet">✦</span>
-              <span>{rule}</span>
+              <span>
+                <strong>{rule.label}:</strong> {rule.text}
+              </span>
             </li>
           ))}
         </ul>
       ),
-      key: "rules"
+      key: "rules",
     },
     {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging & Awards",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥇</span> Total CTF Score</div>
-            <div className="sympo-subcard-desc">Accumulated challenge points across all cyber domains</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⚡</span> First Blood Honors</div>
-            <div className="sympo-subcard-desc">Special recognition for the fastest first solves of hard challenges</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⏱️</span> Time Advantage</div>
-            <div className="sympo-subcard-desc">Precision timestamps serving as definitive tie-breakers</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
-      icon: <FaUserTie size={24} />,
-      heading: "Coordinators & Contact",
+      icon: "📞",
+      heading: "Contact Information",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-accent">Student Coordinators (Cyber Security):</div>
-            <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="font-semibold text-accent mb-2">Staff Incharge:</div>
+            <ul className="sympo-tech-list space-y-1">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>V. B. Manoj</strong> – III CS</span>
+                <span>
+                  Ms. N. Sangeetha:{" "}
+                  <a href="tel:+919952690529" className="text-accent hover:underline">
+                    9952690529
+                  </a>
+                </span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>R. Miracline Jovita</strong> – III CS</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>S. Shruthi</strong> – II CS</span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span><strong>T. Sai Deepak</strong> – II CS</span>
+                <span>
+                  Ms. S. Sandhiyaa:{" "}
+                  <a href="tel:+919940625082" className="text-accent hover:underline">
+                    9940625082
+                  </a>
+                </span>
               </li>
             </ul>
           </div>
 
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-sky-300">Faculty & Department Leadership:</div>
-            <div className="text-sm md:text-base text-slate-300 space-y-1">
-              <p><strong>Faculty Coordinators:</strong> Ms. N. Sangeetha, Ms. S. Sandhiyaa</p>
-              <p><strong>ACSP Coordinator:</strong> Ms. P. Ezhilarasi</p>
-              <p><strong>HOD - CS:</strong> Dr. S. Lilly Sheeba</p>
-            </div>
+            <div className="font-semibold text-accent mb-2">Student Coordinators (CS):</div>
+            <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  V. B Manoj (III CS):{" "}
+                  <a href="tel:+918939103826" className="text-accent hover:underline">
+                    8939103826
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  R. Miracline Jovita (III CS):{" "}
+                  <a href="tel:+917845225763" className="text-accent hover:underline">
+                    7845225763
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  S. Shruthi (II CS):{" "}
+                  <a href="tel:+917305879063" className="text-accent hover:underline">
+                    7305879063
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  T. Sai Deepak (II CS):{" "}
+                  <a href="tel:+919345021928" className="text-accent hover:underline">
+                    9345021928
+                  </a>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       ),
-      key: "contacts"
-    }
+      key: "contacts",
+    },
   ];
 
   return (
@@ -181,7 +174,7 @@ const Cyberverse = () => {
       category="Technical"
       date="Oct 10, 2026"
       team="1 - 2 Members"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

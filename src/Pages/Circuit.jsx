@@ -1,6 +1,6 @@
 import React from "react";
-import NonCircuitnTech from "../Components/NonCircuitnTech";
 import CircuitTec from "./CircuitTec";
+import NonCircuitnTech from "../Components/NonCircuitnTech";
 import TrackInfo from "./TrackInfo";
 import VoltageButton from "../Components/VoltageButton";
 import "./styles/animation.css";
@@ -14,16 +14,12 @@ const Circuit = () => {
             be part of an event that celebrates innovation and collaboration.
             Don’t miss the opportunity to engage with tech enthusiasts and experts."
       />
-
-      <CircuitTec />
-      <NonCircuitnTech />
-
       <div className="event-buttons-container flex flex-col sm:flex-row justify-center items-center gap-8 mt-5">
         <a
-          href="https://forms.gle/dZ8AyUzLBfmS5EyF7"
+          href="https://forms.gle/Fj7K7v8yB2G7Adp57"
           target="_blank"
           rel="noopener noreferrer"
-        />
+        >
           <VoltageButton
             label={
               <span
@@ -38,9 +34,11 @@ const Circuit = () => {
               </span>
             }
           />
-        
+        </a>
       </div>
 
+      <CircuitTec />
+      <NonCircuitnTech />
       <br />
     </div>
   );

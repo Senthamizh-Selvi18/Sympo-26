@@ -86,14 +86,14 @@ const StaticGlowLogo = ({ src, alt }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto flex flex-col items-center"
+      className="relative w-full max-w-[270px] md:max-w-[310px] mx-auto flex flex-col items-center justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <img
         src={src}
         alt={alt}
-        className="w-full h-auto rounded-lg mx-auto block"
+        className="w-full h-auto rounded-lg mx-auto block object-contain"
         style={{
           filter: hovered
             ? "drop-shadow(0 0 16px rgba(167,139,250,0.5)) brightness(1.06)"
@@ -428,7 +428,7 @@ const NewAbout = ({ compact = false }) => {
             </div>
           </div>
 
-          <div className="w-full h-full grid place-items-center">
+          <div className="w-full h-full flex items-center justify-center md:-translate-y-6">
             <StaticGlowLogo src={Image} alt="Technovanza Logo" />
           </div>
         </div>

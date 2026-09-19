@@ -5,150 +5,196 @@ import EventImage from "../../../assets/symposium/Sympo'25/Track1/Cinephilia.jpg
 const Cinephilia = () => {
   const sectionCards = [
     {
-      icon: "📜",
-      heading: "Description",
+      icon: "🎬",
+      heading: "Event Description",
       content: (
-        <p className="text-base md:text-lg leading-relaxed text-slate-200">
-          This symposium goes beyond the technical aspects of filmmaking to explore the human side of cinema. We will dive into how films shape our understanding of culture, society, and ourselves through a series of presentations and discussions.
-        </p>
+        <div className="space-y-3 text-slate-200 text-base md:text-lg leading-relaxed">
+          <p className="font-semibold text-accent text-lg">
+            CINEPHILIA – A Celebration of Cinema! 🍿
+          </p>
+          <p>
+            <strong className="text-white">CINEPHILIA</strong> is an exciting movie-based event for all cinema lovers. It is designed to test your movie knowledge, memory, observation, and quick thinking in a fun and entertaining way.
+          </p>
+          <p>
+            Participants will get to experience interesting movie challenges, identify songs and dialogues, and discover movies through visual clues. Come together, enjoy the challenges, show your cinema knowledge, and prove that you are a true cinephile!
+          </p>
+        </div>
       ),
-      key: "description"
+      key: "description",
     },
     {
       icon: "🎯",
-      heading: "Objective",
+      heading: "Event Objective",
       content: (
-        <p className="text-base md:text-lg leading-relaxed text-slate-200">
-          The main goal of this cinephilia event is to deepen the audience’s connection to film as an art form. It’s about fostering a culture of informed and passionate appreciation that’s more than just simple entertainment.
-        </p>
+        <div className="text-base md:text-lg leading-relaxed text-slate-200">
+          <p>
+            The objective of <strong className="text-white">CINEPHILIA</strong> is to celebrate the art of cinema by testing participants’ movie knowledge, observation skills, memory, and quick thinking through fun and interactive rounds. From decoding BGMs and dialogues to identifying movies through visual clues, the event aims to engage participants in an entertaining yet competitive atmosphere that fosters teamwork, creativity, and passion for films.
+          </p>
+        </div>
       ),
-      key: "objective"
+      key: "objective",
     },
     {
-      icon: "📋",
+      icon: "🏆",
       heading: "Event Rounds",
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🎵 Round 1: BGM Master</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+            <h3 className="sympo-subcard-title">🎵 Round 1: BGM MASTER</h3>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Participants must guess the song title from a 10-second BGM clip.</span>
+                <span><strong>Format:</strong> Participants need to guess the name of the song that the BGM belongs to.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>The teams with the highest scores will be shortlisted for the next round.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🔕 Round 2: Mute-a-logue</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>Teams need to identify a muted dialogue from a film clip within 30 seconds.</span>
+                <span><strong>Time Limit:</strong> BGM will be played for 10 seconds. Participants need to guess the correct answer within the allotted time.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>The top teams from this round will qualify for the final round.</span>
+                <span><strong>Shortlisting:</strong> Top teams will be shortlisted based on their scores. Teams with lowest scores will be eliminated.</span>
               </li>
             </ul>
           </div>
+
           <div className="sympo-subcard">
-            <h3 className="sympo-subcard-title">🎭 Round 3: Concept Pudi Prize Adi</h3>
-            <ul className="sympo-tech-list text-sm md:text-base mt-2">
+            <h3 className="sympo-subcard-title">🔕 Round 2: MUTE-A-LOGUE</h3>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Participants are required to identify a movie title by observing a series of images.</span>
+                <span><strong>Objective:</strong> Participants are asked to find the exact dialogue that is muted on the clip.</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>The team with the highest score in this round will be selected as the winner.</span>
+                <span><strong>Time Limit:</strong> Participants must find the dialogue within 30 seconds.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Shortlisting:</strong> Top teams will qualify for the final round.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="sympo-subcard">
+            <h3 className="sympo-subcard-title">🎭 Round 3: CONCEPT PUDI PRIZE ADI</h3>
+            <ul className="sympo-tech-list text-sm md:text-base text-slate-200 mt-2 space-y-2">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Task:</strong> Participants need to find the movie name by observing the shown images within the allotted time.</span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span><strong>Winner:</strong> Top team will be selected as the Winner.</span>
               </li>
             </ul>
           </div>
         </div>
       ),
-      key: "rounds"
+      key: "rounds",
     },
     {
       icon: "📜",
-      heading: "Rules and Regulations",
+      heading: "Rules & Regulations",
       content: (
         <ul className="sympo-tech-list text-base md:text-lg">
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Team Size:</strong> Each team can have two members.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Winner Selection:</strong> Winners are chosen based on the points they earn.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">✦</span>
-            <span><strong>Prohibited:</strong> Mobile phones and the use of ChatGPT or other AI tools are strictly forbidden and will lead to disqualification.</span>
-          </li>
+          {[
+            { label: "Team Size", text: "Each team can consist of 2 members." },
+            { label: "Scoring & Decision", text: "Winners will be selected according to their accumulated points." },
+            { label: "Device Policy", text: "Mobile phones are strictly prohibited." },
+            { label: "AI Tools Ban", text: "Use of ChatGPT & other AI tools will lead to immediate disqualification." },
+            { label: "Organizers' Discretion", text: "The event organizers reserve the right to modify or cancel the event at any time." },
+            { label: "Participation Agreement", text: "By participating in the event, teams agree to abide by the rules and guidelines specified above." },
+          ].map((rule, i) => (
+            <li key={i} className="sympo-tech-list-item">
+              <span className="sympo-tech-list-bullet">✦</span>
+              <span>
+                <strong>{rule.label}:</strong> {rule.text}
+              </span>
+            </li>
+          ))}
         </ul>
       ),
-      key: "rules"
-    },
-    {
-      icon: "⚖️",
-      heading: "Judging Criteria",
-      content: (
-        <ul className="sympo-tech-list text-base md:text-lg">
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">▶</span>
-            <span><strong>Organizers’ Decision:</strong> The event organizers have the right to modify or cancel the event at any time.</span>
-          </li>
-          <li className="sympo-tech-list-item">
-            <span className="sympo-tech-list-bullet">▶</span>
-            <span><strong>Participant Agreement:</strong> By participating, teams agree to follow the rules and guidelines provided.</span>
-          </li>
-        </ul>
-      ),
-      key: "judging"
+      key: "rules",
     },
     {
       icon: "📞",
       heading: "Contact Information",
       content: (
-        <div className="sympo-subcard">
-          <div className="mb-3 font-semibold text-accent">Staff Incharge:</div>
-          <div className="space-y-1 mb-4 text-slate-200">
-            <div>Ms. R. Rachel Evelyn</div>
-            <div>Mr. M. Mohamed Neina Hasan</div>
+        <div className="space-y-4">
+          <div className="sympo-subcard">
+            <div className="font-semibold text-accent mb-2">Staff Coordinators:</div>
+            <ul className="sympo-tech-list space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Ms. R. Rachel Evelyn:{" "}
+                  <a href="tel:+919789913813" className="text-accent hover:underline">
+                    9789913813
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  Ms. M. Faritha Begum:{" "}
+                  <a href="tel:+918610618992" className="text-accent hover:underline">
+                    8610618992
+                  </a>
+                </span>
+              </li>
+            </ul>
           </div>
-          <div className="mb-2 font-semibold text-accent">Student Incharge:</div>
-          <ul className="sympo-tech-list">
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>M. Hari Hara Sudhan: <a href="tel:+919345746676" className="text-accent hover:underline">+91 93457 46676</a></span>
-            </li>
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>T.S. Antony Sebastin: <a href="tel:+918667654649" className="text-accent hover:underline">+91 86676 54649</a></span>
-            </li>
-          </ul>
+
+          <div className="sympo-subcard">
+            <div className="font-semibold text-accent mb-2">Student Coordinators:</div>
+            <ul className="sympo-tech-list space-y-1">
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  S. Akash:{" "}
+                  <a href="tel:+919962995560" className="text-accent hover:underline">
+                    9962995560
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  P. Maheswaran:{" "}
+                  <a href="tel:+919790829593" className="text-accent hover:underline">
+                    9790829593
+                  </a>
+                </span>
+              </li>
+              <li className="sympo-tech-list-item">
+                <span className="sympo-tech-list-bullet">▶</span>
+                <span>
+                  R. Iswarya:{" "}
+                  <a href="tel:+917092746045" className="text-accent hover:underline">
+                    7092746045
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       ),
-      key: "contact"
-    }
+      key: "contact",
+    },
   ];
 
   return (
     <EventDetailLayout
       posterSrc={EventImage}
-      posterAlt="Cinephilia Film Challenge Event"
+      posterAlt="Cinephilia Cinema Celebration Event Poster"
       title="CINEPHILIA"
-      subtitle="CINEMA TRIVIA & APPRECIATION"
+      subtitle="A CELEBRATION OF CINEMA"
       track="TRACK I"
       category="Non-Technical"
       date="October 10, 2025"
-      team="2 Members"
+      team="Team of 2"
       prize="Exciting Cash Prize"
-      registrationUrl="https://forms.gle/YRbsnJiPvX2qFED79"
+      registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />
   );

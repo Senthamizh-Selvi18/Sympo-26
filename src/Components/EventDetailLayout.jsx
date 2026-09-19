@@ -47,8 +47,8 @@ const EventDetailLayout = ({
   const resolvedRegUrl =
     registrationUrl ||
     (track.includes("II")
-      ? "https://forms.gle/dZ8AyUzLBfmS5EyF7"
-      : "https://forms.gle/YRbsnJiPvX2qFED79");
+      ? "https://forms.gle/Fj7K7v8yB2G7Adp57"
+      : "https://forms.gle/EdRu152LpsBAt5t56");
 
   // Determine back route
   const resolvedBackPath =
