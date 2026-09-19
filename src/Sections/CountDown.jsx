@@ -78,7 +78,7 @@ const CountdownTimer = () => {
         </svg>
 
         <div className="flex flex-col items-center md:items-start">
-          <div className="event-label">Event begins on</div>
+          <div className="event-label">Save the Date</div>
           <div
             style={{
               width: "36px",
