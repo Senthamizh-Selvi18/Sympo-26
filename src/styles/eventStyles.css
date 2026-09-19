@@ -24,12 +24,12 @@
 
 /* Card: glassy look, gradient border, animated, responsive */
 .event-card {
-  background: var(--glass-bg);
+  background: rgba(10, 20, 50, 0.72);
   border-radius: var(--card-radius);
   box-shadow: 0 12px 32px var(--event-shadow);
   border: 2px solid var(--glass-border);
   transition: box-shadow 0.35s, transform 0.3s;
-  backdrop-filter: blur(16px);
+  
   overflow: hidden;
   min-width: 330px;
   max-width: 480px;
@@ -160,10 +160,10 @@
 }
 
 .glass-container {
-  background: rgba(6, 18, 44, 0.75);
-  backdrop-filter: blur(12px);
+  background: rgba(6, 18, 44, 0.88);
   border: 1px solid rgba(0, 212, 255, 0.22);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+ 
 }
 
 .glass-container:hover {

@@ -1,68 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import "./App.css";
+   import "./styles/perf-overrides.css";
 import Header from "./Sections/Header";
-import Footer from "./Sections/Footer";
 import { Outlet } from "react-router-dom";
 import Loading from "./Components/Loading";
 import SplashScreen from "./Components/SplashScreen";
 import ScrollToTop from "./Components/ScrollToTop";
-import './styles/eventStyles.css';
-import backgroundMusic from './assets/backgroundMusic.mp3'
-import metallicSound from './assets/clicksound.mp3'
+import "./styles/eventStyles.css";
+import backgroundMusic from "./assets/backgroundMusic.mp3";
+import metallicSound from "./assets/clicksound.mp3";
 import useSound from "use-sound";
 import EngineeringFieldBackground from "./Components/EngineeringFieldBackground";
 import "./Sections/styles/engineering-field.css";
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [stage, setStage] = useState("splash"); // splash -> loading -> ready
 
-  const [play, { stop }] = useSound(backgroundMusic, { volume: 0.1, loop: true, interrupt: true });
+  const [play, { stop }] = useSound(backgroundMusic, {
+    volume: 0.1,
+    loop: true,
+    html5: true, // stream the file instead of decoding it all into RAM
+  });
+
+  const handleSplashFinish = useCallback(() => setStage("loading"), []);
 
   useEffect(() => {
+    if (stage !== "loading") return;
+    const t = setTimeout(() => setStage("ready"), 1200);
+    return () => clearTimeout(t);
+  }, [stage]);
+
+  // start music only once the app is actually showing
+  useEffect(() => {
+    if (stage !== "ready") return;
     play();
-    return () => {
-      stop();
-    };
-  }, [play, stop]);
+    return () => stop();
+  }, [stage, play, stop]);
 
+  // one reusable click sound instead of a new Audio() per click
   useEffect(() => {
-    const playSound = () => {
-      const audio = new Audio(metallicSound);
+    const audio = new Audio(metallicSound);
+    audio.preload = "auto";
+    const onClick = () => {
       audio.currentTime = 0;
-      audio.play().catch(error => console.log("Failed to play metallic sound:", error));
+      audio.play().catch(() => {});
     };
-    document.addEventListener('click', playSound);
-
-    return () => {
-      document.removeEventListener('click', playSound);
-    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
-  useEffect(() => {
-    const splashTimer = setTimeout(() => setShowSplash(false), 5000);
-    const loaderTimer = setTimeout(() => setLoading(false), 5000);
-
-    return () => {
-      clearTimeout(splashTimer);
-      clearTimeout(loaderTimer);
-    };
-  }, []);
-
-  if (showSplash) {
-    return <SplashScreen onFinish={() => setShowSplash(false)} />;
-  }
-
-  if (loading) {
-    return <Loading />;
-  }
+  if (stage === "splash") return <SplashScreen onFinish={handleSplashFinish} />;
+  if (stage === "loading") return <Loading />;
 
   return (
     <div className="text-2xl text-white">
-      <EngineeringFieldBackground position="fixed" />
-      <ScrollToTop></ScrollToTop>
+    <EngineeringFieldBackground position="fixed" />
+     <ScrollToTop />
       <Header />
-      <div className="">
+      <div>
         <Outlet />
       </div>
     </div>

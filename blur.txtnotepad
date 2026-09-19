@@ -1,0 +1,30 @@
+src\Components\NeonButton.jsx:147:  backdrop-filter: blur(5px);
+src\Components\styles\eventDetailDashboard.css:92:  backdrop-filter: blur(16px);
+src\Components\styles\eventDetailDashboard.css:93:  -webkit-backdrop-filter: blur(16px);
+src\Components\styles\eventDetailDashboard.css:307:  backdrop-filter: blur(14px);
+src\Components\styles\eventDetailDashboard.css:308:  -webkit-backdrop-filter: blur(14px);
+src\Components\styles\eventDetailDashboard.css:489:  backdrop-filter: blur(12px);
+src\Components\styles\eventDetailDashboard.css:490:  -webkit-backdrop-filter: blur(12px);
+src\Components\styles\eventDetailDashboard.css:602:  -webkit-backdrop-filter: none;
+src\Components\styles\eventDetailDashboard.css:603:  backdrop-filter: none;
+src\Components\styles\eventDetailDashboard.css:745:  backdrop-filter: blur(14px);
+src\Components\styles\eventDetailDashboard.css:746:  -webkit-backdrop-filter: blur(14px);
+src\Components\styles\flipcard.css:112:  backdrop-filter: blur(18px) saturate(1.6);
+src\Components\styles\flipcard.css:113:  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+src\Components\styles\hexagonTechFrame.css:23:  backdrop-filter: blur(12px);
+src\Components\styles\hexagonTechFrame.css:24:  -webkit-backdrop-filter: blur(12px);
+src\Pages\About.jsx:396:          backdropFilter: "blur(10px)",
+src\Pages\About.jsx:397:          WebkitBackdropFilter: "blur(10px)",
+src\Pages\Body.jsx:341:            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/90 backdrop-blur-sm px-4 pb-5 sm:pb-0"
+src\Sections\navbar.css:20:  backdrop-filter: blur(14px);
+src\Sections\navbar.css:21:  -webkit-backdrop-filter: blur(14px);
+src\Sections\navbar.css:227:  backdrop-filter: blur(18px);
+src\Sections\navbar.css:228:  -webkit-backdrop-filter: blur(18px);
+src\Sections\styles\faq.css:142:  backdrop-filter: blur(10px);
+src\Sections\styles\faq.css:143:  -webkit-backdrop-filter: blur(10px);
+src\text.css:256:  backdrop-filter: blur(10px);
+src\text.css:257:  -webkit-backdrop-filter: blur(10px);
+src\text.css:321:  backdrop-filter: blur(10px);
+src\text.css:322:  -webkit-backdrop-filter: blur(10px);
+src\text.css:460:  backdrop-filter: blur(4px);
+src\text.css:461:  -webkit-backdrop-filter: blur(4px);

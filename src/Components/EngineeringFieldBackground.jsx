@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const routes = [
   {
@@ -59,16 +59,29 @@ const particles = [
   { path: routes[5].d, color: '#ffd18a', delay: '-3.7s', size: 2.7 },
 ];
 
+// Lite mode = static background (no SMIL, no CSS animation, no pointer parallax).
+// Turned on for reduced-motion users, touch devices, and low-core / low-memory
+// machines. Tweak the thresholds below if it triggers too often for you
+// (e.g. change `<= 4` to `<= 2` for cores).
+const isLowPower = () =>
+  typeof window !== 'undefined' &&
+  (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    (navigator.hardwareConcurrency || 8) <= 4 ||
+    (navigator.deviceMemory || 8) <= 4);
+
 export function EngineeringFieldBackground({
   position = 'fixed',
   className = '',
 }) {
   const fieldRef = useRef(null);
   const svgRef = useRef(null);
+  const [lite] = useState(isLowPower);
 
+  // Pointer parallax (skipped in lite mode)
   useEffect(() => {
     const field = fieldRef.current;
-    if (!field || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!field || lite || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
 
@@ -96,24 +109,18 @@ export function EngineeringFieldBackground({
         window.removeEventListener('pointermove', handlePointerMove);
       }
     };
-  }, []);
+  }, [lite]);
 
   // Pause EVERY animation under the field while the page is actively
-  // scrolling, and resume shortly after it settles. There are two animation
-  // systems running here: SMIL (<animateMotion> on particles/clusters),
-  // which is paused via svg.pauseAnimations(), and CSS keyframe animations
-  // (the route-light dashes inside the blurred filter group, plus whatever
-  // drives the depth-module/orbit/beacon/grid elements in the stylesheet),
-  // which is paused via a class that forces animation-play-state: paused
-  // on every descendant. Pausing only the SMIL particles (as before) left
-  // the CSS-animated, filter-heavy route lights running continuously, and
-  // that continuous blur repaint is what was still fighting scroll for the
-  // main thread. Pausing both together is what actually unsticks scrolling.
+  // scrolling, and resume shortly after it settles. Two animation systems
+  // run here: SMIL (<animateMotion>), paused via svg.pauseAnimations(), and
+  // CSS keyframe animations, paused via a class that forces
+  // animation-play-state: paused on every descendant.
   useEffect(() => {
     const field = fieldRef.current;
     const svgEl = svgRef.current;
     if (!field) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (lite || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let resumeTimeout;
     let ticking = false;
@@ -150,7 +157,7 @@ export function EngineeringFieldBackground({
       clearTimeout(resumeTimeout);
       resume();
     };
-  }, []);
+  }, [lite]);
 
   const positionStyle = {
     position,
@@ -168,12 +175,17 @@ export function EngineeringFieldBackground({
       aria-hidden="true"
       className={`engineering-field pointer-events-none h-full w-full overflow-hidden ${className}`}
       style={positionStyle}
+      data-lite={lite ? 'true' : 'false'}
       data-testid="engineering-field-background"
     >
       <style>{`
         .engineering-field--scroll-paused,
         .engineering-field--scroll-paused * {
           animation-play-state: paused !important;
+        }
+        .engineering-field[data-lite="true"],
+        .engineering-field[data-lite="true"] * {
+          animation: none !important;
         }
       `}</style>
       <div className="engineering-field__depth-scene">
@@ -325,7 +337,7 @@ export function EngineeringFieldBackground({
 
         {/* filter dropped: this group has 6 paths continuously animating
             stroke-dashoffset, a property that can't be GPU-composited at
-            all — doing that under a blur filter was likely the single
+            all - doing that under a blur filter was likely the single
             biggest remaining scroll-jank cost */}
         <g className="scene-routes" fill="none" vectorEffect="non-scaling-stroke">
           {routes.map((route) => (
@@ -347,32 +359,38 @@ export function EngineeringFieldBackground({
           <rect x="1075" y="540" width="9" height="9" rx="1" strokeWidth="1" />
         </g>
 
-        {/* filter dropped here on purpose: this group has 7 animated particles
-            and re-blurring them every frame was one of the bigger scroll costs */}
-        <g className="scene-particles" fill="#c8f8ff">
-          {particles.map((particle, index) => (
-            <circle key={`particle-${index}`} className="scene-motion-particle" r={particle.size} fill={particle.color} opacity="0.9">
-              <animateMotion path={particle.path} dur="8.5s" begin={particle.delay} repeatCount="indefinite" />
-            </circle>
-          ))}
-        </g>
-
-        {/* filter dropped here too: 12 more animated shapes (4 routes x 3 each) */}
-        <g className="scene-particle-clusters" fill="none">
-          {routes.slice(0, 4).map((route, index) => (
-            <g key={`cluster-${route.id}`} className="scene-particle-cluster">
-              <path d="M-18 0 H18" stroke={route.color} strokeWidth="2.8" strokeLinecap="round" opacity="0.92">
-                <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 0.7}s`} repeatCount="indefinite" />
-              </path>
-              <rect x="-3.5" y="-3.5" width="7" height="7" rx="1" fill={route.color} stroke="#d8faff" strokeWidth="0.8">
-                <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 2.2}s`} repeatCount="indefinite" />
-              </rect>
-              <rect x="-2" y="-2" width="4" height="4" rx="0.7" fill="#e0fbff">
-                <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 2.65}s`} repeatCount="indefinite" />
-              </rect>
+        {/* SMIL particles and clusters (19 animateMotion elements in total)
+            are not rendered at all in lite mode */}
+        {!lite && (
+          <>
+            {/* filter dropped here on purpose: 7 animated particles, and
+                re-blurring them every frame was a big scroll cost */}
+            <g className="scene-particles" fill="#c8f8ff">
+              {particles.map((particle, index) => (
+                <circle key={`particle-${index}`} className="scene-motion-particle" r={particle.size} fill={particle.color} opacity="0.9">
+                  <animateMotion path={particle.path} dur="8.5s" begin={particle.delay} repeatCount="indefinite" />
+                </circle>
+              ))}
             </g>
-          ))}
-        </g>
+
+            {/* filter dropped here too: 12 more animated shapes (4 routes x 3 each) */}
+            <g className="scene-particle-clusters" fill="none">
+              {routes.slice(0, 4).map((route, index) => (
+                <g key={`cluster-${route.id}`} className="scene-particle-cluster">
+                  <path d="M-18 0 H18" stroke={route.color} strokeWidth="2.8" strokeLinecap="round" opacity="0.92">
+                    <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 0.7}s`} repeatCount="indefinite" />
+                  </path>
+                  <rect x="-3.5" y="-3.5" width="7" height="7" rx="1" fill={route.color} stroke="#d8faff" strokeWidth="0.8">
+                    <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 2.2}s`} repeatCount="indefinite" />
+                  </rect>
+                  <rect x="-2" y="-2" width="4" height="4" rx="0.7" fill="#e0fbff">
+                    <animateMotion path={route.d} dur="8.5s" begin={`-${index * 1.4 + 2.65}s`} repeatCount="indefinite" />
+                  </rect>
+                </g>
+              ))}
+            </g>
+          </>
+        )}
 
         <g className="scene-depth-braces" fill="none" stroke="#6c9ae9" vectorEffect="non-scaling-stroke">
           <path d="M44 170 L140 244 M1556 170 L1460 244 M44 830 L140 756 M1556 830 L1460 756" strokeWidth="1.1" opacity="0.46" />

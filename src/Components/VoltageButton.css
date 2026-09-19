@@ -151,23 +151,24 @@
 .dial-ring::before {
   content: "";
   position: absolute;
-  top: -1px;
-  left: -1px;
+  top: -5px;
+  left: 50%;
   width: 10px;
   height: 10px;
+  margin-left: -5px;
   border-radius: 50%;
   background: var(--cyan);
   box-shadow: 0 0 8px var(--cyan);
-  animation: orbit 3.2s linear infinite;
+  transform-origin: 5px 40px; /* half the ring's height + offset, approximates orbit center */
+  animation: orbit-spin 3.2s linear infinite;
   animation-play-state: paused;
-  offset-path: rect(0px 100% 100% 0px round 34px);
-  offset-rotate: 0deg;
 }
 .iris-btn:hover .dial-ring::before, .iris-btn:focus-visible .dial-ring::before {
   animation-play-state: running;
 }
-@keyframes orbit {
-  to { offset-distance: 100%; }
+@keyframes orbit-spin {
+  from { transform: rotate(0deg) translateY(0); }
+  to { transform: rotate(360deg) translateY(0); }
 }
 
 /* spark burst on click */
@@ -196,3 +197,6 @@
   0% { opacity: 1; transform: translate(0, 0) scale(1); }
   100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
 }
+
+
+

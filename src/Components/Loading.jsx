@@ -51,20 +51,25 @@ const Loader = () => {
             }}
           />
 
-          {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-            <circle
-              key={angle}
-              cx={100 + 78 * Math.cos((angle * Math.PI) / 180)}
-              cy={100 + 78 * Math.sin((angle * Math.PI) / 180)}
-              r="3.5"
-              fill="#60a5fa"
-              style={{
-                filter: "drop-shadow(0 0 4px #60a5fa)",
-                animation: `nodePulse 1.8s ease-in-out infinite`,
-                animationDelay: `${i * 0.3}s`,
-              }}
-            />
-          ))}
+          {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+            const cx = 100 + 78 * Math.cos((angle * Math.PI) / 180);
+            const cy = 100 + 78 * Math.sin((angle * Math.PI) / 180);
+            return (
+              <circle
+                key={angle}
+                cx={cx}
+                cy={cy}
+                r="3.5"
+                fill="#60a5fa"
+                style={{
+                  filter: "drop-shadow(0 0 4px #60a5fa)",
+                  transformOrigin: `${cx}px ${cy}px`,
+                  animation: `nodePulse 1.8s ease-in-out infinite`,
+                  animationDelay: `${i * 0.3}s`,
+                }}
+              />
+            );
+          })}
 
           <circle
             cx="100"
@@ -75,6 +80,7 @@ const Loader = () => {
             strokeWidth="1.5"
             style={{
               filter: "drop-shadow(0 0 6px #3b82f6)",
+              transformOrigin: "100px 100px",
               animation: "coreRing 2s ease-in-out infinite",
             }}
           />
@@ -85,6 +91,7 @@ const Loader = () => {
             fill="#93c5fd"
             style={{
               filter: "drop-shadow(0 0 8px #93c5fd)",
+              transformOrigin: "100px 100px",
               animation: "corePulse 1.4s ease-in-out infinite",
             }}
           />
@@ -106,12 +113,12 @@ const Loader = () => {
           to { stroke-dashoffset: -220; }
         }
         @keyframes nodePulse {
-          0%, 100% { opacity: 0.35; r: 2.5; }
-          50% { opacity: 1; r: 4; }
+          0%, 100% { opacity: 0.35; transform: scale(0.7); }
+          50% { opacity: 1; transform: scale(1.15); }
         }
         @keyframes coreRing {
-          0%, 100% { r: 14; opacity: 0.6; }
-          50% { r: 18; opacity: 1; }
+          0%, 100% { transform: scale(1); opacity: 0.6; }
+          50% { transform: scale(1.3); opacity: 1; }
         }
         @keyframes corePulse {
           0%, 100% { transform: scale(1); opacity: 0.8; }

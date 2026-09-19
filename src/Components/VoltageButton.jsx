@@ -1,9 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./VoltageButton.css";
 
 const VoltageButton = ({ label, onClick }) => {
   const [clicked, setClicked] = useState(false);
   const timeoutRef = useRef(null);
+
+  // the button unmounts as soon as the route changes, so clear the pending timer
+  useEffect(() => () => clearTimeout(timeoutRef.current), []);
 
   const handleClick = (e) => {
     setClicked(true);

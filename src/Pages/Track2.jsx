@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import "./animation.css"; // Import the CSS for the cubes animation
+//import "./animation.css"; // Import the CSS for the cubes animation
 import VanillaTilt from "vanilla-tilt";
-import Image from "../utils/Img/TechLogo.jpg";
+import Image from "../utils/Img/track1.jpg";
 
-const Track2 = () => {
+const Track1 = () => {
   const tiltRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const Track2 = () => {
     <div className="bg-dark-grey text-white-grey flex flex-col items-center py-10">
       {/* Glassmorphic Container */}
       <div className="glassmorphic-container p-6 md:p-10 w-full max-w-5xl">
-
         {/* Title */}
         <h2
           className="text-3xl md:text-5xl font-black tracking-widest mb-8 text-left text-white uppercase"
@@ -31,7 +30,7 @@ const Track2 = () => {
             textShadow: "0 0 25px rgba(102, 252, 241, 0.4)",
           }}
         >
-          Track 2
+          Track 1
         </h2>
 
         {/* Content Section */}
@@ -46,7 +45,7 @@ const Track2 = () => {
             }}
           >
             <p>
-            Technovanza is where innovation meets imagination, bringing together aspiring engineers, emerging ideas, and technology enthusiasts in an environment that encourages learning, creativity, and meaningful collaboration. It provides a platform for students to explore new possibilities, exchange knowledge, and showcase their technical abilities.
+              Technovanza is where innovation meets imagination, bringing together aspiring engineers, emerging ideas, and technology enthusiasts in an environment that encourages learning, creativity, and meaningful collaboration. It provides a platform for students to explore new possibilities, exchange knowledge, and showcase their technical abilities.          
             </p>
             <p className="mt-4">
               More than a symposium, it is a platform for learning, creativity, and excellence, inspiring students to transform their ideas into solutions for tomorrow's challenges.
@@ -70,4 +69,4 @@ const Track2 = () => {
   );
 };
 
-export default Track2;
+export default Track1;

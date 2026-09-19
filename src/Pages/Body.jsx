@@ -76,20 +76,15 @@ const HexRadarIcon = () => (
   </div>
 );
 
+/* The glow is now a static drop-shadow. It used to animate the filter
+   forever, which forces a repaint of the whole svg on every frame. */
 const TracedBorder = () => (
-  <motion.svg
+  <svg
     className="absolute inset-0 w-full h-full pointer-events-none"
     viewBox="0 0 400 420"
     preserveAspectRatio="none"
     fill="none"
-    animate={{
-      filter: [
-        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
-        "drop-shadow(0 0 9px rgba(61,169,252,0.95))",
-        "drop-shadow(0 0 3px rgba(61,169,252,0.6))",
-      ],
-    }}
-    transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+    style={{ filter: "drop-shadow(0 0 6px rgba(61,169,252,0.8))" }}
   >
     <motion.rect
       x="1.5"
@@ -133,24 +128,17 @@ const TracedBorder = () => (
         transition={{ duration: 0.35, delay: 1.1 + i * 0.05 }}
       />
     ))}
-  </motion.svg>
+  </svg>
 );
 
 const CountdownBox = ({ days }) => (
   <div className="relative inline-block">
-    <motion.svg
+    <svg
       className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
       viewBox="0 0 100 40"
       preserveAspectRatio="none"
       fill="none"
-      animate={{
-        filter: [
-          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
-          "drop-shadow(0 0 7px rgba(61,169,252,0.95))",
-          "drop-shadow(0 0 2px rgba(61,169,252,0.6))",
-        ],
-      }}
-      transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+      style={{ filter: "drop-shadow(0 0 5px rgba(61,169,252,0.8))" }}
     >
       <motion.path
         d="M 8 0.5 L 99.5 0.5 L 99.5 32 L 92 39.5 L 0.5 39.5 L 0.5 8 Z"
@@ -161,7 +149,7 @@ const CountdownBox = ({ days }) => (
         animate={{ pathLength: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       />
-    </motion.svg>
+    </svg>
 
     {[
       ["top-[-3px]", "right-[-3px]"],
@@ -180,13 +168,14 @@ const CountdownBox = ({ days }) => (
         background: "linear-gradient(135deg, #101B33 0%, #0B1428 100%)",
       }}
     >
+      {/* scanline: animates transform (y) instead of top */}
       <motion.div
-        className="absolute inset-x-0 h-6 pointer-events-none"
+        className="absolute inset-x-0 top-0 h-6 pointer-events-none"
         style={{
           background:
             "linear-gradient(180deg, transparent 0%, rgba(111,193,255,0.16) 50%, transparent 100%)",
         }}
-        animate={{ top: ["-20%", "110%"] }}
+        animate={{ y: [-24, 110] }}
         transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
       />
 
@@ -216,10 +205,8 @@ const CountdownBox = ({ days }) => (
 
 /* ===================================================================
    TemptingCTAButton — "wax seal" beacon button.
-   Same footprint as the original (py-3.5 px-7); label uses a
-   bolder weight, wider tracking, a soft white-to-cyan gradient
-   fill, and a subtle glow so it reads as more "alive" and slightly
-   larger without the button itself growing.
+   Pulse rings and shimmer now animate transform/opacity only
+   (no width/height/left), so they never trigger layout.
 =================================================================== */
 const TemptingCTAButton = ({ children, onClick }) => {
   const [hovered, setHovered] = useState(false);
@@ -232,9 +219,9 @@ const TemptingCTAButton = ({ children, onClick }) => {
           <motion.span
             key={i}
             className="absolute rounded-full border"
-            style={{ borderColor: "rgba(79,200,255,0.45)" }}
-            initial={{ width: 30, height: 30, opacity: 0.7 }}
-            animate={{ width: 120, height: 120, opacity: 0 }}
+            style={{ width: 120, height: 120, borderColor: "rgba(79,200,255,0.45)" }}
+            initial={{ scale: 0.25, opacity: 0.7 }}
+            animate={{ scale: 1, opacity: 0 }}
             transition={{ duration: 2.4, repeat: Infinity, delay: i * 1.1, ease: "easeOut" }}
           />
         ))}
@@ -263,9 +250,9 @@ const TemptingCTAButton = ({ children, onClick }) => {
         >
           {/* shimmer sweep */}
           <motion.div
-            className="absolute inset-y-0 w-8 pointer-events-none"
+            className="absolute inset-y-0 left-0 w-8 pointer-events-none"
             style={{ background: "linear-gradient(90deg, transparent, rgba(143,242,255,0.25), transparent)" }}
-            animate={{ left: ["-20%", "120%"] }}
+            animate={{ x: ["-100%", "900%"] }}
             transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
           />
 
@@ -338,7 +325,7 @@ const Body = () => {
       <AnimatePresence>
         {showPopup && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/90 backdrop-blur-sm px-4 pb-5 sm:pb-0"
+            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/95 px-4 pb-5 sm:pb-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

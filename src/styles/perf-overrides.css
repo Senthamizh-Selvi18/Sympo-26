@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+html .fc-inner {
+  will-change: auto;
+}
+html .fc-scene:hover .fc-inner,
+html .fc-scene.fc-flipped .fc-inner {
+  will-change: transform;
+}
+
+html .sympo-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+html .event-tile {
+  background: rgba(12, 23, 48, 0.72);
+}
+html .faq-item {
+  background: linear-gradient(160deg, #0d1f47ee, #081633ee);
+}
+html .faq-item:hover,
+html .faq-item[open] {
+  background: linear-gradient(160deg, #13285fee, #0a1c40ee);
+}
