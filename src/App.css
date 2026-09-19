@@ -4,3 +4,23 @@
 
 
 body { background-color: #030508; }
+
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}

@@ -5,6 +5,7 @@ import Footer from "./Sections/Footer";
 import { Outlet } from "react-router-dom";
 import Loading from "./Components/Loading";
 import SplashScreen from "./Components/SplashScreen";
+import ScrollToTop from "./Components/ScrollToTop";
 import './styles/eventStyles.css';
 import backgroundMusic from './assets/backgroundMusic.mp3'
 import metallicSound from './assets/clicksound.mp3'
@@ -59,6 +60,7 @@ const App = () => {
   return (
     <div className="text-2xl text-white">
       <EngineeringFieldBackground position="fixed" />
+      <ScrollToTop></ScrollToTop>
       <Header />
       <div className="">
         <Outlet />

@@ -10,9 +10,9 @@ const Teams = () => {
           &copy; {new Date().getFullYear()} Technovanza<sup>TM</sup> All rights reserved.
         </div>
         <div>
-          Developed by{" "}
+          Meet our{" "}
           <Link to="/teams" className="gold-link font-semibold">
-            Technovanza Team
+            Web Team
           </Link>
         </div>
       </div>

@@ -71,13 +71,13 @@ const CountdownTimer = () => {
         <Star />
       </div>
 
-      <div className="flex items-center justify-between gap-6 flex-wrap max-w-5xl mx-auto">
+      <div className="flex items-center justify-center md:justify-between gap-6 flex-wrap max-w-5xl mx-auto text-center md:text-left">
         <svg className="event-chevron hidden sm:block" width="14" height="32" viewBox="0 0 16 34" fill="none">
           <path d="M14 2 L4 17 L14 32" strokeWidth="2" />
           <path d="M9 2 L-1 17 L9 32" strokeWidth="2" opacity="0.45" />
         </svg>
 
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <div className="event-label">Event begins on</div>
           <div
             style={{
@@ -91,7 +91,7 @@ const CountdownTimer = () => {
           <div className="event-date">Oct 10, 2026</div>
         </div>
 
-        <div className="flex gap-2 sm:gap-3">
+        <div className="flex gap-2 sm:gap-3 justify-center">
           {tiles.map((t) => (
             <div key={t.label} className="event-tile">
               <div className="event-num">{pad(t.value)}</div>

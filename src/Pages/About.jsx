@@ -356,18 +356,6 @@ const NewAbout = ({ compact = false }) => {
 
   const editions = [
     {
-      edition: "24TH",
-      year: "2024-'25",
-      tags: ["Think", "Build", "Transform"],
-      stats: [
-        { value: "800", label: "Registrations" },
-        { value: "15+", label: "Events" },
-      ],
-      description:
-        "The 2024-25 edition ignited fresh ideas, showcased technical brilliance, and brought together passionate minds from across the college.",
-      accent: "#4fc8ff",
-    },
-    {
       edition: "25TH",
       year: "2025-'26",
       tags: ["Learn", "Create", "Lead"],
@@ -378,6 +366,18 @@ const NewAbout = ({ compact = false }) => {
       description:
         "The 2025-26 edition expanded horizons, with inspiring events, hands-on experiences, and a stronger community of innovators.",
       accent: "#A78BFA",
+    },
+    {
+      edition: "24TH",
+      year: "2024-'25",
+      tags: ["Think", "Build", "Transform"],
+      stats: [
+        { value: "800", label: "Registrations" },
+        { value: "15+", label: "Events" },
+      ],
+      description:
+        "The 2024-25 edition ignited fresh ideas, showcased technical brilliance, and brought together passionate minds from across the college.",
+      accent: "#4fc8ff",
     },
   ];
 
@@ -424,7 +424,7 @@ const NewAbout = ({ compact = false }) => {
               their ideas into solutions for tomorrow's challenges.
             </p>
             <div className="mt-6">
-              <ExploreButton to="/about">EXPLORE MORE</ExploreButton>
+              <ExploreButton to="/events">EXPLORE MORE</ExploreButton>
             </div>
           </div>
 

@@ -64,6 +64,7 @@ export function EngineeringFieldBackground({
   className = '',
 }) {
   const fieldRef = useRef(null);
+  const svgRef = useRef(null);
 
   useEffect(() => {
     const field = fieldRef.current;
@@ -82,16 +83,83 @@ export function EngineeringFieldBackground({
       });
     };
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    // Skip pointer tracking on touch devices - there's no hover benefit
+    // and it's one more listener competing with scroll on lower-end hardware.
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouchDevice) {
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    }
+
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener('pointermove', handlePointerMove);
+      if (!isTouchDevice) {
+        window.removeEventListener('pointermove', handlePointerMove);
+      }
+    };
+  }, []);
+
+  // Pause EVERY animation under the field while the page is actively
+  // scrolling, and resume shortly after it settles. There are two animation
+  // systems running here: SMIL (<animateMotion> on particles/clusters),
+  // which is paused via svg.pauseAnimations(), and CSS keyframe animations
+  // (the route-light dashes inside the blurred filter group, plus whatever
+  // drives the depth-module/orbit/beacon/grid elements in the stylesheet),
+  // which is paused via a class that forces animation-play-state: paused
+  // on every descendant. Pausing only the SMIL particles (as before) left
+  // the CSS-animated, filter-heavy route lights running continuously, and
+  // that continuous blur repaint is what was still fighting scroll for the
+  // main thread. Pausing both together is what actually unsticks scrolling.
+  useEffect(() => {
+    const field = fieldRef.current;
+    const svgEl = svgRef.current;
+    if (!field) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let resumeTimeout;
+    let ticking = false;
+
+    const pause = () => {
+      field.classList.add('engineering-field--scroll-paused');
+      if (svgEl && typeof svgEl.pauseAnimations === 'function') {
+        svgEl.pauseAnimations();
+      }
+    };
+
+    const resume = () => {
+      field.classList.remove('engineering-field--scroll-paused');
+      if (svgEl && typeof svgEl.unpauseAnimations === 'function') {
+        svgEl.unpauseAnimations();
+      }
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        pause();
+        ticking = true;
+      }
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        resume();
+        ticking = false;
+      }, 150);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(resumeTimeout);
+      resume();
     };
   }, []);
 
   const positionStyle = {
     position,
     inset: 0,
+    // Hint the browser to composite this layer independently on its own
+    // GPU layer instead of re-rastering it on every scroll frame.
+    willChange: 'transform',
+    contain: 'strict',
+    transform: 'translateZ(0)',
   };
 
   return (
@@ -102,6 +170,12 @@ export function EngineeringFieldBackground({
       style={positionStyle}
       data-testid="engineering-field-background"
     >
+      <style>{`
+        .engineering-field--scroll-paused,
+        .engineering-field--scroll-paused * {
+          animation-play-state: paused !important;
+        }
+      `}</style>
       <div className="engineering-field__depth-scene">
         <div className="depth-grid depth-grid--left" />
         <div className="depth-grid depth-grid--right" />
@@ -135,6 +209,7 @@ export function EngineeringFieldBackground({
       </div>
 
       <svg
+        ref={svgRef}
         className="engineering-field__svg"
         viewBox="0 0 1600 1000"
         preserveAspectRatio="xMidYMid slice"
@@ -216,7 +291,9 @@ export function EngineeringFieldBackground({
           <path d="M1680 902 C1430 990 1210 970 1010 852" stroke="#8c7be9" strokeWidth="0.8" opacity="0.4" />
         </g>
 
-        <g className="scene-module scene-module--left" fill="none" vectorEffect="non-scaling-stroke" filter="url(#scene-line-glow)">
+        {/* filter dropped: this group animates transform continuously via CSS,
+            and a filter + animated transform is expensive to composite */}
+        <g className="scene-module scene-module--left" fill="none" vectorEffect="non-scaling-stroke">
           <path d="M104 344 L190 294 H354 L440 344 V604 L354 654 H190 L104 604 Z" stroke="#2868c7" strokeWidth="1.55" opacity="0.9" />
           <path d="M142 366 L210 326 H334 L402 366 V582 L334 622 H210 L142 582 Z" stroke="#55dff1" strokeWidth="1.15" opacity="0.68" />
           <ellipse cx="272" cy="474" rx="104" ry="142" stroke="#427de0" strokeWidth="1.7" strokeDasharray="50 28" opacity="0.88" />
@@ -225,7 +302,7 @@ export function EngineeringFieldBackground({
           <path d="M176 400 L220 444 M368 400 L324 444 M176 548 L220 504 M368 548 L324 504" stroke="#7598ee" strokeWidth="1.35" opacity="0.76" />
         </g>
 
-        <g className="scene-module scene-module--right" fill="none" vectorEffect="non-scaling-stroke" filter="url(#scene-line-glow)">
+        <g className="scene-module scene-module--right" fill="none" vectorEffect="non-scaling-stroke">
           <path d="M1496 344 L1410 294 H1246 L1160 344 V604 L1246 654 H1410 L1496 604 Z" stroke="#426fd4" strokeWidth="1.55" opacity="0.9" />
           <path d="M1458 366 L1390 326 H1266 L1198 366 V582 L1266 622 H1390 L1458 582 Z" stroke="#55dff1" strokeWidth="1.15" opacity="0.68" />
           <ellipse cx="1328" cy="474" rx="104" ry="142" stroke="#5f75db" strokeWidth="1.7" strokeDasharray="50 28" opacity="0.88" />
@@ -246,7 +323,11 @@ export function EngineeringFieldBackground({
           <path d="M1512 298 A208 260 0 0 0 1226 230" stroke="#b77be2" strokeWidth="2" strokeDasharray="38 290" opacity="0.78" />
         </g>
 
-        <g className="scene-routes" fill="none" vectorEffect="non-scaling-stroke" filter="url(#scene-line-glow)">
+        {/* filter dropped: this group has 6 paths continuously animating
+            stroke-dashoffset, a property that can't be GPU-composited at
+            all — doing that under a blur filter was likely the single
+            biggest remaining scroll-jank cost */}
+        <g className="scene-routes" fill="none" vectorEffect="non-scaling-stroke">
           {routes.map((route) => (
             <g key={route.id}>
               <path d={route.d} stroke="#102c68" strokeWidth="9" opacity="0.92" />
@@ -266,7 +347,9 @@ export function EngineeringFieldBackground({
           <rect x="1075" y="540" width="9" height="9" rx="1" strokeWidth="1" />
         </g>
 
-        <g className="scene-particles" fill="#c8f8ff" filter="url(#scene-line-glow)">
+        {/* filter dropped here on purpose: this group has 7 animated particles
+            and re-blurring them every frame was one of the bigger scroll costs */}
+        <g className="scene-particles" fill="#c8f8ff">
           {particles.map((particle, index) => (
             <circle key={`particle-${index}`} className="scene-motion-particle" r={particle.size} fill={particle.color} opacity="0.9">
               <animateMotion path={particle.path} dur="8.5s" begin={particle.delay} repeatCount="indefinite" />
@@ -274,7 +357,8 @@ export function EngineeringFieldBackground({
           ))}
         </g>
 
-        <g className="scene-particle-clusters" fill="none" filter="url(#scene-line-glow)">
+        {/* filter dropped here too: 12 more animated shapes (4 routes x 3 each) */}
+        <g className="scene-particle-clusters" fill="none">
           {routes.slice(0, 4).map((route, index) => (
             <g key={`cluster-${route.id}`} className="scene-particle-cluster">
               <path d="M-18 0 H18" stroke={route.color} strokeWidth="2.8" strokeLinecap="round" opacity="0.92">

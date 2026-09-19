@@ -73,12 +73,15 @@
 
 .scene-module--left {
   animation: scene-module-left 9s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(62, 153, 242, 0.28));
+  /* filter: drop-shadow(0 0 8px rgba(62, 153, 242, 0.28)); -- removed: stacked
+     with the SVG feGaussianBlur filter + an animated transform, this combo
+     is expensive to composite and was a likely cause of scroll jank. Test
+     scrolling with it off; re-add later with a cheaper approach if needed. */
 }
 
 .scene-module--right {
   animation: scene-module-right 9s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(126, 116, 224, 0.28));
+  /* filter: drop-shadow(0 0 8px rgba(126, 116, 224, 0.28)); -- removed, see above */
 }
 
 .scene-rings {
@@ -88,12 +91,13 @@
 
 .scene-rings--left {
   animation: scene-ring-left 8.5s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(62, 164, 246, 0.3));
+  /* filter: drop-shadow(0 0 6px rgba(62, 164, 246, 0.3)); -- removed: filter
+     + animated transform (rotation) is expensive to composite. */
 }
 
 .scene-rings--right {
   animation: scene-ring-right 8.5s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(133, 116, 226, 0.3));
+  /* filter: drop-shadow(0 0 6px rgba(133, 116, 226, 0.3)); -- removed, see above */
 }
 
 .scene-route-light {
@@ -129,7 +133,8 @@
   transform-box: fill-box;
   transform-origin: center;
   animation: scene-node-pulse 8.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 5px rgba(99, 226, 246, 0.46));
+  /* filter: drop-shadow(0 0 5px rgba(99, 226, 246, 0.46)); -- removed: filter
+     + animated scale/opacity on 8 rects was one of the bigger repaint costs. */
 }
 
 .scene-route-nodes rect:nth-child(even) {

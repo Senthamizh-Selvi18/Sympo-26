@@ -399,7 +399,7 @@ const Body = () => {
         )}
       </AnimatePresence>
 
-      <section className="relative w-screen h-100% flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-screen"></div>
 
         <div className="mt-small">
@@ -414,7 +414,7 @@ const Body = () => {
                   fontSize: "17px",
                 }}
               >
-                Dive In
+                Let's Start
               </span>
             </Button>
           </div>
