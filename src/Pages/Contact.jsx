@@ -4,29 +4,45 @@ import "./styles/Contact.css";
 import Footer from "../Sections/Footer";
 import "../text.css";
 
-// Flip this to true whenever you're ready to make the contact page live.
-const SHOW_CONTACT_PAGE = false;
+const SHOW_CONTACT_PAGE = true;
 
 const Contact = () => {
-  // Real coordinators are filled in. Entries below marked with a comment
-  // are dummy placeholders — swap the name/designation/phone for the real
-  // person whenever you have them. Track 1 needs 6 total, Track 2 needs 4.
+
   const tracks = [
     {
       trackName: "TRACK 1",
       layout: "grid-3",
       coordinators: [
         {
-          name: "Amrithavarshini S",
-          designation: "Student Coordinator",
-          phone: "+919150829797",
+          name: "Ms. J. Narmadha",
+          designation: "Student Coordinator, IV Year - AI&DS",
+          phone: "+919840898728",
         },
-        // dummy — replace with real coordinator
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
+        {
+          name: "R. Akshaya",
+          designation: "Student Coordinator, IV Year - AI&ML",
+          phone: "+919524579186",
+        },
+        {
+          name: "V. Indhumathi",
+          designation: "Student Coordinator, IV Year - CS",
+          phone: "+919677309660",
+        },
+        {
+          name: "Meghasree G",
+          designation: "Student Coordinator, IV Year - CS&BS",
+          phone: "+917806803699",
+        },
+        {
+          name: "Kiruba R",
+          designation: "Student Coordinator, IV Year - CSE",
+          phone: "+917418768166",
+        },
+        {
+          name: "A. Kishore",
+          designation: "Student Coordinator, III Year - IT",
+          phone: "+919677056900",
+        },
       ],
     },
     {
@@ -34,18 +50,18 @@ const Contact = () => {
       layout: "grid-2",
       coordinators: [
         {
-          name: "Aravind M",
-          designation: "Student Coordinator",
-          phone: "+917358488294",
+          name: "M Sri Mala",
+          designation: "Student Coordinator, IV Year - BME",
+          phone: "+919790319461",
         },
         {
-          name: "Jinu Sharlin P",
-          designation: "Student Coordinator",
-          phone: "+919150254849",
+          name: "L. Sreearjunan",
+          designation: "Student Coordinator - ECE",
+          phone: "+919003143820",
         },
         // dummy — replace with real coordinator
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator", phone: "+910000000000" },
+        { name: "Coordinator Name", designation: "Student Coordinator - EEE", phone: "+910000000000" },
+        { name: "Coordinator Name", designation: "Student Coordinator - MBA", phone: "+910000000000" },
       ],
     },
   ];
@@ -122,7 +138,6 @@ const Contact = () => {
         {tracks.map((track) => (
           <div key={track.trackName} className="track-section">
             <div className="track-heading-row">
-              
               <h2 className="track-title">{track.trackName}</h2>
               <span className="track-rule" />
             </div>

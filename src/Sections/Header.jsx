@@ -4,8 +4,7 @@ import logo from "../assets/symposium/Logo/spidy logo.png";
 import "./navbar.css";
 
 // Keep this in sync with SHOW_CONTACT_PAGE in Pages/Contact.jsx.
-// Flip to true once the contact page is ready to go live.
-const SHOW_CONTACTS_NAV = false;
+const SHOW_CONTACTS_NAV = true;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
