@@ -51,7 +51,7 @@ const SectionDivider = () => (
 );
 
 const HexRadarIcon = () => (
-  <div className="relative w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-5">
+  <div className="relative w-10 h-10 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-5">
     <motion.svg
       viewBox="0 0 100 100"
       className="w-full h-full"
@@ -132,7 +132,7 @@ const TracedBorder = () => (
 );
 
 const CountdownBox = ({ days }) => (
-  <div className="relative inline-block">
+  <div className="relative inline-block w-full sm:w-auto">
     <svg
       className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
       viewBox="0 0 100 40"
@@ -162,7 +162,7 @@ const CountdownBox = ({ days }) => (
     ))}
 
     <div
-      className="relative overflow-hidden px-8 py-4"
+      className="relative overflow-hidden px-5 py-3 sm:px-8 sm:py-4"
       style={{
         clipPath: NOTCH(16),
         background: "linear-gradient(135deg, #101B33 0%, #0B1428 100%)",
@@ -180,10 +180,10 @@ const CountdownBox = ({ days }) => (
       />
 
       <div className="relative text-left">
-        <p className="font-mono text-[9px] text-[#6FC1FF] tracking-[0.22em] mb-1.5">
+        <p className="font-mono text-[8px] sm:text-[9px] text-[#6FC1FF] tracking-[0.18em] sm:tracking-[0.22em] mb-1.5">
           REGISTRATION CLOSES IN
         </p>
-        <div className="overflow-hidden h-9 flex items-center">
+        <div className="overflow-hidden h-8 sm:h-9 flex items-center">
           <AnimatePresence mode="wait">
             <motion.p
               key={days}
@@ -191,7 +191,7 @@ const CountdownBox = ({ days }) => (
               animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               exit={{ opacity: 0, filter: "blur(6px)", x: -6 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="font-mono text-2xl sm:text-3xl text-white font-bold tracking-wide whitespace-nowrap"
+              className="font-mono text-xl sm:text-3xl text-white font-bold tracking-wide whitespace-nowrap"
             >
               {String(days).padStart(2, "0")}{" "}
               <span className="text-[#6FC1FF]">DAYS</span>
@@ -207,19 +207,25 @@ const CountdownBox = ({ days }) => (
    TemptingCTAButton — "wax seal" beacon button.
    Pulse rings and shimmer now animate transform/opacity only
    (no width/height/left), so they never trigger layout.
+   Sizing is now clamp-based so the button and its text scale down
+   on narrow phones instead of overflowing or clipping.
 =================================================================== */
 const TemptingCTAButton = ({ children, onClick }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="relative flex flex-col items-center">
-      {/* Radiating pulse rings */}
+    <div className="relative flex flex-col items-center w-full sm:w-auto">
+      {/* Radiating pulse rings — sized relative to the button, not fixed px */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         {[0, 1].map((i) => (
           <motion.span
             key={i}
             className="absolute rounded-full border"
-            style={{ width: 120, height: 120, borderColor: "rgba(79,200,255,0.45)" }}
+            style={{
+              width: "min(120px, 85%)",
+              height: "min(120px, 85%)",
+              borderColor: "rgba(79,200,255,0.45)",
+            }}
             initial={{ scale: 0.25, opacity: 0.7 }}
             animate={{ scale: 1, opacity: 0 }}
             transition={{ duration: 2.4, repeat: Infinity, delay: i * 1.1, ease: "easeOut" }}
@@ -234,7 +240,7 @@ const TemptingCTAButton = ({ children, onClick }) => {
         className="relative w-full sm:w-auto"
       >
         <motion.div
-          className="relative flex items-center gap-2.5 py-3.5 px-7 overflow-hidden"
+          className="relative flex items-center justify-center gap-2 sm:gap-2.5 py-3 px-5 sm:py-3.5 sm:px-7 overflow-hidden"
           style={{
             clipPath: NOTCH(10),
             background: "linear-gradient(135deg, #1D2B5C 0%, #0E1530 100%)",
@@ -258,16 +264,16 @@ const TemptingCTAButton = ({ children, onClick }) => {
 
           {/* seal glyph — cracks open on hover */}
           <motion.span
-            className="relative flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0"
+            className="relative flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full flex-shrink-0"
             style={{ background: "#3DA9FC", boxShadow: "0 0 8px rgba(61,169,252,0.8)" }}
             animate={{ rotate: hovered ? 45 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="w-2 h-[2.5px] bg-[#0B1428] rounded-full" />
+            <span className="w-1.5 h-[2px] sm:w-2 sm:h-[2.5px] bg-[#0B1428] rounded-full" />
           </motion.span>
 
           <span
-            className="relative z-10 font-mono text-base sm:text-lg font-black tracking-[0.1em] whitespace-nowrap uppercase"
+            className="relative z-10 font-mono text-[13px] sm:text-lg font-black tracking-[0.06em] sm:tracking-[0.1em] whitespace-nowrap uppercase"
             style={{
               background: "linear-gradient(180deg, #ffffff 0%, #cfeaff 100%)",
               WebkitBackgroundClip: "text",
@@ -280,7 +286,7 @@ const TemptingCTAButton = ({ children, onClick }) => {
           </span>
 
           <motion.span
-            className="relative z-10 text-[#8ff2ff] text-sm"
+            className="relative z-10 text-[#8ff2ff] text-sm flex-shrink-0"
             animate={{ x: hovered ? 3 : 0 }}
             transition={{ duration: 0.2 }}
           >
@@ -297,7 +303,7 @@ const SheardButton = ({ children, onClick }) => (
     <motion.div
       className="relative py-1 px-3 flex items-center justify-center gap-1 overflow-hidden transition-all duration-250 bg-[#0C1220] border border-[#4B5563] group-hover:bg-[#121A2C] group-hover:border-[#3DA9FC]"
     >
-      <span className="relative z-10 font-mono text-[0.65rem] tracking-[0.1em] font-semibold transition-colors duration-200 text-gray-500 group-hover:text-[#BFE3FF]">
+      <span className="relative z-10 font-mono text-[0.6rem] sm:text-[0.65rem] tracking-[0.1em] font-semibold transition-colors duration-200 text-gray-500 group-hover:text-[#BFE3FF]">
         {children}
       </span>
     </motion.div>
@@ -333,7 +339,7 @@ const Body = () => {
             onClick={() => setShowPopup(false)}
           >
             <motion.div
-              className="relative w-full max-w-[300px] sm:max-w-[320px]"
+              className="relative w-full max-w-[280px] xs:max-w-[300px] sm:max-w-[320px]"
               initial={{ y: 30, opacity: 0, scale: 0.97 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 20, opacity: 0, scale: 0.97 }}
@@ -348,17 +354,17 @@ const Body = () => {
               <TracedBorder />
 
               <div
-                className="relative px-5 py-7 sm:px-6 sm:py-8 text-center rounded-[6px]"
+                className="relative px-4 py-6 sm:px-6 sm:py-8 text-center rounded-[6px]"
                 style={{
                   background: `linear-gradient(180deg, #0D1224 0%, ${CARD_BG} 100%)`,
                 }}
               >
                 <HexRadarIcon />
 
-                <h2 className="text-white font-heading-royal text-base sm:text-xl font-bold leading-snug mb-2">
+                <h2 className="text-white font-heading-royal text-sm sm:text-xl font-bold leading-snug mb-2">
                   Technovanza awaits your reply.
                 </h2>
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
+                <p className="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
                   Registrations for 2026–'27 close October 10, 5:00 PM.
                   Claim your seat before the seal shuts.
                 </p>
@@ -367,7 +373,7 @@ const Body = () => {
                   <CountdownBox days={days} />
                 </div>
 
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-4 w-full">
                   <TemptingCTAButton
                     onClick={() => {
                       setShowPopup(false);

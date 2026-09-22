@@ -8,11 +8,11 @@ body { background-color: #030508; }
 
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 #root {
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 

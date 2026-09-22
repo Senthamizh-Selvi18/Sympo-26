@@ -13,7 +13,7 @@ const NOTCH = (cut) =>
 /* Shared container sizing so every major block in this page lines up
    with identical max-width and padding. Change this ONE constant if
    you ever want to widen/narrow the whole page uniformly. */
-const CONTAINER = "w-full max-w-6xl p-6 md:p-10";
+const CONTAINER = "w-full max-w-6xl p-5 sm:p-6 md:p-10";
 
 const ExploreButton = ({ children, to }) => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const ExploreButton = ({ children, to }) => {
       className="w-full sm:w-auto"
     >
       <div
-        className="relative py-2.5 px-5 min-w-[190px] flex items-center justify-center gap-1.5 border-2"
+        className="relative py-2.5 px-5 min-w-0 sm:min-w-[190px] flex items-center justify-center gap-1.5 border-2"
         style={{
           clipPath: NOTCH(12),
           borderColor: hovered ? "#B9A2FF" : "rgba(167,139,250,0.5)",
@@ -86,7 +86,7 @@ const StaticGlowLogo = ({ src, alt }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className="relative w-full max-w-[270px] md:max-w-[310px] mx-auto flex flex-col items-center justify-center"
+      className="relative w-full max-w-[220px] sm:max-w-[270px] md:max-w-[310px] mx-auto flex flex-col items-center justify-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -205,6 +205,8 @@ const SignalRevealImage = ({ src, alt }) => {
   );
 };
 
+/* StatCard: value text now wraps on mobile (no whitespace-nowrap below sm)
+   since "UG | PG | MBA" was overflowing its column in the 4-up mobile row. */
 const StatCard = ({ icon, value, label }) => {
   const [hovered, setHovered] = useState(false);
   return (
@@ -218,7 +220,7 @@ const StatCard = ({ icon, value, label }) => {
       }}
     >
       <div
-        className="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center mb-2 border"
+        className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center mb-2 border"
         style={{
           borderColor: hovered ? "transparent" : "rgba(79,200,255,0.4)",
           background: hovered
@@ -233,13 +235,13 @@ const StatCard = ({ icon, value, label }) => {
         </span>
       </div>
       <span
-        className="font-display-royal font-bold text-sm md:text-base whitespace-nowrap"
+        className="font-display-royal font-bold text-xs sm:text-sm md:text-base leading-tight break-words sm:whitespace-nowrap"
         style={{ ...safeText(hovered ? "#ffffff" : "#e4ecfb"), transition: "color 0.3s ease" }}
       >
         {value}
       </span>
       <span
-        className="text-[0.6rem] md:text-[0.66rem] tracking-[0.1em] uppercase mt-0.5"
+        className="text-[0.56rem] sm:text-[0.6rem] md:text-[0.66rem] tracking-[0.1em] uppercase mt-0.5"
         style={safeText("#7f92b8")}
       >
         {label}
@@ -249,7 +251,7 @@ const StatCard = ({ icon, value, label }) => {
 };
 
 const EditionStatStrip = ({ stats, accent }) => (
-  <div className="flex items-center gap-4 mb-3">
+  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-3">
     {stats.map((s) => (
       <div key={s.label} className="flex items-center gap-1.5">
         <span className="font-display-royal font-bold text-sm md:text-base" style={safeText(accent)}>
@@ -271,19 +273,19 @@ const EditionEntry = ({ edition, year, tags, description, accent, stats, isLast 
 
   return (
     <div
-      className="relative pl-14 md:pl-16 pb-12"
+      className="relative pl-12 sm:pl-14 md:pl-16 pb-12"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {!isLast && (
         <span
-          className="absolute left-[19px] md:left-[21px] top-10 bottom-0 w-px"
+          className="absolute left-[17px] sm:left-[19px] md:left-[21px] top-10 bottom-0 w-px"
           style={{ background: `linear-gradient(180deg, ${accent}55, transparent)` }}
         />
       )}
 
       <span
-        className="absolute left-0 top-1 w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center"
+        className="absolute left-0 top-1 w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center"
         style={{
           border: `2px solid ${accent}`,
           background: "#081226",
@@ -296,7 +298,7 @@ const EditionEntry = ({ edition, year, tags, description, accent, stats, isLast 
 
       <div className="flex items-baseline gap-2 mb-1">
         <span
-          className="font-display-royal font-bold text-2xl md:text-3xl"
+          className="font-display-royal font-bold text-xl sm:text-2xl md:text-3xl"
           style={{
             ...safeText(accent),
             textShadow: hovered ? `0 0 14px ${accent}88` : "none",
@@ -310,7 +312,7 @@ const EditionEntry = ({ edition, year, tags, description, accent, stats, isLast 
         </span>
       </div>
 
-      <h4 className="font-heading-royal text-base md:text-lg mb-1" style={safeText("#ffffff")}>
+      <h4 className="font-heading-royal text-sm sm:text-base md:text-lg mb-1" style={safeText("#ffffff")}>
         TECHNOVANZA <span style={safeText(accent)}>{year}</span>
       </h4>
 
@@ -318,7 +320,7 @@ const EditionEntry = ({ edition, year, tags, description, accent, stats, isLast 
         {tags.map((tag, i) => (
           <span
             key={tag}
-            className="text-[0.65rem] md:text-[0.7rem] px-2.5 py-0.5 rounded-full border font-label-royal tracking-wide"
+            className="text-[0.62rem] sm:text-[0.65rem] md:text-[0.7rem] px-2.5 py-0.5 rounded-full border font-label-royal tracking-wide"
             style={{
               borderColor: hovered ? accent : "rgba(255,255,255,0.15)",
               ...safeText(hovered ? "#fff" : "#9fb0d6"),
@@ -400,7 +402,7 @@ const NewAbout = ({ compact = false }) => {
         }}
       >
         <SectionLabel>About</SectionLabel>
-        <h2 className="font-display-royal font-bold text-3xl md:text-5xl tracking-wide text-left mb-6">
+        <h2 className="font-display-royal font-bold text-2xl sm:text-3xl md:text-5xl tracking-wide text-left mb-6">
           <span style={safeText("#ffffff")}>TECHNOVANZA </span>
           <span style={safeText("#4fc8ff")}>2026-&apos;27</span>
         </h2>
@@ -409,7 +411,7 @@ const NewAbout = ({ compact = false }) => {
             vertically centered against the text block on the left,
             instead of pinned to the top of the row. */}
         <div className="grid grid-cols-1 md:grid-cols-[60%_40%] items-center w-full gap-6 md:gap-0">
-          <div className="w-full font-body-royal text-base md:text-lg leading-relaxed text-justify md:pr-6" style={safeText("#c3ceec")}>
+          <div className="w-full font-body-royal text-sm sm:text-base md:text-lg leading-relaxed text-justify md:pr-6" style={safeText("#c3ceec")}>
             <p>
               Technovanza is where innovation meets imagination, bringing
               together aspiring engineers, emerging ideas, and technology
@@ -438,12 +440,12 @@ const NewAbout = ({ compact = false }) => {
         <>
           {/* ===== About Our College ===== */}
           <ScrollReveal animation="fadeInUp" className="w-full flex justify-center">
-            <div className={`${CONTAINER} flex flex-col md:flex-row items-center gap-10 md:gap-14`} style={{ scrollMarginTop: "100px" }}>
+            <div className={`${CONTAINER} flex flex-col md:flex-row items-center gap-8 md:gap-14`} style={{ scrollMarginTop: "100px" }}>
               <div className="md:w-[52%] w-full">
                 <span className="text-[0.7rem] tracking-[0.2em] uppercase font-label-royal" style={safeText("#4fc8ff")}>
                   About Our College
                 </span>
-                <h2 className="font-display-royal font-bold text-2xl md:text-3xl mt-2 mb-1 leading-snug" style={safeText("#ffffff")}>
+                <h2 className="font-display-royal font-bold text-xl sm:text-2xl md:text-3xl mt-2 mb-1 leading-snug" style={safeText("#ffffff")}>
                   JERUSALEM COLLEGE OF ENGINEERING
                 </h2>
                 <p className="text-sm mb-4" style={safeText("#8a94b8")}>
@@ -466,8 +468,10 @@ const NewAbout = ({ compact = false }) => {
                   and meaningful societal contributions.
                 </p>
 
+                {/* 2x2 grid on mobile so 4 stats never get squeezed into one
+                    tight row; becomes a single row again from sm up. */}
                 <div
-                  className="flex items-stretch justify-between rounded-xl px-3 py-4 md:px-5"
+                  className="grid grid-cols-2 gap-x-2 gap-y-4 sm:flex sm:items-stretch sm:justify-between sm:gap-0 rounded-xl px-3 py-4 md:px-5"
                   style={{
                     border: "1px solid rgba(79,200,255,0.22)",
                     background: "rgba(79,200,255,0.03)",
@@ -528,7 +532,7 @@ const NewAbout = ({ compact = false }) => {
                     Our Journey
                   </span>
                   <h2
-                    className="font-display-royal font-bold text-3xl md:text-4xl"
+                    className="font-display-royal font-bold text-2xl sm:text-3xl md:text-4xl"
                     style={gradientTextStyle("linear-gradient(100deg, #ffffff 0%, #4fc8ff 50%, #A78BFA 100%)")}
                   >
                     PAST EDITIONS
@@ -550,7 +554,7 @@ const NewAbout = ({ compact = false }) => {
                 style={{ borderColor: "rgba(79,200,255,0.15)" }}
               >
                 <div>
-                  <h3 className="font-display-royal font-bold text-xl md:text-2xl">
+                  <h3 className="font-display-royal font-bold text-lg sm:text-xl md:text-2xl">
                     <span style={safeText("#ffffff")}>Be a part of something </span>
                     <span style={safeText("#4fc8ff")}>BIGGER</span>
                   </h3>
