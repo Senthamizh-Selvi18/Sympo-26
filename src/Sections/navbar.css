@@ -213,11 +213,17 @@
   width: 24px;
 }
 
-/* ---- Mobile drawer ---- */
+/* ---- Mobile drawer ----
+   FIX: previously used `right: 0` + `transform: translateX(100%)` to hide
+   the drawer off-screen. Browsers still include a transformed fixed
+   element's original (untransformed) box in the page's scrollable area,
+   which was silently widening the whole document by ~260px and causing
+   horizontal scroll / cut-off content on mobile. Positioning it off-screen
+   with `right` directly avoids that. */
 .tnav-mobile-drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -260px;
   height: 100vh;
   width: 260px;
   z-index: 40;
@@ -226,12 +232,11 @@
   box-shadow: -4px 0 30px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transform: translateX(100%);
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tnav-mobile-drawer.open {
-  transform: translateX(0);
+  right: 0;
 }
 
 .tnav-mobile-links {
@@ -284,11 +289,19 @@
     display: flex;
   }
   .tnav-inner {
+    position: relative;
     padding: 0 1.25rem;
     height: 78px;
+    justify-content: center; /* center the logo on mobile */
   }
   .tnav-logo-img {
     height: 62px;
+  }
+  .tnav-hamburger {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
