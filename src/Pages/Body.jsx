@@ -331,7 +331,7 @@ const Body = () => {
       <AnimatePresence>
         {showPopup && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-[#05070D]/95 px-4 pb-5 sm:pb-0"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#05070D]/95 px-4 py-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -339,7 +339,7 @@ const Body = () => {
             onClick={() => setShowPopup(false)}
           >
             <motion.div
-              className="relative w-full max-w-[280px] xs:max-w-[300px] sm:max-w-[320px]"
+              className="relative w-full max-w-[280px] xs:max-w-[300px] sm:max-w-[320px] max-h-[90vh] overflow-y-auto"
               initial={{ y: 30, opacity: 0, scale: 0.97 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 20, opacity: 0, scale: 0.97 }}
