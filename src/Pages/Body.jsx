@@ -392,10 +392,10 @@ const Body = () => {
         )}
       </AnimatePresence>
 
-      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-w-0 min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-screen"></div>
 
-        <div className="mt-small">
+        <div className="mt-small w-full min-w-0 max-w-full">
           <CollegeName />
           <div className="flex flex-wrap justify-center gap-5 mt-10 mb-1 animate__animated animate__fadeInUp duration-500">
             <Button onClick={handleUnleashClick}>
