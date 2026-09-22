@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUserSecret, FaGamepad, FaLayerGroup, FaGavel, FaTrophy, FaUserTie } from "react-icons/fa";
+import { FaUserSecret, FaGamepad, FaLayerGroup, FaGavel, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
 
@@ -116,27 +116,6 @@ const BehindTheMask = () => {
         </ul>
       ),
       key: "rules"
-    },
-    {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🧠</span> Deduction & Logic</div>
-            <div className="sympo-subcard-desc">Accuracy in analyzing clue patterns and identifying the hidden killer</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🗣️</span> Persuasion & Teamwork</div>
-            <div className="sympo-subcard-desc">Active discussion participation, defense clarity, and strategic influence</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⚡</span> Survival & Speed</div>
-            <div className="sympo-subcard-desc">Advancing across levels and decisive puzzle/clue solving speed</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
     },
     {
       icon: <FaUserTie size={24} />,

@@ -110,18 +110,6 @@ const Vintaviz = () => {
       key: "rules",
     },
     {
-      icon: "🏆",
-      heading: "Evaluation Criteria",
-      content: (
-        <div className="sympo-subcard text-slate-200">
-          <p className="leading-relaxed">
-            Submissions and presentations will be evaluated based on <strong>Accuracy</strong> of analysis, <strong>Creativity</strong> of visualization design, depth of <strong>Actionable Insights</strong>, and clarity of <strong>Presentation</strong>.
-          </p>
-        </div>
-      ),
-      key: "judging",
-    },
-    {
       icon: "📞",
       heading: "Contact Information",
       content: (

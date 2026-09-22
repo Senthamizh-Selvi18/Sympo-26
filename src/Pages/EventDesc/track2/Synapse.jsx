@@ -53,41 +53,6 @@ const Synapse = () => {
       key: "rules"
     },
     {
-      icon: "🏆",
-      heading: "Judging Criteria",
-      content: (
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm md:text-base text-slate-200 border-collapse border border-cyan-500/20 rounded-lg overflow-hidden">
-            <thead>
-              <tr className="bg-cyan-950/40 border-b border-cyan-500/30 text-cyan-300 uppercase font-semibold">
-                <th className="px-4 py-2.5">Criteria</th>
-                <th className="px-4 py-2.5">Marks</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-cyan-500/10">
-              <tr className="hover:bg-cyan-950/20">
-                <td className="px-4 py-2.5 font-medium">Technical Content & Novelty</td>
-                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
-              </tr>
-              <tr className="hover:bg-cyan-950/20">
-                <td className="px-4 py-2.5 font-medium">Uniqueness / Innovativeness / SDG Impact</td>
-                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
-              </tr>
-              <tr className="hover:bg-cyan-950/20">
-                <td className="px-4 py-2.5 font-medium">Presentation Content & Clarity</td>
-                <td className="px-4 py-2.5 text-cyan-400 font-bold">30</td>
-              </tr>
-              <tr className="hover:bg-cyan-950/20">
-                <td className="px-4 py-2.5 font-medium">Question and Answer Defense</td>
-                <td className="px-4 py-2.5 text-cyan-400 font-bold">10</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
       icon: "📞",
       heading: "Contact Details",
       content: (

@@ -94,31 +94,6 @@ const TriSpark = () => {
       key: "rules"
     },
     {
-      icon: "🏆",
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🎯</span> Accuracy</div>
-            <div className="sympo-subcard-desc">Correctness and execution of solutions</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🧠</span> Logic</div>
-            <div className="sympo-subcard-desc">Logical approach and algorithm efficiency</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🐛</span> Debugging</div>
-            <div className="sympo-subcard-desc">Debugging skills under pressure</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⏰</span> Efficiency</div>
-            <div className="sympo-subcard-desc">Time management and speed</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
       icon: "📞",
       heading: "Contact Details",
       content: (

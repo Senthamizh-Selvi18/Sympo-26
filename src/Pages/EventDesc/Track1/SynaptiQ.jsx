@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBrain, FaCogs, FaRobot, FaGavel, FaTrophy, FaInfoCircle } from "react-icons/fa";
+import { FaBrain, FaCogs, FaRobot, FaGavel, FaInfoCircle } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/SynaptiQ.png";
 
@@ -117,27 +117,6 @@ const SynaptiQ = () => {
         </ul>
       ),
       key: "rules"
-    },
-    {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥇</span> Round 1</div>
-            <div className="sympo-subcard-desc">Accuracy & Speed</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥈</span> Round 2</div>
-            <div className="sympo-subcard-desc">Algorithm correctness & solution efficiency</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥉</span> Round 3</div>
-            <div className="sympo-subcard-desc">Prompt quality & image similarity</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
     },
     {
       icon: <FaInfoCircle size={24} />,

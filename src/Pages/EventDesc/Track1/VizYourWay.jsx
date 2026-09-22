@@ -107,18 +107,6 @@ const VizYourWay = () => {
       key: "rules"
     },
     {
-      icon: "🏆",
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard text-slate-200">
-          <p className="leading-relaxed">
-            Teams will be judged based on the clarity, understandability, and informativeness of their visualizations. The effective use of a variety of charts and graphs to communicate findings is encouraged. The decision made by the judges will be final.
-          </p>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
       icon: "📞",
       heading: "Contact Details",
       content: (
