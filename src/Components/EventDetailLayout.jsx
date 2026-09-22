@@ -24,6 +24,7 @@ const EventDetailLayout = ({
   date = "Oct 10, 2025",
   team,
   prize,
+  venue,
   registrationUrl,
   domains = [],
   sectionCards = [],
@@ -145,7 +146,13 @@ const EventDetailLayout = ({
                 <span className="sympo-spec-icon">📍</span>
                 <div>
                   <span className="sympo-spec-label">Venue: </span>
-                  <span className="sympo-spec-value">Campus (Offline)</span>
+                  <span className="sympo-spec-value">
+                    {venue ||
+                      (category?.toLowerCase().includes("online") ||
+                      subtitle?.toLowerCase().includes("online")
+                        ? "Online"
+                        : "Campus (Offline)")}
+                  </span>
                 </div>
               </div>
             </div>

@@ -21,9 +21,9 @@ const NonCircuitTec = () => {
       title: "MINDSPARK",
       category: "Technical • Track I",
       description:
-        "Paper Presentation! Ignite Ideas. Inspire Future. Showcase groundbreaking research and innovative technological solutions in a 10-minute presentation challenge.",
+        "Technical Paper Presentation! Present research, innovations, and emerging tech in computer science before an expert panel followed by a rigorous Q&A session.",
       date: "Oct 10, 2026",
-      team: "Team of 2",
+      team: "Max 2 Members",
       path: "/mindspark",
     },
     {
@@ -33,9 +33,9 @@ const NonCircuitTec = () => {
       title: "Prompt Rush",
       category: "Technical • Track I",
       description:
-        "Prompt • Think • Create! An elite generative AI and prompt engineering challenge to craft prompts, synthesize code, and solve tech problems.",
+        "AI-Powered Web Design Challenge! Recreate given interfaces using AI prompts, then build and animate interactive web interfaces from scratch.",
       date: "Oct 10, 2026",
-      team: "1 - 2 Members",
+      team: "Max 2 Members",
       path: "/promptRush",
     },
     {

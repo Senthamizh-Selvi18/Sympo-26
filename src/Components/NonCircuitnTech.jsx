@@ -10,6 +10,7 @@ import TieTheKnots from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
 import Chronoverse from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 import OBSSTACKLE from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
 import GIGZUP from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
+import BehindTheMask from "../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
 
 export const commonNonTechnicalEvents = [
   {
@@ -66,29 +67,29 @@ export const commonNonTechnicalEvents = [
   },
   {
     id: 5,
-    imageSrc: OBSSTACKLE,
-    altText: "OBS-TACKLE RACE",
-    title: "Obs-Tackle Race",
-    category: "Non-Technical",
-    description:
-      "Live Stumble Guys knockout tournament! Race, jump, and dodge obstacles to outlast competitors and claim the champion's crown.",
-    date: "Oct 10, 2026",
-    team: "Individual (Solo Player)",
-    prize: "Cash Prize for Winners",
-    path: "/obstackle",
-  },
-  {
-    id: 6,
     imageSrc: GIGZUP,
     altText: "GIGZUP 2.0",
     title: "GIGZUP 2.0",
     category: "Non-Technical • Online",
     description:
-      "Virtual Vibe Fest (Online Event)! An exciting online entertainment quiz competing in real time across ConnectX and Verse Decode.",
+      "Virtual Vibe Fest (Online Event)! An exciting online gaming and entertainment quiz competing in real time across ConnectX and Verse Decode.",
     date: "Oct 07, 2026",
     team: "Solo / Individual",
-    prize: "Cash Prize for Winners",
+    prize: "Win Exciting Prizes",
     path: "/gigzup",
+  },
+  {
+    id: 6,
+    imageSrc: BehindTheMask,
+    altText: "BEHIND THE MASK",
+    title: "BEHIND THE MASK",
+    category: "Non-Technical • Online",
+    description:
+      "Online Social-Deduction Game! Analyse clues, take part in strategic discussions, and use pure logic to unmask the secret killer before they outwit everyone.",
+    date: "Oct 07, 2026",
+    team: "Solo / Team",
+    prize: "Win Exciting Prizes",
+    path: "/behindTheMask",
   },
 ];
 
