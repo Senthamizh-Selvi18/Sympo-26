@@ -3,7 +3,7 @@ import React from "react";
 const Loader = () => {
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-center overflow-hidden relative"
+      className="min-h-screen min-h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden relative"
       style={{
         background: "radial-gradient(ellipse at center, #0a0f1f 0%, #030308 70%, #000000 100%)",
       }}

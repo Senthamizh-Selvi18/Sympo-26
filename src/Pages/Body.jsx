@@ -132,7 +132,7 @@ const TracedBorder = () => (
 );
 
 const CountdownBox = ({ days }) => (
-  <div className="relative inline-block w-full sm:w-auto">
+  <div className="relative inline-block w-full sm:w-auto max-w-[220px] mx-auto">
     <svg
       className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
       viewBox="0 0 100 40"
@@ -179,11 +179,11 @@ const CountdownBox = ({ days }) => (
         transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
       />
 
-      <div className="relative text-left">
+      <div className="relative text-center">
         <p className="font-mono text-[8px] sm:text-[9px] text-[#6FC1FF] tracking-[0.18em] sm:tracking-[0.22em] mb-1.5">
           REGISTRATION CLOSES IN
         </p>
-        <div className="overflow-hidden h-8 sm:h-9 flex items-center">
+        <div className="overflow-hidden h-8 sm:h-9 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.p
               key={days}
