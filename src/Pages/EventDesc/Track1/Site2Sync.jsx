@@ -95,23 +95,6 @@ const Site2Sync = () => {
       key: "rules"
     },
     {
-      icon: "🏆",
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥇</span> Round 1</div>
-            <div className="sympo-subcard-desc">Accuracy in debugging and matching the reference design</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🥈</span> Round 2</div>
-            <div className="sympo-subcard-desc">Creativity, functionality, responsiveness, and code quality</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
       icon: "📞",
       heading: "Student Coordinators",
       content: (

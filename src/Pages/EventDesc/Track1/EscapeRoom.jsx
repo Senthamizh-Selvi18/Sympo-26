@@ -84,29 +84,6 @@ const EscapeRoom = () => {
       key: "rules"
     },
     {
-      icon: "⚖️",
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard">
-          <ul className="sympo-tech-list text-base md:text-lg">
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>Winners will be selected depending upon the number of challenges solved in the shortest period of time.</span>
-            </li>
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>The decision of the judges will be final.</span>
-            </li>
-            <li className="sympo-tech-list-item">
-              <span className="sympo-tech-list-bullet">▶</span>
-              <span>If found guilty of any malpractice, the team will be immediately disqualified, and will not be considered for judging.</span>
-            </li>
-          </ul>
-        </div>
-      ),
-      key: "judging"
-    },
-    {
       icon: "📞",
       heading: "Contact Information",
       content: (

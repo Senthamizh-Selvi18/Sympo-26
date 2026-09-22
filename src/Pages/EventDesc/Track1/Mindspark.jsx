@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLightbulb, FaLayerGroup, FaChalkboardTeacher, FaGavel, FaTrophy, FaUserTie } from "react-icons/fa";
+import { FaLightbulb, FaLayerGroup, FaChalkboardTeacher, FaGavel, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/Mindspark.png";
 
@@ -105,27 +105,6 @@ const Mindspark = () => {
         </ul>
       ),
       key: "rules"
-    },
-    {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>💡</span> Content & Originality</div>
-            <div className="sympo-subcard-desc">Uniqueness, novelty of concept, and original research methodology</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🔬</span> Technical Depth</div>
-            <div className="sympo-subcard-desc">Architectural rigor, feasibility, clarity of implementation, and analysis</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🗣️</span> Delivery & Q&A Defense</div>
-            <div className="sympo-subcard-desc">Slide presentation quality, public speaking confidence, and responses to judges</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
     },
     {
       icon: <FaUserTie size={24} />,

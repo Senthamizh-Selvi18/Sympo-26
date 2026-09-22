@@ -1,5 +1,5 @@
 import React from "react";
-import { FaRobot, FaLightbulb, FaLaptopCode, FaGavel, FaTrophy, FaUserTie, FaLayerGroup } from "react-icons/fa";
+import { FaRobot, FaLightbulb, FaLaptopCode, FaGavel, FaUserTie, FaLayerGroup } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
 import EventImage from "../../../assets/symposium/Sympo'25/Track1/PromptRush.png";
 
@@ -124,27 +124,6 @@ const PromptRush = () => {
         </ul>
       ),
       key: "rules"
-    },
-    {
-      icon: <FaTrophy size={24} />,
-      heading: "Judging Criteria",
-      content: (
-        <div className="sympo-subcard-grid">
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>🎯</span> Visual Accuracy & Similarity</div>
-            <div className="sympo-subcard-desc">Precision in recreating layout, typography, and UI elements in Round 1</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>✨</span> Animation & Interactivity</div>
-            <div className="sympo-subcard-desc">Button effects, transitions, floating elements, and creative motion in Round 2</div>
-          </div>
-          <div className="sympo-subcard">
-            <div className="sympo-subcard-title"><span>⚡</span> Prompt Quality & Speed</div>
-            <div className="sympo-subcard-desc">Effectiveness, clarity of prompt engineering, and execution under 20-minute limits</div>
-          </div>
-        </div>
-      ),
-      key: "judging"
     },
     {
       icon: <FaUserTie size={24} />,
