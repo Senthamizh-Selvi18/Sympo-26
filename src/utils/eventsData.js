@@ -12,8 +12,10 @@ import CinephiliaImg from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
 import CueBattleImg from "../assets/symposium/Sympo'25/Track1/CUEBATTLE.png";
 import ObstackleImg from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
 import GigzUpImg from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
+import BehindTheMaskImg from "../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
 
-import NexusImg from "../assets/symposium/Sympo'25/Track2/Nexus.jpeg";
+import SynapseImg from "../assets/symposium/Sympo'25/Track2/Synapse.jpg";
+import NexusImg from "../assets/symposium/Sympo'25/Track2/Synapse.jpg";
 import VoltrushImg from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
 import BionexaImg from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
 import ThinkonomicsImg from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
@@ -28,9 +30,9 @@ export const track1TechnicalEvents = [
     label: "MINDSPARK",
     category: "Technical • Track I",
     description:
-      "Paper Presentation! Ignite Ideas. Inspire Future. Showcase groundbreaking research and innovative technological solutions in a 10-minute presentation challenge.",
+      "Technical Paper Presentation! Present research, innovations, and emerging tech in computer science before an expert panel followed by a rigorous Q&A session.",
     date: "Oct 10, 2026",
-    team: "Team of 2",
+    team: "Max 2 Members",
     prize: "Win Exciting Prizes",
     path: "/mindspark",
     imageSrc: MindsparkImg,
@@ -42,9 +44,9 @@ export const track1TechnicalEvents = [
     label: "Prompt Rush",
     category: "Technical • Track I",
     description:
-      "Prompt • Think • Create! An elite generative AI and prompt engineering challenge to craft prompts, synthesize code, and solve tech problems.",
+      "AI-Powered Web Design Challenge! Recreate given interfaces using AI prompts, then build and animate interactive web interfaces from scratch.",
     date: "Oct 10, 2026",
-    team: "1 - 2 Members",
+    team: "Max 2 Members",
     prize: "Win Exciting Prizes",
     path: "/promptRush",
     imageSrc: PromptRushImg,
@@ -181,31 +183,31 @@ export const commonNonTechnicalEvents = [
   },
   {
     id: 5,
-    title: "Obs-Tackle Race",
-    label: "OBSSTACKLE",
-    category: "Non-Technical",
-    description:
-      "Live Stumble Guys knockout tournament! Race, jump, and dodge obstacles to outlast competitors and claim the champion's crown.",
-    date: "Oct 10, 2026",
-    team: "Individual (Solo Player)",
-    prize: "Cash Prize for Winners",
-    path: "/obstackle",
-    imageSrc: ObstackleImg,
-    altText: "OBSSTACKLE",
-  },
-  {
-    id: 6,
     title: "GIGZUP 2.0",
-    label: "GIGZUP",
+    label: "GIGZUP 2.0",
     category: "Non-Technical • Online",
     description:
-      "Virtual Vibe Fest (Online Event)! An exciting online entertainment quiz competing in real time across ConnectX and Verse Decode.",
+      "Virtual Vibe Fest (Online Event)! An exciting online gaming and entertainment quiz competing in real time across ConnectX and Verse Decode.",
     date: "Oct 07, 2026",
     team: "Solo / Individual",
-    prize: "Cash Prize for Winners",
+    prize: "Win Exciting Prizes",
     path: "/gigzup",
     imageSrc: GigzUpImg,
     altText: "GIGZUP 2.0",
+  },
+  {
+    id: 6,
+    title: "BEHIND THE MASK",
+    label: "BEHIND THE MASK",
+    category: "Non-Technical • Online",
+    description:
+      "Online Social-Deduction Game! Analyse clues, take part in strategic discussions, and use pure logic to unmask the secret killer before they outwit everyone.",
+    date: "Oct 07, 2026",
+    team: "Solo / Team",
+    prize: "Win Exciting Prizes",
+    path: "/behindTheMask",
+    imageSrc: BehindTheMaskImg,
+    altText: "BEHIND THE MASK",
   },
 ];
 
@@ -215,17 +217,17 @@ export const track2NonTechnicalEvents = commonNonTechnicalEvents;
 export const track2TechnicalEvents = [
   {
     id: 1,
-    title: "Nexus",
-    label: "Nexus",
+    title: "SYNAPSE 2K26",
+    label: "SYNAPSE 2K26",
     category: "Technical • Track II",
     description:
-      "Premier circuit paper presentation event to showcase novel innovations in electronics, IoT, biomedical engineering, and intelligent systems.",
+      "Technical Paper Presentation! Think • Present • Inspire. Showcase novel innovations, research ideas, and solutions shaping tomorrow before an expert panel.",
     date: "Oct 10, 2026",
     team: "Max 3 Members",
     prize: "Win Exciting Prizes",
-    path: "/nexus",
-    imageSrc: NexusImg,
-    altText: "Nexus",
+    path: "/synapse",
+    imageSrc: SynapseImg,
+    altText: "SYNAPSE 2K26 - Paper Presentation",
   },
   {
     id: 2,

@@ -25,6 +25,7 @@ import Cluminati from "./Pages/EventDesc/Track1/Cluminati.jsx";
 import EscapeRoom from "./Pages/EventDesc/Track1/EscapeRoom.jsx";
 import Flipster from "./Pages/EventDesc/Track1/Flipster.jsx";
 import Gigzup from "./Pages/EventDesc/Track1/Gigzup.jsx";
+import BehindTheMask from "./Pages/EventDesc/Track1/BehindTheMask.jsx";
 import SynaptiQ from "./Pages/EventDesc/Track1/SynaptiQ.jsx";
 import TriSpark from "./Pages/EventDesc/Track1/TriSpark.jsx";
 import VizYourWay from "./Pages/EventDesc/Track1/VizYourWay.jsx";
@@ -40,6 +41,7 @@ import BioMystic from "./Pages/EventDesc/track2/BioMystic.jsx";
 import Deadlydeeds from "./Pages/EventDesc/track2/Deadlydeeds.jsx";
 import Potpurri from "./Pages/EventDesc/track2/Potpurri.jsx";
 import Thinktank from "./Pages/EventDesc/track2/Thinktank.jsx";
+import Synapse from "./Pages/EventDesc/track2/Synapse.jsx";
 import Nexus from "./Pages/EventDesc/track2/Nexus.jsx";
 import Tracktron from "./Pages/EventDesc/track2/TrackOTron.jsx";
 import Site2Sync from "./Pages/EventDesc/Track1/Site2Sync.jsx";
@@ -142,6 +144,18 @@ const appRouter = createBrowserRouter([
         element: <Cinephilia />,
       },
       {
+        path: "/behindTheMask",
+        element: <BehindTheMask />,
+      },
+      {
+        path: "/behindthemask",
+        element: <BehindTheMask />,
+      },
+      {
+        path: "/behind-the-mask",
+        element: <BehindTheMask />,
+      },
+      {
         path: "/gigzup",
         element: <Gigzup />,
       },
@@ -159,6 +173,14 @@ const appRouter = createBrowserRouter([
       },
 
       // Track 2 Events
+      {
+        path: "/synapse",
+        element: <Synapse />,
+      },
+      {
+        path: "/synapse2k26",
+        element: <Synapse />,
+      },
       {
         path: "/nexus",
         element: <Nexus />,

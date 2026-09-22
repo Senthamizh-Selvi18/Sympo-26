@@ -107,22 +107,12 @@ const GigzUp = () => {
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <div className="font-semibold text-accent mb-2">Faculty Coordinator:</div>
-            <ul className="sympo-tech-list">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>Ms. B. Malathy – AP, CS & BS</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="sympo-subcard">
             <div className="font-semibold text-accent mb-2">Student Coordinators (CS & BS):</div>
             <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
                 <span>
-                  Vaishnavi K R (IV CS & BS):{" "}
+                  <strong>VAISHNAVI K R</strong> – IV CS & BS:{" "}
                   <a href="tel:+919888464811" className="text-accent hover:underline">
                     9888464811
                   </a>
@@ -131,7 +121,7 @@ const GigzUp = () => {
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
                 <span>
-                  Nivedha M (IV CS & BS):{" "}
+                  <strong>NIVEDHA M</strong> – IV CS & BS:{" "}
                   <a href="tel:+919344551024" className="text-accent hover:underline">
                     9344551024
                   </a>
@@ -139,13 +129,22 @@ const GigzUp = () => {
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Vidhya Varshini D – III CS & BS</span>
+                <span><strong>VIDHYA VARSHINI D</strong> – III CS & BS</span>
               </li>
               <li className="sympo-tech-list-item">
                 <span className="sympo-tech-list-bullet">▶</span>
-                <span>Sri Santhosh M – II CS & BS</span>
+                <span><strong>SRI SANTHOSH M</strong> – II CS & BS</span>
               </li>
             </ul>
+          </div>
+
+          <div className="sympo-subcard">
+            <div className="font-semibold text-cyan-300 mb-2">Faculty & Department Leadership:</div>
+            <div className="text-sm md:text-base text-slate-300 space-y-1">
+              <p><strong>Faculty Coordinator:</strong> Mrs. B. MALATHY (AP, CS & BS)</p>
+              <p><strong>NBTA Coordinator:</strong> Ms. G. PREETHI WILSON (AP, CS & BS)</p>
+              <p><strong>HOD - CS & BS:</strong> Dr. MAYA EAPEN</p>
+            </div>
           </div>
         </div>
       ),
@@ -160,9 +159,10 @@ const GigzUp = () => {
       title="GIGZUP 2.0"
       subtitle="VIRTUAL VIBE FEST (ONLINE EVENT)"
       track="TRACK I"
-      category="Non-Technical"
+      category="Non-Technical • Online"
       date="October 07, 2026"
       team="Individual / Solo"
+      venue="Online"
       registrationUrl="https://forms.gle/EdRu152LpsBAt5t56"
       sectionCards={sectionCards}
     />

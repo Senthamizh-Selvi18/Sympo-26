@@ -4,7 +4,7 @@ import "../text.css";
 import FlipCard from "../Components/FlipCard";
 import HexagonTechFrame from "../Components/HexagonTechFrame";
 
-import Nexus from "../assets/symposium/Sympo'25/Track2/Nexus.jpeg";
+import Synapse from "../assets/symposium/Sympo'25/Track2/Synapse.jpg";
 import Voltrush from "../assets/symposium/Sympo'25/Track2/Amp-it-up-arena.jpeg";
 import Bionexa from "../assets/symposium/Sympo'25/Track2/BioMystic.jpeg";
 import Thinkonomics from "../assets/symposium/Sympo'25/Track2/THINK TANK.png";
@@ -16,16 +16,16 @@ const CircuitTec = () => {
   const circuittechnicalEvents = [
     {
       id: 1,
-      imageSrc: Nexus,
-      altText: "Nexus",
-      title: "Nexus",
+      imageSrc: Synapse,
+      altText: "SYNAPSE 2K26 - Paper Presentation",
+      title: "SYNAPSE 2K26",
       category: "Technical • Track II",
       description:
-        "Premier circuit paper presentation event to showcase novel innovations in electronics, IoT, biomedical engineering, and intelligent systems.",
+        "Technical Paper Presentation! Think • Present • Inspire. Showcase novel innovations, research ideas, and solutions shaping tomorrow before an expert panel.",
       date: "Oct 10, 2026",
       team: "Max 3 Members",
       prize: "Win Exciting Prizes",
-      path: "/nexus",
+      path: "/synapse",
     },
     {
       id: 2,
