@@ -15,32 +15,32 @@ const Contact = () => {
       coordinators: [
         {
           name: "Ms. J. Narmadha",
-          designation: "Student Coordinator, IV Year - AI&DS",
+          designation: "Student Coordinator - AI&DS",
           phone: "+919840898728",
         },
         {
           name: "R. Akshaya",
-          designation: "Student Coordinator, IV Year - AI&ML",
+          designation: "Student Coordinator - AI&ML",
           phone: "+919524579186",
         },
         {
           name: "V. Indhumathi",
-          designation: "Student Coordinator, IV Year - CS",
+          designation: "Student Coordinator - CS",
           phone: "+919677309660",
         },
         {
           name: "Meghasree G",
-          designation: "Student Coordinator, IV Year - CS&BS",
+          designation: "Student Coordinator - CS&BS",
           phone: "+917806803699",
         },
         {
-          name: "Kiruba R",
-          designation: "Student Coordinator, IV Year - CSE",
-          phone: "+917418768166",
+          name: "Nandini J",
+          designation: "Student Coordinator - CSE",
+          phone: "+919384791558",
         },
         {
           name: "A. Kishore",
-          designation: "Student Coordinator, III Year - IT",
+          designation: "Student Coordinator - IT",
           phone: "+919677056900",
         },
       ],
@@ -51,7 +51,7 @@ const Contact = () => {
       coordinators: [
         {
           name: "M Sri Mala",
-          designation: "Student Coordinator, IV Year - BME",
+          designation: "Student Coordinator - BME",
           phone: "+919790319461",
         },
         {
@@ -59,9 +59,16 @@ const Contact = () => {
           designation: "Student Coordinator - ECE",
           phone: "+919003143820",
         },
-        // dummy — replace with real coordinator
-        { name: "Coordinator Name", designation: "Student Coordinator - EEE", phone: "+910000000000" },
-        { name: "Coordinator Name", designation: "Student Coordinator - MBA", phone: "+910000000000" },
+        {
+          name: "Ishaq Hameed.N",
+          designation: "Student Coordinator - EEE",
+          phone: "+917200931942",
+        },
+        {
+          name: "Pooja Sri N",
+          designation: "Student Coordinator - MBA",
+          phone: "+917358393785",
+        },
       ],
     },
   ];

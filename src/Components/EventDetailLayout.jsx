@@ -65,35 +65,37 @@ const EventDetailLayout = ({
         {/* ================================================================
             LEFT COLUMN: POSTER SECTION (Sticky on Desktop)
             ================================================================ */}
-        <motion.div
-          className="sympo-poster-column"
-          initial={{ opacity: 0, x: -35 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          {/* Back Navigation Link */}
-          <Link to={resolvedBackPath} className="sympo-back-link">
-            <span>←</span> Back to {track}
-          </Link>
+        <aside className="sympo-poster-column">
+          <motion.div
+            className="sympo-poster-sticky-wrap"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            {/* Back Navigation Link */}
+            <Link to={resolvedBackPath} className="sympo-back-link">
+              <span>←</span> Back to {track}
+            </Link>
 
-          {/* Professional Dark Navy Technical Frame */}
-          <div ref={tiltRef} className="sympo-poster-frame">
-            {/* Tech Corner Brackets */}
-            <span className="sympo-corner-bracket sympo-bracket-tl" />
-            <span className="sympo-corner-bracket sympo-bracket-tr" />
-            <span className="sympo-corner-bracket sympo-bracket-bl" />
-            <span className="sympo-corner-bracket sympo-bracket-br" />
+            {/* Professional Dark Navy Technical Frame */}
+            <div ref={tiltRef} className="sympo-poster-frame">
+              {/* Tech Corner Brackets */}
+              <span className="sympo-corner-bracket sympo-bracket-tl" />
+              <span className="sympo-corner-bracket sympo-bracket-tr" />
+              <span className="sympo-corner-bracket sympo-bracket-bl" />
+              <span className="sympo-corner-bracket sympo-bracket-br" />
 
-            {/* Poster Image Container */}
-            <div className="sympo-poster-img-wrap">
-              <img
-                src={posterSrc}
-                alt={posterAlt || `${title} Event Poster`}
-                className="sympo-poster-img"
-              />
+              {/* Poster Image Container */}
+              <div className="sympo-poster-img-wrap">
+                <img
+                  src={posterSrc}
+                  alt={posterAlt || `${title} Event Poster`}
+                  className="sympo-poster-img"
+                />
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </aside>
 
         {/* ================================================================
             RIGHT COLUMN: DASHBOARD INFORMATION (Natural Page Scroll)

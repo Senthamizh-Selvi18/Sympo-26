@@ -60,12 +60,11 @@
 @media (min-width: 1024px) {
   .sympo-poster-column {
     width: 440px;
+    position: -webkit-sticky;
     position: sticky;
-    top: 5.5rem;
+    top: 108px;
     z-index: 20;
-    max-height: calc(100vh - 6.5rem);
-    display: flex;
-    flex-direction: column;
+    align-self: flex-start;
   }
 }
 
@@ -73,6 +72,12 @@
   .sympo-poster-column {
     width: 480px;
   }
+}
+
+.sympo-poster-sticky-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Professional Dark Navy Technical Frame */
