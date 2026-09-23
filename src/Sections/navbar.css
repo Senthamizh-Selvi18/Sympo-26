@@ -289,19 +289,12 @@
     display: flex;
   }
   .tnav-inner {
-    position: relative;
     padding: 0 1.25rem;
     height: 78px;
-    justify-content: center; /* center the logo on mobile */
+    justify-content: space-between; /* logo left, hamburger right */
   }
   .tnav-logo-img {
     height: 62px;
-  }
-  .tnav-hamburger {
-    position: absolute;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
   }
 }
 
