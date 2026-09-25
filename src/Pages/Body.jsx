@@ -11,12 +11,13 @@ import ScrollReveal from "../Components/ScrollReveal";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
 
+// Keep this EXACT same value + math in CountdownTimer.jsx so both counters agree.
 const DEADLINE = new Date("2026-10-10T17:00:00");
 
 const getDaysRemaining = () => {
   const diff = DEADLINE.getTime() - Date.now();
   if (diff <= 0) return 0;
-  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  return Math.floor(diff / 86400000);
 };
 
 const NOTCH = (cut) =>

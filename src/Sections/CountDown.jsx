@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../text.css";
 
-const EVENT_DATE = new Date("2026-10-10T00:00:00");
+// Keep this EXACT same value + math as DEADLINE in Body.jsx so both counters agree.
+const EVENT_DATE = new Date("2026-10-10T17:00:00");
 
 const calculateTimeLeft = () => {
-  const diff = EVENT_DATE.getTime() - new Date().getTime();
+  const diff = EVENT_DATE.getTime() - Date.now();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   return {
     days: Math.floor(diff / 86400000),
