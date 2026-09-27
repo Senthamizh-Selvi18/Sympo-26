@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import EventPoster from "../assets/symposium/overAll.jpg";
+import EventPoster from "../assets/symposium/overAll.jpeg";
 import VoltageButton from "../Components/VoltageButton";
 
 const safeText = (color) => ({
