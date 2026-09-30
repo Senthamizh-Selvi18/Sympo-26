@@ -11,13 +11,43 @@ import ScrollReveal from "../Components/ScrollReveal";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
 
-// Keep this EXACT same value + math in CountdownTimer.jsx so both counters agree.
+// Registration closes October 9, 2026, 5:00 PM IST.
+// (This is separate from the event start date in CountDown.jsx.)
 const DEADLINE = new Date("2026-10-09T17:00:00+05:30");
 
-const getDaysRemaining = () => {
-  const diff = DEADLINE.getTime() - Date.now();
-  if (diff <= 0) return 0;
-  return Math.floor(diff / 86400000);
+// IST is a fixed UTC+5:30 (no daylight saving), so we can shift "now" by that
+// offset and read the calendar date with the UTC getters.
+const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
+const DAY_MS = 86400000;
+const HOUR_MS = 3600000;
+
+// Before Oct 9 (IST): shows calendar days left, changing at 12:00 AM IST.
+// From Oct 9 12:00 AM IST until 5:00 PM: shows hours left.
+// After 5:00 PM: shows 00 HOURS.
+const getCountdown = () => {
+  const now = Date.now();
+  if (now >= DEADLINE.getTime()) return { value: 0, unit: "HOURS" };
+
+  const nowIST = new Date(now + IST_OFFSET_MS);
+  const deadlineIST = new Date(DEADLINE.getTime() + IST_OFFSET_MS);
+
+  const todayMidnight = Date.UTC(
+    nowIST.getUTCFullYear(),
+    nowIST.getUTCMonth(),
+    nowIST.getUTCDate()
+  );
+  const deadlineMidnight = Date.UTC(
+    deadlineIST.getUTCFullYear(),
+    deadlineIST.getUTCMonth(),
+    deadlineIST.getUTCDate()
+  );
+
+  const days = Math.round((deadlineMidnight - todayMidnight) / DAY_MS);
+
+  if (days > 0) return { value: days, unit: days === 1 ? "DAY" : "DAYS" };
+
+  const hours = Math.ceil((DEADLINE.getTime() - now) / HOUR_MS);
+  return { value: hours, unit: hours === 1 ? "HOUR" : "HOURS" };
 };
 
 const NOTCH = (cut) =>
@@ -132,7 +162,7 @@ const TracedBorder = () => (
   </svg>
 );
 
-const CountdownBox = ({ days }) => (
+const CountdownBox = ({ value, unit }) => (
   <div className="relative inline-block w-full sm:w-auto max-w-[220px] mx-auto">
     <svg
       className="absolute -inset-[3px] w-[calc(100%+6px)] h-[calc(100%+6px)] pointer-events-none"
@@ -187,15 +217,15 @@ const CountdownBox = ({ days }) => (
         <div className="overflow-hidden h-8 sm:h-9 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.p
-              key={days}
+              key={`${value}-${unit}`}
               initial={{ opacity: 0, filter: "blur(6px)", x: 6 }}
               animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               exit={{ opacity: 0, filter: "blur(6px)", x: -6 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="font-mono text-xl sm:text-3xl text-white font-bold tracking-wide whitespace-nowrap"
             >
-              {String(days).padStart(2, "0")}{" "}
-              <span className="text-[#6FC1FF]">DAYS</span>
+              {String(value).padStart(2, "0")}{" "}
+              <span className="text-[#6FC1FF]">{unit}</span>
             </motion.p>
           </AnimatePresence>
         </div>
@@ -315,11 +345,12 @@ const Body = () => {
   const navigate = useNavigate();
 
   const [showPopup, setShowPopup] = useState(true);
-  const [days, setDays] = useState(getDaysRemaining());
+  const [countdown, setCountdown] = useState(getCountdown());
 
   useEffect(() => {
     if (!showPopup) return;
-    const id = setInterval(() => setDays(getDaysRemaining()), 1000);
+    setCountdown(getCountdown());
+    const id = setInterval(() => setCountdown(getCountdown()), 1000);
     return () => clearInterval(id);
   }, [showPopup]);
 
@@ -366,11 +397,11 @@ const Body = () => {
                   Technovanza'26 awaits your reply.
                 </h2>
                 <p className="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
-                  Registrations closes October 9, 5:00 PM.
+                  Registrations close October 9, 5:00 PM.
                 </p>
 
                 <div className="flex justify-center mb-6">
-                  <CountdownBox days={days} />
+                  <CountdownBox value={countdown.value} unit={countdown.unit} />
                 </div>
 
                 <div className="flex flex-col items-center gap-4 w-full">
