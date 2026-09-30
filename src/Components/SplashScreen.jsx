@@ -72,7 +72,7 @@ const SplashScreen = ({ onFinish }) => {
             : "pulseGlow 2.4s ease-in-out infinite",
         }}
       >
-        Technovanza
+        Technovanza'26
       </h1>
 
       <p

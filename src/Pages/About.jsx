@@ -362,7 +362,7 @@ const NewAbout = ({ compact = false }) => {
       year: "2025-'26",
       tags: ["Learn", "Create", "Lead"],
       stats: [
-        { value: "912", label: "Registrations" },
+        { value: "912+", label: "Registrations" },
         { value: "20+", label: "Events" },
       ],
       description:
@@ -374,7 +374,7 @@ const NewAbout = ({ compact = false }) => {
       year: "2024-'25",
       tags: ["Think", "Build", "Transform"],
       stats: [
-        { value: "800", label: "Registrations" },
+        { value: "800+", label: "Registrations" },
         { value: "15+", label: "Events" },
       ],
       description:

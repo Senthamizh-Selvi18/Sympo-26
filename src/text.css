@@ -70,6 +70,55 @@
     drop-shadow(0 8px 10px rgba(0, 5, 15, 0.95));
 }
 
+/* ---- The "C": same font and look, with a small opening on the right ----
+   Outer span = 3D shadow. Inner span = gradient + the cut-out.
+   Tweak the two numbers below if the opening needs to be
+   bigger/smaller or higher/lower:
+     --c-gap-top    : where the opening starts (% from top)
+     --c-gap-bottom : where the opening ends   (% from top)
+     --c-gap-left   : how far in from the left the cut begins        */
+.technovanza-c {
+  --c-gap-top: 40%;
+  --c-gap-bottom: 60%;
+  --c-gap-left: 45%;
+
+  display: inline-block;
+  position: relative;
+  filter: 
+    drop-shadow(0 1px 0 #e2ecf5)
+    drop-shadow(0 2px 0 #8fa9c4)
+    drop-shadow(0 4px 0 #4c6882)
+    drop-shadow(0 6px 0 #1f2f3f)
+    drop-shadow(0 8px 10px rgba(0, 5, 15, 0.95));
+}
+
+.technovanza-c-inner {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 15%,
+    #ebf3fa 32%,
+    #b2ccdf 46%,
+    #ffffff 50%,
+    #d6e4f0 55%,
+    #7b9bb9 80%,
+    #4a6884 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  clip-path: polygon(
+    -20% -20%,
+    120% -20%,
+    120% var(--c-gap-top),
+    var(--c-gap-left) var(--c-gap-top),
+    var(--c-gap-left) var(--c-gap-bottom),
+    120% var(--c-gap-bottom),
+    120% 120%,
+    -20% 120%
+  );
+}
+
 .technovanza-year-tag {
   font-family: 'Revamped', 'Orbitron', 'Oxanium', 'Space Grotesk', sans-serif;
   letter-spacing: 0.2em;

@@ -27,7 +27,10 @@ const CollegeName = () => {
         <span className="technovanza-title-wrapper">
           <span className="technovanza-main-title text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black break-words">
             <span className="technovanza-te">TE</span>
-            <span className="technovanza-rest">CHNOVANZA</span>
+            <span className="technovanza-c">
+              <span className="technovanza-c-inner">C</span>
+            </span>
+            <span className="technovanza-rest">HNOVANZA</span>
           </span>
           <span className="technovanza-year-tag text-xs sm:text-base md:text-lg lg:text-xl mt-2 sm:mt-2.5">
             2026&ndash;&rsquo;27

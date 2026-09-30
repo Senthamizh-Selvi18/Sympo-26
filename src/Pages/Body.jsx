@@ -12,7 +12,7 @@ import "animate.css";
 import { useNavigate } from "react-router-dom";
 
 // Keep this EXACT same value + math in CountdownTimer.jsx so both counters agree.
-const DEADLINE = new Date("2026-10-10T17:00:00");
+const DEADLINE = new Date("2026-10-09T17:00:00+05:30");
 
 const getDaysRemaining = () => {
   const diff = DEADLINE.getTime() - Date.now();
@@ -363,11 +363,10 @@ const Body = () => {
                 <HexRadarIcon />
 
                 <h2 className="text-white font-heading-royal text-sm sm:text-xl font-bold leading-snug mb-2">
-                  Technovanza awaits your reply.
+                  Technovanza'26 awaits your reply.
                 </h2>
                 <p className="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
-                  Registrations for 2026–'27 close October 10, 5:00 PM.
-                  Claim your seat before the seal shuts.
+                  Registrations closes October 9, 5:00 PM.
                 </p>
 
                 <div className="flex justify-center mb-6">
