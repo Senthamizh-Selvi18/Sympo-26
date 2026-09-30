@@ -24,11 +24,5 @@ export const questions = [
     id: 5,
     question: "Are there e-certificates for all participants?",
     answer: "Yes, e-certificates are given to all participants.",
-  },
-  {
-    id: 6,
-    question: "Is transport facility available?",
-    answer: "Yes, bus transport facilities are available. Please refer to the college website for more details.",
-    clgLink: "https://jerusalemengg.ac.in",
-  },
+  }
 ];
