@@ -397,7 +397,7 @@ const Body = () => {
                   Technovanza'26 awaits your reply.
                 </h2>
                 <p className="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
-                  Registrations close October 9, 5:00 PM.
+                  Registration closes on <br></br>October 9 at 5:00 PM.
                 </p>
 
                 <div className="flex justify-center mb-6">
