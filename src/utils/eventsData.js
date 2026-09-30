@@ -12,7 +12,7 @@ import CinephiliaImg from "../assets/symposium/Sympo'25/Track1/Cinephilia.jpg";
 import CueBattleImg from "../assets/symposium/Sympo'25/Track1/CUEBATTLE.png";
 import ObstackleImg from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
 import GigzUpImg from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
-import BehindTheMaskImg from "../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
+import BehindTheMaskImg from "../assets/symposium/Sympo'25/Track1/BehindTheMask.png";
 
 import SynapseImg from "../assets/symposium/Sympo'25/Track2/Synapse.jpg";
 import NexusImg from "../assets/symposium/Sympo'25/Track2/Synapse.jpg";

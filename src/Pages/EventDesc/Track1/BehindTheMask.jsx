@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUserSecret, FaGamepad, FaLayerGroup, FaGavel, FaUserTie } from "react-icons/fa";
 import EventDetailLayout from "../../../Components/EventDetailLayout";
-import EventImage from "../../../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
+import EventImage from "../../../assets/symposium/Sympo'25/Track1/BehindTheMask.png";
 
 const BehindTheMask = () => {
   const sectionCards = [

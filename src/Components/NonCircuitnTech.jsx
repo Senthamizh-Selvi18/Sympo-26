@@ -10,7 +10,7 @@ import TieTheKnots from "../assets/symposium/Sympo'25/Track2/POTPURRI.png";
 import Chronoverse from "../assets/symposium/Sympo'25/Track2/dEADLYDEEDS.jpeg";
 import OBSSTACKLE from "../assets/symposium/Sympo'25/Track1/OBS-TACKLE RACE.jpg";
 import GIGZUP from "../assets/symposium/Sympo'25/Track1/GIGZUP.jpg";
-import BehindTheMask from "../assets/symposium/Sympo'25/Track1/BehindTheMask.jpg";
+import BehindTheMask from "../assets/symposium/Sympo'25/Track1/BehindTheMask.png";
 
 export const commonNonTechnicalEvents = [
   {
