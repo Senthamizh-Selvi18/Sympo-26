@@ -40,6 +40,23 @@ const Mindspark = () => {
           </div>
 
           <div className="sympo-subcard">
+            <h3 className="sympo-subcard-title mb-2">
+              🌐 Domains{" "}
+              <span className="text-sm font-normal text-slate-300">(not limited only to these)</span>
+            </h3>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {["Artificial Intelligence", "Internet of Things (IoT)", "Cloud Computing", "Cyber Security"].map((domain, idx) => (
+                <span
+                  key={idx}
+                  className="px-3 py-1 text-sm font-semibold rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+                >
+                  {domain}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="sympo-subcard">
             <h3 className="sympo-subcard-title mb-2">🎯 Objectives</h3>
             <ul className="sympo-tech-list text-base md:text-lg space-y-2">
               <li className="sympo-tech-list-item">
@@ -112,59 +129,44 @@ const Mindspark = () => {
       content: (
         <div className="space-y-4">
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-accent">Student Coordinators (CSE):</div>
+            <div className="mb-2 font-semibold text-accent">Student Coordinators:</div>
             <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>
-                  <strong>Dhatshana.S</strong> – IV CSE:{" "}
-                  <a href="tel:+917810019505" className="text-accent hover:underline">
-                    78100 19505
-                  </a>
-                </span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>
-                  <strong>Sivasakthi P</strong> – III CSE:{" "}
-                  <a href="tel:+918825636700" className="text-accent hover:underline">
-                    88256 36700
-                  </a>
-                </span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>
-                  <strong>Monisha.V</strong> – II CSE:{" "}
-                  <a href="tel:+917200285033" className="text-accent hover:underline">
-                    72002 85033
-                  </a>
-                </span>
-              </li>
+              {[
+                { name: "J. Narmadha", dept: "AI & DS" },
+                { name: "Lavanya K.", dept: "AIML" },
+                { name: "Balina Gayathri", dept: "CS" },
+                { name: "Joshua J.", dept: "CSE" },
+                { name: "Janani S.", dept: "CS & BS" },
+                { name: "Kavini K.", dept: "IT" }
+              ].map((c, idx) => (
+                <li key={idx} className="sympo-tech-list-item">
+                  <span className="sympo-tech-list-bullet">▶</span>
+                  <span>
+                    <strong>{c.name}</strong> – {c.dept}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="sympo-subcard">
-            <div className="mb-2 font-semibold text-cyan-300">Faculty Coordinators (CSE):</div>
+            <div className="mb-2 font-semibold text-cyan-300">Faculty Coordinators:</div>
             <ul className="sympo-tech-list grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-300 text-sm md:text-base">
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>
-                  <strong>Ms. H. Mercy</strong>, AP/CSE:{" "}
-                  <a href="tel:+918754509685" className="text-cyan-300 hover:underline">
-                    87545 09685
-                  </a>
-                </span>
-              </li>
-              <li className="sympo-tech-list-item">
-                <span className="sympo-tech-list-bullet">▶</span>
-                <span>
-                  <strong>Mr. N. Javed</strong>, AP/CSE:{" "}
-                  <a href="tel:+919841441844" className="text-cyan-300 hover:underline">
-                    98414 41844
-                  </a>
-                </span>
-              </li>
+              {[
+                { name: "Ms. V. G. Thamaraiselvi", dept: "AP, AI & DS" },
+                { name: "Ms. B. S. Berlin Jeba", dept: "AP, AIML" },
+                { name: "Mr. Mohamed Neina Hasan, Ms. Jerina Begum", dept: "AP, CS" },
+                { name: "Mr. N. Javed, Ms. H. Mercy", dept: "AP, CSE" },
+                { name: "Ms. A. Sindhu Devi", dept: "AP, CS & BS" },
+                { name: "Ms. Sindhuja", dept: "AP, IT" }
+              ].map((f, idx) => (
+                <li key={idx} className="sympo-tech-list-item">
+                  <span className="sympo-tech-list-bullet">▶</span>
+                  <span>
+                    <strong>{f.name}</strong> – {f.dept}
+                  </span>
+                </li>
+              ))}
             </ul>
             <div className="mt-3 pt-3 border-t border-slate-700/60 text-sm md:text-base text-slate-300 space-y-1">
               <p><strong>NCSE Coordinator:</strong> Dr. T. Dhanalakshmi</p>
