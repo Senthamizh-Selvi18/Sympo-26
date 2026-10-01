@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 // Registration closes October 9, 2026, 5:00 PM IST.
 // (This is separate from the event start date in CountDown.jsx.)
-const DEADLINE = new Date("2026-10-09T17:00:00+05:30");
+const DEADLINE = new Date("2026-10-08T17:00:00+05:30");
 
 // IST is a fixed UTC+5:30 (no daylight saving), so we can shift "now" by that
 // offset and read the calendar date with the UTC getters.
@@ -21,9 +21,7 @@ const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
 const DAY_MS = 86400000;
 const HOUR_MS = 3600000;
 
-// Before Oct 9 (IST): shows calendar days left, changing at 12:00 AM IST.
-// From Oct 9 12:00 AM IST until 5:00 PM: shows hours left.
-// After 5:00 PM: shows 00 HOURS.
+
 const getCountdown = () => {
   const now = Date.now();
   if (now >= DEADLINE.getTime()) return { value: 0, unit: "HOURS" };
@@ -394,10 +392,10 @@ const Body = () => {
                 <HexRadarIcon />
 
                 <h2 className="text-white font-heading-royal text-sm sm:text-xl font-bold leading-snug mb-2">
-                  Technovanza'26 awaits your reply.
+                  Technovanza'26 awaits for your reply.
                 </h2>
                 <p className="text-gray-400 text-[11px] sm:text-sm leading-relaxed mb-5 max-w-[26ch] mx-auto">
-                  Registration closes on <br></br>October 9 at 5:00 PM.
+                  Registration closes on <br></br>October 8 at 5:00 PM.
                 </p>
 
                 <div className="flex justify-center mb-6">
